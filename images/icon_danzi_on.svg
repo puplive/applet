@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>icon_danzi_on</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12,9 C12,9.552 11.552,10 11,10 L7,10 C6.448,10 6,9.552 6,9 C6,8.448 6.448,8 7,8 L11,8 C11.552,8 12,8.448 12,9 L12,9 Z M12,5 C12,5.552 11.552,6 11,6 L7,6 C6.448,6 6,5.552 6,5 C6,4.448 6.448,4 7,4 L11,4 C11.552,4 12,4.448 12,5 L12,5 Z M17,4 L16,4 L16,3 C16,2.449 16.449,2 17,2 C17.551,2 18,2.449 18,3 C18,3.551 17.551,4 17,4 L17,4 Z M14,17 C14,17.551 13.551,18 13,18 C12.449,18 12,17.551 12,17 L12,15 C12,14.448 11.552,14 11,14 L4,14 L4,4 C4,2.897 4.897,2 6,2 L14.184,2 C14.071,2.313 14,2.647 14,3 L14,17 Z M4,18 C2.897,18 2,17.103 2,16 L10,16 L10,17 C10,17.351 10.061,17.687 10.171,18 L4,18 Z M17,0 L6,0 C3.794,0 2,1.794 2,4 L2,14 L1,14 C0.448,14 0,14.448 0,15 L0,16 C0,18.206 1.794,20 4,20 L13,20 L13.001,20 C14.655,19.999 16,18.654 16,17 L16,6 L17,6 C18.654,6 20,4.654 20,3 C20,1.346 18.654,0 17,0 L17,0 Z" id="path-1"></path>
+    </defs>
+    <g id="icon_danzi_on" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Fill-1" fill="#ECBB49" xlink:href="#path-1"></use>
+    </g>
+</svg>

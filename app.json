@@ -1,0 +1,28 @@
+{
+  "pages":[
+    "pages/operator/operator",
+    "pages/admin/admin",
+    "pages/tabbar/tabbar",
+    "pages/admin/ad_order/ad_order",
+    "pages/admin/changed/changed",
+    "pages/admin/changed/add_changed/add_changed",
+    "pages/admin/changed/edit_changed/edit_changed",
+    "pages/admin/changed/changed_details/changed_details",
+    "pages/admin/acceptance/acceptance",
+    "pages/admin/acceptance_details/acceptance_details",
+    "pages/admin/acceptance_reject/acceptance_reject",
+    "pages/admin/person/person",
+    "pages/operator/order_details/order_details",
+    "pages/operator/transfer_order/transfer_order",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

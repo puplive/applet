@@ -1,0 +1,108 @@
+<import src="../../tabbar/tabbar.wxml"/>  
+<template is="tabBar" data="{{tabBar}}"/>
+<view class='contain'>
+    <view class='row fenlei'>
+      <view class='col f14'>
+        <text class="col-3 {{_num==1?'on':''}} nav_text" data-num="1" bindtap='switchFenlei'>待接单(10)</text> 
+        <text class="col-3 {{_num==2?'on':''}} nav_text" data-num="2" bindtap='switchFenlei'>待配送(22)</text> 
+        <text class="col-3 {{_num==3?'on':''}} nav_text" data-num="3" bindtap='switchFenlei'>已完成(3)</text> 
+        <text class="iconfont icon-leidian screen col-3" catchtap="screenBtn"></text>
+      </view>
+    </view>
+    <!-- 内容列表 -->
+    <view wx:if="{{projectcon_len>0}}" class='list f12'  wx:key="key"  wx:for-item="value">
+      <navigator url='../details/details?project_id={{value.checkin_id}}' class='list_con'>
+        <view class="list_zwh clearfix">
+          <text class="fl list_zwh_left">N5 5009</text>
+          <text class="fr list_zwh_right">2020/03/01 13:23</text>
+        </view>
+        <view class="list_li clearfix">
+          <image src="/images/header_img.png" class="fl list_img"></image>
+          <view class="list_licon fl">
+            <view>
+              <text class="list_litit">鲜花租赁</text>
+            </view>
+            <view class="list_list clearfix">
+              <text class="list_listname fl">桌布</text>
+              <text class="list_listnum fr">×1</text>
+            </view>
+            <view class="list_list clearfix">
+              <text class="list_listname fl">桌花</text>
+              <text class="list_listnum fr">×1</text>
+            </view>
+            <view class="list_list clearfix">
+              <text class="list_listname fl">散尾</text>
+              <text class="list_listnum fr">×1</text>
+            </view>
+            <view class="list_list clearfix">
+              <text class="list_listname fl">绿萝</text>
+              <text class="list_listnum fr">×1</text>
+            </view>
+            <view class="list_list clearfix">
+              <text class="list_listname fl">玫瑰红球</text>
+              <text class="list_listnum fr">×1</text>
+            </view>
+          </view>
+        </view>
+        <view class="list_btn clearfix">
+          <view class="assign_on fr">指派</view>
+          <view class="urging fr"><text class="iconfont icon-leidian"></text>催办</view>
+        </view>
+      </navigator>
+      <navigator url='../details/details?project_id={{value.checkin_id}}' class='list_con'> 
+        <view class="list_zwh clearfix">
+          <text class="fl list_zwh_left">N5 5009</text>
+          <text class="fr list_zwh_right">2020/03/01 13:23</text>
+        </view>
+        <view class="list_li clearfix">
+          <image src="/images/header_img.png" class="fl list_img"></image>
+          <view class="list_licon fl">
+            <view>
+              <text class="list_litit">漏水，问题描述问题描述问题描述问题描述问题描述问题描述</text>
+            </view>
+          </view>
+        </view>
+        <view class="list_btn clearfix">
+          <view class="assign fr">指派</view>
+        </view>
+      </navigator>
+    </view>
+    <view wx:if="{{projectcon_len==0}}" class='no_data'>
+      暂无数据
+    </view>
+  </view>
+
+<!-- 弹窗选择规格 start -->
+<view  class="mask_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view  animation="{{animationData}}" class="screen_area {{isHidden == 1 ? 'display-block':'display-none'}}">
+  <view class="screen_tit">筛选</view>
+  <view class="screen_con"> 
+    <view class="screen_contit">展馆</view>
+    <view class="screen_conli">
+      <text class="on">N1</text>
+      <text>N2</text>
+      <text>N3</text>
+      <text>S1</text>
+      <text>S2</text>
+    </view>
+  </view>
+  <view class="screen_con02">
+    <view class="screen_contit">排序</view>
+    <view class="screen_conli">
+      <text class="on">按展位号排序</text>
+      <text>按时间排序</text>
+    </view>
+  </view>
+  <view class="screen_con03">
+    <view class="screen_contit">分类</view>
+    <view class="screen_conli">
+      <text class="on">选购订单</text>
+      <text>问题反馈</text>
+    </view>
+  </view>
+  <view class="screen_btn clearfix">
+    <text class="reset_btn fl">重置</text>
+    <text class="confirm_btn fr">确定</text>
+  </view>
+</view>
+<!-- 弹窗选择规格 end -->

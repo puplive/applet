@@ -1,0 +1,71 @@
+<import src="../../tabbar/tabbar.wxml"/>  
+<template is="tabBar" data="{{tabBar}}"/>
+<view class="contain">
+   <!-- 搜索 -->
+  <view class='search'>
+    <image class='icon_search' src='../../../images/icon_search.svg' mode='widthFix'></image>
+    <input class="search_input" placeholder='请输入关键字' name="search" type='text' confirm-type="search" bindconfirm="bindconfirm"  focus='{{focus}}' bindinput='bindinput' />
+    <view class='icon_voice' mode='widthFix'></view>
+  </view>
+
+  <!-- 列表内容 -->
+  <view class="list">
+    <navigator url='changed_details/changed_details' class='list_con'> 
+      <view class="list_zwh clearfix">
+        <text class="list_zwh_left">N5 5009</text>
+      </view>
+      <view class="list_li clearfix">
+        <view class="list_licon fl">
+          <view class="list_li clearfix">
+            <view class="list_licon">
+              <view class="list_list clearfix">
+                <text class="list_listname fl">高空作业无人看护</text>
+                <text class="list_listnum fr">2020/03/01 13:23</text>
+                <text class="list_list_method fr">一次警告</text>
+              </view>
+              <view class="list_list clearfix">
+                <text class="list_listname fl">展台超高或超出规划面积</text>
+                <text class="list_listnum fr">2020/03/01 13:23</text>
+                <text class="list_list_method fr">二次警告</text>
+              </view>
+              <view class="list_list clearfix">
+                <text class="list_listname fl">展台超高或超出规划面积</text>
+                <text class="list_listnum fr">2020/03/01 13:23</text>
+                <text class="list_list_method revoke fr">已撤销</text>
+              </view>
+              <view class="list_list clearfix">
+                <text class="list_listname fl">展台超高或超出规划面积</text>
+                <text class="list_listnum fr">2020/03/01 13:23</text>
+                <text class="list_list_method fr">罚款</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+    <navigator url='changed_details/changed_details' class='list_con'> 
+      <view class="list_zwh clearfix">
+        <text class="list_zwh_left">N5 5009</text>
+      </view>
+      <view class="list_li clearfix">
+        <view class="list_licon fl">
+          <view class="list_li clearfix">
+            <view class="list_licon">
+              <view class="list_list clearfix">
+                <text class="list_listname fl">高空作业无人看护</text>
+                <text class="list_listnum fr">2020/03/01 13:23</text>
+                <text class="list_list_method fr">一次警告</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>
+<!-- 底部按钮 -->
+<view class="foot_btn">
+  <navigator url='add_changed/add_changed'>
+    <view class="add_changed"><text class="iconfont icon-leidian"></text>整改通知</view>
+  </navigator>
+</view>

@@ -1,0 +1,47 @@
+page{ background-color: #fff;}
+.contain{padding-bottom: 120rpx; width: 96%; margin: 0 2%;}
+.zwh{width:96%; padding: 0 2%;font-size: 44rpx; font-weight: bold;color: #000;line-height: 60rpx; margin-top: 20rpx;}
+.person_name{width:96%; padding: 0 2%;font-size: 32rpx; margin-bottom: 20rx;}
+.person_name .tel{color: #5294F9; margin-left: 20rpx; }
+.list_con{margin-top: 16rpx; }
+.desc{
+  font-size: 28rpx;
+  height: 300rpx;
+  line-height:100rpx;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 0 20rpx;
+  position: relative;
+}
+.desc label{font-size: 32rpx; color: #000;}
+.textarea-wrp textarea{
+  width: 100%;
+  height: 150rpx;
+  line-height: 50rpx;
+  padding: 10rpx 0 28rpx;
+}
+.textlimit{
+  position: absolute;
+  bottom: 0rpx;
+  right: 10rpx;
+  color: #DCDFE6;
+  font-size: 24rpx;
+  line-height: 50rpx;
+}
+.img_con{
+  margin-left: 2%;
+  margin-top: 20rpx;
+  width: 160rpx;
+  height: 160rpx;
+  border: 1px dashed rgba(0, 0, 0, .1);
+}
+.img_con image{
+  width: 100%;
+  height:100%;
+}
+
+.foot_btn{ position: fixed; bottom: 0;width: 100%; height: 86rpx; border-top: 1px solid #F5F7FA;}
+.foot_btnli{width:160rpx;height:48rpx;border-radius:24rpx; border-width: 1px; border-style: solid; text-align: center;color: #606266;margin-top:18rpx;}
+.foot_btn .agree{background:rgba(107,199,60,0.05);border-color: rgba(107,199,60,1); margin:18rpx 20rpx 0;}
+.foot_btn .reject{background:rgba(229,76,74,0.05);border-color: rgba(229,76,74,1);}
+
