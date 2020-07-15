@@ -6,6 +6,22 @@ Page({
    */
   data: {
     showModalStatus: false,//显示遮罩
+    punishnum:1, //处罚方式筛选
+    changenum: 1,//整改状态筛选
+  },
+  // 筛选处罚方式
+  screenPunish:function(e){
+    this.setData({
+      punishnum: e.target.dataset.screenpunishnum
+    })
+    this.onShow();
+  },
+  // 筛选整改状态
+  screenChange: function (e) {
+    this.setData({
+      changenum: e.target.dataset.screenchangenum
+    })
+    this.onShow();
   },
   /**点击筛选 */
   screenBtn: function (data) {
@@ -36,6 +52,13 @@ Page({
     that.setData({//把选中值，放入判断值中
       showModalStatus: false,//显示遮罩       
       isHidden: 0,
+    })
+  },
+  //点击重置
+  resetBtn: function (data) {
+    this.setData({
+      punishnum: 1, //处罚方式筛选
+      changenum: 1,//整改状态筛选
     })
   },
   /**

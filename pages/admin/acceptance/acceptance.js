@@ -10,6 +10,7 @@ Page({
     projectcon_len: 1,
     showModalStatus: false,//显示遮罩
   },
+  // 点击导航分类
   switchFenlei: function (e) {
     this.setData({
       _num: e.target.dataset.num
@@ -19,10 +20,10 @@ Page({
   /**点击筛选 */
   screenBtn: function (data) {
     var that = this;
-    that.setData({
-      specIndex: data.currentTarget.dataset.itemIndex,
-      specParentIndex: data.currentTarget.dataset.parentindex,
-    })
+    // that.setData({
+    //   specIndex: data.currentTarget.dataset.itemIndex,
+    //   specParentIndex: data.currentTarget.dataset.parentindex,
+    // })
     var animation = wx.createAnimation({//动画
       duration: 500,//动画持续时间
       timingFunction: 'linear',//动画的效果 动画从头到尾的速度是相同的

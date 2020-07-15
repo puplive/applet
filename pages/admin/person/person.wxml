@@ -1,2 +1,29 @@
-<!--pages/admin/person/person.wxml-->
-<text>pages/admin/person/person.wxml</text>
+<view class="top">
+  <view class="top_left fl">
+    <image src="../../../images/header_img.jpg"></image>
+  </view>
+  <view class="top_right fl">
+    <view class="topr_01"><text class="name">郭晓名</text><text class="role">管理员</text></view>
+    <view class="topr_tel">18989898989</view>
+    <view class="topr_con col">
+      <view class="col-4">余额 <text>0.00</text></view>
+      <view class="col-4">积分 <text>0</text></view>
+      <view class="col-4">优惠券 <text>0</text></view>
+    </view>
+  </view>
+</view>
+<view class="con">
+  <navigator url="../person/user_info/user_info">
+    <view class="tit_list bor1">
+      <label class='tit'><text class="tittext">个人信息</text></label>
+      <image class='icon_right' src='../../../images/arrowright.png'></image>
+    </view>
+  </navigator>
+  <navigator url="../person/identity/identity">
+    <view class="tit_list bor1">
+      <label class='tit'><text class="tittext">身份认证</text></label>
+      <image class='icon_right' src='../../../images/arrowright.png'></image>
+    </view>
+  </navigator>
+</view>
+

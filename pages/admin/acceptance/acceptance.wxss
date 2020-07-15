@@ -3,12 +3,20 @@
 .nav_text{
   text-align: center;
 }
+.nav_text text{
+  height: 80rpx;
+  display: inline-block;
+}
 .on{
-  color: #ECBB49;
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAAICAYAAAHb+wwlAAAAAXNSR0IArs4c6QAAANNJREFUOBFjZACCN7s9/4NodMCISwKo8DlI8hmQIYmuixCf8e1ur2X/Gf5HElKILM/IwinLRKomkAH//3x/TJaNyLaTymZiYOEoI1UTueoZGRjeMb7dHyQD9OopoCEkRwgpFjMyMC4Xdt0WhS9pkGIeUWpBljIRpZJKioAJzYEJFK5UMo+gMcDkbQaOQ4Y/3y8C86IQQR1DSAE4IFk49VmgCXRYeQ4UD+AIA2Y+YJJhPDCEIoYkp4L8xgTO+sCiGJQjgbqfk2TC4FT8HOQXUPUC8hsAIpRA/AyhG7MAAAAASUVORK5CYII=);
+  background-repeat: no-repeat;
+  background-size: 56rpx 8rpx;
+  background-position: center 60rpx;
 }
 .screen{
   text-align: right;
   padding-right: 10px;
+  font-size: 20rpx;
 }
 .list_con{width: 92%; margin: 16rpx auto 0; background-color: #fff; border-radius: 4rpx; padding: 0 2% 2%;}
 .list_zwh{ height: 82rpx; line-height: 82rpx;}

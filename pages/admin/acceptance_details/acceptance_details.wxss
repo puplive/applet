@@ -1,4 +1,7 @@
 page{ background-color: #fff;}
+.col {
+  flex-wrap:wrap;
+} 
 .contain{padding-bottom: 120rpx; width: 96%; margin: 0 2%;}
 .zwh{width:96%; padding: 0 2%;font-size: 44rpx; font-weight: bold;color: #000;line-height: 60rpx; margin-top: 20rpx;}
 .person_name{width:96%; padding: 0 2%;font-size: 32rpx; margin-bottom: 20rx;}
@@ -6,7 +9,8 @@ page{ background-color: #fff;}
 .list_con{margin-top: 16rpx; width: 96%; padding: 0 2%;}
 .list_con:nth-child(2n){background-color:#F9FAFB; border-radius: 4rpx;}
 .list_con .time{ color: #909399; font-size: 24rpx; line-height: 50rpx;}
-.list_con .acc_img image{width: 160rpx; height: 160rpx; margin-right: 16rpx; margin-top: 10rpx; border: 1px solid #909399;}
+.list_con .acc_img image{width:calc(100% - 16rpx);height: 160rpx; margin-top: 10rpx; border: 1px solid #909399;}
+.list_con .acc_img image:nth-child(4n){margin-right: 0;}
 .status{color: #ECBB49; font-size: 32rpx; margin-top: 20rpx;}
 .al_reject{color: #E54C4A; font-size: 32rpx;}
 .reject_be{color:#303133; font-size:32rpx;}

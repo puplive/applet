@@ -66,9 +66,11 @@ page{background-color: #EBEEF5;}
 .kind-list-item-hd .jt_down{
   display: inline-block;
   color: #D8D8D8;
+  font-size: 16rpx;
+  margin-right: 16rpx;
 }
-.kind-list-item-hd-show {
-  /* opacity: .2; */
+.kind-list-item-hd .jt_down text{
+  font-size: 16rpx;
 }
 .people_num{
   color: #909399;

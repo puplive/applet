@@ -8,8 +8,8 @@
         <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
           <view class="kind-list-text">
             <view class="fl">
-              <view class="jt_down"><text class="iconfont icon-leidian"></text></view>
-              {{item.name}}
+              <view class="jt_down fl"><text class="iconfont icon-sanjiao_you"></text></view>
+              <view class="fl">{{item.name}} </view>
             </view>
             <view class="fr people_num"><text class="active_num">8/8</text></view>
           </view>
@@ -41,7 +41,7 @@
     <view class="flex-wrp" style="flex-direction:row;">
       <view class="flex-item demo-text-1">
         <view class="not_accnum">21</view>
-        <view><text class="iconfont icon-leidian"></text></view>
+        <view><text class="iconfont icon-shuidi"></text></view>
         <view class="not_accname">水接驳</view>
       </view>
       <view class="flex-item demo-text-2">
@@ -51,12 +51,12 @@
       </view>
       <view class="flex-item demo-text-3">
         <view class="not_accnum">10</view>
-        <view><text class="iconfont icon-leidian"></text></view>
+        <view><text class="iconfont icon-zhuozi"></text></view>
         <view class="not_accname">租赁</view>
       </view>
       <view class="flex-item demo-text-4">
         <view class="not_accnum">40</view>
-        <view><text class="iconfont icon-leidian"></text></view>
+        <view><text class="iconfont icon-gengduo1"></text></view>
         <view class="not_accname">其它</view>
       </view>
     </view>

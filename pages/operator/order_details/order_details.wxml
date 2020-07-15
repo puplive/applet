@@ -47,7 +47,7 @@
     </view>
     <view class='desc'>
       <label class=''>添加备注</label>
-      <view class="textarea-wrp"><textarea placeholder="请输入" /> <text class="textlimit">0/300</text></view>
+      <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300" /> <text class="textlimit">0/300</text></view>
     </view>
 
     <view class="status">已完成</view>
@@ -65,7 +65,7 @@
   <navigator url='../acceptance_details/acceptance_details'>
     <view class="fr foot_btnli agree">接单</view>
   </navigator>
-  <navigator url='../acceptance_details/acceptance_details'>
+  <navigator url='../transfer_order/transfer_order'>
     <view class="fr foot_btnli agree">转单</view>
   </navigator>
 </view>
