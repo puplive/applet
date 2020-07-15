@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>3.Icons/Filled/close</title>
+    <desc>Created with Sketch.</desc>
+    <g id="组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="mk/弹窗" transform="translate(-88.000000, -204.000000)" fill="#9B9B9B">
+            <g id="3.Icons/Filled/close2" transform="translate(88.000000, 204.000000)">
+                <g id="Icons/Tint-Color/Black">
+                    <path d="M16,32 C7.163444,32 0,24.836556 0,16 C0,7.163444 7.163444,0 16,0 C24.836556,0 32,7.163444 32,16 C32,24.836556 24.836556,32 16,32 Z M16,30.08 C23.7761693,30.08 30.08,23.7761693 30.08,16 C30.08,8.22383072 23.7761693,1.92 16,1.92 C8.22383072,1.92 1.92,8.22383072 1.92,16 C1.92,23.7761693 8.22383072,30.08 16,30.08 Z M17.3576451,15.9999992 L22.3356772,20.9780313 L20.9780321,22.3356764 L16,17.3576443 L11.0219679,22.3356764 L9.66432281,20.9780313 L14.6423549,15.9999992 L9.66432362,11.0219679 L11.0219687,9.66432281 L16,14.6423541 L20.9780313,9.66432281 L22.3356764,11.0219679 L17.3576451,15.9999992 Z" id="图标颜色"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
