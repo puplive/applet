@@ -12,7 +12,6 @@
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
-<<<<<<< HEAD
 		"nodeModules": false,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
@@ -22,12 +21,6 @@
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
 		"compileHotReLoad": false,
-=======
-		"autoAudits": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
->>>>>>> 72d707c77cd2b56f21dd942cc528461c40165850
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
