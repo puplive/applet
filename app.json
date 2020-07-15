@@ -1,5 +1,7 @@
 {
   "pages":[
+    "pages/index/index",
+    "pages/login/login",
     "pages/operator/operator",
     "pages/admin/admin",
     "pages/tabbar/tabbar",
@@ -14,7 +16,6 @@
     "pages/admin/person/person",
     "pages/operator/order_details/order_details",
     "pages/operator/transfer_order/transfer_order",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "window":{
