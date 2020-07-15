@@ -6,12 +6,25 @@
   </view>
   <view class="list_con">
     <view class="time">2020/04/30 15:00</view>
-    <view class="acc_img">
-      <image src="../../../images/icon_search.svg"></image>
-      <image src="../../../images/icon_search.svg"></image>
-      <image src="../../../images/icon_search.svg"></image>
-      <image src="../../../images/icon_search.svg"></image>
-      <image src="../../../images/icon_search.svg"></image>
+    <view class="acc_img col">
+      <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view>
+      <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view>
+      <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view>
+      <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view>
+      <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view>
+      <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view>
     </view>
   </view>
   <view class="list_con">
@@ -21,7 +34,9 @@
       <view class="reject_be">驳回理由：有绷布未撤走，驳回理由驳回理由驳回理由驳回理由</view>
     </view>
     <view class="acc_img">
-      <image src="../../../images/icon_search.svg"></image>
+     <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view>
     </view>
   </view>
   <view class="status">待验收</view>
