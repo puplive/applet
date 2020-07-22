@@ -1,43 +1,78 @@
-//app.js
+const url ='http://test.exposaas.cn/'
 App({
-  onLaunch: function () {
-    // 展示本地存储能力
+  onLaunch: function () {// 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
+    var openId = wx.getStorageSync('openId')
+    console.log(22,wx.getStorageSync('openId'),33,openId);
     // 获取用户信息
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
+          wx.login({
             success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
+              var code = res.code
+              wx.getUserInfo({
+                success: res => {
+                  // 可以将 res 发送给后台解码出 unionId
+                  this.globalData.userInfo = res.userInfo
+                  // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+                  wx.request({
+                    url: url + 'worksite/default/index', 
+                    data: {
+                      code: code,
+                      encryptedData: res.encryptedData,
+                      iv: res.iv
+                    },
+                    header: {
+                      'content-type': 'application/json' // 默认值
+                    },
+                    success(res) {
+                      console.log(12,res);
+                      wx.setStorageSync('openId', res.data.data.openId)
+                      wx.setStorageSync('sessionKey', res.data.data.sessionKey)
+                    },
+                    fail: function (res) {
+                    }
+                  })
+                  // 所以此处加入 callback 以防止这种情况
+                  if (this.userInfoReadyCallback) {
+                    this.userInfoReadyCallback(res)
+                  }
+                }
+              })
             }
+          })
+        } else {
+          wx.navigateTo({
+            url: '/pages/login/login',
           })
         }
       }
     })
   },
-  globalData: {
-    userInfo: null
+  //获取用户信息
+  getUserInfo: function (cb) {
+    var that = this
+    if (this.globalData.personInfo) {
+      typeof cb == "function" && cb(this.globalData.personInfo)
+    } else {
+      //调用登录接口
+      wx.login({
+        success: function () {
+          wx.getUserInfo({
+            success: function (res) {
+              that.globalData.personInfo = res.userInfo
+              typeof cb == "function" && cb(that.globalData.personInfo)
+            }
+          })
+        }
+      })
+    }
   },
-
-
+ 
   //第一种底部  
   editTabBar: function () {
     //使用getCurrentPages可以获取当前加载中所有的页面对象的一个数组，数组最后一个就是当前页面。
@@ -80,6 +115,19 @@ App({
     });
   },
   globalData: {
+    hasUserInfo: null,
+    url: url,
+    sendMessageContent: {
+      project_name: '',//项目名称
+      mb_name: '',//短信模板名称
+      mb_detail: '',//短信模板内容
+      selectUserIdArr: [],//用户ID数组
+      user_type: '',//用户热门标签
+      goodsId:[],//货品ID
+      num:[],//商品数量
+      projectId:'',//项目ID
+    },//发送短信页面内容
+    indentityInfo: [],//认证信息
     //第一种底部导航栏显示
     tabBar: {
       "color": "#9E9E9E",
@@ -92,6 +140,15 @@ App({
           "text": "订单中心",
           "iconPath": "/images/icon_dingdan.svg",
           "selectedIconPath": "/images/icon_dingdan_on.svg",
+          "selectedColor": "#303133",
+          "clas": "menu-item",
+          active: true
+        },
+        {
+          "pagePath": "/pages/operator/changed/changed",
+          "text": "巡馆整改",
+          "iconPath": "/images/icon_laba.svg",
+          "selectedIconPath": "/images/icon_laba_on.svg",
           "selectedColor": "#303133",
           "clas": "menu-item",
           active: true

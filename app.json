@@ -1,6 +1,7 @@
 {
   "pages":[
-    "pages/admin/admin",    
+    "pages/login/login",
+    "pages/admin/admin",
     "pages/tabbar/tabbar",
     "pages/admin/ad_order/ad_order",
     "pages/admin/changed/changed",
@@ -10,13 +11,18 @@
     "pages/admin/acceptance/acceptance",
     "pages/admin/acceptance_details/acceptance_details",
     "pages/admin/acceptance_reject/acceptance_reject",
-    "pages/operator/operator",
     "pages/operator/order_details/order_details",
     "pages/operator/transfer_order/transfer_order",
     "pages/admin/person/user_info/user_info",
     "pages/admin/person/identity/identity",
     "pages/admin/person/edit_tel/edit_tel",
+    "pages/operator/operator",
+    "pages/operator/changed/changed",
+    "pages/operator/changed/changed_details/changed_details",
+    "pages/operator/changed/add_changed/add_changed",
+    "pages/operator/changed/edit_changed/edit_changed",
     "pages/index/index",
+    "pages/expo/expo",
     "pages/logs/logs"
   ],
   "window":{

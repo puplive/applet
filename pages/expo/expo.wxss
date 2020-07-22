@@ -1,0 +1,29 @@
+.container{
+  margin: 20rpx;
+}
+.model{
+  margin-bottom: 0;
+}
+.expo{
+  border-radius: 4rpx;
+  padding: 2%;
+  line-height: 60rpx;
+}
+.expo_name{
+  color: #000;
+  font-size: 30rpx;
+}
+.expo_area{
+  color: #666;
+}
+.expo_btn .into_btn{
+  margin: 20rpx auto;
+  width: 200rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  border-radius:4rpx;
+  background-color: #D3B365;
+  color:#fff;
+  text-align: center;
+  font-size: 28rpx;
+}
