@@ -1,0 +1,20 @@
+<view wx:if="{{huiinfo_len>0}}" class='list f12' wx:for="{{huiinfo}}"  wx:key="key"  wx:for-item="value">
+  <view class="container">
+    <view class="model main94 expo">
+      <view bindtap='click' data-hui-id='{{value.hui_id}}'>
+        <view class="expo_con">
+          <view class="expo_name">{{value.hui_nickname}}</view>
+          <view class="expo_area f12">{{value.hui_city}}{{value.zguan}}</view>
+        </view> 
+      </view>
+
+      <view class="expo_btn" wx:if="{{show_hui_id == value.hui_id || show_hui_id==index}}">
+        <view bindtap='choice_btn' class="into_btn" data-key="{{value.hui_id}}">进入项目</view>
+      </view>
+
+    </view>
+  </view>
+</view>
+<view wx:if="{{huiinfo_len==0}}" class='no_data'>
+      暂无展会
+</view>

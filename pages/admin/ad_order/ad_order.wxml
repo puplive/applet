@@ -7,7 +7,7 @@
           <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待接单</text><text>(10)</text>
         </view> 
         <view class="col-3 nav_text" >
-          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">待配送</text><text>(22)</text>
+          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">待解决</text><text>(22)</text>
         </view>
         <view class="col-3 nav_text">
           <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已完成</text><text>(3)</text>
@@ -17,63 +17,69 @@
     </view>
     <!-- 内容列表 -->
     <view wx:if="{{projectcon_len>0}}" class='list f12'  wx:key="key"  wx:for-item="value">
-      <navigator url='../details/details?project_id={{value.checkin_id}}' class='list_con'>
-        <view class="list_zwh clearfix">
-          <text class="fl list_zwh_left">N5 5009</text>
-          <text class="fr list_zwh_right">2020/03/01 13:23</text>
-        </view>
-        <view class="list_li clearfix">
-          <image src="/images/header_img.png" class="fl list_img"></image>
-          <view class="list_licon fl">
-            <view>
-              <text class="list_litit">鲜花租赁</text>
-            </view>
-            <view class="list_list clearfix">
-              <text class="list_listname fl">桌布</text>
-              <text class="list_listnum fr">×1</text>
-            </view>
-            <view class="list_list clearfix">
-              <text class="list_listname fl">桌花</text>
-              <text class="list_listnum fr">×1</text>
-            </view>
-            <view class="list_list clearfix">
-              <text class="list_listname fl">散尾</text>
-              <text class="list_listnum fr">×1</text>
-            </view>
-            <view class="list_list clearfix">
-              <text class="list_listname fl">绿萝</text>
-              <text class="list_listnum fr">×1</text>
-            </view>
-            <view class="list_list clearfix">
-              <text class="list_listname fl">玫瑰红球</text>
-              <text class="list_listnum fr">×1</text>
+      <view class="list_con">
+        <navigator url='../details/details?project_id={{value.checkin_id}}' class=''>
+          <view class="list_zwh clearfix">
+            <text class="fl list_zwh_left">N5 5009</text>
+            <text class="fr list_zwh_right">2020/03/01 13:23</text>
+          </view>
+          <view class="list_li clearfix">
+            <image src="/images/header_img.png" class="fl list_img"></image>
+            <view class="list_licon fl">
+              <view>
+                <text class="list_litit">鲜花租赁</text>
+              </view>
+              <view class="list_list clearfix">
+                <text class="list_listname fl">桌布</text>
+                <text class="list_listnum fr">×1</text>
+              </view>
+              <view class="list_list clearfix">
+                <text class="list_listname fl">桌花</text>
+                <text class="list_listnum fr">×1</text>
+              </view>
+              <view class="list_list clearfix">
+                <text class="list_listname fl">散尾</text>
+                <text class="list_listnum fr">×1</text>
+              </view>
+              <view class="list_list clearfix">
+                <text class="list_listname fl">绿萝</text>
+                <text class="list_listnum fr">×1</text>
+              </view>
+              <view class="list_list clearfix">
+                <text class="list_listname fl">玫瑰红球</text>
+                <text class="list_listnum fr">×1</text>
+              </view>
             </view>
           </view>
-        </view>
+        </navigator>
         <view class="list_btn clearfix">
-          <view class="assign_on fr">指派</view>
-          <view class="urging fr">
+          <view class="assign_on fr" bindtap="assignOn">指派</view>
+          <view class="urging fr"  bindtap="urging">
             <view class="air_bg"><text class="iconfont icon-lingdang "></text></view>催办
           </view>
         </view>
-      </navigator>
-      <navigator url='../details/details?project_id={{value.checkin_id}}' class='list_con'> 
-        <view class="list_zwh clearfix">
-          <text class="fl list_zwh_left">N5 5009</text>
-          <text class="fr list_zwh_right">2020/03/01 13:23</text>
-        </view>
-        <view class="list_li clearfix">
-          <image src="/images/header_img.png" class="fl list_img"></image>
-          <view class="list_licon fl">
-            <view>
-              <text class="list_litit">漏水，问题描述问题描述问题描述问题描述问题描述问题描述</text>
+      </view>
+
+      <view class="list_con">
+        <navigator url='../details/details?project_id={{value.checkin_id}}' class='list_con'> 
+          <view class="list_zwh clearfix">
+            <text class="fl list_zwh_left">N5 5009</text>
+            <text class="fr list_zwh_right">2020/03/01 13:23</text>
+          </view>
+          <view class="list_li clearfix">
+            <image src="/images/header_img.png" class="fl list_img"></image>
+            <view class="list_licon fl">
+              <view>
+                <text class="list_litit">漏水，问题描述问题描述问题描述问题描述问题描述问题描述</text>
+              </view>
             </view>
           </view>
-        </view>
+        </navigator>
         <view class="list_btn clearfix">
-          <view class="assign fr">指派</view>
+          <view class="assign fr" bindtap="assign">指派</view>
         </view>
-      </navigator>
+      </view>
+
     </view>
     <view wx:if="{{projectcon_len==0}}" class='no_data'>
       暂无数据
@@ -114,3 +120,88 @@
   </view>
 </view>
 <!-- 弹窗选择规格 end -->
+
+<!-- 转单弹窗 -->
+<modal hidden="{{hiddenhangye}}" title="转单内容" confirm-text="接单" cancel-text="拒绝" bindcancel="cancelM" bindconfirm="confirmM">
+  <view class='order_con'>
+    <view>
+      <view class="or_content">
+        <view class="or_zwh">N5 5009</view>
+        <view class="clearfix">
+          <view class="fl">
+            <image class="or_img" src="/images/header_img.png"></image>
+          </view>
+          <view class="fl zd_con">
+            <view>
+              <text class="zd_litit">鲜花租赁</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">桌布</text>
+              <text class="zd_listnum fr">×1</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">桌布桌布桌布桌布浪费就律师费矢量的副科级说了句发</text>
+              <text class="zd_listnum fr">×8</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">桌布</text>
+              <text class="zd_listnum fr">×1</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">桌布桌布桌布桌布浪费就律师费矢量的副科级说了句发</text>
+              <text class="zd_listnum fr">×8</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">桌布</text>
+              <text class="zd_listnum fr">×1</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">桌布桌布桌布桌布浪费就律师费矢量的副科级说了句发</text>
+              <text class="zd_listnum fr">×8</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">桌布</text>
+              <text class="zd_listnum fr">×1</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">桌布桌布桌布桌布浪费就律师费矢量的副科级说了句发</text>
+              <text class="zd_listnum fr">×8</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">桌布</text>
+              <text class="zd_listnum fr">×1</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">桌布桌布桌布桌布浪费就律师费矢量的副科级说了句发</text>
+              <text class="zd_listnum fr">×8</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">桌布</text>
+              <text class="zd_listnum fr">×1</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">桌布桌布桌布桌布浪费就律师费矢量的副科级说了句发</text>
+              <text class="zd_listnum fr">×8</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">是来的咖啡机</text>
+              <text class="zd_listnum fr">×1</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">水电费</text>
+              <text class="zd_listnum fr">×8</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">了速度快放假</text>
+              <text class="zd_listnum fr">×1</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">；对客服</text>
+              <text class="zd_listnum fr">×8</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</modal>

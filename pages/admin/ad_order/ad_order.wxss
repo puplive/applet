@@ -33,6 +33,16 @@
 .list_btn .urging .air_bg text{ font-size: 24rpx;}
 .list_btn .assign_on{width: 160rpx;  background-color: #ECBB49;border-radius:24rpx; color: #fff; text-align: center; }
 .list_btn .assign{width: 160rpx;height: 44rpx; line-height: 44rpx;background:rgba(255,255,255,1);border-radius:24rpx;color:#606266;border:1px solid rgba(220,223,230,1);text-align: center; }
+/* 转单弹窗样式 */
+.order_con{height: 600rpx; overflow: auto;}
+.or_content{width: 100%; margin: 0 auto;}
+.or_zwh{font-weight: bold; color: #303133; font-size: 36rpx; height: 60rpx; line-height: 60rpx;}
+.or_img{width: 96rpx; height: 96rpx;}
+.zd_con{width: calc(100% - 112rpx);}
+.zd_litit{font-weight: bold;color: #303133;}
+.zd_list{height: 60rpx; line-height: 60rpx;}
+.zd_listname {width:calc(100% - 60rpx); text-overflow: ellipsis; white-space:nowrap; overflow:hidden; color: #606266;}
+.zd_listnum {color: #303133;}
 /* 筛选样式 */
 .mask_screen{
   background-color:rgba(0,0,0,0.5);

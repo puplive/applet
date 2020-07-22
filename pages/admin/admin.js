@@ -16,17 +16,17 @@ Page({
         id: 'content',
         name: '电工',
         open: false,
-        pages: [{ img: '123', name: '王崇峰', tel: '18766669999' }]
+        pages: [{ img: '', name: '王崇峰', tel: '18766669999' }]
       }, {
         id: 'form',
         name: '租赁商',
         open: false,
-        pages: [{ img: '123', name: '王崇峰', tel: '18766669999' }]
+        pages: [{ img: '', name: '王崇峰', tel: '18766669999' }]
       }, {
         id: 'nav',
         name: '其它',
         open: false,
-        pages: [{ img: '123', name: '王崇峰', tel: '18766669999' }]
+        pages: [{ img: '', name: '王崇峰', tel: '18766669999' }]
       }
     ]
   },

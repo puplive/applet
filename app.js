@@ -142,6 +142,15 @@ App({
           active: true
         },
         {
+          "pagePath": "/pages/operator/changed/changed",
+          "text": "巡馆整改",
+          "iconPath": "/images/icon_laba.svg",
+          "selectedIconPath": "/images/icon_laba_on.svg",
+          "selectedColor": "#303133",
+          "clas": "menu-item",
+          active: true
+        },
+        {
           "pagePath": "/pages/admin/person/person",
           "text": "我的",
           "iconPath": "/images/icon_wode.svg",

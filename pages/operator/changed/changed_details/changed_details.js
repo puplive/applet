@@ -1,59 +1,41 @@
-var app = getApp();
+// pages/admin/changed/changed_details/changed_details.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    _num: 1,//默认分类选中全部
-    projectcon: '',
-    projectcon_len: 1,
     showModalStatus: false,//显示遮罩
-    zhanguannum:1, //展馆号
-    sortnum:1, //排序 
-    fenleinum:1,  //筛选分类
-    hiddenhangye: false,  //转单弹窗
+    punishnum:1, //处罚方式筛选
+    changenum: 1,//整改状态筛选
   },
-  // 订单分类
-  switchFenlei: function (e) {
+  // 筛选处罚方式
+  screenPunish:function(e){
     this.setData({
-      _num: e.target.dataset.num
+      punishnum: e.target.dataset.screenpunishnum
     })
     this.onShow();
   },
-  // 订单筛选按展馆
-  screenZhanguan: function (e) {
+  // 筛选整改状态
+  screenChange: function (e) {
     this.setData({
-      zhanguannum: e.target.dataset.screennum
+      changenum: e.target.dataset.screenchangenum
     })
     this.onShow();
   },
-  // 订单筛选排序
-  screenSort: function (e) {
-    this.setData({
-      sortnum: e.target.dataset.screensortnum
-    })
-    this.onShow();
-  },
-  // 订单筛选分类
-  screenFenlei: function (e) {
-    this.setData({
-      fenleinum: e.target.dataset.screenfenleinum
-    })
-    this.onShow();
-  },
-  /**点击显示筛选 */
+  /**点击筛选 */
   screenBtn: function (data) {
     var that = this;
-    // that.setData({
-    //   specIndex: data.currentTarget.dataset.itemIndex,
-    //   specParentIndex: data.currentTarget.dataset.parentindex,
-    // })
+    that.setData({
+      specIndex: data.currentTarget.dataset.itemIndex,
+      specParentIndex: data.currentTarget.dataset.parentindex,
+    })
     var animation = wx.createAnimation({//动画
       duration: 500,//动画持续时间
       timingFunction: 'linear',//动画的效果 动画从头到尾的速度是相同的
     })
     animation.translateY(0).step()//在Y轴偏移tx，单位px
+
     this.animation = animation
     that.setData({
       showModalStatus: true,//显示遮罩       
@@ -73,28 +55,17 @@ Page({
     })
   },
   //点击重置
-  resetBtn:function(data){
+  resetBtn: function (data) {
     this.setData({
-      zhanguannum: 1, //展馆号
-      sortnum: 1, //排序
-      fenleinum: 1,  //筛选分类
-    })
-  },
-  cancelM: function (e) {
-    this.setData({
-      hiddenhangye: true,
-    })
-  },
-  confirmM: function (e) {
-    this.setData({
-      hiddenhangye: true,
+      punishnum: 1, //处罚方式筛选
+      changenum: 1,//整改状态筛选
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.editTabBar1();
+
   },
 
   /**

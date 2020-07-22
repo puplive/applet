@@ -206,7 +206,7 @@ margin-top:3px;
 .close_btn,.agreen_btn{
   width: 42%;
   height:35px;
-  line-height: 35px;
+  /* line-height: 35px; */
   box-shadow:0px 10px 10px -10px rgba(102,102,102,0.5);
   border-radius:2px;
   text-align: center;
