@@ -1,9 +1,8 @@
 {
   "pages":[
+    "pages/admin/admin",
     "pages/index/index",
     "pages/login/login",
-    "pages/operator/operator",
-    "pages/admin/admin",
     "pages/tabbar/tabbar",
     "pages/admin/ad_order/ad_order",
     "pages/admin/changed/changed",
@@ -19,7 +18,6 @@
     "pages/admin/person/user_info/user_info",
     "pages/admin/person/identity/identity",
     "pages/admin/person/edit_tel/edit_tel",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "window":{

@@ -27,15 +27,14 @@ Page({
                 'content-type': 'application/json' // 默认值
               },
               success(res) {  
-                console.log(5555555,res);return false;
                 that.setData({
                   userInfo: e.detail.userInfo,
                   hasUserInfo: true
                 })
                 wx.setStorageSync('openId', res.data.data.openId)
                 wx.setStorageSync('sessionKey', res.data.data.sessionKey)
-                wx.switchTab({
-                 // url: '../index/index',
+                wx.navigateTo({
+                  url: '../admin/admin'
                 })
               }
             })
