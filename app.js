@@ -1,6 +1,6 @@
 //app.js
 //const url = 'https://www.exposaas.com/'
-const url ='http://www.newmoble.com/'
+const url ='http://test.exposaas.cn/'
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -76,6 +76,7 @@ App({
   globalData: {
     userInfo: null,
     hasUserInfo: null,
+    url: url,
     sendMessageContent: {
       project_name: '',//项目名称
       projectId:'',//项目ID
