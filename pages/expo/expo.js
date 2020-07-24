@@ -1,7 +1,7 @@
 const app = getApp()
 var url = app.globalData.url;
 var sendMessageContent = app.globalData.sendMessageContent;
-// var call = require("../../utils/request.js")
+var call = require("../../utils/request.js")
 Page({
 
   /**
@@ -38,8 +38,6 @@ Page({
         discountName: discountName,
       })
     }
-    console.log('搜索1'+name)
-    console.log('搜索2'+discountName)
     var that = this;
     wx.request({
       url: url + 'field/default/hui-all',
@@ -103,10 +101,7 @@ Page({
   },
   choice_btn: function (e) {//选中商品结算
     sendMessageContent.projectId = e.target.dataset.key
-    var name = this.data.name //传过来热门名称
-    var discountName = this.data.discountName //传过来搜索关键字
-    getApp().globalData.discountName = ''
-    getApp().globalData.name = ''
+  
     if(name!=''){
       wx.redirectTo({
         url: "../goods/search/search?goods=" + name
@@ -117,7 +112,7 @@ Page({
       })
     }else{
       wx.navigateTo({
-        url: "../goods/goods?hui=" + sendMessageContent.projectId
+        url: "../admin/person/identity/identity?hui=" + sendMessageContent.projectId
       })
     }
   },

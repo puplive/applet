@@ -79,6 +79,7 @@ App({
     });
   },
   globalData: {
+    
     //第一种底部导航栏显示
     tabBar: {
       "color": "#9E9E9E",
