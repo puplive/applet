@@ -117,9 +117,6 @@ App({
     });
   },
   globalData: {
-<<<<<<< HEAD
-    
-=======
     userInfo: null,
     hasUserInfo: null,
     url: url,
@@ -127,7 +124,6 @@ App({
       project_name: '',//项目名称
       projectId:'',//项目ID
     },
->>>>>>> ba46999519fa111b7bbefd4a6c325639812dc535
     //第一种底部导航栏显示
     tabBar: {
       "color": "#9E9E9E",

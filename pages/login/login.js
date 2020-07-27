@@ -33,7 +33,7 @@ Page({
                 })
                 wx.setStorageSync('openId', res.data.data.openId)
                 wx.setStorageSync('sessionKey', res.data.data.sessionKey)
-                wx.switchTab({
+                wx.navigateTo({
                   url: '../expo/expo',
                 })
               }

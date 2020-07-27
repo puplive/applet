@@ -48,18 +48,15 @@ Page({
       },
       success(res) {
         if (res.data.Code == 200) {
-          // console.log(111, Object.keys(res.data.data).length);
           that.setData({
             huiinfo: res.data.data,
             huiinfo_len: Object.keys(res.data.data).length,
           })
-          // console.log(222,that.data.projectcon);
         } else {
 
         }
       },
       fail: function (err) {
-        console.log(err)
         // 服务异常
       }
     })
@@ -101,14 +98,13 @@ Page({
   },
   choice_btn: function (e) {//选中商品结算
     sendMessageContent.projectId = e.target.dataset.key
-  
+    var name = this.data.name //传过来热门名称
+    var discountName = this.data.discountName //传过来搜索关键字
+    getApp().globalData.discountName = ''
+    getApp().globalData.name = ''
     if(name!=''){
       wx.redirectTo({
-        url: "../goods/search/search?goods=" + name
-      })
-    }else if(discountName!=''){
-      wx.redirectTo({
-        url: "../goods/search/search?goods=" + discountName
+        url: "../admin/admin?projectname=" + name
       })
     }else{
       wx.navigateTo({
