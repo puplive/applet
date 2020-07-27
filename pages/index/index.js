@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var call = require("../../utils/request.js") 
 Page({
   data: {
     motto: 'Hello World',
@@ -12,7 +12,7 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../admin/admin'
     })
   },
   onLoad: function () {

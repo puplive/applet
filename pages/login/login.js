@@ -17,7 +17,7 @@ Page({
         wx.getUserInfo({
           success: res => {
             wx.request({
-              url: url + 'worksite/default/index', //跳转首页
+              url: 'http://test.exposaas.cn/worksite/default/index', //跳转首页
               data: {
                 code: code,
                 encryptedData: res.encryptedData,

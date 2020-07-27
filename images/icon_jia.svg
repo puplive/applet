@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>+ copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="mk/施工证-copy-8" transform="translate(-219.000000, -28.000000)">
+            <g id="+-copy" transform="translate(219.000000, 28.000000)">
+                <circle id="椭圆形" fill="#D3B365" fill-rule="nonzero" cx="12" cy="12" r="12"></circle>
+                <path d="M11.2125,11.2125 L11.2125,5.74117647 C11.2125,5.33184118 11.5650812,5 12,5 C12.4349187,5 12.7875,5.33184118 12.7875,5.74117647 L12.7875,11.2125 L18.2588235,11.2125 C18.6681588,11.2125 19,11.5650813 19,12 C19,12.4349188 18.6681588,12.7875 18.2588235,12.7875 L12.7875,12.7875 L12.7875,18.2588235 C12.7875,18.6681588 12.4349187,19 12,19 C11.5650812,19 11.2125,18.6681588 11.2125,18.2588235 L11.2125,12.7875 L5.74117647,12.7875 C5.33184118,12.7875 5,12.4349188 5,12 C5,11.5650813 5.33184118,11.2125 5.74117647,11.2125 L11.2125,11.2125 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>
