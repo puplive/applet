@@ -1,7 +1,6 @@
 {
   "pages":[
     "pages/admin/admin",
-    "pages/login/login",
     "pages/tabbar/tabbar",
     "pages/admin/ad_order/ad_order",
     "pages/admin/changed/changed",
