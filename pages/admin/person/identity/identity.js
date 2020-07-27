@@ -144,7 +144,7 @@ Page({
   onShow: function () {
     var that = this;
     wx.request({
-      url: url + '/api/user/company',   //验证是否认证过
+      url: url + 'api/user/company',   //验证是否认证过
       data: { openId: wx.getStorageSync('openId') },
       method: 'GET',
       header: {

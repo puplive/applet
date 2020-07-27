@@ -1,7 +1,7 @@
 const app = getApp()
 var url = app.globalData.url;
 var sendMessageContent = app.globalData.sendMessageContent;
-// var call = require("../../utils/request.js")
+var call = require("../../utils/request.js")
 Page({
 
   /**
@@ -38,8 +38,6 @@ Page({
         discountName: discountName,
       })
     }
-    console.log('搜索1'+name)
-    console.log('搜索2'+discountName)
     var that = this;
     wx.request({
       url: url + 'field/default/hui-all',
@@ -50,18 +48,15 @@ Page({
       },
       success(res) {
         if (res.data.Code == 200) {
-          // console.log(111, Object.keys(res.data.data).length);
           that.setData({
             huiinfo: res.data.data,
             huiinfo_len: Object.keys(res.data.data).length,
           })
-          // console.log(222,that.data.projectcon);
         } else {
 
         }
       },
       fail: function (err) {
-        console.log(err)
         // 服务异常
       }
     })
@@ -109,15 +104,11 @@ Page({
     getApp().globalData.name = ''
     if(name!=''){
       wx.redirectTo({
-        url: "../goods/search/search?goods=" + name
-      })
-    }else if(discountName!=''){
-      wx.redirectTo({
-        url: "../goods/search/search?goods=" + discountName
+        url: "../admin/admin?projectname=" + name
       })
     }else{
       wx.navigateTo({
-        url: "../goods/goods?hui=" + sendMessageContent.projectId
+        url: "../admin/person/identity/identity?hui=" + sendMessageContent.projectId
       })
     }
   },

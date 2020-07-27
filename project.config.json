@@ -27,13 +27,13 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.1",
 	"appid": "wxfc7feb8dd661d7a8",
-	"projectname": "applet",
+	"projectname": "buildservices",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

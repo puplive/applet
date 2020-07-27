@@ -22,7 +22,7 @@
     </view>
   </view>
 <!--认证成功 -->
-  <view class='con row' wx-if="{{isShow==false}}">
+  <view class='con row' wx-if="{{isShow==true}}">
     <view class='section col'>
       <label class='col-4 x-center'><image class='rz_img' src='../../../../images/id_sfrz_on.png'></image>身份认证：</label>
       <view class='col-7 rz_status' style='color:#D3B364;'>已认证</view>

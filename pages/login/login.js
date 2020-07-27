@@ -34,7 +34,7 @@ Page({
                 wx.setStorageSync('openId', res.data.data.openId)
                 wx.setStorageSync('sessionKey', res.data.data.sessionKey)
                 wx.navigateTo({
-                  url: '../admin/admin'
+                  url: '../expo/expo',
                 })
               }
             })
