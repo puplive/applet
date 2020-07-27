@@ -22,6 +22,7 @@
     "pages/operator/changed/add_changed/add_changed",
     "pages/operator/changed/edit_changed/edit_changed",
     "pages/index/index",
+    "pages/login/login",
     "pages/expo/expo",
     "pages/logs/logs"
   ],
