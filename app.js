@@ -73,15 +73,6 @@ App({
       })
     }
   },
-  globalData: {
-    userInfo: null,
-    hasUserInfo: null,
-    url: url,
-    sendMessageContent: {
-      project_name: '',//项目名称
-      projectId:'',//项目ID
-    }
-  },
 
 
   //第一种底部  
@@ -126,6 +117,13 @@ App({
     });
   },
   globalData: {
+    userInfo: null,
+    hasUserInfo: null,
+    url: url,
+    sendMessageContent: {
+      project_name: '',//项目名称
+      projectId:'',//项目ID
+    },
     //第一种底部导航栏显示
     tabBar: {
       "color": "#9E9E9E",
