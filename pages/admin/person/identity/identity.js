@@ -129,6 +129,35 @@ Page({
         })
       }
     })
+    // 获取公司名称
+    wx.request({
+      url: url + 'worksite/default/const-search',
+      data: { openId: wx.getStorageSync('openId') },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        if (res.data.Code == 200) {
+          var items = [];
+          for (let i in res.data.data) {
+            items.push(res.data.data[i]);
+          }
+          that.setData({
+            projectArray: items,
+            pro_name: items[0].hui_nickname
+          })
+          // console.log(that.data.projectArray);
+          // console.log(that.data.fenleiArray);
+        } else {
+
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+
 
   },
   /**
