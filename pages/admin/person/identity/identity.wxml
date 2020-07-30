@@ -4,31 +4,31 @@
       <view class='col-7 rz_status'>未认证</view>
     </view>
     <view class='section col'>
-      <label class='col-4 x-center'>公司名称</label>
-      <picker class="picker col-7  hangye_text" mode="selector" range="{{projectArray}}" range-key="hui_nickname" value="{{projectindex}}" bindchange="bindProjectChange" data-huiname="{{projectArray[projectindex].hui_nickname}}">
-        <view class="picker">
-          <text class=''>{{projectArray[projectindex].hui_nickname}}</text>
+      <label class='col-3 x-center'>公司名称</label>
+      <picker class="picker col-9  hangye_text" mode="selector" range="{{projectArray}}" range-key="nickname" value="{{projectindex}}" bindchange="bindProjectChange" data-proid="{{projectArray[projectindex].const_id}}">
+        <view>
+          <text data-proid="{{projectArray[projectindex].const_id}}">{{projectArray[projectindex].nickname}}</text>
         </view>
       </picker>
     </view>
     <view class='section col'>
-      <label class='col-4 x-center'>手机号：</label>
-      <input class='col-7' name='cyname' placeholder="请输入手机号" value='{{cynickname}}' bindinput ="cyInput" focus="{{focus_cynickname}}"/>
+      <label class='col-3 x-center'>手机号</label>
+      <input class='col-9' name='cyname' placeholder="请输入手机号" value='{{cynickname}}' bindinput ="telInput" focus="{{focus_tel}}"/>
     </view>
   </view>
 <!--认证成功 -->
   <view class='con row' wx-if="{{isShow==true}}">
     <view class='section col'>
-      <label class='col-4 x-center'><image class='rz_img' src='../../../../images/id_sfrz_on.png'></image>身份认证：</label>
+      <label class='col-3 x-center'><image class='rz_img' src='../../../../images/id_sfrz_on.png'></image>身份认证：</label>
       <view class='col-7 rz_status' style='color:#D3B364;'>已认证</view>
     </view>
     <view class='section col'>
-      <label class='col-4 x-center'>公司名称：</label>
-      <text class=' x-center'>{{indentityInfo.nickname}}</text>
+      <label class='col-3 x-center'>公司名称：</label>
+      <text class=' x-center'>{{indentityInfo.const_name}}</text>
     </view>
     <view class='section col'>
-      <label class='col-4 x-center'>手机号：</label>
-      <text class='x-center'>{{indentityInfo.fr_name}}18300000000</text>
+      <label class='col-3 x-center'>手机号：</label>
+      <text class='x-center'>{{indentityInfo.tel}}</text>
     </view>
   </view>
    <view wx-if="{{isShow==false}}">

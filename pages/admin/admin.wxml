@@ -3,27 +3,27 @@
 <!-- 主内容 -->
 <view class="index-bd">
   <view class="kind-list">
-    <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+    <block wx:for-items="{{list}}" wx:for-index="key">
       <view class="kind-list-item">
-        <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+        <view id="{{key}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
           <view class="kind-list-text">
             <view class="fl">
               <view class="jt_down fl"><text class="iconfont icon-sanjiao_you"></text></view>
               <view class="fl">{{item.name}} </view>
             </view>
             <view class="fr people_num"><text class="active_num">8/8</text></view>
-          </view>
+          </view> 
         </view>
         <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
           <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
-            <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="*item">
-              <navigator url="pages/{{page}}/{{page}}" class="navigator">
+            <block wx:for-items="{{item.user}}" wx:for-item="user" wx:key="*item">
+              <navigator url="" class="navigator">
                 <view class="navigator-text clearfix">
                   <view class="fl people_list">
-                    <image src="{{page.img}}"></image>
-                    <text>{{page.name}}</text>
+                    <image src="{{user.img}}"></image>
+                    <text>{{user.username}}</text>
                   </view>
-                  <text class="fr people_tel">{{page.tel}}</text>
+                  <text class="fr people_tel">{{user.tel}}</text>
                 </view>
               </navigator>
             </block>
@@ -33,6 +33,7 @@
     </block>
   </view>
 </view>
+<!-- 未接单部分 -->
 <view class="not_accepted">
   <view class="page-section-title">
     <text>未接单</text>
@@ -40,22 +41,22 @@
   <view class="page-section-spacing">
     <view class="flex-wrp" style="flex-direction:row;">
       <view class="flex-item demo-text-1">
-        <view class="not_accnum">21</view>
+        <view class="not_accnum">{{order_not.water}}</view>
         <view><text class="iconfont icon-shuidi"></text></view>
         <view class="not_accname">水接驳</view>
       </view>
       <view class="flex-item demo-text-2">
-        <view class="not_accnum">30</view>
+        <view class="not_accnum">{{order_not.electric}}</view>
         <view><text class="iconfont icon-leidian"></text></view>
         <view class="not_accname">电接驳</view>
       </view>
       <view class="flex-item demo-text-3">
-        <view class="not_accnum">10</view>
+        <view class="not_accnum">{{order_not.lease}}</view>
         <view><text class="iconfont icon-zhuozi"></text></view>
         <view class="not_accname">租赁</view>
       </view>
       <view class="flex-item demo-text-4">
-        <view class="not_accnum">40</view>
+        <view class="not_accnum">{{order_not.water}}</view>
         <view><text class="iconfont icon-gengduo1"></text></view>
         <view class="not_accname">其它</view>
       </view>
