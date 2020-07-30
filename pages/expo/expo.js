@@ -96,20 +96,27 @@ Page({
   onShareAppMessage: function () {
 
   },
-  choice_btn: function (e) {//选中商品结算
+  choice_btn: function (e) {//进入项目
     sendMessageContent.projectId = e.target.dataset.key
-    var name = this.data.name //传过来热门名称
-    var discountName = this.data.discountName //传过来搜索关键字
-    getApp().globalData.discountName = ''
-    getApp().globalData.name = ''
-    if(name!=''){
-      wx.redirectTo({
-        url: "../admin/admin?projectname=" + name
-      })
-    }else{
-      wx.navigateTo({
-        url: "../admin/person/identity/identity?hui=" + sendMessageContent.projectId
-      })
-    }
+    var that = this;
+    wx.request({
+      url: url + 'worksite/default/ident-info',   //验证是否认证过
+      data: { OpenId: wx.getStorageSync('openId'),ProjectId: sendMessageContent.projectId},
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        if (res.data.Code == 200) {
+          wx.redirectTo({
+            url: "../admin/admin"
+          })
+        } else {
+          wx.navigateTo({
+            url: "../admin/person/identity/identity?hui=" + sendMessageContent.projectId
+          })
+        }
+      }
+    })
   },
 })

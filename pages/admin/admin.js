@@ -1,40 +1,20 @@
 var app = getApp();
+var url = app.globalData.url;
+var sendMessageContent = app.globalData.sendMessageContent;
+var call = require("../../utils/request.js")
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    list: [
-      {
-        id: 'view',
-        name: '水工',
-        open: false,
-        // pages: ['view', 'scroll-view', 'swiper']
-        pages: [{ img: '../../images/header_img.png', name: '吊点-王崇峰', tel: '18766669999' }, { img: '../../images/header_img.jpg', name: '升降车-李晓明', tel: '18886669988' }, { img: '../../images/header_img.png', name: '吊点-王崇峰', tel: '18766669999' }, { img: '../../images/header_img.png', name: '吊点-王崇峰', tel: '18766669999' }, { img: '../../images/header_img.png', name: '吊点-王崇峰', tel: '18766669999' }, { img: '../../images/header_img.png', name: '吊点-王崇峰', tel: '18766669999' }, { img: '../../images/header_img.png', name: '吊点-王崇峰', tel: '18766669999' }, { img: '../../images/header_img.png', name: '吊点-王崇峰', tel: '18766669999' }, { img: '../../images/header_img.png', name: '吊点-王崇峰', tel: '18766669999' }, { img: '../../images/header_img.png', name: '吊点-王崇峰', tel: '18766669999' }, { img: '../../images/header_img.png', name: '吊点-王崇峰', tel: '18766669999' }, { img: '../../images/header_img.png', name: '吊点-王崇峰', tel: '18766669999' }]
-      }, {
-        id: 'content',
-        name: '电工',
-        open: false,
-        pages: [{ img: '', name: '王崇峰', tel: '18766669999' }]
-      }, {
-        id: 'form',
-        name: '租赁商',
-        open: false,
-        pages: [{ img: '', name: '王崇峰', tel: '18766669999' }]
-      }, {
-        id: 'nav',
-        name: '其它',
-        open: false,
-        pages: [{ img: '', name: '王崇峰', tel: '18766669999' }]
-      }
-    ]
+    list: [],
+    order_not:[]
   },
-  // 
+  // 人员显示隐藏
   kindToggle: function (e) {
     var id = e.currentTarget.id, list = this.data.list;
     for (var i = 0, len = list.length; i < len; ++i) {
-      if (list[i].id == id) {
+      if (i == id) {
         list[i].open = !list[i].open
       } else {
         list[i].open = false
@@ -63,7 +43,28 @@ Page({
    */
   onShow: function () {
     var openId = wx.getStorageSync('openId')
-    console.log(33333,openId);
+    var that = this;
+    wx.request({
+      url: url + 'worksite/home/list',
+      data: {ProjectId:sendMessageContent.projectId,OpenId:openId},
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        if (res.data.Code == 200) {
+          that.setData({
+            list: res.data.data.role,
+            order_not:res.data.data
+          })
+        } else {
+
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
   },
 
   /**

@@ -1,76 +1,57 @@
 // var APP = getApp();
 var app = getApp();
 var url = app.globalData.url;
+var sendMessageContent = app.globalData.sendMessageContent;
+var call = require("../../../../utils/request.js")
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     isShow: false,
-    focus_cynickname: false,
-    focus_username: false,
-    focus_credit: false,
+    tel:'',
+    pro_name:'',
+    proid:'',
+    projectindex: 0,      // 项目名称列表默认选中第几行
+    projectArray: [],     // 项目名称对象数组
     openId: wx.getStorageSync('openId'),
   },
-  cyInput: function (e) {
+  // 选择公司名称
+  bindProjectChange: function (event) {
     this.setData({
-      cynickname: e.detail.value
+      projectindex: event.detail.value,
+      pro_name: this.data.projectArray[event.detail.value].nickname,
+      proid:  this.data.projectArray[event.detail.value].const_id,
+      // hidden_con: true,
     })
   },
-  userNameInput: function (e) {
+  // 获取值
+  telInput: function (e) {
     this.setData({
-      username: e.detail.value
-    })
-  },
-  creditInput: function (e) {
-    this.setData({
-      credit: e.detail.value
+      tel: e.detail.value
     })
   },
   save: function (e) {
     var that = this;
-    var nickname = this.data.cynickname;
-    var username = this.data.username;
-    var credit = this.data.credit;
-    if (!nickname) {
+    var pro_id = that.data.proid;
+    var tel = that.data.tel;
+    if (!tel) {
       this.setData({
-        focus_cynickname: true
+        focus_tel: true
       })
       wx.showToast({
-        title: '公司名称不能为空',
-        icon: 'none',
-        duration: 2000//持续的时间
-      })
-      return false;
-    }
-    if (!username) {
-      this.setData({
-        focus_username: true
-      })
-      wx.showToast({
-        title: '法人代表不能为空',
-        icon: 'none',
-        duration: 2000//持续的时间
-      })
-      return false;
-    }
-    if (!credit) {
-      this.setData({
-        focus_credit: true
-      })
-      wx.showToast({
-        title: '信用代码不能为空',
+        title: '手机号不能为空',
         icon: 'none',
         duration: 2000//持续的时间
       })
       return false;
     }
     wx.request({
-      url: url + '/api/user/identification',
-      data: { nickname: nickname, username: username, credit: credit, openId: wx.getStorageSync('openId') },
-      method: 'POST',
+      url: url + 'worksite/default/identification',
+      data: { const_id: pro_id, tel: tel, OpenId: wx.getStorageSync('openId') },
+      method: 'GET',
       header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
+        'content-type': 'application/json' // 默认值
       },
       success(res) {
         if (res.data.Code == 200) {
@@ -84,8 +65,7 @@ Page({
             fr_tel: credit,
             nickname: nickname
           };
-          wx.setStorageSync('hasuser', true)
-          // wx.setStorageSync('indentityInfo', res.data.data)
+          // wx.setStorageSync('hasuser', true)
           setTimeout(function () {
             that.setData({
               isShow: true,
@@ -118,6 +98,7 @@ Page({
       // isShow: false,
       isShow: wx.getStorageSync('hasuser'),
       indentityInfo: app.globalData.indentityInfo,
+
     })
     // 获取用户信息
     wx.getUserInfo({
@@ -129,6 +110,34 @@ Page({
         })
       }
     })
+    // 获取公司名称
+    wx.request({
+      url: url + 'worksite/default/const-search',
+      data: { openId: wx.getStorageSync('openId') },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        if (res.data.Code == 200) {
+          var items = [];
+          for (let i in res.data.data) {
+            items.push(res.data.data[i]);
+          }
+          that.setData({
+            projectArray: items,
+            pro_name: items[0].nickname,
+            proid:items[0].const_id,
+          })
+        } else {
+
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+
 
   },
   /**
@@ -144,8 +153,8 @@ Page({
   onShow: function () {
     var that = this;
     wx.request({
-      url: url + 'api/user/company',   //验证是否认证过
-      data: { openId: wx.getStorageSync('openId') },
+      url: url + 'worksite/default/ident-info',   //验证是否认证过
+      data: { OpenId: wx.getStorageSync('openId'),ProjectId:sendMessageContent.projectId },
       method: 'GET',
       header: {
         'content-type': 'application/json' // 默认值
