@@ -66,16 +66,16 @@ Page({
   // 点击整改类型
   bindChange: function (e) {
     this.setData({
-      change_index: this.data.change_type[e.detail.value],
-      change_id:e.detail.value,
+      change_index:e.detail.value,
+      change_id:this.data.change_type[e.detail.value].id,
     })
   },
   // 点击处罚方式
   bindPunish: function (e) {
     console.log(13,e)
     this.setData({
-      punish_index: e.detail.value,
-      punish_id:e.currentTarget.dataset.id,
+      punish_index:e.detail.value,
+      punish_id:this.data.punish_method[e.detail.value].id,
     })
   },
   // 点击整改时限
@@ -94,6 +94,8 @@ Page({
       sourceType: [type],
       success: function (res) {
         var tempFilePaths = res.tempFilePaths;
+        console.log('图片',tempFilePaths)
+        
         wx.uploadFile({
           url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
           filePath: tempFilePaths[0],
@@ -158,7 +160,6 @@ descInput: function (e) {
     var content = that.data.desc;
     var rectify_imgs =that.data.imgres;
     console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1])
-    return false;
     wx.request({
       url: url + 'worksite/rectify/rectify-add',
       data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: changetimeArray[0],rectify_time2:changetimeArray[1],content:content,rectify_imgs:rectify_imgs},
@@ -167,7 +168,6 @@ descInput: function (e) {
       },
       method: 'POST',
       success(res) {
-        console.log(1,res)
         if (res.data.Code == 200) {
           wx.showToast({
             title: '添加成功',
@@ -272,9 +272,9 @@ descInput: function (e) {
           for (let i in res.data.data) {
             items.push(res.data.data[i]);
           }
-          
           that.setData({
-            change_type:items
+            change_type:items,
+            change_id:items[0].id
           })
         } else {
 
@@ -293,15 +293,14 @@ descInput: function (e) {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(0,res)
         if (res.data.Code == 200) {
           var items = [];
           for (let i in res.data.data) {
             items.push(res.data.data[i]);
           }
-          
           that.setData({
-            punish_method:items
+            punish_method:items,
+            punish_id:items[0].id
           })
         } else {
 

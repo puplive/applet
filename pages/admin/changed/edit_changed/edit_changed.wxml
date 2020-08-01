@@ -34,7 +34,7 @@
         <text class='col-10'>{{punish_method[punish_index]}}</text>
         <image class='sanjiao col-2' src='../../../../images/arrowright.png'></image>
       </view>
-    </picker>
+    </picker> 
   </view>
   <view class='section col'>
     <label class='col-4'>整改时限</label>
