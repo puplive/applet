@@ -43,5 +43,5 @@
 .list_listnum{color: #606266; }
 .foot_btn{width:100%;height:80rpx; background-color: #EBEEF5; padding: 20rpx 0;position: fixed; bottom: 100rpx;}
 .add_changed{width:96%;height:80rpx;line-height: 80rpx; background:rgba(236,187,73,1);border-radius:2px; color: #fff; text-align: center; margin-left: 2%;}
-
+.add_changed .icon-fuhao_jiahao{font-size: 40rpx;margin-right: 8rpx;}
 

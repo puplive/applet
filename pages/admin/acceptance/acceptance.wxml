@@ -3,10 +3,16 @@
 <view class='contain'>
     <view class='row fenlei'>
       <view class='col f14'>
-        <text class="col-3 {{_num==1?'on':''}} nav_text" data-num="1" bindtap='switchFenlei'>待验收(10)</text> 
-        <text class="col-3 {{_num==2?'on':''}} nav_text" data-num="2" bindtap='switchFenlei'>已驳回(22)</text> 
-        <text class="col-3 {{_num==3?'on':''}} nav_text" data-num="3" bindtap='switchFenlei'>已通过(3)</text> 
-        <text class="iconfont icon-leidian screen col-3" catchtap="screenBtn"></text>
+        <view class="col-3 nav_text">
+          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待验收</text><text>(10)</text>
+        </view> 
+        <view class="col-3 nav_text" >
+          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">已驳回</text><text>(22)</text>
+        </view>
+        <view class="col-3 nav_text">
+          <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已通过</text><text>(3)</text>
+        </view>
+        <text class="iconfont icon-mianxing_loudou screen col-3" catchtap="screenBtn"></text>
       </view>
     </view>
     <!-- 内容列表 -->

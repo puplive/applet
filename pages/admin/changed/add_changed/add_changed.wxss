@@ -14,6 +14,7 @@ page{background-color: #fff;}
 .picker{
   color:#666;
 }
+.picker text{ text-overflow:ellipsis; white-space:nowrap; overflow:hidden; font-size: 28rpx;}
 .sanjiao{
   width: 32rpx;
   height: 32rpx;

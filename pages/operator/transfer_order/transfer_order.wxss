@@ -1,1 +1,47 @@
-/* pages/operator/transfer_order/transfer_order.wxss */
+page{background-color: #fff;}
+.section{
+  font-size: 28rpx;
+  height: 112rpx;
+  line-height:112rpx;
+  border-bottom: 1px solid #ddd;
+  padding: 0 20rpx;
+  position: relative;
+}
+.section input{
+  height: 112rpx;
+  line-height: 112rpx;
+}
+.picker{
+  color:#666;
+}
+.sanjiao{
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  top:40rpx;
+  right: 20rpx;
+}
+.desc{
+  font-size: 28rpx;
+  height: 300rpx;
+  line-height:100rpx;
+  border-bottom: 1px solid #ddd;
+  padding: 0 20rpx;
+  position: relative;
+}
+.textarea-wrp textarea{
+  width: 100%;
+  height: 150rpx;
+  line-height: 50rpx;
+  padding: 10rpx 0 28rpx;
+}
+.textlimit{
+  position: absolute;
+  bottom: 0rpx;
+  right: 10rpx;
+  color: #DCDFE6;
+  font-size: 24rpx;
+  line-height: 50rpx;
+}
+.foot_btn{width:100%;height:80rpx; padding: 20rpx 0;position: fixed; bottom: 0rpx;}
+.add_changed{width:96%;height:80rpx;line-height: 80rpx; background:rgba(236,187,73,1);border-radius:2px; color: #fff; text-align: center; margin-left: 2%;}
