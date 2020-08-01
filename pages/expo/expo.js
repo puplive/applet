@@ -100,7 +100,7 @@ Page({
     sendMessageContent.projectId = e.target.dataset.key
     var that = this;
     wx.request({
-      url: url + 'worksite/default/ident-info',   //验证是否认证过
+      url: url + 'worksite/default/c-zhui',   //验证是否认证过
       data: { OpenId: wx.getStorageSync('openId'),ProjectId: sendMessageContent.projectId},
       method: 'GET',
       header: {
@@ -108,10 +108,22 @@ Page({
       },
       success: function (res) {
         if (res.data.Code == 200) {
-          wx.redirectTo({
-            url: "../admin/admin"
+          if(res.data.data.customer_type==1){
+            wx.redirectTo({
+              url: "../admin/admin"
+            })
+          }else{
+            wx.redirectTo({
+              url: "../operator/operator"
+            })
+          }
+        }else if (res.data.Code == 400) {//提示您还没授权
+          wx.showToast({
+            title: '未授权',
+            icon: 'none',
+            duration: 2000//持续的时间
           })
-        } else {
+        }else {
           wx.navigateTo({
             url: "../admin/person/identity/identity?hui=" + sendMessageContent.projectId
           })

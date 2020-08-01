@@ -24,7 +24,7 @@
     </view>
     <view class='section col'>
       <label class='col-3 x-center'>公司名称：</label>
-      <text class=' x-center'>{{indentityInfo.const_name}}</text>
+      <text class=' x-center'>{{indentityInfo.nickname}}</text>
     </view>
     <view class='section col'>
       <label class='col-3 x-center'>手机号：</label>
