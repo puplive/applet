@@ -10,8 +10,9 @@ Page({
     projectcon_len: 1,
     showModalStatus: false,//显示遮罩
     zhanguannum:1, //展馆号
-    sortnum:1, //排序
+    sortnum:1, //排序 
     fenleinum:1,  //筛选分类
+    hiddenhangye: false,  //转单弹窗
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -77,6 +78,16 @@ Page({
       zhanguannum: 1, //展馆号
       sortnum: 1, //排序
       fenleinum: 1,  //筛选分类
+    })
+  },
+  cancelM: function (e) {
+    this.setData({
+      hiddenhangye: true,
+    })
+  },
+  confirmM: function (e) {
+    this.setData({
+      hiddenhangye: true,
     })
   },
   /**

@@ -1,2 +1,63 @@
-<!--pages/admin/changed/edit_changed/edit_changed.wxml-->
-<text>pages/admin/changed/edit_changed/edit_changed.wxml</text>
+<view class='con row'> 
+  <view class='section col'>
+    <label class='col-4'>展馆号</label>
+    <picker class="picker col-8 hangye_text" mode="selector" range="{{projectArray}}" range-key="hui_nickname" value="{{projectindex}}" bindchange="bindProjectChange" data-huiname="{{projectArray[projectindex].hui_nickname}}">
+      <view class="picker">
+        <text class=''>{{projectArray[projectindex].hui_nickname}}</text>
+        <image class='sanjiao' src='../../../../images/arrowright.png'></image>
+      </view>
+    </picker>
+  </view>
+  <view class='section col'>
+    <label class='col-4'>展位号</label>
+    <picker class="picker col-8  hangye_text" mode="selector" range="{{projectArray}}" range-key="hui_nickname" value="{{projectindex}}" bindchange="bindProjectChange" data-huiname="{{projectArray[projectindex].hui_nickname}}">
+      <view class="picker">
+        <text class=''>{{projectArray[projectindex].hui_nickname}}</text>
+        <image class='sanjiao' src='../../../../images/arrowright.png'></image>
+      </view>
+    </picker>
+  </view>
+  <view class='section col'>
+    <label class='col-4'>整改类型</label>
+    <!-- <input class='col-8 hangye_text' placeholder="请输入您的项目名称" value='{{pro_name}}' bindinput ="proName"/> -->
+    <picker class="picker col-8  hangye_text" mode="selector" range="{{change_type}}" value="{{change_index}}" bindchange="bindChange">
+      <view class="picker col">
+        <text class='col-10'>{{change_type[change_index]}}</text>
+        <image class='sanjiao col-2' src='../../../../images/arrowright.png'></image>
+      </view>
+    </picker>
+  </view>
+  <view class='section col'>
+    <label class='col-4'>处罚方式</label>
+    <picker class="picker col-8  hangye_text" mode="selector" range="{{punish_method}}" value="{{punish_index}}" bindchange="bindPunish">
+      <view class="picker col">
+        <text class='col-10'>{{punish_method[punish_index]}}</text>
+        <image class='sanjiao col-2' src='../../../../images/arrowright.png'></image>
+      </view>
+    </picker> 
+  </view>
+  <view class='section col'>
+    <label class='col-4'>整改时限</label>
+    <picker class="picker col-8  hangye_text" mode="selector" range="{{change_time}}" value="{{changetime_index}}" bindchange="bindChangeTime">
+      <view class="picker">
+        <text class=''>{{change_time[changetime_index]}}</text>
+        <image class='sanjiao' src='../../../../images/arrowright.png'></image>
+      </view>
+    </picker>
+  </view>
+  <view class='desc'>
+    <label class=''>详情描述</label>
+    <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="200"/> <text class="textlimit">0/200</text></view>
+  </view>
+  <view class="upload_img">
+    <view class="col-9 img_con" bindtap="chooseimage">
+      <image class='imgwh' src='{{img}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+    </view>
+  </view>
+</view>
+<!-- 底部按钮 -->
+<view class="foot_btn">
+  <navigator url='add_changed/add_changed'>
+    <view class="add_changed">提交</view>
+  </navigator>
+</view>

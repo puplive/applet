@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"enhance": false,
 		"postcss": true,
@@ -27,12 +27,16 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
+<<<<<<< HEAD
 		"useCompilerModule": false,
+=======
+		"useCompilerModule": true,
+>>>>>>> 23780b53a0c261bbff2431d9697a251e67ee5761
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.1",
-	"appid": "wxead9ff7445a9f056",
+	"appid": "wxfc7feb8dd661d7a8",
 	"projectname": "buildservices",
 	"debugOptions": {
 		"hidedInDevtools": []

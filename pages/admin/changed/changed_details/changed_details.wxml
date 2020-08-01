@@ -1,72 +1,35 @@
 <view class="contain">
   <view class='row zwh_tit'>
     <view class='col clearfix'>
-      <text class="col-9 zwh fl">N5 5009</text>
+      <text class="col-9 zwh fl">{{z_guan}} {{zwh}}</text>
       <text class="iconfont icon-mianxing_loudou col-3 screen fr" catchtap="screenBtn"></text>
     </view>
   </view>
   <!-- 列表内容 -->
   <view class="list">
-    <view class='list_con'>
+    <view class='list_con' wx:for-items="{{changedetails}}">
       <view class="list_li clearfix">
         <view class="list_licon fl">
-          <view class="time">2020/03/01 13:23</view>
-          <view class="changed_type">高空作业无人看护</view>
+          <view class="time">{{item.apply_time}}</view>
+          <view class="changed_type">{{item.rectify_name}}</view>
           <view class="changed_style">
-            <text>一次警告    </text><text>整改时限  13:00-14:00</text>
+            <text>{{item.punish_name}}    </text><text>整改时限  {{item.rectify_time1}}-{{item.rectify_time2}}</text>
           </view>
           <view class="list_liconimg">
-            <image src="../../../../images/icon_search.svg"></image>
+            <image src="{{host}}/{{item.rectify_imgs}}"></image>
             <image src="../../../../images/icon_search.svg"></image>
             <image src="../../../../images/icon_search.svg"></image>
           </view>
-          <view class="changed_details">详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述</view>
+          <view class="changed_details">{{item.content}}</view>
         </view>
       </view>
-      <view class="list_btn clearfix">
-        <view class="list_btnli revoke fr">撤销</view>
-        <navigator url='../add_changed/add_changed'><view class="list_btnli edit_changed fr">编辑</view></navigator>
+      <view class="list_btn clearfix {{item.status==1? 'show':'hidden'}}">
+        <view class="list_btnli fr" bindtap="endBtn" data-id="{{item.id}}">完成</view>
+        <view class="list_btnli fr" bindtap="delBtn" data-id="{{item.id}}">删除</view>
+        <navigator url='../edit_changed/edit_changed'><view class="list_btnli edit_changed fr">编辑</view></navigator>
       </view> 
-    </view>
-    <view class='list_con'>
-      <view class="list_li clearfix">
-        <view class="list_licon fl">
-          <view class="time">2020/03/01 13:23</view>
-          <view class="changed_type">高空作业无人看护</view>
-          <view class="changed_style">
-            <text>一次警告    </text><text>整改时限  13:00-14:00</text>
-          </view>
-          <view class="list_liconimg">
-            <image src="../../../../images/icon_search.svg"></image>
-            <image src="../../../../images/icon_search.svg"></image>
-            <image src="../../../../images/icon_search.svg"></image>
-          </view>
-          <view class="changed_details">详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述</view>
-        </view>
-      </view>
-      <view class="list_btn clearfix">
-          <view class="revoke_on fr">已撤销</view>
-      </view>
-    </view>
-    <view class='list_con'>
-      <view class="list_li clearfix">
-        <view class="list_licon fl">
-          <view class="time">2020/03/01 13:23</view>
-          <view class="changed_type">高空作业无人看护</view>
-          <view class="changed_style">
-            <text>一次警告    </text><text>整改时限  13:00-14:00</text>
-          </view>
-          <view class="list_liconimg">
-            <image src="../../../../images/icon_search.svg"></image>
-            <image src="../../../../images/icon_search.svg"></image>
-            <image src="../../../../images/icon_search.svg"></image>
-          </view>
-          <view class="changed_details">详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述详情描述</view>
-        </view>
-      </view>
-      <view class="list_btn clearfix">
-        <view class="list_btnli revoke fr">撤销</view>
-        <navigator url='../add_changed/add_changed'><view class="list_btnli edit_changed fr">编辑</view></navigator>
+      <view class="list_btn clearfix {{item.status==2? 'show':'hidden'}}">
+          <view class="revoke_on fr">已完成</view>
       </view>
     </view>
   </view>
@@ -84,20 +47,8 @@
   <view class="screen_tit">筛选</view>
   <view class="screen_main">
     <view class="screen_con">
-      <view class="screen_contit">处罚方式</view>
-      <view class="screen_conli">
-        <text data-screenpunishnum="1" bindtap='screenPunish' class="{{punishnum==1?'on':''}}">全部</text>
-        <text data-screenpunishnum="2" bindtap='screenPunish' class="{{punishnum==2?'on':''}}">一次警告</text>
-        <text data-screenpunishnum="3" bindtap='screenPunish' class="{{punishnum==3?'on':''}}">二次警告</text>
-        <text data-screenpunishnum="4" bindtap='screenPunish' class="{{punishnum==4?'on':''}}">一次整改</text>
-        <text data-screenpunishnum="5" bindtap='screenPunish' class="{{punishnum==5?'on':''}}">二次整改</text>
-        <text data-screenpunishnum="6" bindtap='screenPunish' class="{{punishnum==6?'on':''}}">未整改</text>
-        <text data-screenpunishnum="7" bindtap='screenPunish' class="{{punishnum==7?'on':''}}">直接处罚</text>
-      </view>
-    </view>
-    <view class="screen_con">
       <view class="screen_contit">整改状态</view>
-      <view class="screen_conli">
+      <view class="screen_conli"> 
         <text data-screenchangenum="1" bindtap='screenChange' class="{{changenum==1?'on':''}}">全部</text>
         <text data-screenchangenum="2" bindtap='screenChange' class="{{changenum==2?'on':''}}">待整改</text>
         <text data-screenchangenum="3" bindtap='screenChange' class="{{changenum==3?'on':''}}">已撤销</text>

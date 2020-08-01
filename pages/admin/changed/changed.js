@@ -1,11 +1,14 @@
 var app = getApp();
+var url = app.globalData.url;
+var sendMessageContent = app.globalData.sendMessageContent;
+var call = require("../../../utils/request.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    changeArray:[],  //整改列表
   },
 
   /**
@@ -26,7 +29,35 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var openId = wx.getStorageSync('openId')
+    var that = this;
+    wx.request({
+      url: url + 'worksite/rectify/rectifylist',
+      data: {projectId:sendMessageContent.projectId,OpenId:openId},
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(8,res);
+        var list = res.data.data; 
+        for (var i in list) { 
+          list[i] = {
+            list: list[i]  //整改详细列表
+          }
+        }
+        if (res.data.Code == 200) {
+          that.setData({
+            changeArray: res.data.data
+          })
+        } else {
 
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
   },
 
   /**
