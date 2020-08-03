@@ -20,8 +20,8 @@ Page({
   bindProjectChange: function (event) {
     this.setData({
       projectindex: event.detail.value,
-      pro_name: this.data.projectArray[event.detail.value].nickname,
-      proid:  this.data.projectArray[event.detail.value].const_id,
+     // pro_name: this.data.projectArray[event.detail.value].nickname,
+      //proid:  this.data.projectArray[event.detail.value].const_id,
       // hidden_con: true,
     })
   },
@@ -120,14 +120,15 @@ Page({
       },
       success(res) {
         if (res.data.Code == 200) {
-          var items = [];
-          for (let i in res.data.data) {
-            items.push(res.data.data[i]);
-          }
+          // var items = [];
+          // for (let i in res.data.data) {
+          //   items.push(res.data.data[i]);
+          // }
           that.setData({
-            projectArray: items,
-            pro_name: items[0].nickname,
-            proid:items[0].const_id,
+          //   projectArray: items,
+            pro_name: res.data.data.nickname,
+            proid: res.data.data.const_id,
+          //   proid:items[0].const_id,
           })
         } else {
 
