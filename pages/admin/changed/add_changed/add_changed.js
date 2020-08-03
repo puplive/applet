@@ -21,7 +21,7 @@ Page({
     changetime_value:'',
     change_time: ['9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '18:00 - 19:00', '19:00 - 20:00','20:00 - 21:00', '21:00 - 22:00', '22:00 - 23:00','23:00 - 24:00'], //整改时限
     img: '../../../../images/camera.png',
-    imgres: '',
+    imgres: [],
   },
   // 展馆号
   bindProjectChange: function(e){
@@ -94,32 +94,36 @@ Page({
       sourceType: [type],
       success: function (res) {
         var tempFilePaths = res.tempFilePaths;
-        console.log('图片',tempFilePaths)
-        
-        wx.uploadFile({
-          url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
-          filePath: tempFilePaths[0],
-          name: 'img',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded' // 默认值
-          },
-          method: 'POST',
-          formData: {},
-          success: function (res) {
-            console.log(12,tempFilePaths[0]);
-            var data = JSON.parse(res.data).info.path;
-            data = data.replace(app.globalData.mainServer, '');
-            console.log(11, data);
-            that.setData({
-              // tempFilePath可以作为img标签的src属性显示图片
-              img: url + data,
-              imgres: data,
-            })
-          },
-          fail: function (res) {
-            console.log('fail');
-          },
-        })
+        var uploadsimg = [];
+        for (let i in tempFilePaths) {
+          uploadsimg.push(tempFilePaths[i]);
+          wx.uploadFile({
+            url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
+            filePath: tempFilePaths[0],
+            name: 'img',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            method: 'POST',
+            formData: {},
+            success: function (res) {
+              var data = JSON.parse(res.data).info.path;
+              data = data.replace(app.globalData.mainServer, '');
+              console.log(11, data);
+              that.setData({
+                // tempFilePath可以作为img标签的src属性显示图片
+                img: url + data,
+                imgres: data,
+              })
+            },
+            fail: function (res) {
+              console.log('fail');
+            },
+          })
+        }
+        console.log('路径',uploadsimg)
+        var str = uploadsimg.join(',');
+        console.log(123,str)
       }
     })
   },
