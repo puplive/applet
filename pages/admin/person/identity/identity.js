@@ -48,7 +48,7 @@ Page({
     }
     wx.request({
       url: url + 'worksite/default/identification',
-      data: { const_id: pro_id, tel: tel, OpenId: wx.getStorageSync('openId') },
+      data: { const_id: pro_id, tel: tel, OpenId: wx.getStorageSync('openId'),ProjectId:sendMessageContent.projectId},
       method: 'GET',
       header: {
         'content-type': 'application/json' // 默认值
@@ -113,7 +113,7 @@ Page({
     // 获取公司名称
     wx.request({
       url: url + 'worksite/default/const-search',
-      data: { openId: wx.getStorageSync('openId') },
+      data: { OpenId:wx.getStorageSync('openId'),ProjectId:sendMessageContent.projectId},
       method: 'GET',
       header: {
         'content-type': 'application/json' // 默认值

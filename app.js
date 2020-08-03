@@ -1,6 +1,6 @@
 //app.js
 //const url = 'https://www.exposaas.com/'
-const url ='http://test.exposaas.cn/'
+const url ='http://www.newmoble.com/'
 App({
   onLaunch: function () {
     // 展示本地存储能力
