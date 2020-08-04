@@ -170,16 +170,15 @@ Page({
       },
       success(res) {
         if (res.data.Code == 200) {
-          var changedetails_img = [];
-            for (let i in res.data.data) {
-              changedetails_img.push(res.data.data[i].rectify_imgs);
-            }
+          // var changedetails_img = [];
+          //   for (let i in res.data.data) {
+          //     changedetails_img.push(res.data.data[i].rectify_imgs);
+          //   }
           that.setData({
             changedetails: res.data.data,
             z_guan:res.data.data[0].z_guan,  //展馆号
             // changedetails_img:res.data.data.rectify_imgs  
           })
-          console.log(22,changedetails_img)
         } else {
 
         }

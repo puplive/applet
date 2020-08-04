@@ -1,11 +1,15 @@
-<view class="contain">
-  <view class="zwh">N5 5009</view>
+<view class="contain" >
+  <view class="zwh">{{z_guan}} {{zw_hao}}</view>
   <view class="person_name">
-    <text>姓名</text>
-    <text class="tel">18999999999</text>
-  </view>
-  <view class="list_con">
-    <view class="time">2020/04/30 15:00</view>
+    <text>{{contact}}</text>
+    <text class="tel">{{phone}}</text>
+  </view> 
+  <view class="list_con" wx:for-items="{{accepArray}}" wx:for-index="key">
+    <view class="time">{{item.apply_time}}</view>
+    <view wx:if="{{item.check_status == '2'}}">
+      <view class="al_reject">已驳回</view>
+      <view class="reject_be">驳回理由：有绷布未撤走，驳回理由驳回理由驳回理由驳回理由</view>
+    </view>
     <view class="acc_img col">
       <view class="col-3">
         <image src="../../../images/icon_search.svg"></image>
@@ -13,21 +17,10 @@
       <view class="col-3">
         <image src="../../../images/icon_search.svg"></image>
       </view>
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
-      </view>
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
-      </view>
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
-      </view>
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
-      </view>
     </view>
+    <view class="status" wx:if="{{item.check_status == '1'}}">待验收</view>
   </view>
-  <view class="list_con">
+  <!-- <view class="list_con">
     <view class="time">2020/04/30 15:00</view>
     <view>
       <view class="al_reject">已驳回</view>
@@ -38,10 +31,10 @@
         <image src="../../../images/icon_search.svg"></image>
       </view>
     </view>
-  </view>
-  <view class="status">待验收</view>
+  </view> -->
 </view>
 <view class="foot_btn">
+  <view class="fr foot_btnli end">完成</view>
   <view class="fr foot_btnli agree">通过</view>
   <navigator url='../acceptance_reject/acceptance_reject'>
     <view class="fr foot_btnli reject">驳回</view>

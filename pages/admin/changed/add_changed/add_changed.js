@@ -20,7 +20,7 @@ Page({
     changetime_index:0,
     changetime_value:'',
     change_time: ['9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '18:00 - 19:00', '19:00 - 20:00','20:00 - 21:00', '21:00 - 22:00', '22:00 - 23:00','23:00 - 24:00'], //整改时限
-    img: '../../../../images/camera.png',
+    img: [],
     imgres: [],
   },
   // 展馆号
@@ -72,7 +72,6 @@ Page({
   },
   // 点击处罚方式
   bindPunish: function (e) {
-    console.log(13,e)
     this.setData({
       punish_index:e.detail.value,
       punish_id:this.data.punish_method[e.detail.value].id,
@@ -96,10 +95,11 @@ Page({
         var tempFilePaths = res.tempFilePaths;
         var uploadsimg = [];
         for (let i in tempFilePaths) {
-          uploadsimg.push(tempFilePaths[i]);
+          var imgres2 = that.data.imgres;
+          var img2 = [];
           wx.uploadFile({
             url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
-            filePath: tempFilePaths[0],
+            filePath: tempFilePaths[i],
             name: 'img',
             header: {
               'content-type': 'application/x-www-form-urlencoded' // 默认值
@@ -109,11 +109,14 @@ Page({
             success: function (res) {
               var data = JSON.parse(res.data).info.path;
               data = data.replace(app.globalData.mainServer, '');
-              console.log(11, data);
+              imgres2.push(data);
+              img2.push(url + data);
+              // console.log(11, imgres2);
+              // console.log(22, img2);
               that.setData({
                 // tempFilePath可以作为img标签的src属性显示图片
-                img: url + data,
-                imgres: data,
+                img: img2,
+                imgres: imgres2,
               })
             },
             fail: function (res) {
@@ -121,9 +124,6 @@ Page({
             },
           })
         }
-        console.log('路径',uploadsimg)
-        var str = uploadsimg.join(',');
-        console.log(123,str)
       }
     })
   },
@@ -145,7 +145,19 @@ Page({
     })
 
   },
-// 详细地址
+  // 删除图片
+  imgDel: function(e){
+    console.log(11,e,e.currentTarget.dataset.value)
+    var that = this;
+    (that.data.img).splice(e.currentTarget.dataset.value,1);
+    (that.data.imgres).splice(e.currentTarget.dataset.value,1);
+    console.log(that.data.img,that.data.imgres)
+    that.setData({
+      img:that.data.img,
+      imgres:that.data.imgres
+    })
+  },
+// 详细描述
 descInput: function (e) {
   this.setData({
     desc: e.detail.value
@@ -163,7 +175,7 @@ descInput: function (e) {
     var changetimeArray=changetime_value.split("-"); //整改时限
     var content = that.data.desc;
     var rectify_imgs =that.data.imgres;
-    console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1])
+    console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1],'图',rectify_imgs)
     wx.request({
       url: url + 'worksite/rectify/rectify-add',
       data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: changetimeArray[0],rectify_time2:changetimeArray[1],content:content,rectify_imgs:rectify_imgs},

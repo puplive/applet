@@ -1,4 +1,7 @@
 var app = getApp();
+var url = app.globalData.url;
+var sendMessageContent = app.globalData.sendMessageContent;
+var call = require("../../../utils/request.js")
 Page({
 
   /**
@@ -6,8 +9,6 @@ Page({
    */
   data: {
     _num: 1,//默认分类选中全部
-    projectcon: '',
-    projectcon_len: 1,
     showModalStatus: false,//显示遮罩
   },
   // 点击导航分类
@@ -20,10 +21,6 @@ Page({
   /**点击筛选 */
   screenBtn: function (data) {
     var that = this;
-    // that.setData({
-    //   specIndex: data.currentTarget.dataset.itemIndex,
-    //   specParentIndex: data.currentTarget.dataset.parentindex,
-    // })
     var animation = wx.createAnimation({//动画
       duration: 500,//动画持续时间
       timingFunction: 'linear',//动画的效果 动画从头到尾的速度是相同的
@@ -59,14 +56,37 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var openId = wx.getStorageSync('openId')
+    var that = this;
+    wx.request({
+      url: url + 'worksite/check/check-list',
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,check_status:that.data._num},
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(1,res);
+        if (res.data.Code == 200) {
+          that.setData({
+            accepArray: res.data.data,
+            accepArray_len: Object.keys(res.data.data).length,
+            type: that.data._num,
+          })
+        } else {
 
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
   },
 
   /**

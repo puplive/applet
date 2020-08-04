@@ -1,18 +1,25 @@
-// pages/admin/acceptance_details/acceptance_details.js
+var app = getApp();
+var url = app.globalData.url;
+var sendMessageContent = app.globalData.sendMessageContent;
+var call = require("../../../utils/request.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    check_id:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (options.check_id) {
+      this.setData({
+        check_id: options.check_id, //展位联系人
+      })
+    }
   },
 
   /**
@@ -26,7 +33,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var openId = wx.getStorageSync('openId')
+    var that = this;
+    wx.request({
+      url: url + 'worksite/check/clist-details',
+      data: {check_id:that.data.check_id},
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        console.log(1,res);
+        if (res.data.Code == 200) {
+          that.setData({
+            accepArray: res.data.data,
+          })
+        } else {
 
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
   },
 
   /**

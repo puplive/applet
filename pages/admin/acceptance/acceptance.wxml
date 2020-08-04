@@ -16,29 +16,19 @@
       </view>
     </view>
     <!-- 内容列表 -->
-    <view wx:if="{{projectcon_len>0}}" class='list f12'  wx:key="key"  wx:for-item="value">
-      <navigator url='../acceptance_details/acceptance_details' class='list_con'>
+    <view wx:if="{{accepArray_len>0}}" class='list f12' wx:for-items="{{accepArray}}" wx:for-index="key">
+      <navigator url='../acceptance_details/acceptance_details?check_id={{item.id}}' class='list_con'>
         <view class="list_zwh clearfix">
-          <text class="fl list_zwh_left">N5 5009</text>
-          <text class="fr list_zwh_right">2020/03/01 13:23</text>
+          <text class="fl list_zwh_left">{{item.z_guan}} {{item.zw_hao}}</text>
+          <text class="fr list_zwh_right">{{item.apply_time}}</text>
         </view>
         <view class="list_li clearfix">
-          <text>姓名</text>
-          <text class="tel">18888888888</text>
-        </view>
-      </navigator>
-      <navigator url='../acceptance_details/acceptance_details' class='list_con'>
-        <view class="list_zwh clearfix">
-          <text class="fl list_zwh_left">N5 5009</text>
-          <text class="fr list_zwh_right">2020/03/01 13:23</text>
-        </view>
-        <view class="list_li clearfix">
-          <text>姓名</text>
-          <text class="tel">18888888888</text>
+          <text>{{item.contact}}</text>
+          <text class="tel">{{item.phone}}</text>
         </view>
       </navigator>
     </view>
-    <view wx:if="{{projectcon_len==0}}" class='no_data'>
+    <view wx:if="{{accepArray_len==0}}" class='no_data'>
       暂无数据
     </view>
   </view>
