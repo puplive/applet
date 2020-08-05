@@ -108,6 +108,7 @@ Page({
       },
       success: function (res) {
         if (res.data.Code == 200) {
+          sendMessageContent.RoleId = res.data.data.RoleAccess.role_id;
           if(res.data.data.customer_type==1){
             wx.redirectTo({
               url: "../admin/admin"

@@ -1,0 +1,59 @@
+<view class="contain">
+  <view class="zwh">{{info.project_info.library_number}} {{info.project_info.number}}</view>
+  <view class="person_name">
+    <text>{{info.project_info.username}}</text>
+    <text class="tel">{{info.project_info.phone}}</text>
+  </view>
+  <view class="list_con">
+    <view class="list_li clearfix">
+      <image src="{{host}}public/{{info.img}}" class="fl list_img"></image>
+      <view class="list_licon fl">
+        <view>
+          <text class="list_litit">{{info.goods_array.name}}</text>
+        </view>
+        <view class="list_list clearfix">
+          <text class="list_listname fl">{{info.goods_array.goodsno}}</text>
+          <text class="list_listnum fr">×{{info.goods_nums}}</text>
+        </view>
+        <!-- <view class="list_list clearfix">
+          <text class="list_listname fl">桌花</text>
+          <text class="list_listnum fr">×1</text>
+        </view> -->
+      </view>
+    </view>
+    <view  class="order_num">
+      <view>订单编号：<text>{{info.order_no}}</text></view>
+      <view>下单时间: <text>{{info.create_time}}</text></view>
+    </view>
+    <view class="status">待接单</view>
+
+    <view class="status">待配送</view>
+    <view class="upload_img">
+      <view class="col-9 img_con" bindtap="chooseimage">
+        <image class='imgwh' src='{{img}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+      </view>
+    </view>
+    <view class='desc'>
+      <label class=''>添加备注</label>
+      <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300" /> <text class="textlimit">0/300</text></view>
+    </view>
+
+    <view class="status">已完成</view>
+    <view class="list_liconimg">
+      <image src="../../../images/icon_search.svg"></image>
+      <image src="../../../images/icon_search.svg"></image>
+      <image src="../../../images/icon_search.svg"></image>
+    </view>
+    <view class="changed_details">展位无人，鲜花已放展桌上。操作员的问题解决页面与订单相同，可传图片并添加备注。</view>
+    <view class="end_time">完成时间：<text>2020/03/01 13:23</text></view>
+
+  </view>
+</view>
+<view class="foot_btn">
+  <navigator url='../acceptance_details/acceptance_details'>
+    <view class="fr foot_btnli agree">接单</view>
+  </navigator>
+  <navigator url='../transfer_order/transfer_order'>
+    <view class="fr foot_btnli agree">转单</view>
+  </navigator>
+</view>

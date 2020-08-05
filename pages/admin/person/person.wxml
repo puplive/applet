@@ -1,10 +1,10 @@
 <view class="top">
   <view class="top_left fl">
-    <image src="../../../images/header_img.jpg"></image>
+    <image src="{{userInfo.avatarUrl}}"></image>
   </view>
   <view class="top_right fl">
-    <view class="topr_01"><text class="name">郭晓名</text><text class="role">管理员</text></view>
-    <view class="topr_tel">18989898989</view>
+    <view class="topr_01"><text class="name">{{userInfo.nickName}}</text><text class="role">{{role_name}}</text></view>
+    <view class="topr_tel">{{tel}}</view>
     <view class="topr_con col">
       <view class="col-4">余额 <text>0.00</text></view>
       <view class="col-4">积分 <text>0</text></view>
