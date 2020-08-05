@@ -1,13 +1,13 @@
 {
   "pages":[
     "pages/expo/expo",
-    "pages/admin/admin",
     "pages/login/login",
+    "pages/admin/changed/add_changed/add_changed",
+    "pages/admin/admin",
     "pages/tabbar/tabbar",
     "pages/admin/ad_order/ad_order",
     "pages/admin/changed/changed",
     "pages/admin/changed/changed_details/changed_details",
-    "pages/admin/changed/add_changed/add_changed",
     "pages/admin/changed/edit_changed/edit_changed",
     "pages/admin/acceptance/acceptance",
     "pages/admin/acceptance_details/acceptance_details",
