@@ -124,6 +124,7 @@ App({
     sendMessageContent: {
       project_name: '',//项目名称
       projectId:'',//项目ID
+      RoleId:'',//角色ID
     },
     //第一种底部导航栏显示
     tabBar: {
@@ -142,9 +143,9 @@ App({
           active: true
         },
         {
-          "pagePath": "/pages/operator/changed/changed",
-          "text": "巡馆整改",
-          "iconPath": "/images/icon_laba.svg",
+          //"pagePath": "/pages/operator/changed/changed",
+          //"text": "巡馆整改",
+          //"iconPath": "/images/icon_laba.svg",
           "selectedIconPath": "/images/icon_laba_on.svg",
           "selectedColor": "#303133",
           "clas": "menu-item",
@@ -206,7 +207,7 @@ App({
           active: false
         },
         {
-          "pagePath": "/pages/operator/operator",
+          "pagePath": "/pages/admin/person/person",
           "text": "我的",
           "iconPath": "/images/icon_wode.svg",
           "selectedIconPath": "/images/icon_wode_on.svg",
