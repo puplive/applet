@@ -1,4 +1,7 @@
-// pages/admin/acceptance_reject/acceptance_reject.js
+var app = getApp();
+var url = app.globalData.url;
+var sendMessageContent = app.globalData.sendMessageContent;
+var call = require("../../../utils/request.js")
 Page({
 
   /**
@@ -7,12 +10,22 @@ Page({
   data: {
 
   },
+  //获取驳回理由
+  reasonsText:function(){
+    this.setData({
+      reasons: e.detail.value
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (options.check_id) {
+      this.setData({
+        check_id: options.check_id, //展位联系人
+      })
+    }
   },
 
   /**

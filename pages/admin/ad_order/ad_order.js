@@ -21,6 +21,12 @@ Page({
     })
     this.onShow();
   },
+  // 指派
+  bindChangeTime:function(){
+    this.show()
+  },
+
+
   // 订单筛选按展馆
   screenZhanguan: function (e) {
     this.setData({

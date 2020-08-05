@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    check_id:'',
+    check_id:'', //整条验收id
+    id:'' //单个id
   },
 
   /**
@@ -21,6 +22,40 @@ Page({
       })
     }
   },
+  // 通过按钮
+  agreeBtn: function(){
+    var openId = wx.getStorageSync('openId')
+    var list = this.data.accepArray
+    var id = list[list.length-1].id
+    var that = this;
+    wx.request({
+      url: url + 'worksite/check/check-pass',
+      data: {check_id:that.data.check_id,check_info_id:id},
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        if (res.data.Code == 200) {
+          wx.showToast({
+            title: '成功通过',
+            icon: 'none',
+            duration: 2000   //持续的时间
+          })
+        } else {
+          wx.showToast({
+            title: '通过失败',
+            icon: 'none',
+            duration: 2000   //持续的时间
+          })
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -43,11 +78,16 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success(res) {
-        console.log(1,res);
         if (res.data.Code == 200) {
           that.setData({
-            accepArray: res.data.data,
+            accepArray: res.data.data.data,
+            z_guan:res.data.data.info.z_guan,  //展馆号
+            zw_hao:res.data.data.info.zw_hao,   //展位号
+            phone:res.data.data.info.phone,  //手机号
+            contact:res.data.data.info.contact,  //联系人
+            
           })
+          console.log('id',that.data.accepArray)
         } else {
 
         }

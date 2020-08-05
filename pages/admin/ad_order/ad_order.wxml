@@ -75,9 +75,16 @@
             </view>
           </view>
         </navigator>
-        <view class="list_btn clearfix">
+        <!-- <view class="">
           <view class="assign fr" bindtap="assign">指派</view>
-        </view>
+        </view> -->
+        
+        <picker class="list_btn clearfix" mode="selector" bindchange="bindChangeTime">
+          <view class="assign">
+            <text class=''>指派</text>
+          </view>
+        </picker>
+
       </view>
 
     </view>
@@ -122,7 +129,7 @@
 <!-- 弹窗选择规格 end -->
 
 <!-- 转单弹窗 -->
-<modal hidden="{{hiddenhangye}}" title="转单内容" confirm-text="接单" cancel-text="拒绝" bindcancel="cancelM" bindconfirm="confirmM">
+<!-- <modal hidden="{{hiddenhangye}}" title="转单内容" confirm-text="接单" cancel-text="拒绝" bindcancel="cancelM" bindconfirm="confirmM">
   <view class='order_con'>
     <view>
       <view class="or_content">
@@ -204,4 +211,4 @@
       </view>
     </view>
   </view>
-</modal>
+</modal> -->

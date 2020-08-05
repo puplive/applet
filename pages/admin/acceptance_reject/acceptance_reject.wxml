@@ -7,11 +7,17 @@
   <view class="list_con">
     <view class='desc'>
       <label class=''>驳回理由</label>
-      <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300" /> <text class="textlimit">0/300</text></view>
+      <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300"  bindinput ="reasonsText" /> <text class="textlimit">0/300</text></view>
     </view>
-    <view class="upload_img">
+    <view class="upload_img clearfix">
+      <view class=" img_con" wx:for="{{img}}"  wx:for-index="key">
+        <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+        <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
+          <image src='../../../images/imgdel.svg'></image>
+        </view>
+      </view>
       <view class="col-9 img_con" bindtap="chooseimage">
-        <image class='imgwh' src='{{img}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+        <image class='defaultimg' src='../../../images/camera.svg' catchTap="chooseImageTap" mode="aspectFit"></image>
       </view>
     </view>
   </view>
