@@ -1,4 +1,7 @@
-var app = getApp();
+const app = getApp()
+var url = app.globalData.url;
+var sendMessageContent = app.globalData.sendMessageContent;
+var call = require("../../utils/request.js")
 Page({
 
   /**
@@ -13,6 +16,7 @@ Page({
     sortnum: 1, //排序
     fenleinum: 1,  //筛选分类
     hiddentransfer: true,  //转单内容弹窗
+    host:app.globalData.url,
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -119,7 +123,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var openId = wx.getStorageSync('openId')
+    var that = this;
+    wx.request({
+      url: url + 'worksite/default/order-info',
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,type:that.data._num,role_id:sendMessageContent.RoleId},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          console.log(8,res.data.data);
+          that.setData({
+            data:res.data.data,
+            data_len: Object.keys(res.data.data).length,
+            type: that.data._num,
+          })
+        } else {
 
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
   },
 
   /**

@@ -5,6 +5,7 @@
     "pages/login/login",
     "pages/tabbar/tabbar",
     "pages/admin/ad_order/ad_order",
+    "pages/admin/ad_order_details/ad_order_details",
     "pages/admin/changed/changed",
     "pages/admin/changed/changed_details/changed_details",
     "pages/admin/changed/add_changed/add_changed",
