@@ -87,15 +87,15 @@
             <view class="air_bg"><text class="iconfont icon-lingdang "></text></view>催办
           </view>
         </view>
-        <!-- <view class="list_btn clearfix" wx:if="{{value.pro_press==0}}">
-          <view class="assign fr" bindtap="assign">指派</view>
-        </view> -->
+        <view class="list_btn clearfix" wx:if="{{value.pro_press==0}}">
+          <view class="assign fr" bindtap="assignBtn">指派</view>
+        </view>
         
-        <picker class="list_btn clearfix" mode="selector" bindchange="assignBtn" wx:if="{{value.pro_press==0}}" range="{{operatorArray}}" value="{{operatorindex}}">
+        <!-- <picker class="list_btn clearfix" mode="selector" bindchange="assignBtn" wx:if="{{value.pro_press==0}}" range="{{operatorArray}}" value="{{operatorindex}}">
           <view class="assign fr">
             <text class=''>指派</text>
           </view>
-        </picker>
+        </picker> -->
 
       </view>
 
@@ -105,7 +105,7 @@
     </view>
   </view>
 
-<!-- 弹窗选择规格 start -->
+<!-- 弹窗筛选 start -->
 <view  class="mask_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
 <view  animation="{{animationData}}" class="screen_area {{isHidden == 1 ? 'display-block':'display-none'}}">
   <view class="screen_tit">筛选</view>
@@ -224,3 +224,13 @@
     </view>
   </view>
 </modal> -->
+<!-- 指派弹窗 -->
+<modal hidden="{{hiddenassign}}" title="指派" confirm-text="确定" cancel-text="取消" bindcancel="cancelS" bindconfirm="confirmS">
+  <view class='assign_con'>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{assignArray}}">
+        <radio class="radio" value="{{item.id}}" checked="{{item.checked}}"color="#ECBB49" />{{item.value}}
+      </label>
+    </radio-group>
+  </view>
+</modal>

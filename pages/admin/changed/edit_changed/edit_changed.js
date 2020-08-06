@@ -194,7 +194,7 @@ editChangedBtn:function(){
           var change_id = res.data.data.rectify_type == undefined ? '' : res.data.data.rectify_type; //整改方式
           var punish_id = res.data.data.punish_type == undefined ? '' : res.data.data.punish_type; //处罚方式
           var changetime1 = res.data.data.rectify_time1 + " - " + res.data.data.rectify_time2; 
-          console.log('time',changetime1)
+          console.log('time:',changetime1)
           var changetime_value = changetime1 == undefined ? '' : changetime1;
           var desc = res.data.data.content == undefined ? '' : res.data.data.content;   //详情描述
           var rectify_imgs = res.data.data.rectify_imgs == undefined ? '' : res.data.data.rectify_imgs; //图片

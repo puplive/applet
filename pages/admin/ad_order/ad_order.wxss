@@ -43,6 +43,17 @@
 .zd_list{height: 60rpx; line-height: 60rpx;}
 .zd_listname {width:calc(100% - 60rpx); text-overflow: ellipsis; white-space:nowrap; overflow:hidden; color: #606266;}
 .zd_listnum {color: #303133;}
+/* 指派弹窗 */
+.assign_con{max-height: 600rpx; overflow: auto;}
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  
+}
+.radio {
+    margin-top: 20px;
+}
 /* 筛选样式 */
 .mask_screen{
   background-color:rgba(0,0,0,0.5);

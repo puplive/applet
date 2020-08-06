@@ -12,7 +12,7 @@ Page({
     imgres: [],
   },
   //获取驳回理由
-  reasonsText:function(){ 
+  reasonsText:function(e){ 
     this.setData({
       reasons: e.detail.value
     })
@@ -91,13 +91,56 @@ Page({
     })
   },
 
+  // 确定按钮
+  agreeBtn: function(){
+    var openId = wx.getStorageSync('openId')
+    var that = this;
+    var check_id = that.data.check_id;
+    var reasons = that.data.reasons;
+    var check_info_id = that.data.check_info_id;
+    var imgres = that.data.imgres;
+    console.log('check_id:',check_id,'reasons:',reasons,'check_info_id:',check_info_id,'imgres',imgres)
+    wx.request({
+      url: url + 'worksite/check/check-bohui',
+      data: {check_id:check_id,bohui:reasons,check_info_id:check_info_id,bohui_img:imgres},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          wx.showToast({
+            title: '驳回成功',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+          setTimeout(() => {
+            wx.redirectTo({
+              url: "../acceptance_details/acceptance_details"
+            });
+            that.setData({
+              check_id: check_id,
+            })
+          }, 1000);
+        } else {
+
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     if (options.check_id) {
       this.setData({
-        check_id: options.check_id, //展位联系人
+        check_id: options.check_id, //id
+        check_info_id: options.check_info_id, //单条最后状态id
       })
     }
   },
@@ -113,7 +156,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var openId = wx.getStorageSync('openId')
+    var that = this;
+    wx.request({
+      url: url + '/worksite/check/check-info',
+      data: {check_id:that.data.check_id},
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        if (res.data.Code == 200) {
+          that.setData({
+            z_guan:res.data.data.z_guan,
+            zw_hao: res.data.data.zw_hao,
+            contact: res.data.data.contact,
+            phone:res.data.data.phone,
+          })
+        } else {
 
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
   },
 
   /**

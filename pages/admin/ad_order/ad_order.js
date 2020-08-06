@@ -16,9 +16,15 @@ Page({
     sortnum:1, //排序 
     fenleinum:1,  //筛选分类
     hiddenhangye: false,  //转单弹窗
+    hiddenassign: true,  //指派弹窗
     host:app.globalData.url,
-    operatorindex:0,
-    operatorArray:'',//展馆号
+    // operatorindex:0,
+    // operatorArray:['操作员1','操作员2','操作员3'],//展馆号
+    assignArray: [
+      { id: 1, value: '租赁-张伟伟'},
+      { id: 2, value: '水工-胜利大街' },
+    ],
+    assignsel:'',
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -27,13 +33,24 @@ Page({
     })
     this.onShow();
   },
+  // 人员选择单选
+  radioChange: function (e) {
+    let value = e.detail.value;
+    this.setData({
+      assignsel : value
+    })
+    console.log("选中的value：",this.data.assignsel)
+  },
   // 指派
   assignBtn:function(e){
+    
+
+
+
+
     this.setData({
-      operatorindex: this.data.operatorArray[e.detail.value],
-      operatorArray:e.detail.value
+      hiddenassign: false,
     })
-    this.onShow();
   },
 
 
@@ -96,16 +113,31 @@ Page({
       fenleinum: 1,  //筛选分类
     })
   },
+  // 转单确认按钮
   cancelM: function (e) {
     this.setData({
       hiddenhangye: true,
     })
   },
+  // 转单取消按钮
   confirmM: function (e) {
     this.setData({
       hiddenhangye: true,
     })
   },
+  // 指派确认按钮
+  cancelS: function (e) {
+    this.setData({
+      hiddenassign: true,
+    })
+  },
+  // 转单取消按钮
+  confirmS: function (e) {
+    this.setData({
+      hiddenassign: true,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
