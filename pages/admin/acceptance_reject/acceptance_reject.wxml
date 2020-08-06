@@ -1,8 +1,8 @@
 <view class="contain">
-  <view class="zwh">N5 5009</view>
+  <view class="zwh">{{z_guan}} {{zw_hao}}</view>
   <view class="person_name">
-    <text>姓名</text>
-    <text class="tel">18999999999</text>
+    <text>{{contact}}</text>
+    <text class="tel">{{phone}}</text>
   </view>
   <view class="list_con">
     <view class='desc'>
@@ -23,9 +23,7 @@
   </view>
 </view>
 <view class="foot_btn">
-  <navigator url='../acceptance_details/acceptance_details'>
-    <view class="fr foot_btnli agree">确定</view>
-  </navigator>
+  <view class="fr foot_btnli agree" bindtap="agreeBtn" >确定</view>
   <navigator url='../acceptance_details/acceptance_details'>
     <view class="fr foot_btnli reject">取消</view>
   </navigator>
