@@ -52,7 +52,7 @@
       </view>
 
       <view class="list_con"  wx:if="{{value.ordertype==2}}">
-        <navigator url='../adetails/details?project_id={{value.id}}' class=''> 
+        <navigator url='../ques_details/ques_details?project_id={{value.id}}' class=''> 
           <view class="list_zwh clearfix">
             <text class="fl list_zwh_left">{{value.z_guan}} {{value.zw_hao}}</text>
             <text class="fr list_zwh_right">{{value.time}}</text>
@@ -72,15 +72,15 @@
             <view class="air_bg"><text class="iconfont icon-lingdang "></text></view>催办
           </view>
         </view>
-        <view class="list_btn clearfix" wx:if="{{value.pro_press==0}}">
+        <!-- <view class="list_btn clearfix" wx:if="{{value.pro_press==0}}">
           <view class="assign fr" bindtap="assign">指派</view>
-        </view>
+        </view> -->
         
-        <!-- <picker class="list_btn clearfix" mode="selector" bindchange="bindChangeTime">
-          <view class="assign">
+        <picker class="list_btn clearfix" mode="selector" bindchange="assignBtn" wx:if="{{value.pro_press==0}}" range="{{operatorArray}}" value="{{operatorindex}}">
+          <view class="assign fr">
             <text class=''>指派</text>
           </view>
-        </picker> -->
+        </picker>
 
       </view>
 

@@ -7,7 +7,7 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
+  data: { 
     check_id:'', //整条验收id
     id:'' //单个id
   },

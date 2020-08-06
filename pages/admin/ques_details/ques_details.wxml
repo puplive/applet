@@ -1,0 +1,47 @@
+<view class="contain">
+  <view class="zwh">N5 5009 <text class="question">水接驳问题</text></view>
+  <view class="person_name">
+    <text>未给水，问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述</text>
+  </view>
+  <view class="list_con">
+    <view class="acc_img col">
+      <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view>
+      <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view>
+      <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view>
+    </view>
+    <view class="time">反馈时间：2020/04/30 15:00</view>
+  </view>
+  <view class="list_con">
+    <view class="status">已接单</view>
+    <view class="upload_img clearfix">
+      <view class=" img_con" wx:for="{{img}}"  wx:for-index="key">
+        <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+        <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
+          <image src='../../../images/imgdel.svg'></image>
+        </view>
+      </view>
+      <view class="col-9 img_con" bindtap="chooseimage">
+        <image class='defaultimg' src='../../../images/camera.svg' catchTap="chooseImageTap" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+  <view class="list_con">
+    <view class='desc'>
+      <label class=''>添加备注</label>
+      <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300"  bindinput ="reasonsText" /> <text class="textlimit">0/300</text></view>
+    </view>
+  </view>
+</view>
+<view class="foot_btn">
+  <view class="fr foot_btnli ">接单</view>
+  <view class="fr foot_btnli ">完成</view>
+  <navigator url='../acceptance_reject/acceptance_reject'>
+    <view class="fr foot_btnli ">指派</view>
+  </navigator>
+</view>
