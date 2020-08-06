@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: { 
-    check_id:'', //整条验收id
+    proid:'', //问题id
     id:'', //单个id
     img: [],
     imgres: [],
@@ -18,9 +18,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.check_id) {
+    if (options.id) {
       this.setData({
-        check_id: options.check_id, //展位联系人
+        proid: options.id, //问题id
       })
     }
   },
@@ -118,32 +118,18 @@ Page({
   onShow: function () {
     var openId = wx.getStorageSync('openId')
     var that = this;
-    wx.request({
-      url: url + 'worksite/check/clist-details',
-      data: {check_id:that.data.check_id},
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success(res) {
-        if (res.data.Code == 200) {
+    var id = that.data.proid
+    call.request('worksite/default/order-details', {goods_id:id,projectId:sendMessageContent.projectId,OpenId:openId,ordertype:2},
+      function (res) {
+        if (res.Code == 200) {
+          console.log(res.data)
           that.setData({
-            accepArray: res.data.data.data,
-            z_guan:res.data.data.info.z_guan,  //展馆号
-            zw_hao:res.data.data.info.zw_hao,   //展位号
-            phone:res.data.data.info.phone,  //手机号
-            contact:res.data.data.info.contact,  //联系人
-            
+              info:res.data
           })
-          console.log('id',that.data.accepArray)
         } else {
-
         }
       },
-      fail: function (err) {
-        // 服务异常
-      }
-    })
+      function () { });
   },
 
   /**

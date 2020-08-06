@@ -18,7 +18,7 @@ Page({
     hiddenhangye: false,  //转单弹窗
     host:app.globalData.url,
     operatorindex:0,
-    operatorArray:['操作员1','操作员2','操作员3'],//展馆号
+    operatorArray:'',//展馆号
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -124,7 +124,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(2)
     var openId = wx.getStorageSync('openId')
     var that = this;
     wx.request({
@@ -136,7 +135,7 @@ Page({
       method: 'POST',
       success(res) {
         if (res.data.Code == 200) {
-          console.log(8,res.data.data);
+          console.log(8,res.data.data.operatorArray);
           that.setData({
             data:res.data.data,
             data_len: Object.keys(res.data.data).length,
