@@ -1,7 +1,7 @@
 //app.js
 //const url = 'https://www.exposaas.com/'
 // const url ='http://www.newmoble.com/'
-const url = 'http://test.exposaas.cn/'
+const url = 'http://www.newmoble.com/'
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -117,6 +117,25 @@ App({
       tabBar: tabBar
     });
   },
+  //第二种底部，原理同上
+  editTabBar2: function () {
+    var curPageArr = getCurrentPages();
+    var curPage = curPageArr[curPageArr.length - 1];
+    var pagePath = curPage.route;
+    if (pagePath.indexOf('/') != 0) {
+      pagePath = '/' + pagePath;
+    }
+    var tabBar = this.globalData.tabBar1;
+    for (var i = 0; i < tabBar.list.length; i++) {
+      tabBar.list[i].active = false;
+      if (tabBar.list[i].pagePath == pagePath) {
+        tabBar.list[i].active = true;
+      }
+    }
+    curPage.setData({
+      tabBar: tabBar
+    });
+  },
   globalData: {
     userInfo: null,
     hasUserInfo: null,
@@ -126,7 +145,7 @@ App({
       projectId:'',//项目ID
       RoleId:'',//角色ID
     },
-    //第一种底部导航栏显示
+    //第一种底部导航栏显示(操作员)
     tabBar: {
       "color": "#9E9E9E",
       "selectedColor": "#f00",
@@ -163,7 +182,7 @@ App({
       ],
       "position": "bottom"
     },
-    //第二种底部导航栏显示
+    //第二种底部导航栏显示(管理员)
     tabBar1: {
       "color": "#9E9E9E",
       "selectedColor": "#909399",
@@ -208,6 +227,52 @@ App({
         },
         {
           "pagePath": "/pages/admin/person/person",
+          "text": "我的",
+          "iconPath": "/images/icon_wode.svg",
+          "selectedIconPath": "/images/icon_wode_on.svg",
+          "selectedColor": "#303133",
+          "clas": "menu-item1",
+          active: false
+        }
+      ],
+      "position": "bottom"
+    },
+    //第二种底部导航栏显示(巡馆人员)
+    tabBar2: {
+      "color": "#9E9E9E",
+      "selectedColor": "#909399",
+      "backgroundColor": "#fff",
+      "borderStyle": "#ccc",
+      "list": [
+        {
+          "pagePath": "/pages/cruise/cruise",
+          "text": "订单中心",
+          "iconPath": "/images/icon_dingdan.svg",
+          "selectedIconPath": "/images/icon_dingdan_on.svg",
+          "selectedColor": "#303133",
+          "clas": "menu-item1",
+          active: true
+        },
+        {
+          "pagePath": "/pages/cruise/changed/changed",
+          "text": "巡馆整改",
+          "iconPath": "/images/icon_laba.svg",
+          "selectedIconPath": "/images/icon_laba_on.svg",
+          "selectedColor": "#303133",
+          "clas": "menu-item1",
+          active: false
+        },
+        {
+          "pagePath": "/pages/cruise/acceptance/acceptance",
+          "text": "展位验收",
+          "iconPath": "/images/icon_zhanwei.svg",
+          "selectedIconPath": "/images/icon_zhanwei_on.svg",
+          "selectedColor": "#303133",
+          "clas": "menu-item1",
+          active: false
+        },
+        {
+          "pagePath": "/pages/cruise/person/person",
           "text": "我的",
           "iconPath": "/images/icon_wode.svg",
           "selectedIconPath": "/images/icon_wode_on.svg",

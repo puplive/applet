@@ -28,9 +28,15 @@
     <view class="status" wx:if="{{info.order_status==0}}">待接单</view>
 
     <view class="status" wx:if="{{info.order_status==1}}">待配送</view>
-    <view class="upload_img" wx:if="{{info.order_status==1}}">
+    <view class="upload_img clearfix" wx:if="{{info.order_status==1}}">
+      <view class=" img_con" wx:for="{{tempFilePaths}}"  wx:for-index="key">
+        <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+        <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
+          <image src='../../../images/imgdel.svg'></image>
+        </view>
+      </view>
       <view class="col-9 img_con" bindtap="chooseimage">
-        <image class='imgwh' src='{{img}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+        <image class='defaultimg' src='../../../images/camera.svg' catchTap="chooseImageTap" mode="aspectFit"></image>
       </view>
     </view>
     <view class='desc' wx:if="{{info.order_status==1}}">
