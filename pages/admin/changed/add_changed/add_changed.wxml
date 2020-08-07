@@ -49,7 +49,7 @@
     <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="200" bindinput ="descInput" value='{{desc}}'/> <text class="textlimit">0/200</text></view>
   </view>
   <view class="upload_img clearfix">
-    <view class=" img_con" wx:for="{{img}}"  wx:for-index="key">
+    <view class=" img_con" wx:for="{{tempFilePaths}}"  wx:for-index="key">
       <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
       <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
         <image src='../../../../images/imgdel.svg'></image>

@@ -148,8 +148,8 @@ editChangedBtn:function(){
           icon: 'none',
           duration: 2000//持续的时间
         })
-        wx.switchTab({
-          url: '../../../../admin/changed/changed',
+        wx.navigateTo({
+          url: '../changed',
         })
       } else {
         wx.showToast({
@@ -195,7 +195,8 @@ editChangedBtn:function(){
           var punish_id = res.data.data.punish_type == undefined ? '' : res.data.data.punish_type; //处罚方式
           var changetime1 = res.data.data.rectify_time1 + " - " + res.data.data.rectify_time2; 
           console.log('time:',changetime1)
-          var changetime_value = changetime1 == undefined ? '' : changetime1;
+          var changetime_value = changetime1 == undefined ? '' : changetime1; 
+          var change_index = that.data.change_time.indexOf(changetime1);
           var desc = res.data.data.content == undefined ? '' : res.data.data.content;   //详情描述
           var rectify_imgs = res.data.data.rectify_imgs == undefined ? '' : res.data.data.rectify_imgs; //图片
           that.setData({
@@ -205,6 +206,7 @@ editChangedBtn:function(){
             change_id: change_id, //整改类型
             punish_id: punish_id, //处罚方式
             desc: desc, //可以购买数量
+            changetime_index:change_index,
             changetime_value:that.data.changetime_value, //整改时限
             imgres: res.data.data.rectify_imgs.split(","),   //地址省市区
           })

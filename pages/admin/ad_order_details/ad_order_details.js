@@ -13,8 +13,57 @@ Page({
     orderId:'',
     or_type:'', //订单状态
     host:app.globalData.url,
+    img: [],
+    imgres: [],
+    tempFilePaths:[],
   },
+// 点击上传图片
+chooseWxImage: function (type) {
+  var that = this;  
+  console.log(11,that.data.tempFilePaths )
+  wx.chooseImage({
+    count: 9,
+    sizeType: ['original', 'compressed'],
+    sourceType: [type],
+    success: function (res) {
+      var a = res.tempFilePaths
+      var b = that.data.tempFilePaths
+      a.push.apply(a,b);
+      var tempFilePaths = res.tempFilePaths == undefined ? '' :  a ;
+      that.setData({
+        tempFilePaths: tempFilePaths,
+      })
+    }
+  })
+},
 
+chooseimage: function () {
+  var that = this;
+  wx.showActionSheet({
+    itemList: ['从相册中选择', '拍照'],
+    itemColor: "#a3a2a2",
+    success: function (res) {
+      if (!res.cancel) {
+        if (res.tapIndex == 0) {
+          that.chooseWxImage('album')
+        } else if (res.tapIndex == 1) {
+          that.chooseWxImage('camera')
+        }
+      }
+    }
+  })
+
+},
+// 删除图片
+imgDel: function(e){
+  console.log(11,e,e.currentTarget.dataset.value)
+  var that = this;
+  (that.data.tempFilePaths).splice(e.currentTarget.dataset.value,1);
+  that.setData({
+    tempFilePaths:that.data.tempFilePaths
+  })
+  console.log(11,that.data.tempFilePaths)
+},
   /**
    * 生命周期函数--监听页面加载
    */
