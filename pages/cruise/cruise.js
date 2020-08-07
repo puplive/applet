@@ -1,7 +1,7 @@
 const app = getApp()
 var url = app.globalData.url;
 var sendMessageContent = app.globalData.sendMessageContent;
-var call = require("../../../utils/request.js")
+var call = require("../../utils/request.js")
 Page({
 
   /**
@@ -196,7 +196,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.editTabBar1();
+    app.editTabBa2();
   },
 
   /**

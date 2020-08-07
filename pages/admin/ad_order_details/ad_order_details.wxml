@@ -50,7 +50,8 @@
   </view>
 </view>
 <view class="foot_btn">
-  <navigator url='../acceptance_details/acceptance_details'>
+  <view class="fr foot_btnli" wx:if="{{info.order_status==1}}" bindtap="addWanC">完成</view>
+  <navigator url='../acceptance_details/acceptance_details'  wx:if="{{info.order_status==0}}">
     <view class="fr foot_btnli agree">指派</view>
   </navigator>
   <!-- <navigator url='../transfer_order/transfer_order'>

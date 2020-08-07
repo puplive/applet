@@ -37,16 +37,17 @@
       </view>
     </view>
   </view>
-  <view class="list_con" wx:if="{{info.pro_status==3}}">
+  <view class="list_con" wx:if="{{info.pro_status==2}}">
     <view class='desc'>
       <label class=''>添加备注</label>
       <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300"  bindinput ="reasonsText" /> <text class="textlimit">0/300</text></view>
     </view>
   </view>
+  <view class="list_con status" wx:if="{{info.pro_status==3}}">已完成</view>
 </view>
 <view class="foot_btn">
   <!-- <view class="fr foot_btnli" wx:if="{{info.pro_status==1}}">接单</view> -->
-  <view class="fr foot_btnli" wx:if="{{info.pro_status==3}}">完成</view>
+  <view class="fr foot_btnli" wx:if="{{info.pro_status==2}}" bindtap="addWanC">完成</view>
   <navigator url='../acceptance_reject/acceptance_reject' wx:if="{{info.pro_status==1}}">
     <view class="fr foot_btnli ">指派</view>
   </navigator>

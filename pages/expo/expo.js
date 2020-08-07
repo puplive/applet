@@ -108,14 +108,18 @@ Page({
       },
       success: function (res) {
         if (res.data.Code == 200) {
-          sendMessageContent.RoleId = res.data.data.RoleAccess.role_id;
-          if(res.data.data.customer_type==1){
+          sendMessageContent.RoleId = res.data.data.applet_role_id;
+          if(res.data.data.customer_type==1 && res.data.data.applet_role_id>1 ){
             wx.redirectTo({
-              url: "../admin/admin"
+              url: "../cruise/cruise"
+            })
+          }else if(res.data.data.customer_type==2){
+            wx.redirectTo({
+              url: "../operator/operator"
             })
           }else{
             wx.redirectTo({
-              url: "../operator/operator"
+              url: "../admin/admin"
             })
           }
         }else if (res.data.Code == 400) {//提示您还没授权

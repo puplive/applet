@@ -38,7 +38,7 @@ Page({
             var imgres2 = that.data.imgres;
             var img2 = [];
             wx.uploadFile({
-              url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
+              url: url + 'worksite/default/imageupload', //此处换上你的接口地址
               filePath: tempFilePaths[i],
               name: 'img',
               header: {
@@ -131,7 +131,38 @@ Page({
       },
       function () { });
   },
+  //完成操作
+  addWanC:function(){
+    var that = this;
+    var imgs =that.data.imgres;
+    var desc =that.data.desc;
+    var pid  =that.data.proid;
+    var projectId  =sendMessageContent.projectId;
+    var openId = wx.getStorageSync('openId')
+    wx.request({
+      url: url + 'worksite/default/order-finish',
+      data: {projectId:projectId,OpenId:openId,goods_id:pid,ordertype:2,solve_beizhu:desc,solve_img:imgs},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          wx.showToast({
+            title: '成功',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+        } else {
 
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
