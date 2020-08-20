@@ -143,37 +143,79 @@ imgDel: function(e){
       function () { });
   },
   //完成操作
-  addWanC:function(){
-    var that = this;
-    var imgs =that.data.imgres;
-    var desc =that.data.desc;
-    var pid  =that.data.proid;
-    var projectId  =sendMessageContent.projectId;
-    var openId = wx.getStorageSync('openId')
-    wx.request({
-      url: url + 'worksite/default/order-finish',
-      data: {projectId:projectId,OpenId:openId,goods_id:pid,ordertype:2,solve_beizhu:desc,solve_img:imgs},
-      header: {
+addWanC:function(){
+  var that = this;
+  var tempFilePaths = that.data.tempFilePaths;
+  if(tempFilePaths.length>0){
+     for (let i in tempFilePaths) {
+      var imgres2 = that.data.imgres;
+      var img2 = [];
+      wx.uploadFile({
+        url: url + 'worksite/default/imageupload', //此处换上你的接口地址
+        filePath: tempFilePaths[i],
+        name: 'img',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        method: 'POST',
+        formData: {},
+        success: function (res) {
+        var data = JSON.parse(res.data).info.path;
+        data = data.replace(app.globalData.mainServer, '');
+        imgres2.push(data);
+        img2.push(url + data);
+        // console.log(11, imgres2);
+        // console.log(22, img2);
+        that.setData({
+            // tempFilePath可以作为img标签的src属性显示图片
+            img: img2,
+            imgres: imgres2,
+        })
+        if(i==(tempFilePaths.length-1)){//最后一张图片上传完并延时0.1秒在执行保存数据
+            setTimeout(function(){
+            that.saveData();},100)
+            }
+        },
+        fail: function (res) {
+          console.log('fail');
+        },
+    })
+  }
+}else{
+  that.saveData();
+}
+},
+saveData: function(){
+  var that=this;
+  var imgs =that.data.imgres;
+  var desc =that.data.desc;
+  var orderId  =that.data.orderId;
+  var projectId  =sendMessageContent.projectId;
+  var openId = wx.getStorageSync('openId')
+  wx.request({
+    url: url + 'worksite/default/order-finish',
+    data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:1,solve_beizhu:desc,solve_img:imgs},
+    header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      method: 'POST',
-      success(res) {
-        if (res.data.Code == 200) {
-          wx.showToast({
+    },
+    method: 'POST',
+    success(res) {
+      if (res.data.Code == 200) {
+        wx.showToast({
             title: '成功',
             icon: 'none',
             duration: 2000//持续的时间
-          })
-        } else {
-
-        }
-      },
-      fail: function (err) {
+        })
+        // wx.navigateTo({
+        //   url: '../ad_order',
+        // })
+      } else {}
+    },
+    fail: function (err) {
         // 服务异常
-      }
-    })
-
-  },
+    }
+  })
+},
   /**
    * 生命周期函数--监听页面隐藏
    */
