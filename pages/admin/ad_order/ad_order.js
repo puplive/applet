@@ -160,7 +160,7 @@ Page({
       hiddenassign: true,
     })
   },
-  // 转单取消按钮
+  // 指派取消按钮
   confirmS: function (e) {
     this.setData({
       hiddenassign: true,
