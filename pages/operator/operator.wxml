@@ -18,7 +18,7 @@
     <!-- 内容列表 -->
     <view wx:if="{{data_len>0}}" class='list f12' wx:for="{{data}}"  wx:key="key"  wx:for-item="value">
       <view class='list_con'  wx:if="{{value.ordertype==1}}">
-        <navigator url='order_details/order_details'>
+        <navigator url='order_details/order_details?id={{value.id}}&or_type={{_num}}'>
           <view class="list_zwh clearfix">
            <text class="fl list_zwh_left">{{value.project_info.library_number}} {{value.project_info.number}}</text>
             <text class="fr list_zwh_right">{{value.time}}</text>
@@ -40,18 +40,36 @@
             </view>
           </view>
         </navigator>
-        <view class="list_btn clearfix" wx:if="{{value.goods_press==1}}">
-          <view class="assign_on fr"  bindtap="transferOrder">接单</view>
-          <view class="urging fr">
-            <view class="air_bg"><text class="iconfont icon-lingdang "></text></view>催办
+        <view wx:if="{{value.order_status==0}}">
+          <view class="list_btn clearfix" wx:if="{{value.goods_press==1}}">
+            <view class="assign_on fr"  bindtap="takeOrder" data-key="{{value.id}}" data-type="1">接单</view>
+            <view class="urging fr">
+              <view class="air_bg"><text class="iconfont icon-lingdang "></text></view>催办
+            </view>
+          </view>
+          <view class="list_btn clearfix"  wx:if="{{value.goods_press==0}}">
+            <view class="assign fr" bindtap="takeOrder" data-key="{{value.id}}" data-type="1">接单</view>
           </view>
         </view>
-        <view class="list_btn clearfix"  wx:if="{{value.goods_press==0}}">
-          <view class="assign fr">接单</view>
+        <view wx:if="{{value.order_status==1}}">
+           <view class="list_btn clearfix">
+              <view class="assign fr">
+                <navigator url='transfer_order/transfer_order?orderid={{value.id}}&or_type=1'>转单</navigator>
+              </view>
+              <!-- <view  class="assign fr" bindtap="assignBtn" data-key="{{value.id}}" data-type="1" data-zgh="{{value.z_guan}}">转单</view> -->
+              <view class="assign fr" bindtap="wancBtn" data-key="{{value.id}}" data-type="1">完成</view>
+            </view>
+        </view>
+        <view wx:if="{{value.order_status==2}}">
+        </view>
+        <view wx:if="{{value.order_status==3}}">
+            <view class="list_btn clearfix">
+               <view class="assign fr" data-key="{{value.id}}">转单中</view>
+            </view>
         </view>
       </view>
       <view class='list_con' wx:if="{{value.ordertype==2}}">
-        <navigator url='order_details/order_details'> 
+        <navigator url='ques_details/ques_details?id={{value.id}}'> 
           <view class="list_zwh clearfix">
             <text class="fl list_zwh_left">{{value.z_guan}} {{value.zw_hao}}</text>
             <text class="fr list_zwh_right">{{value.time}}</text>
@@ -65,14 +83,32 @@
             </view>
           </view>
         </navigator>
-        <view class="list_btn clearfix" wx:if="{{value.pro_press==1}}">
-          <view class="assign_on fr"  bindtap="transferOrder">接单</view>
-          <view class="urging fr">
-            <view class="air_bg"><text class="iconfont icon-lingdang "></text></view>催办
+        <view wx:if="{{value.pro_status==1}}">
+          <view class="list_btn clearfix" wx:if="{{value.pro_press==1}}">
+            <view class="assign_on fr"  bindtap="takeOrder" data-key="{{value.id}}" data-type="2">接单</view>
+            <view class="urging fr">
+              <view class="air_bg"><text class="iconfont icon-lingdang "></text></view>催办
+            </view>
+          </view>
+          <view class="list_btn clearfix"  wx:if="{{value.pro_press==0}}">
+            <view class="assign fr" bindtap="takeOrder" data-key="{{value.id}}" data-type="2">接单</view>
           </view>
         </view>
-        <view class="list_btn clearfix"  wx:if="{{value.pro_press==0}}">
-          <view class="assign fr">接单</view>
+        <view wx:if="{{value.pro_status==2}}">
+           <view class="list_btn clearfix">
+           <view class="assign fr">
+                <navigator url='transfer_order/transfer_order?orderid={{value.id}}&or_type=2'>转单</navigator>
+              </view>
+              <!-- <view class="assign fr" bindtap="assignBtn" data-key="{{value.id}}" data-type="2" data-zgh="{{value.z_guan}}">转单</view> -->
+              <view class="assign fr" bindtap="wancBtn" data-key="{{value.id}}" data-type="2">完成</view>
+            </view>
+        </view>
+        <view wx:if="{{value.pro_status==3}}">
+        </view>
+        <view wx:if="{{value.pro_status==4}}">
+            <view class="list_btn clearfix">
+               <view class="assign fr" data-key="{{value.id}}">转单中</view>
+            </view>
         </view>
       </view>
     </view>
@@ -115,11 +151,37 @@
   </view>
 </view>
 <!-- 弹窗选择规格 end -->
-
-<!-- 转单弹窗 start-->
-<modal hidden="{{hiddentransfer}}" title="转单内容" confirm-text="接单" cancel-text="拒绝" bindcancel="cancelM" bindconfirm="confirmM">
-  <view class='leixing_list'>
-    胜多负少飞电风扇发
+<!-- 转单弹窗 -->
+<modal hidden="{{hiddenassign}}" title="转单内容" confirm-text="接单" cancel-text="拒绝" bindcancel="cancelOrder" bindconfirm="confirmOrder">
+  <view class='order_con'>
+    <view>
+      <view class="or_content">
+        <view class="or_zwh">{{orderinfo.project_info.library_number}} {{orderinfo.project_info.number}}</view>
+        <view class="clearfix">
+          <view class="fl">
+            <image class="or_img" src="{{host}}public/{{orderinfo.img}}"></image>
+          </view>
+          <view class="fl zd_con">
+            <view>
+              <text class="zd_litit">{{orderinfo.goods_array.name}}</text>
+            </view>
+            <view class="zd_list clearfix">
+              <text class="zd_listname fl">{{orderinfo.goods_array.type}}</text>
+              <text class="zd_listnum fr">×{{orderinfo.goods_nums}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
+</modal>
+<!-- 转单弹窗 start-->
+<modal hidden="{{hiddentransfer}}" title="转单内容" confirm-text="接单" cancel-text="拒绝" bindcancel="cancelPro" bindconfirm="confirmPro">
+ <view class="or_content">
+    <view class="or_zwh">{{proinfo.z_guan}} {{proinfo.zw_hao}}</view>
+   <view class='leixing_list'>
+      {{proinfo.pro_content}}
+    </view>
+ </view>
 </modal>
 <!-- 转单弹窗 end-->

@@ -2,23 +2,23 @@
   <view class='section col'>
     <label class='col-4'>转单对象</label>
     <!-- <input class='col-8 hangye_text' placeholder="请输入您的项目名称" value='{{pro_name}}' bindinput ="proName"/> -->
-    <picker class="picker col-8  hangye_text" mode="selector" range="{{projectArray}}" range-key="hui_nickname" value="{{projectindex}}" bindchange="bindProjectChange" data-huiname="{{projectArray[projectindex].hui_nickname}}">
+    <picker class="picker col-8  hangye_text" mode="selector" range="{{change_type}}" range-key="username" bindchange="bindProjectChange" data-id="{{change_type[change_index].id}}">
       <view class="picker">
-        <text class=''>{{projectArray[projectindex].hui_nickname}}</text>
+        <text class=''>{{change_type[change_index].username}}</text>
         <image class='sanjiao' src='../../../images/arrowright.png'></image>
       </view>
     </picker>
   </view>
   <view class='desc'>
     <label class=''>转单理由</label>
-    <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300" /> <text class="textlimit">0/300</text></view>
+    <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300" bindinput ="descInput"/> <text class="textlimit">0/300</text></view>
   </view>
   <view class='section col'>
     <label class='col-4'>抄送对象</label>
     <!-- <input class='col-8 hangye_text' placeholder="请输入您的项目名称" value='{{pro_name}}' bindinput ="proName"/> -->
-    <picker class="picker col-8  hangye_text" mode="selector" range="{{projectArray}}" range-key="hui_nickname" value="{{projectindex}}" bindchange="bindProjectChange" data-huiname="{{projectArray[projectindex].hui_nickname}}">
+    <picker class="picker col-8  hangye_text" mode="selector" range="{{carbon_type}}" range-key="username" value="{{carbon_index}}" bindchange="bindcarbon" data-id="{{carbon_type[carbon_index].id}}">
       <view class="picker">
-        <text class=''>{{projectArray[projectindex].hui_nickname}}</text>
+        <text class=''>{{carbon_type[carbon_index].username}}</text>
         <image class='sanjiao' src='../../../images/arrowright.png'></image>
       </view>
     </picker>
@@ -26,7 +26,7 @@
 </view>
 <!-- 底部按钮 -->
 <view class="foot_btn">
-  <navigator url='add_changed/add_changed'>
-    <view class="add_changed">确定转单</view>
-  </navigator>
+  <!-- <navigator url='add_changed/add_changed'> -->
+    <view class="add_changed" bindtap="ChangedBtn">确定转单</view>
+  <!-- </navigator> -->
 </view>

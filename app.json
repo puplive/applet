@@ -24,19 +24,9 @@
     "pages/operator/changed/changed_details/changed_details",
     "pages/operator/changed/add_changed/add_changed",
     "pages/operator/changed/edit_changed/edit_changed",
+    "pages/operator/ques_details/ques_details",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/cruise/cruise",
-    "pages/cruise/ques_details/ques_details",
-    "pages/cruise/ad_order_details/ad_order_details",
-    "pages/cruise/changed/changed",
-    "pages/cruise/changed/changed_details/changed_details",
-    "pages/cruise/changed/edit_changed/edit_changed",
-    "pages/cruise/acceptance_details/acceptance_details",
-    "pages/cruise/acceptance_reject/acceptance_reject",
-    "pages/cruise/person/user_info/user_info",
-    "pages/cruise/person/identity/identity",
-    "pages/cruise/person/edit_tel/edit_tel"
+    "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",

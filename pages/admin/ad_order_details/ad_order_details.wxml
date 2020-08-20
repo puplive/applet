@@ -41,16 +41,16 @@
     </view>
     <view class='desc' wx:if="{{info.order_status==1}}">
       <label class=''>添加备注</label>
-      <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300" /> <text class="textlimit">0/300</text></view>
+      <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300"  bindinput ="reasonsText" /> <text class="textlimit">0/300</text></view>
     </view>
 
-    <view class="status" wx:if="{{info.order_status==3}}">已完成</view>
-    <view class="list_liconimg" wx:if="{{info.order_status==3}}">
+    <view class="status" wx:if="{{info.order_status==2}}">已完成</view>
+    <view class="list_liconimg" wx:if="{{info.order_status==2}}">
       <image src="../../../images/icon_search.svg"></image>
       <image src="../../../images/icon_search.svg"></image>
       <image src="../../../images/icon_search.svg"></image>
     </view>
-    <view class="changed_details" wx:if="{{info.order_status==3}}">{{info.finish_beizhu}}</view>
+    <view class="changed_details" wx:if="{{info.order_status==2}}">{{info.finish_beizhu}}</view>
     <view class="end_time" wx:if="{{info.order_status==3}}">完成时间：<text>{{info.finish_beizhu}}</text></view>
 
   </view>

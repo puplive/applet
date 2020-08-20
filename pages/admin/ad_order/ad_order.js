@@ -162,9 +162,9 @@ Page({
   },
   // 转单取消按钮
   confirmS: function (e) {
-    // this.setData({
-    //   hiddenassign: true,
-    // })
+    this.setData({
+      hiddenassign: true,
+    })
     var that = this;
     var openId = wx.getStorageSync('openId')
     wx.request({
@@ -181,7 +181,8 @@ Page({
             icon: 'none',
             duration: 2000//持续的时间
           })
-          this.onShow();
+          
+          that.onShow();
         } else {
 
         }
@@ -236,7 +237,39 @@ Page({
       }
     })
   },
+  //列表中点击完成
+  wancBtn:function(e){
+    var that=this;
+    var ordertype=e.currentTarget.dataset.type;
+    var projectId  =sendMessageContent.projectId;
+    var openId = wx.getStorageSync('openId')
+    that.setData({
+      id:e.currentTarget.dataset.key
+    })
+    wx.request({
+      url: url + 'worksite/default/order-finish',
+      data: {projectId:projectId,OpenId:openId,goods_id:that.data.id,ordertype:ordertype},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          wx.showToast({
+            title: '已完成',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+          that.onShow();
+        } else {
 
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

@@ -16,7 +16,13 @@ Page({
     sortnum: 1, //排序
     fenleinum: 1,  //筛选分类
     hiddentransfer: true,  //转单内容弹窗
+    hiddenassign: true,  //转单人员弹窗
     host:app.globalData.url,
+    assignArray:'',
+    assignsel:'',//转单成员的id
+    id:'',//订单id
+    ordertype:'',//订单还是问题类型
+    change_id:'',//转单信息id
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -84,34 +90,200 @@ Page({
       fenleinum: 1,  //筛选分类
     })
   },
-  //转单内容弹窗
-  transferOrder: function () {
-    this.setData({
-      hiddentransfer: false,
+  //接单操作
+  takeOrder: function (e) {
+    var openId = wx.getStorageSync('openId')
+    var that = this;
+    that.setData({
+      id: e.currentTarget.dataset.key,
+      ordertype: e.currentTarget.dataset.type,
+    })
+    wx.request({
+      url: url + 'worksite/default/order-take',
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,ordertype:that.data.ordertype},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          console.log(8,res.data.data);
+          wx.showToast({
+            title: '接单成功',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+          that.onShow();
+        } else {
+
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
     })
   },
-   //转单内容弹窗取消
-  cancelM: function (e) {
+   //转单内容弹窗
+  // transferOrder: function () {
+  //   this.setData({
+  //     hiddentransfer: false,
+  //   })
+  // },
+   //订单确认转单
+  confirmOrder: function (e) {
+    var that = this;
+    this.setData({
+      hiddenassign: true,
+    })
+    var openId = wx.getStorageSync('openId')
+    wx.request({
+      url: url + 'worksite/default/change-ok',
+      data: {OpenId:openId,chang_id:that.data.change_id},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          wx.showToast({
+            title: '成功',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+        } else {}
+        that.onShow();
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+  },
+   //订单拒绝转单
+  cancelOrder: function (e) {
+    var that = this;
+    this.setData({
+      hiddenassign: true,
+    })
+    var openId = wx.getStorageSync('openId')
+    wx.request({
+      url: url + 'worksite/default/change-no',
+      data: {OpenId:openId,chang_id:that.data.change_id},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          wx.showToast({
+            title: '成功',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+        } else {}
+        that.onShow();
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+  },
+  // 问题拒绝转单
+  cancelPro: function (e) {
+    var that = this;
     this.setData({
       hiddentransfer: true,
     })
-  },
-   //转单内容弹窗确定
-  confirmM: function (e) {
-    this.setData({
-      hiddentransfer: true,
+    var openId = wx.getStorageSync('openId')
+    wx.request({
+      url: url + 'worksite/default/change-no',
+      data: {OpenId:openId,chang_id:that.data.change_id},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          wx.showToast({
+            title: '成功',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+        } else {}
+        that.onShow();
+      },
+      fail: function (err) {
+        // 服务异常
+      }
     })
-    this.setData({
-      hiddentransfer: true,
-    })
   },
+  // 问题确认按钮
+  confirmPro: function (e) {
+      var that = this;
+      this.setData({
+        hiddentransfer: true,
+      })
+      var openId = wx.getStorageSync('openId')
+      wx.request({
+        url: url + 'worksite/default/change-ok',
+        data: {OpenId:openId,chang_id:that.data.change_id},
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        method: 'POST',
+        success(res) {
+          if (res.data.Code == 200) {
+            wx.showToast({
+              title: '成功',
+              icon: 'none',
+              duration: 2000//持续的时间
+            })
+          } else {}
+          that.onShow();
+        },
+        fail: function (err) {
+          // 服务异常
+        }
+      })
+    },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     app.editTabBar();
   },
+//列表中点击完成
+wancBtn:function(e){
+  var that=this;
+  var ordertype=e.currentTarget.dataset.type;
+  var projectId  =sendMessageContent.projectId;
+  var openId = wx.getStorageSync('openId')
+  that.setData({
+    id:e.currentTarget.dataset.key
+  })
+  wx.request({
+    url: url + 'worksite/default/order-finish',
+    data: {projectId:projectId,OpenId:openId,goods_id:that.data.id,ordertype:ordertype},
+    header: {
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    method: 'POST',
+    success(res) {
+      if (res.data.Code == 200) {
+        wx.showToast({
+          title: '已完成',
+          icon: 'none',
+          duration: 2000//持续的时间
+        })
+        that.onShow();
+      } else {
 
+      }
+    },
+    fail: function (err) {
+      // 服务异常
+    }
+  })
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -140,6 +312,37 @@ Page({
             data_len: Object.keys(res.data.data).length,
             type: that.data._num,
           })
+        } else {
+
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+    wx.request({
+      url: url + 'worksite/default/change-info',
+      data: {projectId:sendMessageContent.projectId,OpenId:openId},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          console.log(99999,res.data.data);
+          if(res.data.data.type==1){
+            that.setData({
+              hiddenassign: false,
+              orderinfo:res.data.data,
+              change_id:res.data.data.change_id
+            })   
+          }else{
+            that.setData({
+              hiddentransfer: false,
+              proinfo:res.data.data,
+              change_id:res.data.data.change_id
+            })
+          }
         } else {
 
         }
