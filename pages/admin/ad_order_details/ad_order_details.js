@@ -6,7 +6,7 @@ var call = require("../../../utils/request.js");
 Page({
 
   /**
-   * 页面的初始数据
+   * 页面的初始数据 
    */
   data: {
     info:[],//详情内容
@@ -17,6 +17,9 @@ Page({
     imgres: [],
     tempFilePaths:[],
     desc:'',//添加备注
+    hiddenassign: true,  //指派弹窗
+    assignArray:'',
+    assignsel:'',//指派成员的id
   },
 // 点击上传图片
 chooseWxImage: function (type) {
@@ -69,6 +72,81 @@ imgDel: function(e){
  reasonsText: function (e) {
   this.setData({
     desc: e.detail.value
+  })
+},
+
+ // 指派
+ assignBtn:function(e){
+  var that = this;
+  that.setData({
+    id: e.currentTarget.dataset.key,
+    ordertype: e.currentTarget.dataset.type,
+  })
+  var zgh = e.currentTarget.dataset.zgh
+  var openId = wx.getStorageSync('openId')
+    wx.request({
+      url: url + 'worksite/default/appoint-info',
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,zgh:zgh,type:that.data.ordertype},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          console.log(8,res.data.data);
+          that.setData({
+            assignArray:res.data.data,
+            data_len: Object.keys(res.data.data).length,
+          })
+          console.log('单选',that.data.assignArray)
+        } else {
+
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+  this.setData({
+    hiddenassign: false,
+  })
+},
+// 指派确认按钮
+cancelS: function (e) {
+  this.setData({
+    hiddenassign: true,
+  })
+},
+// 指派取消按钮
+confirmS: function (e) {
+  this.setData({
+    hiddenassign: true,
+  })
+  var that = this;
+  var openId = wx.getStorageSync('openId')
+  wx.request({
+    url: url + 'worksite/default/order-appoint',
+    data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,appoint_id:that.data.assignsel,ordertype:that.data.ordertype},
+    header: {
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    method: 'POST',
+    success(res) {
+      if (res.data.Code == 200) {
+        wx.showToast({
+          title: '指派成功',
+          icon: 'none',
+          duration: 2000//持续的时间
+        })
+        
+        that.onShow();
+      } else {
+
+      }
+    },
+    fail: function (err) {
+      // 服务异常
+    }
   })
 },
   /**

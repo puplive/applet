@@ -57,10 +57,21 @@
 </view>
 <view class="foot_btn">
   <view class="fr foot_btnli" wx:if="{{info.order_status==1}}" bindtap="addWanC">完成</view>
-  <navigator url='../acceptance_details/acceptance_details'  wx:if="{{info.order_status==0}}">
-    <view class="fr foot_btnli agree">指派</view>
-  </navigator>
+  <view wx:if="{{info.order_status==0}}">
+    <view class="fr foot_btnli agree" bindtap="assignBtn" data-key="{{info.id}}" data-type="2" data-zgh="{{info.z_guan}}">指派</view>
+  </view>
   <!-- <navigator url='../transfer_order/transfer_order'>
     <view class="fr foot_btnli agree">转单</view>
   </navigator> -->
 </view>
+
+<!-- 指派弹窗 -->
+<modal hidden="{{hiddenassign}}" title="指派" confirm-text="确定" cancel-text="取消" bindcancel="cancelS" bindconfirm="confirmS">
+  <view class='assign_con'>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{assignArray}}">
+        <radio class="radio" value="{{item.applet_id}}" color="#ECBB49" />{{item.role_name}}-{{item.username}}
+      </label>
+    </radio-group>
+  </view>
+</modal>
