@@ -1,6 +1,6 @@
 //app.js
-//const url = 'https://www.exposaas.com/'
-// const url ='http://www.newmoble.com/'
+// const url = 'https://www.exposaas.com/'
+// const url = 'http://test.exposaas.cn/'
 const url = 'http://www.newmoble.com/'
 App({
   onLaunch: function () {
@@ -171,7 +171,7 @@ App({
           active: true
         },
         {
-          "pagePath": "/pages/admin/person/person",
+          "pagePath": "/pages/operator/person/person",
           "text": "我的",
           "iconPath": "/images/icon_wode.svg",
           "selectedIconPath": "/images/icon_wode_on.svg",

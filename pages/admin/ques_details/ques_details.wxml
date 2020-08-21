@@ -26,7 +26,7 @@
   <view class="list_con" wx:if="{{info.pro_status==2}}">
     <view class="status">已接单</view>
     <view class="upload_img clearfix">
-      <view class=" img_con" wx:for="{{img}}"  wx:for-index="key">
+      <view class=" img_con" wx:for="{{tempFilePaths}}"  wx:for-index="key">
         <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
         <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
           <image src='../../../images/imgdel.svg'></image>

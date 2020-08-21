@@ -1,3 +1,5 @@
+<import src="../../tabbar/tabbar.wxml"/>
+<template is="tabBar" data="{{tabBar}}"/>
 <view class="top">
   <view class="top_left fl">
     <image src="{{userInfo.avatarUrl}}"></image>

@@ -51,7 +51,7 @@
       <image src="../../../images/icon_search.svg"></image>
     </view>
     <view class="changed_details" wx:if="{{info.order_status==2}}">{{info.finish_beizhu}}</view>
-    <view class="end_time" wx:if="{{info.order_status==3}}">完成时间：<text>{{info.finish_beizhu}}</text></view>
+    <view class="end_time" wx:if="{{info.order_status==2}}">完成时间：<text>{{info.finish_time}}</text></view>
 
   </view>
 </view>
