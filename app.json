@@ -7,6 +7,7 @@
     "pages/tabbar/tabbar",
     "pages/admin/ad_order/ad_order",
     "pages/admin/ques_details/ques_details",
+    "pages/admin/ques_order_details/ques_order_details",
     "pages/admin/ad_order_details/ad_order_details",
     "pages/admin/changed/changed",
     "pages/admin/changed/changed_details/changed_details",
@@ -25,6 +26,7 @@
     "pages/operator/changed/add_changed/add_changed",
     "pages/operator/changed/edit_changed/edit_changed",
     "pages/operator/ques_details/ques_details",
+    "pages/operator/ques_order_details/ques_order_details",
     "pages/index/index",
     "pages/logs/logs"
   ],
