@@ -125,7 +125,7 @@ App({
     if (pagePath.indexOf('/') != 0) {
       pagePath = '/' + pagePath;
     }
-    var tabBar = this.globalData.tabBar1;
+    var tabBar = this.globalData.tabBar2;
     for (var i = 0; i < tabBar.list.length; i++) {
       tabBar.list[i].active = false;
       if (tabBar.list[i].pagePath == pagePath) {

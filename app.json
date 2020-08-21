@@ -32,7 +32,20 @@
     "pages/operator/person/edit_tel/edit_tel",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/cruise/cruise"
+    "pages/cruise/cruise",
+    "pages/cruise/ques_details/ques_details",
+    "pages/cruise/order_details/order_details",
+    "pages/cruise/changed/changed",
+    "pages/cruise/changed/changed_details/changed_details",
+    "pages/cruise/changed/add_changed/add_changed",
+    "pages/cruise/changed/edit_changed/edit_changed",
+    "pages/cruise/acceptance/acceptance",
+    "pages/cruise/acceptance_details/acceptance_details",
+    "pages/cruise/acceptance_reject/acceptance_reject",
+    "pages/cruise/person/person",
+    "pages/cruise/person/user_info/user_info",
+    "pages/cruise/person/identity/identity",
+    "pages/cruise/person/edit_tel/edit_tel"
   ],
   "window":{
     "backgroundTextStyle":"light",
