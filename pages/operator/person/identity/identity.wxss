@@ -1,0 +1,54 @@
+page{background-color: #fff;}
+.con{
+  width: 90%;
+  padding: 2%;
+  box-shadow:0px 10px 20px -10px rgba(224,224,224,0.5);
+  border-radius:8px;
+  margin:0 auto 20px;
+}
+.section{
+  height: 30px;
+  font-size: 26rpx;
+  margin-bottom: 10px;
+}
+.rz_img{
+  display: inline-block;
+  width: 30rpx;
+  height: 30rpx;
+}
+.rz_status{
+  display: inline-block;
+  line-height: 30px;
+  text-align: right;
+}
+.section label{
+  line-height: 30px;
+}
+.picker{
+  background-color: #F3F3F3;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 8px;
+}
+.section input{
+  background-color: #F3F3F3;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 8px;
+}
+.section text{
+  height: 30px;
+  line-height: 30px;
+}
+.rz_button{
+  width: 130px;
+  height:34px;
+  /* line-height: 34px; */
+  border-radius:2px;
+  border:1px solid #D3B364;
+  background-color: #fff;
+  color:#D3B364;
+}
+.rz_button:after{
+  border: none; 
+} 
