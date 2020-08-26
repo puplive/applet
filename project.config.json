@@ -27,11 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-<<<<<<< HEAD
-		"useCompilerModule": false,
-=======
 		"useCompilerModule": true,
->>>>>>> 23780b53a0c261bbff2431d9697a251e67ee5761
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
