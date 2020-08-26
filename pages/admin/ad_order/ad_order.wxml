@@ -67,7 +67,21 @@
       </view>
 
       <view class="list_con"  wx:if="{{value.ordertype==2}}">
-        <navigator url='../ques_details/ques_details?id={{value.id}}' class=''> 
+        <navigator wx:if="{{value.order_id==null}}" url='../ques_details/ques_details?id={{value.id}}' class=''> 
+          <view class="list_zwh clearfix">
+            <text class="fl list_zwh_left">{{value.z_guan}} {{value.zw_hao}}</text>
+            <text class="fr list_zwh_right">{{value.time}}</text>
+          </view>
+          <view class="list_li clearfix">
+            <image src="/images/header_img.png" class="fl list_img"></image>
+            <view class="list_licon fl">
+              <view>
+                <text class="list_litit">{{value.pro_content}}</text>
+              </view>
+            </view>
+          </view>
+        </navigator>
+        <navigator wx:else url='../ques_order_details/ques_order_details?id={{value.id}}' class=''> 
           <view class="list_zwh clearfix">
             <text class="fl list_zwh_left">{{value.z_guan}} {{value.zw_hao}}</text>
             <text class="fr list_zwh_right">{{value.time}}</text>

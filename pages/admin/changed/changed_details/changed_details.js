@@ -85,7 +85,11 @@ Page({
             icon: 'none',
             duration: 2000//持续的时间
           })
-          that.onreadycon();
+          setTimeout(() => {
+            wx.redirectTo({
+              url: "../changed"
+            });
+          }, 1000);
         } else {
           wx.showToast({
             title: '删除失败',
@@ -119,7 +123,7 @@ Page({
           })
           setTimeout(() => {
             wx.redirectTo({
-              url: "../changed_details/changed_details"
+              url: "../changed"
             });
             that.setData({
               zwh: zwh,

@@ -6,23 +6,29 @@
   </view> 
   <view class="list_con" wx:for-items="{{accepArray}}" wx:for-index="key">
     <view class="time">{{item.apply_time}}</view>
+     <view class="acc_img col">
+      <view class="col-3" wx:for="{{item.check_img}}" wx:for-item="img_item">
+       <image src="{{host}}/{{img_item}}"></image>
+      </view>
+      <!-- <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view> -->
+    </view>
     <view wx:if="{{item.check_status == '2'}}">
+      <view class="time">{{item.bohui_time}}</view>
       <view class="al_reject">已驳回</view>
       <view class="reject_be">驳回理由：{{item.check_bohui}}</view>
     </view>
-    <view class="acc_img col">
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
-      </view>
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
+    <view class="acc_img col" wx:if="{{item.check_status == '2'}}">
+      <view class="col-3" wx:for="{{item.check_bohui_img}}" wx:for-item="img_item">
+       <image src="{{host}}/{{img_item}}"></image>
       </view>
     </view>
   </view>
-   <view class="status"  wx:if="{{accepArray[accepArray.length-1].check_status == '1'}}" >待验收</view>
-    <view class="status" wx:if="{{accepArray[accepArray.length-1].check_status == '3'}}">已完成</view>
+   <view class="status"  wx:if="{{check_status==1}}" >待验收</view>
+    <view class="status" wx:if="{{check_status==3}}">已完成</view>
 </view>
-<view class="foot_btn" wx:if="{{accepArray[accepArray.length-1].check_status == '1'}}" data-88="{{accepArray[accepArray.length-1].check_status}}">
+<view class="foot_btn" wx:if="{{check_status==1}}">
   <view class="fr foot_btnli agree" bindtap="agreeBtn">通过</view>
   <navigator url='../acceptance_reject/acceptance_reject?check_id={{check_id}}&&check_info_id={{check_info_id}}'>
     <view class="fr foot_btnli reject" bindtap="rejectBtn">驳回</view>
