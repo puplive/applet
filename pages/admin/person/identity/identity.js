@@ -58,21 +58,12 @@ Page({
           wx.showToast({
             title: '认证成功',
             icon: 'none',
-            duration: 2000//持续的时间
+            duration: 50000//持续的时间
           })
-          var indentityInfo = {
-            fr_name: username,
-            fr_tel: credit,
-            nickname: nickname
-          };
+          wx.navigateTo({
+            url: "../../../expo/expo"
+          })
           // wx.setStorageSync('hasuser', true)
-          setTimeout(function () {
-            that.setData({
-              isShow: true,
-              isShow: wx.getStorageSync('hasuser'),
-              indentityInfo: indentityInfo,
-            })
-          }, 2000)
         } else {
           wx.showToast({
             isShow: wx.getStorageSync('hasuser'),

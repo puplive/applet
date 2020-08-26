@@ -124,9 +124,9 @@ Page({
           }
         }else if (res.data.Code == 400) {//提示您还没授权
           wx.showToast({
-            title: '未授权',
+            title: '未授权,请前往授权',
             icon: 'none',
-            duration: 2000//持续的时间
+            duration: 5000//持续的时间
           })
         }else {
           wx.navigateTo({

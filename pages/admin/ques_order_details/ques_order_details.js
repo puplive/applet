@@ -176,7 +176,7 @@ confirmS: function (e) {
     var that = this;
     var id = that.data.orderId
     var type = that.data.or_type
-    call.request('worksite/default/order-details', {goods_id:id,projectId:sendMessageContent.projectId,OpenId:openId,ordertype:1,type:type},
+    call.request('worksite/default/order-details', {goods_id:id,projectId:sendMessageContent.projectId,OpenId:openId,ordertype:2,type:type},
       function (res) {
         if (res.Code == 200) {
           console.log(res.data)
