@@ -1,0 +1,56 @@
+<view class="contain">
+  <view class="zwh">{{info.z_guan}} {{info.zw_hao}}
+    <text class="question" wx:if="{{info.pro_type==1}}">水接驳问题</text>
+    <text class="question" wx:if="{{info.pro_type==2}}">电接驳问题</text>
+    <text class="question" wx:if="{{info.pro_type==3}}">租赁问题</text>
+    <text class="question" wx:if="{{info.pro_type==4}}">其他问题</text>
+  </view>
+  <view class="person_name">
+    <text>{{info.pro_content}}</text>
+  </view>
+  <view class="list_con">
+    <view class="acc_img col">
+      <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view>
+      <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view>
+      <view class="col-3">
+        <image src="../../../images/icon_search.svg"></image>
+      </view>
+    </view>
+    <view class="time">反馈时间：{{info.pro_time}}</view>
+  </view>
+  <view class="list_con status" wx:if="{{info.pro_status==1}}">待接单</view>
+  <view class="list_con" wx:if="{{info.pro_status==2}}">
+    <view class="status">待配送</view>
+    <view class="upload_img clearfix">
+      <view class=" img_con" wx:for="{{tempFilePaths}}"  wx:for-index="key">
+        <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+        <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
+          <image src='../../../images/imgdel.svg'></image>
+        </view>
+      </view>
+      <view class="col-9 img_con" bindtap="chooseimage">
+        <image class='defaultimg' src='../../../images/camera.svg' catchTap="chooseImageTap" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+  <view class="list_con" wx:if="{{info.pro_status==2}}">
+    <view class='desc'>
+      <label class=''>添加备注</label>
+      <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300"  bindinput ="reasonsText" /> <text class="textlimit">0/300</text></view>
+    </view>
+  </view> 
+  <view class="list_con status" wx:if="{{info.pro_status==3}}">已完成</view>
+  <view class="status" wx:if="{{info.pro_status==4}}">转单中</view>
+</view>
+<view class="foot_btn">
+
+  <view class="fr foot_btnli" bindtap="takeOrder" data-key="{{info.id}}" wx:if="{{info.pro_status==1}}">接单</view>
+  <navigator url='../acceptance_reject/acceptance_reject' wx:if="{{info.pro_status==2}}">
+    <view class="fr foot_btnli ">转单</view>
+  </navigator>
+  <view class="fr foot_btnli" wx:if="{{info.pro_status==2}}" bindtap="addWanC">完成</view>
+</view>

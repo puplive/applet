@@ -1,4 +1,7 @@
-var app = getApp();
+const app = getApp()
+var url = app.globalData.url;
+var sendMessageContent = app.globalData.sendMessageContent;
+var call = require("../../../utils/request.js")
 Page({
 
   /**
@@ -13,6 +16,19 @@ Page({
     sortnum:1, //排序 
     fenleinum:1,  //筛选分类
     hiddenhangye: false,  //转单弹窗
+    hiddenassign: true,  //指派弹窗
+    host:app.globalData.url,
+    // operatorindex:0,
+    // operatorArray:['操作员1','操作员2','操作员3'],//展馆号
+    // assignArray: [
+    //   { id: 1, value: '租赁-张伟伟'},
+    //   { id: 2, value: '水工-胜利大街' },
+    // ],
+    assignArray:'',
+    assignsel:'',//指派成员的id
+    applet:'',
+    id:'',//订单id
+    ordertype:'',//订单还是问题类型
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -21,6 +37,52 @@ Page({
     })
     this.onShow();
   },
+  // 人员选择单选
+  radioChange: function (e) {
+    var that = this;
+    let value = e.detail.value;
+    this.setData({
+      assignsel : value
+    })
+  },
+  // 指派
+  assignBtn:function(e){
+    var that = this;
+    that.setData({
+      id: e.currentTarget.dataset.key,
+      ordertype: e.currentTarget.dataset.type,
+    })
+    var zgh = e.currentTarget.dataset.zgh
+    var openId = wx.getStorageSync('openId')
+      wx.request({
+        url: url + 'worksite/default/appoint-info',
+        data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,zgh:zgh,type:that.data.ordertype},
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        method: 'POST',
+        success(res) {
+          if (res.data.Code == 200) {
+            console.log(8,res.data.data);
+            that.setData({
+              assignArray:res.data.data,
+              data_len: Object.keys(res.data.data).length,
+            })
+            console.log('单选',that.data.assignArray)
+          } else {
+  
+          }
+        },
+        fail: function (err) {
+          // 服务异常
+        }
+      })
+    this.setData({
+      hiddenassign: false,
+    })
+  },
+
+
   // 订单筛选按展馆
   screenZhanguan: function (e) {
     this.setData({
@@ -80,16 +142,57 @@ Page({
       fenleinum: 1,  //筛选分类
     })
   },
+  // 转单确认按钮
   cancelM: function (e) {
     this.setData({
       hiddenhangye: true,
     })
   },
+  // 转单取消按钮
   confirmM: function (e) {
     this.setData({
       hiddenhangye: true,
     })
   },
+  // 指派确认按钮
+  cancelS: function (e) {
+    this.setData({
+      hiddenassign: true,
+    })
+  },
+  // 指派取消按钮
+  confirmS: function (e) {
+    this.setData({
+      hiddenassign: true,
+    })
+    var that = this;
+    var openId = wx.getStorageSync('openId')
+    wx.request({
+      url: url + 'worksite/default/order-appoint',
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,appoint_id:that.data.assignsel,ordertype:that.data.ordertype},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          wx.showToast({
+            title: '指派成功',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+          
+          that.onShow();
+        } else {
+
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -108,9 +211,65 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var openId = wx.getStorageSync('openId')
+    var that = this;
+    wx.request({
+      url: url + 'worksite/default/order-info',
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,type:that.data._num,role_id:sendMessageContent.RoleId},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          console.log(8,res.data.data);
+          that.setData({
+            data:res.data.data,
+            data_len: Object.keys(res.data.data).length,
+            type: that.data._num,
+          })
+        } else {
 
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
   },
+  //列表中点击完成
+  wancBtn:function(e){
+    var that=this;
+    var ordertype=e.currentTarget.dataset.type;
+    var projectId  =sendMessageContent.projectId;
+    var openId = wx.getStorageSync('openId')
+    that.setData({
+      id:e.currentTarget.dataset.key
+    })
+    wx.request({
+      url: url + 'worksite/default/order-finish',
+      data: {projectId:projectId,OpenId:openId,goods_id:that.data.id,ordertype:ordertype},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          wx.showToast({
+            title: '已完成',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+          that.onShow();
+        } else {
 
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

@@ -15,10 +15,10 @@
           <view class="changed_style">
             <text>{{item.punish_name}}    </text><text>整改时限  {{item.rectify_time1}}-{{item.rectify_time2}}</text>
           </view>
-          <view class="list_liconimg">
-            <image src="{{host}}/{{item.rectify_imgs}}"></image>
-            <image src="../../../../images/icon_search.svg"></image>
-            <image src="../../../../images/icon_search.svg"></image>
+          <view class="list_liconimg clearfix" >
+            <view class="fl list_liconimg_img" wx:for="{{item.rectify_imgs}}" wx:for-item="img_item">
+              <image src="{{host}}/{{img_item}}"></image>
+            </view>
           </view>
           <view class="changed_details">{{item.content}}</view>
         </view>
@@ -26,7 +26,7 @@
       <view class="list_btn clearfix {{item.status==1? 'show':'hidden'}}">
         <view class="list_btnli fr" bindtap="endBtn" data-id="{{item.id}}">完成</view>
         <view class="list_btnli fr" bindtap="delBtn" data-id="{{item.id}}">删除</view>
-        <navigator url='../edit_changed/edit_changed'><view class="list_btnli edit_changed fr">编辑</view></navigator>
+        <navigator url='../edit_changed/edit_changed?changeid={{item.id}}'><view class="list_btnli edit_changed fr">编辑</view></navigator>
       </view> 
       <view class="list_btn clearfix {{item.status==2? 'show':'hidden'}}">
           <view class="revoke_on fr">已完成</view>

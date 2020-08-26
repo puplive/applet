@@ -1,4 +1,5 @@
 page{background-color: #fff;}
+.row{margin: 0 0 120rpx;}
 .section{
   font-size: 28rpx;
   height: 112rpx;
@@ -46,15 +47,27 @@ page{background-color: #fff;}
 }
 .img_con{
   margin-left: 2%;
-  margin-top: 20rpx;
+  margin-top: 30rpx;
+  margin-right: 56rpx;
   width: 160rpx;
   height: 160rpx;
   border: 1px dashed rgba(0, 0, 0, .1);
+  float: left;
+  position: relative;
 }
-.img_con image{
+.img_con .imgwh{
   width: 100%;
   height:100%;
 }
-.foot_btn{width:100%;height:80rpx; padding: 20rpx 0;position: fixed; bottom: 0rpx;}
+.img_con .defaultimg{
+  width: 50%;
+  height: 50%;
+  display: block;
+  margin: 25% auto;
+}
+/* 图片删除按钮 */
+.imgdel{position: absolute; top: -25rpx; right: -25rpx;}
+.imgdel image{width: 50rpx; height: 50rpx;}
+.foot_btn{width:100%;height:80rpx; padding: 20rpx 0;position: fixed; bottom: 0rpx;background-color: #fff;}
 .add_changed{width:96%;height:80rpx;line-height: 80rpx; background:rgba(236,187,73,1);border-radius:2px; color: #fff; text-align: center; margin-left: 2%;}
 

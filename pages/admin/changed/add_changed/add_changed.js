@@ -20,8 +20,9 @@ Page({
     changetime_index:0,
     changetime_value:'',
     change_time: ['9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '18:00 - 19:00', '19:00 - 20:00','20:00 - 21:00', '21:00 - 22:00', '22:00 - 23:00','23:00 - 24:00'], //整改时限
-    img: '../../../../images/camera.png',
-    imgres: '',
+    img: [],//临时路径
+    imgres: [],//图片路径
+    tempFilePaths:[], //临时路径
   },
   // 展馆号
   bindProjectChange: function(e){
@@ -72,7 +73,6 @@ Page({
   },
   // 点击处罚方式
   bindPunish: function (e) {
-    console.log(13,e)
     this.setData({
       punish_index:e.detail.value,
       punish_id:this.data.punish_method[e.detail.value].id,
@@ -87,38 +87,19 @@ Page({
   },
   // 点击上传图片
   chooseWxImage: function (type) {
-    var that = this;    
+    var that = this;  
+    console.log(11,that.data.tempFilePaths )
     wx.chooseImage({
       count: 9,
       sizeType: ['original', 'compressed'],
       sourceType: [type],
       success: function (res) {
-        var tempFilePaths = res.tempFilePaths;
-        console.log('图片',tempFilePaths)
-        
-        wx.uploadFile({
-          url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
-          filePath: tempFilePaths[0],
-          name: 'img',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded' // 默认值
-          },
-          method: 'POST',
-          formData: {},
-          success: function (res) {
-            console.log(12,tempFilePaths[0]);
-            var data = JSON.parse(res.data).info.path;
-            data = data.replace(app.globalData.mainServer, '');
-            console.log(11, data);
-            that.setData({
-              // tempFilePath可以作为img标签的src属性显示图片
-              img: url + data,
-              imgres: data,
-            })
-          },
-          fail: function (res) {
-            console.log('fail');
-          },
+        var a = res.tempFilePaths
+        var b = that.data.tempFilePaths
+        a.push.apply(a,b);
+        var tempFilePaths = res.tempFilePaths == undefined ? '' :  a ;
+        that.setData({
+          tempFilePaths: tempFilePaths,
         })
       }
     })
@@ -141,7 +122,17 @@ Page({
     })
 
   },
-// 详细地址
+  // 删除图片
+  imgDel: function(e){
+    console.log(11,e,e.currentTarget.dataset.value)
+    var that = this;
+    (that.data.tempFilePaths).splice(e.currentTarget.dataset.value,1);
+    that.setData({
+      tempFilePaths:that.data.tempFilePaths
+    })
+    console.log(11,that.data.tempFilePaths)
+  },
+// 详细描述
 descInput: function (e) {
   this.setData({
     desc: e.detail.value
@@ -151,6 +142,48 @@ descInput: function (e) {
   // 提交
   addChangedBtn:function(){
     var that = this;
+    var tempFilePaths = that.data.tempFilePaths;
+    if(tempFilePaths.length>0){
+      for (let i in tempFilePaths) {
+        var imgres2 = that.data.imgres;
+        var img2 = [];
+        wx.uploadFile({
+          url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
+          filePath: tempFilePaths[i],
+          name: 'img',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          method: 'POST',
+          formData: {},
+          success: function (res) {
+            var data = JSON.parse(res.data).info.path;
+            data = data.replace(app.globalData.mainServer, '');
+            imgres2.push(data);
+            img2.push(url + data);
+            // console.log(11, imgres2);
+            // console.log(22, img2);
+            that.setData({
+              // tempFilePath可以作为img标签的src属性显示图片
+              img: img2,
+              imgres: imgres2,
+            })
+            if(i==(tempFilePaths.length-1)){//最后一张图片上传完并延时0.1秒在执行保存数据
+              setTimeout(function(){
+              that.saveData();},100)
+            }
+          },
+          fail: function (res) {
+            console.log('fail');
+          },
+        })
+      }
+    }else{
+      that.saveData();
+    }
+  },
+  saveData : function(){
+    var that = this;
     var z_guan= that.data.z_guan; //展馆号
     var zw_hao= that.data.zw_hao;
     var rectify_type = that.data.change_id; //整改类型
@@ -159,7 +192,7 @@ descInput: function (e) {
     var changetimeArray=changetime_value.split("-"); //整改时限
     var content = that.data.desc;
     var rectify_imgs =that.data.imgres;
-    console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1])
+    console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1],'图',rectify_imgs)
     wx.request({
       url: url + 'worksite/rectify/rectify-add',
       data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: changetimeArray[0],rectify_time2:changetimeArray[1],content:content,rectify_imgs:rectify_imgs},
@@ -174,8 +207,12 @@ descInput: function (e) {
             icon: 'none',
             duration: 2000//持续的时间
           })
-          wx.switchTab({
-            url: '../../../../admin/changed/changed',
+          // wx.switchTab({
+          //   url: '../../../../admin/changed/changed',
+          // }) 
+          
+          wx.navigateTo({
+            url: '../changed',
           })
         } else {
           wx.showToast({
@@ -190,7 +227,6 @@ descInput: function (e) {
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

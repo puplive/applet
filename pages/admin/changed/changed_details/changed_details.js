@@ -85,14 +85,7 @@ Page({
             icon: 'none',
             duration: 2000//持续的时间
           })
-          setTimeout(() => {
-            wx.redirectTo({
-              url: "../changed_details/changed_details"
-            });
-            this.setData({
-              zwh: zwh,
-            })
-          }, 1000);
+          that.onreadycon();
         } else {
           wx.showToast({
             title: '删除失败',
@@ -145,6 +138,31 @@ Page({
       }
     })
   },
+  // 页面调取内容方法
+  onreadycon: function(e){
+    var openId = wx.getStorageSync('openId')
+    var that = this;
+    wx.request({
+      url: url + 'worksite/rectify/rlist-details',
+      data: {zw_hao:that.data.zwh,OpenId:openId},
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success(res) {
+        if (res.data.Code == 200) {
+          that.setData({
+            changedetails: res.data.data,
+            z_guan:res.data.data[0].z_guan,  //展馆号
+          })
+        } else {
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -159,35 +177,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var openId = wx.getStorageSync('openId')
-    var that = this;
-    wx.request({
-      url: url + 'worksite/rectify/rlist-details',
-      data: {zw_hao:that.data.zwh,OpenId:openId},
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success(res) {
-        if (res.data.Code == 200) {
-          var changedetails_img = [];
-            for (let i in res.data.data) {
-              changedetails_img.push(res.data.data[i].rectify_imgs);
-            }
-          that.setData({
-            changedetails: res.data.data,
-            z_guan:res.data.data[0].z_guan,  //展馆号
-            // changedetails_img:res.data.data.rectify_imgs  
-          })
-          console.log(22,changedetails_img)
-        } else {
-
-        }
-      },
-      fail: function (err) {
-        // 服务异常
-      }
-    })
+    this.onreadycon();
   },
 
   /**

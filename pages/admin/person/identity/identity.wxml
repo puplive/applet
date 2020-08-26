@@ -5,11 +5,12 @@
     </view>
     <view class='section col'>
       <label class='col-3 x-center'>公司名称</label>
-      <picker class="picker col-9  hangye_text" mode="selector" range="{{projectArray}}" range-key="nickname" value="{{projectindex}}" bindchange="bindProjectChange" data-proid="{{projectArray[projectindex].const_id}}">
+      <!-- <picker class="picker col-9  hangye_text" mode="selector" range="{{projectArray}}" range-key="nickname" value="{{projectindex}}" bindchange="bindProjectChange" data-proid="{{projectArray[projectindex].const_id}}">
         <view>
           <text data-proid="{{projectArray[projectindex].const_id}}">{{projectArray[projectindex].nickname}}</text>
         </view>
-      </picker>
+      </picker> -->
+      <text class=' x-center'>{{pro_name}}</text>
     </view>
     <view class='section col'>
       <label class='col-3 x-center'>手机号</label>

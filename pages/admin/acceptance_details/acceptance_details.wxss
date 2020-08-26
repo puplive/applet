@@ -15,7 +15,7 @@ page{ background-color: #fff;}
 .al_reject{color: #E54C4A; font-size: 32rpx;}
 .reject_be{color:#303133; font-size:32rpx;}
 
-.foot_btn{ position: fixed; bottom: 0;width: 100%; height: 86rpx; border-top: 1px solid #F5F7FA;}
+.foot_btn{ position: fixed; bottom: 0;width: 100%; height: 86rpx; border-top: 1px solid #F5F7FA; background-color: #fff;}
 .foot_btnli{width:160rpx;height:48rpx;border-radius:24rpx; border-width: 1px; border-style: solid; text-align: center;color: #606266;margin-top:18rpx;}
 .foot_btn .agree{background:rgba(107,199,60,0.05);border-color: rgba(107,199,60,1); margin:18rpx 20rpx 0;}
 .foot_btn .reject{background:rgba(229,76,74,0.05);border-color: rgba(229,76,74,1);}
