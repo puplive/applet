@@ -123,7 +123,7 @@ Page({
             wx.redirectTo({
               url: "../operator/operator"
             })
-          }
+         }
         }else if (res.data.Code == 400) {//提示您还没授权
           wx.showToast({
             title: '未授权,请前往授权',

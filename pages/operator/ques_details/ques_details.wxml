@@ -10,14 +10,8 @@
   </view>
   <view class="list_con">
     <view class="acc_img col">
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
-      </view>
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
-      </view>
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
+      <view class="col-3"  wx:for="{{info.pro_img}}"  wx:key="k"  wx:for-item="val">
+        <image src="{{host}}{{val}}"></image>
       </view>
     </view>
     <view class="time">反馈时间：{{info.pro_time}}</view>
