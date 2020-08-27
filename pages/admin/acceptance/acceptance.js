@@ -75,9 +75,10 @@ Page({
         console.log(1,res);
         if (res.data.Code == 200) {
           that.setData({
-            accepArray: res.data.data,
-            accepArray_len: Object.keys(res.data.data).length,
+            accepArray: res.data.data.data,
+            accepArray_len: Object.keys(res.data.data.data).length,
             type: that.data._num,
+            type:res.data.data.type
           })
         } else {
 
