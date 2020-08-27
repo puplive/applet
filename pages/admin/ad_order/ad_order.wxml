@@ -4,13 +4,13 @@
     <view class='row fenlei'>
       <view class='col f14'>
         <view class="col-3 nav_text">
-          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待接单</text><text>(10)</text>
+          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待接单</text><text>()</text>
         </view> 
         <view class="col-3 nav_text" >
-          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">待解决</text><text>(22)</text>
+          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">待解决</text><text>()</text>
         </view>
         <view class="col-3 nav_text">
-          <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已完成</text><text>(3)</text>
+          <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已完成</text><text>()</text>
         </view>
         <text class="iconfont icon-mianxing_loudou screen col-3" catchtap="screenBtn"></text>
       </view>
