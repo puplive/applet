@@ -1,0 +1,22 @@
+page{ background-color: #fff;}
+.col {
+  flex-wrap:wrap;
+} 
+.contain{padding-bottom: 120rpx; width: 96%; margin: 0 2%;}
+.zwh{width:96%; padding: 0 2%;font-size: 44rpx; font-weight: bold;color: #000;line-height: 60rpx; margin-top: 20rpx;}
+.person_name{width:96%; padding: 0 2%;font-size: 32rpx; margin-bottom: 20rx;}
+.person_name .tel{color: #5294F9; margin-left: 20rpx; }
+.list_con{margin-top: 16rpx; width: 96%; padding: 0 2%;}
+.list_con:nth-child(2n){background-color:#F9FAFB; border-radius: 4rpx;}
+.list_con .time{ color: #909399; font-size: 24rpx; line-height: 50rpx;}
+.list_con .acc_img image{width:calc(100% - 16rpx);height: 160rpx; margin-top: 10rpx; border: 1px solid #909399;}
+.list_con .acc_img image:nth-child(4n){margin-right: 0;}
+.status{color: #ECBB49; font-size: 32rpx; margin-top: 20rpx;}
+.al_reject{color: #E54C4A; font-size: 32rpx;}
+.reject_be{color:#303133; font-size:32rpx;}
+
+.foot_btn{ position: fixed; bottom: 0;width: 100%; height: 86rpx; border-top: 1px solid #F5F7FA; background-color: #fff;}
+.foot_btnli{width:160rpx;height:48rpx;border-radius:24rpx; border-width: 1px; border-style: solid; text-align: center;color: #606266;margin-top:18rpx;}
+.foot_btn .agree{background:rgba(107,199,60,0.05);border-color: rgba(107,199,60,1); margin:18rpx 20rpx 0;}
+.foot_btn .reject{background:rgba(229,76,74,0.05);border-color: rgba(229,76,74,1);}
+

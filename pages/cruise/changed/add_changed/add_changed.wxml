@@ -1,0 +1,68 @@
+<view class='con row'> 
+  <view class='section col'>
+    <label class='col-4'>展馆号</label>
+    <picker class="picker col-8 hangye_text" mode="selector" range="{{zgArray}}" value="{{zg_index}}" bindchange="bindProjectChange" data-zgh="{{zgArray[zg_index]}}">
+      <view class="picker">
+        <text class=''>{{zgArray[zg_index]}}</text>
+        <image class='sanjiao' src='../../../../images/arrowright.png'></image>
+      </view>
+    </picker>
+  </view>
+  <view class='section col'>
+    <label class='col-4'>展位号</label>
+    <picker class="picker col-8  hangye_text" mode="selector" range="{{zwhArray}}" value="{{zwh_index}}" bindchange="bindZwh" data-zwh="{{zwhArray[zwh_index]}}">
+      <view class="picker">
+        <text class=''>{{zwhArray[zwh_index]}}</text>
+        <image class='sanjiao' src='../../../../images/arrowright.png'></image>
+      </view>
+    </picker>
+  </view>
+  <view class='section col'>
+    <label class='col-4'>整改类型</label>
+    <picker class="picker col-8  hangye_text" mode="selector" value="{{change_index}}" range-key="{{'name'}}" range="{{change_type}}" bindchange="bindChange" data-id="{{change_type[change_index].id}}">
+      <view class="picker col">
+        <text class='col-10'>{{change_type[change_index].name}}</text>
+        <image class='sanjiao col-2' src='../../../../images/arrowright.png'></image>
+      </view>
+    </picker>
+  </view>
+  <view class='section col'>
+    <label class='col-4'>处罚方式</label>
+    <picker class="picker col-8  hangye_text" mode="selector" range-key="{{'name'}}" range="{{punish_method}}" value="{{punish_index}}" bindchange="bindPunish"  data-id="{{punish_method[punish_index].id}}">
+      <view class="picker col">
+        <text class='col-10'>{{punish_method[punish_index].name}}</text>
+        <image class='sanjiao col-2' src='../../../../images/arrowright.png'></image>
+      </view>
+    </picker>
+  </view>
+  <view class='section col'>
+    <label class='col-4'>整改时限</label>
+    <picker class="picker col-8  hangye_text" mode="selector" range="{{change_time}}" value="{{changetime_index}}" bindchange="bindChangeTime" data-time="{{change_time[changetime_index]}}">
+      <view class="picker">
+        <text class=''>{{change_time[changetime_index]}}</text>
+        <image class='sanjiao' src='../../../../images/arrowright.png'></image>
+      </view>
+    </picker>
+  </view>
+  <view class='desc'>
+    <label class=''>详情描述</label>
+    <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="200" bindinput ="descInput" value='{{desc}}'/> <text class="textlimit">0/200</text></view>
+  </view>
+  <view class="upload_img clearfix">
+    <view class=" img_con" wx:for="{{tempFilePaths}}"  wx:for-index="key">
+      <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+      <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
+        <image src='../../../../images/imgdel.svg'></image>
+      </view>
+    </view>
+    <view class="col-9 img_con" bindtap="chooseimage">
+      <image class='defaultimg' src='../../../../images/camera.svg' catchTap="chooseImageTap" mode="aspectFit"></image>
+    </view>
+  </view>
+</view>
+<!-- 底部按钮 -->
+<view class="foot_btn">
+  <!-- <navigator url='add_changed/add_changed'> -->
+    <view class="add_changed" bindtap="addChangedBtn">提交</view>
+  <!-- </navigator> -->
+</view>

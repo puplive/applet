@@ -1,0 +1,70 @@
+<view class="model user_wx">
+  <view class="clearfix user_wx_li">
+    <text class="fl">我的头像</text>
+    <image class="fr head_img" src='{{userInfo.avatarUrl}}'></image>
+  </view>
+  <view class="clearfix user_wx_li">
+    <text class="fl">昵称</text>
+    <text class="fr">{{userInfo.nickName}}</text>
+  </view>
+</view>
+<view class="user_info model">
+  <view class="user_info_tit">基本资料</view>
+  <view class="clearfix user_info_li">
+    <label class="fl">手机号 <text class="colred">*</text></label>
+    <view class="fr">
+     <block wx:if="{{tel}}">
+        <navigator url="../../person/edit_tel/edit_tel">
+          <text class="tel" wx:if="{{tel}}">{{tel}}</text>
+          <image class='icon_right' src='../../../../images/arrowright.png'></image>
+        </navigator>
+      </block>
+      <block wx:else>
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="get_tel">填写手机号</button>
+      </block>
+       <image class='icon_right' src='../../../../images/arrowright.png'></image>
+    </view>
+  </view>
+  <view class="clearfix user_info_li">
+    <label class="fl">姓名 <text class="colred">*</text></label>
+    <text class="fr" wx:if="{{name}}" bindtap="enditName">{{name}}</text>
+    <block wx:else>
+        <text class="fr" bindtap="enditName">请填写姓名</text> 
+     </block>
+  </view>
+  <view class="clearfix user_info_li">
+    <label class="fl">邮箱 <text class="colred">*</text></label>
+    <text class="fr" wx:if="{{email}}" bindtap="enditEmail">{{email}}</text>
+    <block wx:else>
+        <text class="fr" bindtap="enditEmail">请填写邮箱</text> 
+     </block>
+  </view>
+</view>
+<!--修改姓名弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">填写 / 修改姓名</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <input placeholder-class="input-holder" value="{{namejiu}}" type="text" maxlength="10" bindblur="inputChange" bindinput="tapinputChange" class="input" placeholder="请输入真实姓名"></input>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="save" data-status="confirm">保存</view>
+  </view>
+</view>
+<!--修改邮箱弹窗-->
+<view class="modal-mask" bindtap="hideEmail" catchtouchmove="preventTouchMove" wx:if="{{showEmail}}"></view>
+<view class="modal-dialog" wx:if="{{showEmail}}">
+  <view class="modal-title">填写 / 修改邮箱</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <input placeholder-class="input-holder" value="{{emailjiu}}" type="text" maxlength="30" bindblur="emailChange" bindinput="tapEmailChange" class="input" placeholder="请输入邮箱"></input>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onEmail" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="saveEmail" data-status="confirm">保存</view>
+  </view>
+</view>
