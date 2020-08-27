@@ -109,17 +109,19 @@ Page({
       success: function (res) {
         if (res.data.Code == 200) {
           sendMessageContent.RoleId = res.data.data.applet_role_id;
-          if(res.data.data.customer_type==1 && res.data.data.applet_role_id>1 ){
-            wx.redirectTo({
-              url: "../cruise/cruise"
-            })
-          }else if(res.data.data.customer_type==2){
-            wx.redirectTo({
-              url: "../operator/operator"
-            })
+          if(res.data.data.applet_role_id<3){
+            if(res.data.data.applet_role_id==1){
+              wx.redirectTo({
+                url: "../admin/admin"
+              })
+            }else{
+              wx.redirectTo({
+                url: "../cruise/cruise"
+              })
+            }
           }else{
             wx.redirectTo({
-              url: "../admin/admin"
+              url: "../operator/operator"
             })
           }
         }else if (res.data.Code == 400) {//提示您还没授权
