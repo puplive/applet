@@ -3,9 +3,11 @@ var app = getApp();
 //这里因为我是本地调试，所以host不规范，实际上应该是你备案的域名信息
 
 // var host = 'https://www.exposaas.com/'
-const host ='http://new.newspaper.com/'
+//const host ='http://new.newspaper.com/'
+const host ='http://test.exposaas.cn/'
 
-/**
+
+/**test.exposaas.cn
  * POST请求，
  * URL：接口
  * postData：参数，json类型
