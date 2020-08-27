@@ -40,16 +40,17 @@
   <view class="screen_con"> 
     <view class="screen_contit">展馆</view>
     <view class="screen_conli">
-      <text class="on">N1</text>
+    <text wx:for="{{number}}"  wx:for-index="key"  wx:for-item="value"  data-screennum="{{key}}" bindtap='screenZhanguan' class="{{zhanguannum==key?'on':''}}">{{value.num}}</text>
+      <!-- <text class="on">N1</text>
       <text>N2</text>
       <text>N3</text>
       <text>S1</text>
-      <text>S2</text>
+      <text>S2</text> -->
     </view>
   </view>
   <view class="screen_btn clearfix">
-    <text class="reset_btn fl">重置</text>
-    <text class="confirm_btn fr">确定</text>
+    <text class="reset_btn fl" bindtap="resetBtn">重置</text>
+    <text class="confirm_btn fr"  bindtap="confirm_btn">确定</text>
   </view>
 </view>
 <!-- 弹窗选择规格 end -->

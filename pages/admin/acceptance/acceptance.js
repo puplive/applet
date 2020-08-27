@@ -10,6 +10,10 @@ Page({
   data: {
     _num: 1,//默认分类选中全部
     showModalStatus: false,//显示遮罩
+    fenleinum:1,  //筛选分类
+    zhanguannum:0, //展馆号默认索引
+    number:[], //展馆号集合
+    num:'',//展馆号
   },
   // 点击导航分类
   switchFenlei: function (e) {
@@ -17,6 +21,35 @@ Page({
       _num: e.target.dataset.num
     })
     this.onShow();
+  },
+    // 订单筛选按展馆
+    screenZhanguan: function (e) {
+      this.setData({
+        zhanguannum: e.target.dataset.screennum,
+        num: this.data.number[e.target.dataset.screennum].num,
+      })
+      this.onShow();
+    },
+   // 订单筛选分类
+   screenFenlei: function (e) {
+    this.setData({
+      fenleinum: e.target.dataset.screenfenleinum
+    })
+    this.onShow();
+  },
+   //点击重置
+   resetBtn:function(data){
+    this.setData({
+      zhanguannum:0, //展馆号
+    })
+  },
+  confirm_btn:function(){
+    var that = this;
+    that.setData({//把选中值，放入判断值中
+      showModalStatus: false,//显示遮罩       
+      isHidden: 0,
+    })
+    that.getList(that);
   },
   /**点击筛选 */
   screenBtn: function (data) {
@@ -35,6 +68,7 @@ Page({
     })
     that.setData({//把选中值，放入判断值中
       isHidden: 1,
+      num:that.data.number[that.data.zhanguannum].num,
     })
   },
   /**隐藏筛选 */
@@ -43,6 +77,8 @@ Page({
     that.setData({//把选中值，放入判断值中
       showModalStatus: false,//显示遮罩       
       isHidden: 0,
+      num:'',//展馆号
+      zhanguannum: 0, //展馆号索引
     })
   },
   /**
@@ -50,6 +86,19 @@ Page({
    */
   onLoad: function (options) {
     app.editTabBar1();
+    var ProjectId =sendMessageContent.projectId
+    var that = this;
+    console.log('项目id'+ProjectId)
+    call.getData('worksite/check/number-g?projectId='+ProjectId,
+    function (data) {
+      var items = [];
+          for (let i in data.data) {
+            items.push(data.data[i]);
+          }
+        that.setData({
+          number:items,
+        })
+    },function () { });
   },
 
   /**
@@ -62,11 +111,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var openId = wx.getStorageSync('openId')
     var that = this;
+    that.getList(that);
+  },
+  getList: function(that){
+    var openId = wx.getStorageSync('openId')
     wx.request({
       url: url + 'worksite/check/check-list',
-      data: {projectId:sendMessageContent.projectId,OpenId:openId,check_status:that.data._num},
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,check_status:that.data._num,number:this.data.num},
       method: 'GET',
       header: {
         'content-type': 'application/json' // 默认值
@@ -89,7 +141,6 @@ Page({
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */
