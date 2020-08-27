@@ -23,6 +23,7 @@ Page({
     id:'',//订单id
     ordertype:'',//订单还是问题类型
     change_id:'',//转单信息id
+    host:app.globalData.url,
   },
   // 订单分类
   switchFenlei: function (e) {
