@@ -13,6 +13,7 @@ Page({
     img: [],
     imgres: [],
     desc:'',//添加备注
+    host:app.globalData.url,
   },
   //接单操作
   takeOrder: function (e) {
