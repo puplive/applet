@@ -4,10 +4,10 @@
     <view class='row fenlei'>
       <view class='col f14'>
         <view class="col-3 nav_text">
-          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待接单</text><text>(10)</text>
+          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待接单</text><text>(1)</text>
         </view> 
         <view class="col-3 nav_text" >
-          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">待解决</text><text>(22)</text>
+          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">待解决</text><text>(2)</text>
         </view>
         <view class="col-3 nav_text">
           <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已完成</text><text>(3)</text>
@@ -18,7 +18,7 @@
     <!-- 内容列表 -->
     <view wx:if="{{data_len>0}}" class='list f12' wx:for="{{data}}"  wx:key="key"  wx:for-item="value">
       <view class="list_con" wx:if="{{value.ordertype==1}}">
-        <navigator url='../ad_order_details/ad_order_details?id={{value.id}}&or_type={{_num}}' class=''>
+        <navigator url='order_details/order_details?id={{value.id}}&or_type={{_num}}' class=''>
           <view class="list_zwh clearfix">
             <text class="fl list_zwh_left">{{value.project_info.library_number}} {{value.project_info.number}}</text>
             <text class="fr list_zwh_right">{{value.time}}</text>
@@ -67,7 +67,7 @@
       </view>
 
       <view class="list_con"  wx:if="{{value.ordertype==2}}">
-        <navigator url='../ques_details/ques_details?id={{value.id}}' class=''> 
+        <navigator url='ques_details/ques_details?id={{value.id}}' class=''> 
           <view class="list_zwh clearfix">
             <text class="fl list_zwh_left">{{value.z_guan}} {{value.zw_hao}}</text>
             <text class="fr list_zwh_right">{{value.time}}</text>

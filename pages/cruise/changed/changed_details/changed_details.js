@@ -12,22 +12,25 @@ Page({
     zwh:'',
     changedetails:[],  //详情
     showModalStatus: false,//显示遮罩
-    punishnum:1, //处罚方式筛选
-    changenum: 1,//整改状态筛选
+    punishnum:0, //处罚方式筛选
+    changenum:1,//整改状态筛选
+    num:'',//处罚方式索引
+    punish_method:[]//处罚方式查询
   },
   // 筛选处罚方式
   screenPunish:function(e){
     this.setData({
-      punishnum: e.target.dataset.screenpunishnum
+      punishnum: e.target.dataset.screenpunishnum,
+      num: this.data.punish_method[e.target.dataset.screenpunishnum].id,
     })
-    this.onShow();
+    //this.onShow();
   },
   // 筛选整改状态
   screenChange: function (e) {
     this.setData({
       changenum: e.target.dataset.screenchangenum
     })
-    this.onShow();
+    //this.onShow();
   },
   /**点击筛选 */
   screenBtn: function (data) {
@@ -50,6 +53,7 @@ Page({
     })
     that.setData({//把选中值，放入判断值中
       isHidden: 1,
+      num:that.data.punish_method[that.data.punishnum].num,
     })
   },
   /**隐藏筛选 */
@@ -63,9 +67,18 @@ Page({
   //点击重置
   resetBtn: function (data) {
     this.setData({
-      punishnum: 1, //处罚方式筛选
+      punishnum: 0, //处罚方式筛选
       changenum: 1,//整改状态筛选
     })
+  },
+  //点击完成
+  confirm_btn:function(){
+    var that = this;
+    that.setData({//把选中值，放入判断值中
+      showModalStatus: false,//显示遮罩       
+      isHidden: 0,
+    })
+    that.onreadycon(that);
   },
   // 删除按钮
   delBtn: function(e){
@@ -85,7 +98,11 @@ Page({
             icon: 'none',
             duration: 2000//持续的时间
           })
-          that.onreadycon();
+          setTimeout(() => {
+            wx.redirectTo({
+              url: "../changed"
+            });
+          }, 1000);
         } else {
           wx.showToast({
             title: '删除失败',
@@ -119,7 +136,7 @@ Page({
           })
           setTimeout(() => {
             wx.redirectTo({
-              url: "../changed_details/changed_details"
+              url: "../changed"
             });
             that.setData({
               zwh: zwh,
@@ -144,17 +161,27 @@ Page({
     var that = this;
     wx.request({
       url: url + 'worksite/rectify/rlist-details',
-      data: {zw_hao:that.data.zwh,OpenId:openId},
+      data: {zw_hao:that.data.zwh,OpenId:openId,punish:this.data.num,change:this.data.changenum},
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success(res) {
         if (res.data.Code == 200) {
-          that.setData({
-            changedetails: res.data.data,
-            z_guan:res.data.data[0].z_guan,  //展馆号
-          })
+          console.log(9999,res.data.data)
+          if(res.data.data==null){
+            console.log(22222)
+            that.setData({
+              changedetails:' ',
+              z_guan:res.data.data[0].z_guan,  //展馆号
+            })
+          }else{
+            console.log(111111)
+            that.setData({
+              changedetails: res.data.data,
+              z_guan:res.data.data[0].z_guan,  //展馆号
+            })
+          }
         } else {
         }
       },
@@ -167,10 +194,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     var zwh = options.zwh
     this.setData({
       zwh: zwh,
     })
+   //处罚方式
+   var openId = wx.getStorageSync('openId')
+   wx.request({
+    url: url + 'worksite/rectify/punish',
+    data: {OpenId:openId},
+    method: 'GET',
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success(res) {
+      if (res.data.Code == 200) {
+        var items = [];
+        for (let i in res.data.data) {
+          items.push(res.data.data[i]);
+        }
+        that.setData({
+          punish_method:items,
+        })
+      } else {
+
+      }
+    },
+    fail: function (err) {
+      // 服务异常
+    }
+  })
   },
 
   /**
