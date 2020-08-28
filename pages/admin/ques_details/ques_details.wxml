@@ -37,7 +37,19 @@
       <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300"  bindinput ="reasonsText" /> <text class="textlimit">0/300</text></view>
     </view>
   </view>
-  <view class="list_con status" wx:if="{{info.pro_status==3}}">已完成</view>
+  <view class="list_con status" wx:if="{{info.pro_status==3 && info.slove==null}}">已完成</view>
+  <view class="list_con" wx:if="{{info.slove!=null && info.pro_status==3}}">
+    <view>
+      <view class="list_con status">已完成</view>
+    </view>
+    <view class="acc_img col">
+    <view class="col-3"  wx:for="{{info.slove.solve_img}}"  wx:key="key"  wx:for-item="value">
+        <image src="{{host}}{{value}}"></image>
+      </view>
+    </view>
+    <view class="reject_be">{{info.slove.solve_beizhu}}</view>
+    <view class="time">完成时间：{{info.slove.solve_time}}</view>
+  </view>
 </view>
 <view class="foot_btn">
   <!-- <view class="fr foot_btnli" wx:if="{{info.pro_status==1}}">接单</view> -->

@@ -45,10 +45,13 @@
     </view>
 
     <view class="status" wx:if="{{info.order_status==2}}">已完成</view>
-    <view class="list_liconimg" wx:if="{{info.order_status==2}}">
-      <image src="../../../images/icon_search.svg"></image>
-      <image src="../../../images/icon_search.svg"></image>
-      <image src="../../../images/icon_search.svg"></image>
+    <view class="list_liconimg clearfix" wx:if="{{info.order_status==2}}">
+      <view class="fl list_liconimg_img"  wx:for="{{info.finish_img}}" wx:for-item="img">
+          <image src="{{host}}{{img}}"></image>
+      </view>
+      <!-- <image src="../../../images/icon_search.svg"></image> -->
+      <!-- <image src="../../../images/icon_search.svg"></image>
+      <image src="../../../images/icon_search.svg"></image> -->
     </view>
     <view class="changed_details" wx:if="{{info.order_status==2}}">{{info.finish_beizhu}}</view>
     <view class="end_time" wx:if="{{info.order_status==2}}">完成时间：<text>{{info.finish_time}}</text></view>

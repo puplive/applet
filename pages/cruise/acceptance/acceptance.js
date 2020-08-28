@@ -85,7 +85,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.editTabBar1();
+    app.editTabBar2();
     var ProjectId =sendMessageContent.projectId
     var that = this;
     console.log('项目id'+ProjectId)
