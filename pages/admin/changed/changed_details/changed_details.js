@@ -67,9 +67,11 @@ Page({
   //点击重置
   resetBtn: function (data) {
     this.setData({
-      punishnum: 0, //处罚方式筛选
-      changenum: 1,//整改状态筛选
+      punishnum: '', //处罚方式筛选
+      changenum: '',//整改状态筛选
+      num:'',
     })
+    this.onShow();
   },
   //点击完成
   confirm_btn:function(){

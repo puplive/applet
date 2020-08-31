@@ -28,20 +28,22 @@ Page({
         zhanguannum: e.target.dataset.screennum,
         num: this.data.number[e.target.dataset.screennum].num,
       })
-      this.onShow();
+     // this.onShow();
     },
    // 订单筛选分类
    screenFenlei: function (e) {
     this.setData({
       fenleinum: e.target.dataset.screenfenleinum
     })
-    this.onShow();
+   // this.onShow();
   },
    //点击重置
    resetBtn:function(data){
     this.setData({
-      zhanguannum:0, //展馆号
+      zhanguannum:'', //展馆号
+      num: '',
     })
+    that.getList(that);
   },
   confirm_btn:function(){
     var that = this;

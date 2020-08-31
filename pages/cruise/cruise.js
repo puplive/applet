@@ -14,10 +14,13 @@ Page({
     showModalStatus: false,//显示遮罩
     zhanguannum:1, //展馆号
     sortnum:1, //排序 
-    fenleinum:1,  //筛选分类
+    fenleinum:0,  //筛选分类
     hiddenhangye: false,  //转单弹窗
     hiddenassign: true,  //指派弹窗
     host:app.globalData.url,
+    zhanguannum:0, //展馆号默认索引
+    number:[], //展馆号集合
+    num:'',//展馆号
     // operatorindex:0,
     // operatorArray:['操作员1','操作员2','操作员3'],//展馆号
     // assignArray: [
@@ -86,23 +89,24 @@ Page({
   // 订单筛选按展馆
   screenZhanguan: function (e) {
     this.setData({
-      zhanguannum: e.target.dataset.screennum
+      zhanguannum: e.target.dataset.screennum,
+      num: this.data.number[e.target.dataset.screennum].num,
     })
-    this.onShow();
+    //this.onShow();
   },
   // 订单筛选排序
   screenSort: function (e) {
     this.setData({
       sortnum: e.target.dataset.screensortnum
     })
-    this.onShow();
+    //this.onShow();
   },
   // 订单筛选分类
   screenFenlei: function (e) {
     this.setData({
       fenleinum: e.target.dataset.screenfenleinum
     })
-    this.onShow();
+   // this.onShow();
   },
   /**点击显示筛选 */
   screenBtn: function (data) {
@@ -132,15 +136,27 @@ Page({
     that.setData({//把选中值，放入判断值中
       showModalStatus: false,//显示遮罩       
       isHidden: 0,
+      num:that.data.number[that.data.zhanguannum].num,
     })
   },
   //点击重置
   resetBtn:function(data){
     this.setData({
-      zhanguannum: 1, //展馆号
       sortnum: 1, //排序
-      fenleinum: 1,  //筛选分类
+      fenleinum:0,  //筛选分类
+      num:'',//展馆号
+      zhanguannum: 0, //展馆号索引
     })
+    this.onShow();
+  },
+  //点击确认
+  confirm_btn:function(){
+    var that = this;
+    that.setData({//把选中值，放入判断值中
+      showModalStatus: false,//显示遮罩       
+      isHidden: 0,
+    })
+    that.getList(that);
   },
   // 转单确认按钮
   cancelM: function (e) {
@@ -198,6 +214,32 @@ Page({
    */
   onLoad: function (options) {
     app.editTabBar2();
+    //展馆
+    var that = this;
+    wx.request({
+      url: url + 'worksite/check/number-g',
+      data: {projectId:sendMessageContent.projectId},
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        if (res.data.Code == 200) {
+          var items = [];
+          for (let i in res.data.data) {
+            items.push(res.data.data[i]);
+          }
+          that.setData({
+            number:items,
+          })
+        } else {
+  
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
   },
 
   /**
@@ -211,11 +253,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    that.getList(that);
+  },
+
+  getList: function(that){
     var openId = wx.getStorageSync('openId')
     var that = this;
     wx.request({
       url: url + 'worksite/default/order-info',
-      data: {projectId:sendMessageContent.projectId,OpenId:openId,type:that.data._num,role_id:sendMessageContent.RoleId},
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,type:that.data._num,role_id:sendMessageContent.RoleId,number:this.data.num,fenleinum:this.data.fenleinum},
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -237,6 +284,7 @@ Page({
       }
     })
   },
+
   //列表中点击完成
   wancBtn:function(e){
     var that=this;

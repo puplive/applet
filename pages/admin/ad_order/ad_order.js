@@ -14,7 +14,7 @@ Page({
     showModalStatus: false,//显示遮罩
     zhanguannum:1, //展馆号
     sortnum:1, //排序 
-    fenleinum:1,  //筛选分类
+    fenleinum:0,  //筛选分类
     hiddenhangye: false,  //转单弹窗
     hiddenassign: true,  //指派弹窗
     host:app.globalData.url,
@@ -143,10 +143,11 @@ Page({
   resetBtn:function(data){
     this.setData({
       sortnum: 1, //排序
-      fenleinum: 1,  //筛选分类
+      fenleinum:0,  //筛选分类
       num:'',//展馆号
       zhanguannum: 0, //展馆号索引
     })
+    this.onShow();
   },
   //点击确认
   confirm_btn:function(){
@@ -261,7 +262,7 @@ Page({
     var that = this;
     wx.request({
       url: url + 'worksite/default/order-info',
-      data: {projectId:sendMessageContent.projectId,OpenId:openId,type:that.data._num,role_id:sendMessageContent.RoleId,number:this.data.num},
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,type:that.data._num,role_id:sendMessageContent.RoleId,number:this.data.num,fenleinum:this.data.fenleinum},
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },

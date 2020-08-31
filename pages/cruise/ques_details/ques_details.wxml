@@ -53,10 +53,10 @@
 </view>
 <view class="foot_btn">
   <!-- <view class="fr foot_btnli" wx:if="{{info.pro_status==1}}">接单</view> -->
-  <view class="fr foot_btnli" wx:if="{{info.pro_status==2}}" bindtap="addWanC">完成</view>
+  <!-- <view class="fr foot_btnli" wx:if="{{info.pro_status==2}}" bindtap="addWanC">完成</view>
   <view wx:if="{{info.pro_status==1}}">
     <view class="fr foot_btnli" bindtap="assignBtn" data-key="{{info.id}}" data-type="2" data-zgh="{{info.z_guan}}">指派</view>
-  </view>
+  </view> -->
 </view>
 <!-- 指派弹窗 -->
 <modal hidden="{{hiddenassign}}" title="指派" confirm-text="确定" cancel-text="取消" bindcancel="cancelS" bindconfirm="confirmS">
