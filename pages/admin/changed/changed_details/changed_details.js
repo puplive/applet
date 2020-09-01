@@ -20,6 +20,7 @@ Page({
   // 筛选处罚方式
   screenPunish:function(e){
     this.setData({
+      changenum: e.target.dataset.screenchangenum,
       punishnum: e.target.dataset.screenpunishnum,
       num: this.data.punish_method[e.target.dataset.screenpunishnum].id,
     })
@@ -28,7 +29,9 @@ Page({
   // 筛选整改状态
   screenChange: function (e) {
     this.setData({
-      changenum: e.target.dataset.screenchangenum
+      changenum: e.target.dataset.screenchangenum,
+      punishnum: e.target.dataset.screenpunishnum,
+      num:this.data.num
     })
     //this.onShow();
   },
@@ -53,7 +56,7 @@ Page({
     })
     that.setData({//把选中值，放入判断值中
       isHidden: 1,
-      num:that.data.punish_method[that.data.punishnum].num,
+      num:that.data.num,
     })
   },
   /**隐藏筛选 */
