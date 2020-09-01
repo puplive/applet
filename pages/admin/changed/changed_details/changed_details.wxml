@@ -6,7 +6,7 @@
     </view>
   </view>
   <!-- 列表内容 -->
-  <view class="list">
+  <view class="list" wx:if="{{accepArray_len>0}}" >
     <view class='list_con' wx:for-items="{{changedetails}}">
       <view class="list_li clearfix">
         <view class="list_licon fl">
@@ -33,6 +33,9 @@
       </view>
     </view>
   </view>
+   <view wx:if="{{accepArray_len==0}}" class='no_data'>
+      暂无数据
+    </view>
 </view>
 <!-- 底部按钮 -->
 <view class="foot_btn">

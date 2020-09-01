@@ -4,18 +4,21 @@
     <text>{{contact}}</text>
     <text class="tel">{{phone}}</text>
   </view> 
-  <view class="list_con" wx:for-items="{{accepArray}}" wx:for-index="key">
+<view class="list_con" wx:for-items="{{accepArray}}" wx:for-index="key">
     <view class="time">{{item.apply_time}}</view>
+     <view class="acc_img col">
+      <view class="col-3" wx:for="{{item.check_img}}" wx:for-item="img_item">
+       <image src="{{host}}/{{img_item}}"></image>
+      </view>
+    </view>
     <view wx:if="{{item.check_status == '2'}}">
+      <view class="time">{{item.bohui_time}}</view>
       <view class="al_reject">已驳回</view>
       <view class="reject_be">驳回理由：{{item.check_bohui}}</view>
     </view>
-    <view class="acc_img col">
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
-      </view>
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
+    <view class="acc_img col" wx:if="{{item.check_status == '2'}}">
+      <view class="col-3" wx:for="{{item.check_bohui_img}}" wx:for-item="img_item">
+       <image src="{{host}}/{{img_item}}"></image>
       </view>
     </view>
   </view>

@@ -173,16 +173,16 @@ Page({
       },
       success(res) {
         if (res.data.Code == 200) {
-          console.log(9999,res.data.data)
-          if(res.data.data==null){
-            console.log(22222)
+          console.log(9999,Object.keys(res.data.data).length)
+          if(Object.keys(res.data.data).length==0){
             that.setData({
+              accepArray_len:0,
               changedetails:' ',
-              z_guan:res.data.data[0].z_guan,  //展馆号
+              z_guan:'',  //展馆号
             })
           }else{
-            console.log(111111)
             that.setData({
+              accepArray_len:Object.keys(res.data.data).length,
               changedetails: res.data.data,
               z_guan:res.data.data[0].z_guan,  //展馆号
             })
