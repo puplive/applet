@@ -131,12 +131,13 @@ editChangedBtn:function(){
   var punish_type = that.data.punish_id; //处罚方式
   var changetime_value = that.data.changetime_value;
   var changetimeArray=changetime_value.split("-"); //整改时限
+  
   var content = that.data.desc;
   var rectify_imgs =that.data.imgres;
   console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1],'图',rectify_imgs)
   wx.request({
-    url: url + 'worksite/rectify/rectify-add',
-    data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: changetimeArray[0],rectify_time2:changetimeArray[1],content:content,rectify_imgs:rectify_imgs},
+    url: url + 'worksite/rectify/rectify-edit',
+    data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: changetimeArray[0],rectify_time2:changetimeArray[1],content:content,rectify_imgs:rectify_imgs,rectify_id:that.data.changeid},
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
@@ -153,7 +154,7 @@ editChangedBtn:function(){
         })
       } else {
         wx.showToast({
-          title: '添加失败',
+          title: '修改失败',
           icon: 'none',
           duration: 2000//持续的时间
         })

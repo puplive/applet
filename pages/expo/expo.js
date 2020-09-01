@@ -116,7 +116,7 @@ Page({
               })
             }else{
               wx.redirectTo({
-                url: "../cruise/cruise"
+                url: "../cruise/acceptance/acceptance"
               })
             }
           }else{

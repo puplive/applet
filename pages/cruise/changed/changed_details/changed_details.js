@@ -20,6 +20,7 @@ Page({
   // 筛选处罚方式
   screenPunish:function(e){
     this.setData({
+      changenum: e.target.dataset.screenchangenum,
       punishnum: e.target.dataset.screenpunishnum,
       num: this.data.punish_method[e.target.dataset.screenpunishnum].id,
     })
@@ -28,7 +29,9 @@ Page({
   // 筛选整改状态
   screenChange: function (e) {
     this.setData({
-      changenum: e.target.dataset.screenchangenum
+      changenum: e.target.dataset.screenchangenum,
+      punishnum: e.target.dataset.screenpunishnum,
+      num:this.data.num
     })
     //this.onShow();
   },
@@ -53,7 +56,7 @@ Page({
     })
     that.setData({//把选中值，放入判断值中
       isHidden: 1,
-      num:that.data.punish_method[that.data.punishnum].num,
+      num:that.data.num,
     })
   },
   /**隐藏筛选 */
@@ -67,9 +70,10 @@ Page({
   //点击重置
   resetBtn: function (data) {
     this.setData({
-      punishnum: 0, //处罚方式筛选
-      changenum: 1,//整改状态筛选
+      punishnum:0, //处罚方式筛选
+      changenum:1,//整改状态筛选
     })
+    that.onreadycon(that);
   },
   //点击完成
   confirm_btn:function(){
@@ -168,16 +172,16 @@ Page({
       },
       success(res) {
         if (res.data.Code == 200) {
-          console.log(9999,res.data.data)
-          if(res.data.data==null){
-            console.log(22222)
+          console.log(9999,Object.keys(res.data.data).length)
+          if(Object.keys(res.data.data).length==0){
             that.setData({
+              accepArray_len:0,
               changedetails:' ',
-              z_guan:res.data.data[0].z_guan,  //展馆号
+              z_guan:'',  //展馆号
             })
           }else{
-            console.log(111111)
             that.setData({
+              accepArray_len:Object.keys(res.data.data).length,
               changedetails: res.data.data,
               z_guan:res.data.data[0].z_guan,  //展馆号
             })
@@ -210,12 +214,8 @@ Page({
     },
     success(res) {
       if (res.data.Code == 200) {
-        var items = [];
-        for (let i in res.data.data) {
-          items.push(res.data.data[i]);
-        }
         that.setData({
-          punish_method:items,
+          punish_method:res.data.data,
         })
       } else {
 
