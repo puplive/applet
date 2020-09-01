@@ -108,6 +108,14 @@ page{background-color: #EBEEF5;}
   font-size: 20rpx;
   height:80rpx;
 }  
+.menu-item2{  
+  width: 23%;  
+  float: left;  
+  text-align: center;  
+  padding-top: 18rpx;  
+  font-size: 20rpx;
+  height:80rpx;
+}  
 .tabbar_img{ 
   width: 38rpx;  
   height: 38rpx;  
