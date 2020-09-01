@@ -35,7 +35,7 @@
         </view>
       </navigator>
     </block>
-    <navigator url='changed_details/changed_details' class='list_con'> 
+    <!-- <navigator url='changed_details/changed_details' class='list_con'> 
       <view class="list_zwh clearfix">
         <text class="list_zwh_left">N6 609</text>
       </view>
@@ -52,7 +52,7 @@
           </view>
         </view>
       </view>
-    </navigator>
+    </navigator> -->
   </view>
 </view>
 <!-- 底部按钮 -->

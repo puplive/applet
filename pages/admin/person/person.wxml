@@ -6,7 +6,7 @@
   </view>
   <view class="top_right fl">
     <view class="topr_01"><text class="name">{{userInfo.nickName}}</text><text class="role">{{role_name}}</text></view>
-    <view class="topr_tel">{{tel}}</view>
+    <view class="topr_tel" wx:if="{{tel}}">{{tel}}</view>
     <view class="topr_con col">
       <view class="col-4">余额 <text>0.00</text></view>
       <view class="col-4">积分 <text>0</text></view>
