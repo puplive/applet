@@ -23,6 +23,7 @@ Page({
     img: [],//临时路径
     imgres: [],//图片路径
     tempFilePaths:[], //临时路径
+    lock: false,//验证只能提交一次
   },
   // 展馆号
   bindProjectChange: function(e){
@@ -161,8 +162,6 @@ descInput: function (e) {
             data = data.replace(app.globalData.mainServer, '');
             imgres2.push(data);
             img2.push(url + data);
-            // console.log(11, imgres2);
-            // console.log(22, img2);
             that.setData({
               // tempFilePath可以作为img标签的src属性显示图片
               img: img2,
@@ -192,40 +191,48 @@ descInput: function (e) {
     var changetimeArray=changetime_value.split("-"); //整改时限
     var content = that.data.desc;
     var rectify_imgs =that.data.imgres;
+    var lock = that.data.lock;
     console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1],'图',rectify_imgs)
-    wx.request({
-      url: url + 'worksite/rectify/rectify-add',
-      data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: changetimeArray[0],rectify_time2:changetimeArray[1],content:content,rectify_imgs:rectify_imgs},
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      method: 'POST',
-      success(res) {
-        if (res.data.Code == 200) {
-          wx.showToast({
-            title: '添加成功',
-            icon: 'none',
-            duration: 2000//持续的时间
-          })
-          // wx.switchTab({
-          //   url: '../../../../admin/changed/changed',
-          // }) 
-          
-          wx.navigateTo({
-            url: '../changed',
-          })
-        } else {
-          wx.showToast({
-            title: '添加失败',
-            icon: 'none',
-            duration: 2000//持续的时间
-          })
+    if(!lock){
+      that.setData({
+        lock:true,
+      })
+      wx.request({
+        url: url + 'worksite/rectify/rectify-add',
+        data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: changetimeArray[0],rectify_time2:changetimeArray[1],content:content,rectify_imgs:rectify_imgs},
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        method: 'POST',
+        success(res) {
+          if (res.data.Code == 200) {
+            wx.showToast({
+              title: '添加成功',
+              icon: 'none',
+              duration: 2000//持续的时间
+            })
+            wx.navigateTo({
+              url: '../changed',
+            });
+            that.setData({
+              lock:false,
+            })
+          } else {
+            wx.showToast({
+              title: '添加失败',
+              icon: 'none',
+              duration: 2000//持续的时间
+            });
+            that.setData({
+              lock:true,
+            })
+          }
+        },
+        fail: function (err) {
+          // 服务异常
         }
-      },
-      fail: function (err) {
-        // 服务异常
-      }
-    })
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
