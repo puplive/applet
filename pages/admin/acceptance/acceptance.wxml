@@ -26,6 +26,9 @@
           <text>{{item.contact}}</text>
           <text class="tel">{{item.phone}}</text>
         </view>
+        <view class="list_btn clearfix" wx:if="{{item.check_press==1 && item.check_status==1}}"> 
+          <view class="assign fr">正在催办</view>
+        </view>
       </navigator>
     </view>
     <view wx:if="{{accepArray_len==0}}" class='no_data'>
