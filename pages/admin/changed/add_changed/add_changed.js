@@ -211,11 +211,11 @@ descInput: function (e) {
               icon: 'none',
               duration: 2000//持续的时间
             })
+            that.setData({
+              lock:true,
+            })
             wx.navigateTo({
               url: '../changed',
-            });
-            that.setData({
-              lock:false,
             })
           } else {
             wx.showToast({
@@ -224,7 +224,7 @@ descInput: function (e) {
               duration: 2000//持续的时间
             });
             that.setData({
-              lock:true,
+              lock:false,
             })
           }
         },
