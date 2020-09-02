@@ -10,6 +10,7 @@ Page({
   data: {
     img: [],
     imgres: [],
+    lock: false,//验证只能提交一次
   },
   //获取驳回理由
   reasonsText:function(e){ 
@@ -115,37 +116,49 @@ Page({
     var reasons = that.data.reasons;
     var check_info_id = that.data.check_info_id;
     var imgres = that.data.imgres;
+    var lock = that.data.lock;
     console.log('check_id:',check_id,'reasons:',reasons,'check_info_id:',check_info_id,'imgres',imgres)
-    wx.request({
-      url: url + 'worksite/check/check-bohui',
-      data: {check_id:check_id,bohui:reasons,check_info_id:check_info_id,bohui_img:imgres},
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      method: 'POST',
-      success(res) {
-        if (res.data.Code == 200) {
-          wx.showToast({
-            title: '驳回成功',
-            icon: 'none',
-            duration: 2000//持续的时间
-          })
-          setTimeout(() => {
-            wx.redirectTo({
-              url: "../acceptance/acceptance"
-            });
-            that.setData({
-              check_id: check_id,
+    if(!lock){
+      that.setData({
+        lock:true,
+      })
+      wx.request({
+        url: url + 'worksite/check/check-bohui',
+        data: {check_id:check_id,bohui:reasons,check_info_id:check_info_id,bohui_img:imgres},
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        method: 'POST',
+        success(res) {
+          if (res.data.Code == 200) {
+            wx.showToast({
+              title: '驳回成功',
+              icon: 'none',
+              duration: 2000//持续的时间
             })
-          }, 1000);
-        } else {
-
+            setTimeout(() => {
+              wx.redirectTo({
+                url: "../acceptance/acceptance"
+              });
+              that.setData({
+                check_id: check_id,
+                lock:true,
+              })
+            }, 1000);
+          } else {
+            that.setData({
+              lock:false,
+            })
+          }
+        },
+        fail: function (err) {
+          // 服务异常
+          that.setData({
+            lock:false,
+          })
         }
-      },
-      fail: function (err) {
-        // 服务异常
-      }
-    })
+      })
+    }
   },
 
   /**
