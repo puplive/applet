@@ -17,6 +17,19 @@ Page({
     num:'',//处罚方式索引
     punish_method:[]//处罚方式查询
   },
+  //预览图片
+topic_preview: function(e){
+  var src = e.currentTarget.dataset.src;
+  var imgList = e.currentTarget.dataset.list;//获取data-list
+  var previewImgArr = [];
+  for (var i in imgList) {
+    previewImgArr[i]= this.data.host+imgList[i];
+  }
+  wx.previewImage({
+    current: src,     //当前图片地址
+    urls: previewImgArr,               //所有要预览的图片的地址集合 数组形式
+  })
+},
   // 筛选处罚方式
   screenPunish:function(e){
     this.setData({
