@@ -130,6 +130,9 @@ Page({
             icon: 'none',
             duration: 5000//持续的时间
           })
+          wx.navigateTo({
+             url: '/pages/login/login',
+          })
         }else {
           wx.navigateTo({
             url: "../admin/person/identity/identity?hui=" + sendMessageContent.projectId
