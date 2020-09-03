@@ -27,7 +27,7 @@
           <text class="tel">{{item.phone}}</text>
         </view>
         <view class="list_btn clearfix" wx:if="{{item.check_press==1 && item.check_status==1}}"> 
-          <view class="assign fr">正在催办</view>
+          <view class="assign fr press">正在催办</view>
         </view>
       </navigator>
     </view>
