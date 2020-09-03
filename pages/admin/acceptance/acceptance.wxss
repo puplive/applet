@@ -55,4 +55,4 @@
 .screen_btn .reset_btn{border:1px solid rgba(220,223,230,1);}
 .screen_btn .confirm_btn{border:1px solid rgba(236,187,73,1);background:rgba(236,187,73,1); color: #fff;}
 .no_data{margin-top: 75px;text-align: center;color: #9E9E9E;font-size: 16px;}
-
+.press{color: crimson;font-size: 14px;}
