@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8898611a-ec28-4bea-8ef5-9de5f67f4c23" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change beforePath="$PROJECT_DIR$/pages/expo/expo.js" afterPath="$PROJECT_DIR$/pages/expo/expo.js" />
-      <change beforePath="$PROJECT_DIR$/pages/login/login.js" afterPath="$PROJECT_DIR$/pages/login/login.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -274,7 +272,7 @@
       <workItem from="1598924732636" duration="593000" />
       <workItem from="1598938613435" duration="4794000" />
       <workItem from="1599011279148" duration="2329000" />
-      <workItem from="1599096736932" duration="1883000" />
+      <workItem from="1599096736932" duration="1971000" />
     </task>
     <task id="LOCAL-00001" summary="冲突">
       <created>1594794251559</created>
@@ -423,11 +421,18 @@
       <option name="project" value="LOCAL" />
       <updated>1599104239282</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="小程序授权">
+      <created>1599116620566</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1599116620566</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141530000" />
+    <option name="totallyTimeSpent" value="141618000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -498,7 +503,8 @@
     <MESSAGE value="冲突" />
     <MESSAGE value="小程序" />
     <MESSAGE value="小程序提交" />
-    <option name="LAST_COMMIT_MESSAGE" value="小程序提交" />
+    <MESSAGE value="小程序授权" />
+    <option name="LAST_COMMIT_MESSAGE" value="小程序授权" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

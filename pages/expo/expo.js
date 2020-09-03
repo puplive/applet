@@ -133,7 +133,6 @@ Page({
           wx.navigateTo({
              url: '/pages/login/login',
           })
-          $this.getUserInfo()
         }else {
           wx.navigateTo({
             url: "../admin/person/identity/identity?hui=" + sendMessageContent.projectId
