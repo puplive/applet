@@ -10,7 +10,7 @@
   <!-- 列表内容 -->
   <view class="list">
     <block wx:for-items="{{changeArray}}" wx:for-index="key">
-      <navigator url='changed_details/changed_details?zwh={{key}}' class='list_con'> 
+      <view bindtap="zheng_detail" data-key="{{key}}" class='list_con'> 
         <view class="list_zwh clearfix">
           <text class="list_zwh_left">{{key}}</text>
         </view>
@@ -23,41 +23,15 @@
                   <text class="list_listnum fr">{{item.apply_time}}</text>
                   <text class="list_list_method fr">{{item.punish_name}}</text>
                 </view>
-                
-                <!-- <view class="list_list clearfix">
-                  <text class="list_listname fl">展台超高或超出规划面积</text>
-                  <text class="list_listnum fr">2020/03/01 13:23</text>
-                  <text class="list_list_method revoke fr">已撤销</text>
-                </view> -->
               </view>
             </view>
           </view>
         </view>
-      </navigator>
+      </view>
     </block>
-    <!-- <navigator url='changed_details/changed_details' class='list_con'> 
-      <view class="list_zwh clearfix">
-        <text class="list_zwh_left">N6 609</text>
-      </view>
-      <view class="list_li clearfix">
-        <view class="list_licon fl">
-          <view class="list_li clearfix">
-            <view class="list_licon">
-              <view class="list_list clearfix">
-                <text class="list_listname fl">高空作业无人看护</text>
-                <text class="list_listnum fr">2020/03/01 13:23</text>
-                <text class="list_list_method fr">一次警告</text>
-              </view>
-            </view>
-          </view>
-        </view>
-      </view>
-    </navigator> -->
   </view>
 </view>
 <!-- 底部按钮 -->
 <view class="foot_btn">
-  <navigator url='add_changed/add_changed'>
-    <view class="add_changed"><text class="iconfont icon-fuhao_jiahao"></text>整改通知</view>
-  </navigator>
+  <view class="add_changed" bindtap="zheng_gai"><text class="iconfont icon-fuhao_jiahao"></text>整改通知</view>
 </view>

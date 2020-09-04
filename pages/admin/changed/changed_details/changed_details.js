@@ -17,6 +17,12 @@ Page({
     num:'',//处罚方式索引
     punish_method:[]//处罚方式查询
   },
+  onUnload: function (options) {
+    console.log(444444);
+    wx.reLaunch({
+      url: 'changed/changed',
+    })
+  },
   //预览图片
 topic_preview: function(e){
   var imgList = e.currentTarget.dataset.list;//获取data-list
@@ -29,6 +35,18 @@ topic_preview: function(e){
     current: url,     //当前图片地址
     urls: previewImgArr,               //所有要预览的图片的地址集合 数组形式
   })
+},
+ //整改通知
+ zheng_gai:function(e){
+  wx.redirectTo({
+    url: "../add_changed/add_changed"
+  });
+},
+//编辑
+topic_bainji:function(e){
+  wx.redirectTo({
+    url: "../edit_changed/edit_changed?changeid="+e.target.dataset.id
+  });
 },
   // 筛选处罚方式
   screenPunish:function(e){
