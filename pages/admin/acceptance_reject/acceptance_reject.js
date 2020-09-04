@@ -10,6 +10,7 @@ Page({
   data: {
     img: [],
     imgres: [],
+    lock: false,//验证只能提交一次
   },
   //获取驳回理由
   reasonsText:function(e){ 
@@ -17,46 +18,22 @@ Page({
       reasons: e.detail.value
     })
   },
-  // 点击上传图片
+ // 点击上传图片
   chooseWxImage: function (type) {
-    var that = this;    
+    var that = this;  
+    console.log(11,that.data.tempFilePaths )
     wx.chooseImage({
       count: 9,
       sizeType: ['original', 'compressed'],
       sourceType: [type],
       success: function (res) {
-        var tempFilePaths = res.tempFilePaths;
-        var uploadsimg = [];
-        for (let i in tempFilePaths) {
-          var imgres2 = that.data.imgres;
-          var img2 = [];
-          wx.uploadFile({
-            url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
-            filePath: tempFilePaths[i],
-            name: 'img',
-            header: {
-              'content-type': 'application/x-www-form-urlencoded' // 默认值
-            },
-            method: 'POST',
-            formData: {},
-            success: function (res) {
-              var data = JSON.parse(res.data).info.path;
-              data = data.replace(app.globalData.mainServer, '');
-              imgres2.push(data);
-              img2.push(url + data);
-              // console.log(11, imgres2);
-              // console.log(22, img2);
-              that.setData({
-                // tempFilePath可以作为img标签的src属性显示图片
-                img: img2,
-                imgres: imgres2,
-              })
-            },
-            fail: function (res) {
-              console.log('fail');
-            },
-          })
-        }
+        var a = res.tempFilePaths
+        var b = that.data.tempFilePaths
+        a.push.apply(a,b);
+        var tempFilePaths = res.tempFilePaths == undefined ? '' :  a ;
+        that.setData({
+          tempFilePaths: tempFilePaths,
+        })
       }
     })
   },
@@ -82,54 +59,106 @@ Page({
   imgDel: function(e){
     console.log(11,e,e.currentTarget.dataset.value)
     var that = this;
-    (that.data.img).splice(e.currentTarget.dataset.value,1);
-    (that.data.imgres).splice(e.currentTarget.dataset.value,1);
-    console.log(that.data.img,that.data.imgres)
+    (that.data.tempFilePaths).splice(e.currentTarget.dataset.value,1);
     that.setData({
-      img:that.data.img,
-      imgres:that.data.imgres
+      tempFilePaths:that.data.tempFilePaths
     })
+    console.log(11,that.data.tempFilePaths)
   },
 
   // 确定按钮
-  agreeBtn: function(){
+  agreeBtn:function(){
+    var that = this;
+    var tempFilePaths = that.data.tempFilePaths;
+    if(tempFilePaths.length>0){
+      for (let i in tempFilePaths) {
+        var imgres2 = that.data.imgres;
+        var img2 = [];
+        wx.uploadFile({
+          url: url + 'worksite/check/imageupload', //此处换上你的接口地址
+          filePath: tempFilePaths[i],
+          name: 'img',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          method: 'POST',
+          formData: {},
+          success: function (res) {
+            var data = JSON.parse(res.data).info.path;
+            data = data.replace(app.globalData.mainServer, '');
+            imgres2.push(data);
+            img2.push(url + data);
+            // console.log(11, imgres2);
+            // console.log(22, img2);
+            that.setData({
+              // tempFilePath可以作为img标签的src属性显示图片
+              img: img2,
+              imgres: imgres2,
+            })
+            if(i==(tempFilePaths.length-1)){//最后一张图片上传完并延时0.1秒在执行保存数据
+              setTimeout(function(){
+              that.saveData();},100)
+            }
+          },
+          fail: function (res) {
+            console.log('fail');
+          },
+        })
+      }
+    }else{
+      that.saveData();
+    }
+  },
+  saveData: function(){
     var openId = wx.getStorageSync('openId')
     var that = this;
     var check_id = that.data.check_id;
     var reasons = that.data.reasons;
     var check_info_id = that.data.check_info_id;
     var imgres = that.data.imgres;
+    var lock = that.data.lock;
     console.log('check_id:',check_id,'reasons:',reasons,'check_info_id:',check_info_id,'imgres',imgres)
-    wx.request({
-      url: url + 'worksite/check/check-bohui',
-      data: {check_id:check_id,bohui:reasons,check_info_id:check_info_id,bohui_img:imgres},
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      method: 'POST',
-      success(res) {
-        if (res.data.Code == 200) {
-          wx.showToast({
-            title: '驳回成功',
-            icon: 'none',
-            duration: 2000//持续的时间
-          })
-          setTimeout(() => {
-            wx.redirectTo({
-              url: "../acceptance_details/acceptance_details"
-            });
-            that.setData({
-              check_id: check_id,
+    if(!lock){
+      that.setData({
+        lock:true,
+      })
+      wx.request({
+        url: url + 'worksite/check/check-bohui',
+        data: {check_id:check_id,bohui:reasons,check_info_id:check_info_id,bohui_img:imgres},
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        method: 'POST',
+        success(res) {
+          if (res.data.Code == 200) {
+            wx.showToast({
+              title: '驳回成功',
+              icon: 'none',
+              duration: 2000//持续的时间
             })
-          }, 1000);
-        } else {
-
+            setTimeout(() => {
+              wx.redirectTo({
+                url: "../acceptance/acceptance"
+              });
+              that.setData({
+                check_id: check_id,
+                lock:true,
+              })
+            }, 1000);
+          } else {
+            that.setData({
+              lock:false,
+            })
+          }
+        },
+        fail: function (err) {
+          // 服务异常
+          that.setData({
+            lock:false,
+          })
         }
-      },
-      fail: function (err) {
-        // 服务异常
-      }
-    })
+      })
+    }
   },
 
   /**
@@ -172,6 +201,7 @@ Page({
             zw_hao: res.data.data.zw_hao,
             contact: res.data.data.contact,
             phone:res.data.data.phone,
+            id:res.data.data.id,
           })
         } else {
 

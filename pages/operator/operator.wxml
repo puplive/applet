@@ -124,11 +124,7 @@
   <view class="screen_con"> 
     <view class="screen_contit">展馆</view>
     <view class="screen_conli">
-      <text data-screennum="1" bindtap='screenZhanguan' class="{{zhanguannum==1?'on':''}}">N1</text>
-      <text data-screennum="2" bindtap='screenZhanguan' class="{{zhanguannum==2?'on':''}}">N2</text>
-      <text data-screennum="3" bindtap='screenZhanguan' class="{{zhanguannum==3?'on':''}}">N3</text>
-      <text data-screennum="4" bindtap='screenZhanguan' class="{{zhanguannum==4?'on':''}}">S1</text>
-      <text data-screennum="5" bindtap='screenZhanguan' class="{{zhanguannum==5?'on':''}}">S2</text>
+     <text wx:for="{{number}}"  wx:for-index="key"  wx:for-item="value"  data-screennum="{{key}}" bindtap='screenZhanguan' class="{{zhanguannum==key?'on':''}}">{{value.num}}</text>
     </view>
   </view>
   <view class="screen_con02">
@@ -147,7 +143,7 @@
   </view>
   <view class="screen_btn clearfix">
     <text class="reset_btn fl" bindtap="resetBtn">重置</text>
-    <text class="confirm_btn fr">确定</text>
+    <text class="confirm_btn fr" bindtap="confirm_btn">确定</text>
   </view>
 </view>
 <!-- 弹窗选择规格 end -->

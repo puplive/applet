@@ -8,10 +8,23 @@ Page({
    * 页面的初始数据
    */
   data: { 
+    host:app.globalData.url,
     check_id:'', //整条验收id
-    id:'' //单个id
+    id:'', //单个id
   },
-
+//预览图片
+topic_preview: function(e){
+    var imgList = e.currentTarget.dataset.list;//获取data-list
+    var url = e.currentTarget.dataset.url;
+    var previewImgArr = [];
+    for (var i in imgList) {
+      previewImgArr[i]= this.data.host+imgList[i];
+    }
+    wx.previewImage({
+      current: url,     //当前图片地址
+      urls: previewImgArr,               //所有要预览的图片的地址集合 数组形式
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -38,9 +51,12 @@ Page({
       success(res) {
         if (res.data.Code == 200) {
           wx.showToast({
-            title: '成功通过',
+            title: '成功',
             icon: 'none',
-            duration: 2000   //持续的时间
+            duration: 60000   //持续的时间
+          })
+          wx.navigateTo({
+            url: "../acceptance/acceptance"
           })
         } else {
           wx.showToast({
@@ -85,6 +101,7 @@ Page({
             zw_hao:res.data.data.info.zw_hao,   //展位号
             phone:res.data.data.info.phone,  //手机号
             contact:res.data.data.info.contact,  //联系人
+            check_status:res.data.data.info.check_status, //状态
             check_info_id:res.data.data.data[res.data.data.data.length-1].id, //获取最后一条id
           })
           console.log('id',that.data.accepArray,"check_info_id:",that.data.check_info_id)

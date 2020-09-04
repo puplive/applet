@@ -2,6 +2,7 @@
 //const url = 'https://www.exposaas.com/'
 // const url ='http://www.newmoble.com/'
 const url = 'http://test.exposaas.cn/'
+
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -55,25 +56,6 @@ App({
     }
   })
   },
-   //获取用户信息
-   getUserInfo: function (cb) {
-    var that = this
-    if (this.globalData.personInfo) {
-      typeof cb == "function" && cb(this.globalData.personInfo)
-    } else {
-      //调用登录接口
-      wx.login({
-        success: function () {
-          wx.getUserInfo({
-            success: function (res) {
-              that.globalData.personInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.personInfo)
-            }
-          })
-        }
-      })
-    }
-  },
 
 
   //第一种底部  
@@ -125,7 +107,7 @@ App({
     if (pagePath.indexOf('/') != 0) {
       pagePath = '/' + pagePath;
     }
-    var tabBar = this.globalData.tabBar1;
+    var tabBar = this.globalData.tabBar2;
     for (var i = 0; i < tabBar.list.length; i++) {
       tabBar.list[i].active = false;
       if (tabBar.list[i].pagePath == pagePath) {
@@ -171,7 +153,7 @@ App({
           active: true
         },
         {
-          "pagePath": "/pages/admin/person/person",
+          "pagePath": "/pages/operator/person/person",
           "text": "我的",
           "iconPath": "/images/icon_wode.svg",
           "selectedIconPath": "/images/icon_wode_on.svg",
@@ -189,32 +171,32 @@ App({
       "backgroundColor": "#fff",
       "borderStyle": "#ccc",
       "list": [
-        {
-          "pagePath": "/pages/admin/admin",
-          "text": "首页",
-          "iconPath": "/images/icon_fangzi.svg",
-          "selectedIconPath": "/images/icon_fangzi_on.svg",
-          "clas": "menu-item1",
-          "selectedColor": "#303133",
-          active: false
-        },
-        {
-          "pagePath": "/pages/admin/ad_order/ad_order",
-          "text": "订单中心",
-          "iconPath": "/images/icon_dingdan.svg",
-          "selectedIconPath": "/images/icon_dingdan_on.svg",
-          "selectedColor": "#303133",
-          "clas": "menu-item1",
-          active: true
-        },
+        // {
+        //   "pagePath": "/pages/admin/admin",
+        //   "text": "首页",
+        //   "iconPath": "/images/icon_fangzi.svg",
+        //   "selectedIconPath": "/images/icon_fangzi_on.svg",
+        //   "clas": "menu-item1",
+        //   "selectedColor": "#303133",
+        //   active: false
+        // },
+        // {
+        //   "pagePath": "/pages/admin/ad_order/ad_order",
+        //   "text": "订单中心",
+        //   "iconPath": "/images/icon_dingdan.svg",
+        //   "selectedIconPath": "/images/icon_dingdan_on.svg",
+        //   "selectedColor": "#303133",
+        //   "clas": "menu-item1",
+        //   active: true
+        // },
         {
           "pagePath": "/pages/admin/changed/changed",
           "text": "巡馆整改",
           "iconPath": "/images/icon_laba.svg",
           "selectedIconPath": "/images/icon_laba_on.svg",
           "selectedColor": "#303133",
-          "clas": "menu-item1",
-          active: false
+          "clas": "menu-item",
+          active: true
         },
         {
           "pagePath": "/pages/admin/acceptance/acceptance",
@@ -222,7 +204,7 @@ App({
           "iconPath": "/images/icon_zhanwei.svg",
           "selectedIconPath": "/images/icon_zhanwei_on.svg",
           "selectedColor": "#303133",
-          "clas": "menu-item1",
+          "clas": "menu-item",
           active: false
         },
         {
@@ -231,7 +213,7 @@ App({
           "iconPath": "/images/icon_wode.svg",
           "selectedIconPath": "/images/icon_wode_on.svg",
           "selectedColor": "#303133",
-          "clas": "menu-item1",
+          "clas": "menu-item",
           active: false
         }
       ],
@@ -244,14 +226,23 @@ App({
       "backgroundColor": "#fff",
       "borderStyle": "#ccc",
       "list": [
+        // {
+        //   "pagePath": "/pages/cruise/cruise",
+        //   "text": "订单中心",
+        //   "iconPath": "/images/icon_dingdan.svg",
+        //   "selectedIconPath": "/images/icon_dingdan_on.svg",
+        //   "selectedColor": "#303133",
+        //   "clas": "menu-item2",
+        //   active: true
+        // },
         {
-          "pagePath": "/pages/cruise/cruise",
-          "text": "订单中心",
-          "iconPath": "/images/icon_dingdan.svg",
-          "selectedIconPath": "/images/icon_dingdan_on.svg",
+          "pagePath": "/pages/cruise/acceptance/acceptance",
+          "text": "展位验收",
+          "iconPath": "/images/icon_zhanwei.svg",
+          "selectedIconPath": "/images/icon_zhanwei_on.svg",
           "selectedColor": "#303133",
-          "clas": "menu-item1",
-          active: true
+          "clas": "menu-item",
+          active: false
         },
         {
           "pagePath": "/pages/cruise/changed/changed",
@@ -259,17 +250,8 @@ App({
           "iconPath": "/images/icon_laba.svg",
           "selectedIconPath": "/images/icon_laba_on.svg",
           "selectedColor": "#303133",
-          "clas": "menu-item1",
-          active: false
-        },
-        {
-          "pagePath": "/pages/cruise/acceptance/acceptance",
-          "text": "展位验收",
-          "iconPath": "/images/icon_zhanwei.svg",
-          "selectedIconPath": "/images/icon_zhanwei_on.svg",
-          "selectedColor": "#303133",
-          "clas": "menu-item1",
-          active: false
+          "clas": "menu-item",
+          active: true
         },
         {
           "pagePath": "/pages/cruise/person/person",
@@ -277,7 +259,7 @@ App({
           "iconPath": "/images/icon_wode.svg",
           "selectedIconPath": "/images/icon_wode_on.svg",
           "selectedColor": "#303133",
-          "clas": "menu-item1",
+          "clas": "menu-item",
           active: false
         }
       ],

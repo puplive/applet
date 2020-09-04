@@ -1,0 +1,58 @@
+<import src="../../tabbar/tabbar.wxml"/>
+<template is="tabBar" data="{{tabBar}}"/>
+<view class='contain'>
+    <view class='row fenlei'>
+      <view class='col f14'>
+        <view class="col-3 nav_text">
+          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待验收</text><text>({{type.d}})</text>
+        </view> 
+        <view class="col-3 nav_text" >
+          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">已驳回</text><text>({{type.b}})</text>
+        </view>
+        <view class="col-3 nav_text">
+          <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已通过</text><text>({{type.t}})</text>
+        </view>
+        <text class="iconfont icon-mianxing_loudou screen col-3" catchtap="screenBtn"></text>
+      </view>
+    </view>
+    <!-- 内容列表 -->
+    <view wx:if="{{accepArray_len>0}}" class='list f12' wx:for-items="{{accepArray}}" wx:for-index="key">
+      <navigator url='../acceptance_details/acceptance_details?check_id={{item.id}}' class='list_con'>
+        <view class="list_zwh clearfix">
+          <text class="fl list_zwh_left">{{item.z_guan}} {{item.zw_hao}}</text>
+          <text class="fr list_zwh_right">{{item.apply_time}}</text>
+        </view>
+        <view class="list_li clearfix">
+          <text>{{item.contact}}</text>
+          <text class="tel">{{item.phone}}</text>
+        </view>
+      </navigator>
+    </view>
+    <view wx:if="{{accepArray_len==0}}" class='no_data'>
+      暂无数据
+    </view>
+  </view>
+
+<!-- 弹窗选择规格 start -->
+<view  class="mask_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view  animation="{{animationData}}" class="screen_area {{isHidden == 1 ? 'display-block':'display-none'}}">
+  <view class="screen_tit">筛选</view>
+  <view class="screen_con"> 
+    <view class="screen_contit">展馆</view>
+    <view class="screen_conli">
+    <text wx:for="{{number}}"  wx:for-index="key"  wx:for-item="value"  data-screennum="{{key}}" bindtap='screenZhanguan' class="{{zhanguannum==key?'on':''}}">{{value.num}}</text>
+      <!-- <text class="on">N1</text>
+      <text>N2</text>
+      <text>N3</text>
+      <text>S1</text>
+      <text>S2</text> -->
+    </view>
+  </view>
+  <view class="screen_btn clearfix">
+    <text class="reset_btn fl" bindtap="resetBtn">重置</text>
+    <text class="confirm_btn fr"  bindtap="confirm_btn">确定</text>
+  </view>
+</view>
+<!-- 弹窗选择规格 end -->
+
+

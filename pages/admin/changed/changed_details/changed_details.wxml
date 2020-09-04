@@ -6,7 +6,7 @@
     </view>
   </view>
   <!-- 列表内容 -->
-  <view class="list">
+  <view class="list" wx:if="{{accepArray_len>0}}" >
     <view class='list_con' wx:for-items="{{changedetails}}">
       <view class="list_li clearfix">
         <view class="list_licon fl">
@@ -15,9 +15,9 @@
           <view class="changed_style">
             <text>{{item.punish_name}}    </text><text>整改时限  {{item.rectify_time1}}-{{item.rectify_time2}}</text>
           </view>
-          <view class="list_liconimg clearfix" >
+          <view class="list_liconimg clearfix topic_answerImg" >
             <view class="fl list_liconimg_img" wx:for="{{item.rectify_imgs}}" wx:for-item="img_item">
-              <image src="{{host}}/{{img_item}}"></image>
+              <image bindtap='topic_preview' data-list="{{item.rectify_imgs}}" data-url='{{host}}{{img_item}}' class='topic_answer_itemImg' src="{{host}}/{{img_item}}"></image>
             </view>
           </view>
           <view class="changed_details">{{item.content}}</view>
@@ -33,6 +33,9 @@
       </view>
     </view>
   </view>
+   <view wx:if="{{accepArray_len==0}}" class='no_data'>
+      暂无数据
+    </view>
 </view>
 <!-- 底部按钮 -->
 <view class="foot_btn">
@@ -46,18 +49,24 @@
 <view  animation="{{animationData}}" class="screen_area {{isHidden == 1 ? 'display-block':'display-none'}}">
   <view class="screen_tit">筛选</view>
   <view class="screen_main">
-    <view class="screen_con">
+  <view class="screen_con">
+    <view class="screen_contit">处罚方式</view>
+    <view class="screen_conli">
+     <text wx:for="{{punish_method}}"  wx:for-index="key"  wx:for-item="value"  data-screenpunishnum="{{key}}" bindtap='screenPunish' class="{{punishnum==key?'on':''}}">{{value.name}}</text>
+    </view>
+  </view>
+  <view class="screen_con">
       <view class="screen_contit">整改状态</view>
       <view class="screen_conli"> 
         <text data-screenchangenum="1" bindtap='screenChange' class="{{changenum==1?'on':''}}">全部</text>
         <text data-screenchangenum="2" bindtap='screenChange' class="{{changenum==2?'on':''}}">待整改</text>
-        <text data-screenchangenum="3" bindtap='screenChange' class="{{changenum==3?'on':''}}">已撤销</text>
+        <text data-screenchangenum="3" bindtap='screenChange' class="{{changenum==3?'on':''}}">已完成</text>
       </view>
     </view>
   </view>
   <view class="screen_btn clearfix">
     <text class="reset_btn fl" bindtap='resetBtn'>重置</text>
-    <text class="confirm_btn fr">确定</text>
+    <text class="confirm_btn fr"  bindtap="confirm_btn">确定</text>
   </view>
 </view>
 <!-- 弹窗选择规格 end -->

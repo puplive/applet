@@ -10,14 +10,8 @@
   </view>
   <view class="list_con">
     <view class="acc_img col">
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
-      </view>
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
-      </view>
-      <view class="col-3">
-        <image src="../../../images/icon_search.svg"></image>
+      <view class="col-3"  wx:for="{{info.pro_img}}"  wx:key="k"  wx:for-item="val">
+        <image src="{{host}}{{val}}"></image>
       </view>
     </view>
     <view class="time">反馈时间：{{info.pro_time}}</view>
@@ -26,7 +20,7 @@
   <view class="list_con" wx:if="{{info.pro_status==2}}">
     <view class="status">已接单</view>
     <view class="upload_img clearfix">
-      <view class=" img_con" wx:for="{{img}}"  wx:for-index="key">
+      <view class=" img_con" wx:for="{{tempFilePaths}}"  wx:for-index="key">
         <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
         <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
           <image src='../../../images/imgdel.svg'></image>
@@ -43,7 +37,19 @@
       <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300"  bindinput ="reasonsText" /> <text class="textlimit">0/300</text></view>
     </view>
   </view>
-  <view class="list_con status" wx:if="{{info.pro_status==3}}">已完成</view>
+  <view class="list_con status" wx:if="{{info.pro_status==3 && info.slove==null}}">已完成</view>
+  <view class="list_con" wx:if="{{info.slove!=null && info.pro_status==3}}">
+    <view>
+      <view class="list_con status">已完成</view>
+    </view>
+    <view class="acc_img col">
+    <view class="col-3"  wx:for="{{info.slove.solve_img}}"  wx:key="key"  wx:for-item="value">
+        <image src="{{host}}{{value}}"></image>
+      </view>
+    </view>
+    <view class="reject_be">{{info.slove.solve_beizhu}}</view>
+    <view class="time">完成时间：{{info.slove.solve_time}}</view>
+  </view>
 </view>
 <view class="foot_btn">
   <!-- <view class="fr foot_btnli" wx:if="{{info.pro_status==1}}">接单</view> -->

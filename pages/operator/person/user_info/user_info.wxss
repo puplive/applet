@@ -1,0 +1,129 @@
+.model {margin-bottom: 16rpx;background-color: #fff;}
+.colred{color: #E60012;}
+.user_wx{
+  font-size: 28rpx;
+  padding: 0 4%;
+}
+.user_wx .user_wx_li{
+  height: 112rpx;
+  line-height: 112rpx;
+  border-bottom: 1px solid #f9fafb;
+}
+.user_wx .user_wx_li:last-child{
+  border:none;
+}
+.user_wx .head_img{
+  width: 64rpx;
+  height: 64rpx;
+  margin-top: 24rpx;
+  border-radius: 50%;
+}
+.user_info{
+  font-size: 28rpx;
+  padding: 0 4%;
+}
+.user_info_tit{
+  height: 100rpx;
+  line-height: 100rpx;
+  font-weight: bold;
+}
+.user_info_li{
+  height: 112rpx;
+  line-height: 112rpx;
+  border-bottom: 1px solid #f9fafb;
+  position: relative;
+}
+.user_info_li:last-child{
+  border:none;
+}
+.user_info_li .icon_right{
+  width: 26rpx;
+  height: 26rpx;
+  position: absolute;
+  top:43rpx;
+  right: 0;
+}
+.user_info_li .tel{
+  padding-right: 46rpx;
+}
+.user_info_li .get_tel{
+  height: 70rpx;
+  line-height: 70rpx;
+  /* margin: 20rpx 40rpx 0 0; */
+  background-color: #fff;
+  font-size: 24rpx;
+}
+/* 弹窗样式 */
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+.modal-dialog {
+  width: 520rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 9999;
+  background: #fff;
+  margin: -180rpx 105rpx;
+  border-radius: 4rpx;
+}
+.modal-title {
+  padding-top: 40rpx;
+  font-size: 32rpx;
+  color: #4A4A4A;
+  text-align: center;
+}
+.modal-content {
+  padding: 50rpx 32rpx;
+}
+.modal-input {
+  display: flex;
+  background: #fff;
+  border: 2rpx solid #ddd;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+
+.input {
+  width: 100%;
+  height:70rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  color: #333;
+}
+input-holder {
+  color: #666;
+  font-size: 28rpx;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+.btn-confirm {
+  width: 50%;
+  color: #5294F9;
+  text-align: center;
+}

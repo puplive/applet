@@ -4,13 +4,13 @@
     <view class='row fenlei'>
       <view class='col f14'>
         <view class="col-3 nav_text">
-          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待验收</text><text>(10)</text>
+          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待验收</text><text>({{type.d}})</text>
         </view> 
         <view class="col-3 nav_text" >
-          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">已驳回</text><text>(22)</text>
+          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">已驳回</text><text>({{type.b}})</text>
         </view>
         <view class="col-3 nav_text">
-          <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已通过</text><text>(3)</text>
+          <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已通过</text><text>({{type.t}})</text>
         </view>
         <text class="iconfont icon-mianxing_loudou screen col-3" catchtap="screenBtn"></text>
       </view>
@@ -26,6 +26,9 @@
           <text>{{item.contact}}</text>
           <text class="tel">{{item.phone}}</text>
         </view>
+        <view class="list_btn clearfix" wx:if="{{item.check_press==1 && item.check_status==1}}"> 
+          <view class="assign fr press">正在催办</view>
+        </view>
       </navigator>
     </view>
     <view wx:if="{{accepArray_len==0}}" class='no_data'>
@@ -40,16 +43,17 @@
   <view class="screen_con"> 
     <view class="screen_contit">展馆</view>
     <view class="screen_conli">
-      <text class="on">N1</text>
+    <text wx:for="{{number}}"  wx:for-index="key"  wx:for-item="value"  data-screennum="{{key}}" bindtap='screenZhanguan' class="{{zhanguannum==key?'on':''}}">{{value.num}}</text>
+      <!-- <text class="on">N1</text>
       <text>N2</text>
       <text>N3</text>
       <text>S1</text>
-      <text>S2</text>
+      <text>S2</text> -->
     </view>
   </view>
   <view class="screen_btn clearfix">
-    <text class="reset_btn fl">重置</text>
-    <text class="confirm_btn fr">确定</text>
+    <text class="reset_btn fl" bindtap="resetBtn">重置</text>
+    <text class="confirm_btn fr"  bindtap="confirm_btn">确定</text>
   </view>
 </view>
 <!-- 弹窗选择规格 end -->

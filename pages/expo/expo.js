@@ -109,24 +109,29 @@ Page({
       success: function (res) {
         if (res.data.Code == 200) {
           sendMessageContent.RoleId = res.data.data.applet_role_id;
-          if(res.data.data.customer_type==1 && res.data.data.applet_role_id>1 ){
-            wx.redirectTo({
-              url: "../cruise/cruise"
-            })
-          }else if(res.data.data.customer_type==2){
+          if(res.data.data.applet_role_id<3){
+            // if(res.data.data.applet_role_id==1){
+              wx.redirectTo({
+                url: "../admin/changed/changed"
+              })
+            // }else{
+            //   wx.redirectTo({
+            //     url: "../cruise/acceptance/acceptance"
+            //   })
+            // }
+          }else{
             wx.redirectTo({
               url: "../operator/operator"
             })
-          }else{
-            wx.redirectTo({
-              url: "../admin/admin"
-            })
-          }
+         }
         }else if (res.data.Code == 400) {//提示您还没授权
           wx.showToast({
-            title: '未授权',
+            title: '未授权,请前往授权',
             icon: 'none',
-            duration: 2000//持续的时间
+            duration: 5000//持续的时间
+          })
+          wx.navigateTo({
+             url: '/pages/login/login',
           })
         }else {
           wx.navigateTo({

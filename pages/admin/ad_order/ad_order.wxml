@@ -4,13 +4,13 @@
     <view class='row fenlei'>
       <view class='col f14'>
         <view class="col-3 nav_text">
-          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待接单</text><text>(10)</text>
+          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待接单</text><text>()</text>
         </view> 
         <view class="col-3 nav_text" >
-          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">待解决</text><text>(22)</text>
+          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">待解决</text><text>()</text>
         </view>
         <view class="col-3 nav_text">
-          <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已完成</text><text>(3)</text>
+          <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已完成</text><text>()</text>
         </view>
         <text class="iconfont icon-mianxing_loudou screen col-3" catchtap="screenBtn"></text>
       </view>
@@ -67,7 +67,21 @@
       </view>
 
       <view class="list_con"  wx:if="{{value.ordertype==2}}">
-        <navigator url='../ques_details/ques_details?id={{value.id}}' class=''> 
+        <navigator wx:if="{{value.order_id==null}}" url='../ques_details/ques_details?id={{value.id}}' class=''> 
+          <view class="list_zwh clearfix">
+            <text class="fl list_zwh_left">{{value.z_guan}} {{value.zw_hao}}</text>
+            <text class="fr list_zwh_right">{{value.time}}</text>
+          </view>
+          <view class="list_li clearfix">
+            <image src="/images/header_img.png" class="fl list_img"></image>
+            <view class="list_licon fl">
+              <view>
+                <text class="list_litit">{{value.pro_content}}</text>
+              </view>
+            </view>
+          </view>
+        </navigator>
+        <navigator wx:else url='../ques_order_details/ques_order_details?id={{value.id}}' class=''> 
           <view class="list_zwh clearfix">
             <text class="fl list_zwh_left">{{value.z_guan}} {{value.zw_hao}}</text>
             <text class="fr list_zwh_right">{{value.time}}</text>
@@ -122,11 +136,7 @@
   <view class="screen_con"> 
     <view class="screen_contit">展馆</view>
     <view class="screen_conli">
-      <text data-screennum="1" bindtap='screenZhanguan' class="{{zhanguannum==1?'on':''}}">N1</text>
-      <text data-screennum="2" bindtap='screenZhanguan' class="{{zhanguannum==2?'on':''}}">N2</text>
-      <text data-screennum="3" bindtap='screenZhanguan' class="{{zhanguannum==3?'on':''}}">N3</text>
-      <text data-screennum="4" bindtap='screenZhanguan' class="{{zhanguannum==4?'on':''}}">S1</text>
-      <text data-screennum="5" bindtap='screenZhanguan' class="{{zhanguannum==5?'on':''}}">S2</text>
+     <text wx:for="{{number}}"  wx:for-index="key"  wx:for-item="value"  data-screennum="{{key}}" bindtap='screenZhanguan' class="{{zhanguannum==key?'on':''}}">{{value.num}}</text>
     </view>
   </view>
   <view class="screen_con02">
@@ -145,7 +155,7 @@
   </view>
   <view class="screen_btn clearfix">
     <text class="reset_btn fl" bindtap="resetBtn">重置</text>
-    <text class="confirm_btn fr">确定</text>
+    <text class="confirm_btn fr" bindtap="confirm_btn">确定</text>
   </view>
 </view>
 <!-- 弹窗选择规格 end -->

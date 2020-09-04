@@ -8,6 +8,25 @@ Page({
     animationData: {},//选择动画
     showModalStatus: false,//显示遮罩
   },
+       //获取用户信息
+       getUserInfo: function (cb) {
+        var that = this
+        if (this.globalData.personInfo) {
+          typeof cb == "function" && cb(this.globalData.personInfo)
+        } else {
+          //调用登录接口
+          wx.login({
+            success: function () {
+              wx.getUserInfo({
+                success: function (res) {
+                  that.globalData.personInfo = res.userInfo
+                  typeof cb == "function" && cb(that.globalData.personInfo)
+                }
+              })
+            }
+          })
+        }
+      },
   onGotUserInfo: function (e) {
     var that = this;
     wx.login({

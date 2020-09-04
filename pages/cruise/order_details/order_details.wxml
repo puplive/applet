@@ -1,0 +1,77 @@
+<view class="contain">
+  <view class="zwh">{{info.project_info.library_number}} {{info.project_info.number}}</view>
+  <view class="person_name">
+    <text>{{info.project_info.username}}</text>
+    <text class="tel">{{info.project_info.phone}}</text>
+  </view>
+  <view class="list_con">
+    <view class="list_li clearfix">
+      <image src="{{host}}public/{{info.img}}" class="fl list_img"></image>
+      <view class="list_licon fl">
+        <view>
+          <text class="list_litit">{{info.goods_array.name}}</text>
+        </view>
+        <view class="list_list clearfix">
+          <text class="list_listname fl">{{info.goods_array.goodsno}}</text>
+          <text class="list_listnum fr">×{{info.goods_nums}}</text>
+        </view>
+        <!-- <view class="list_list clearfix">
+          <text class="list_listname fl">桌花</text>
+          <text class="list_listnum fr">×1</text>
+        </view> -->
+      </view>
+    </view>
+    <view  class="order_num">
+      <view>订单编号：<text>{{info.order_no}}</text></view>
+      <view>下单时间: <text>{{info.create_time}}</text></view>
+    </view>
+    <view class="status" wx:if="{{info.order_status==0}}">待接单</view>
+
+    <view class="status" wx:if="{{info.order_status==1}}">待配送</view>
+    <view class="upload_img clearfix" wx:if="{{info.order_status==1}}">
+      <view class=" img_con" wx:for="{{tempFilePaths}}"  wx:for-index="key">
+        <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+        <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
+          <image src='../../../images/imgdel.svg'></image>
+        </view>
+      </view>
+      <view class="col-9 img_con" bindtap="chooseimage">
+        <image class='defaultimg' src='../../../images/camera.svg' catchTap="chooseImageTap" mode="aspectFit"></image>
+      </view>
+    </view>
+    <view class='desc' wx:if="{{info.order_status==1}}">
+      <label class=''>添加备注</label>
+      <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300"  bindinput ="reasonsText" /> <text class="textlimit">0/300</text></view>
+    </view>
+
+    <view class="status" wx:if="{{info.order_status==2}}">已完成</view>
+    <view class="list_liconimg" wx:if="{{info.order_status==2}}">
+      <view class="fl list_liconimg_img"  wx:for="{{info.finish_img}}" wx:for-item="img">
+          <image src="{{host}}{{img}}"></image>
+      </view>
+    </view>
+    <view class="changed_details" wx:if="{{info.order_status==2}}">{{info.finish_beizhu}}</view>
+    <view class="end_time" wx:if="{{info.order_status==2}}">完成时间：<text>{{info.finish_time}}</text></view>
+
+  </view>
+</view>
+<view class="foot_btn">
+  <!-- <view class="fr foot_btnli" wx:if="{{info.order_status==1}}" bindtap="addWanC">完成</view>
+  <view wx:if="{{info.order_status==0}}">
+    <view class="fr foot_btnli agree" bindtap="assignBtn" data-key="{{info.id}}" data-type="2" data-zgh="{{info.z_guan}}">指派</view>
+  </view> -->
+  <!-- <navigator url='../transfer_order/transfer_order'>
+    <view class="fr foot_btnli agree">转单</view>
+  </navigator> -->
+</view>
+
+<!-- 指派弹窗 -->
+<modal hidden="{{hiddenassign}}" title="指派" confirm-text="确定" cancel-text="取消" bindcancel="cancelS" bindconfirm="confirmS">
+  <view class='assign_con'>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{assignArray}}">
+        <radio class="radio" value="{{item.applet_id}}" color="#ECBB49" />{{item.role_name}}-{{item.username}}
+      </label>
+    </radio-group>
+  </view>
+</modal>
