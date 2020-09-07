@@ -37,6 +37,7 @@
       暂无数据
     </view>
 </view>
+<view class='placeholder-view'></view>
 <!-- 底部按钮 -->
 <view class="foot_btn">
     <view class="add_changed" bindtap="zheng_gai"><text class="iconfont icon-fuhao_jiahao"></text>整改通知</view>

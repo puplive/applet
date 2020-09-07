@@ -17,12 +17,6 @@ Page({
     num:'',//处罚方式索引
     punish_method:[]//处罚方式查询
   },
-  onUnload: function (options) {
-    console.log(444444);
-    wx.reLaunch({
-      url: 'changed/changed',
-    })
-  },
   //预览图片
 topic_preview: function(e){
   var imgList = e.currentTarget.dataset.list;//获取data-list
@@ -288,7 +282,9 @@ topic_bainji:function(e){
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    wx.reLaunch({
+      url: '../changed/changed',
+    })
   },
 
   /**
