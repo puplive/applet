@@ -25,6 +25,11 @@ Page({
     tempFilePaths:[], //临时路径
     lock: false,//验证只能提交一次
   },
+  onUnload: function (options) {
+    wx.reLaunch({
+      url: '../changed/changed',
+    })
+  },
   // 展馆号
   bindProjectChange: function(e){
     var that = this;
@@ -217,7 +222,16 @@ descInput: function (e) {
             wx.navigateTo({
               url: '../changed',
             })
-          } else {
+          } else if(res.data.Code == 600){
+            wx.showToast({
+              title: '请上传图片',
+              icon: 'none',
+              duration: 2000//持续的时间
+            });
+            that.setData({
+              lock:false,
+            })
+          }else {
             wx.showToast({
               title: '添加失败',
               icon: 'none',
@@ -373,7 +387,9 @@ descInput: function (e) {
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    wx.reLaunch({
+      url: '../changed/changed',
+    })
   },
 
   /**
