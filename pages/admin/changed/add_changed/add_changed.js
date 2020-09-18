@@ -214,9 +214,6 @@ descInput: function (e) {
             that.setData({
               lock:true,
             })
-            that.setData({
-              lock:true,
-            })
             wx.navigateTo({
               url: '../changed',
             })

@@ -1,5 +1,6 @@
 //app.js
-const url = 'https://www.exposaas.com/'
+//const url = 'https://www.exposaas.com/'
+const url ='http://new.newspaper.com/'
 // const url = 'http://test.exposaas.cn/'
 App({
   onLaunch: function () {
