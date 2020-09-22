@@ -25,11 +25,6 @@ Page({
     tempFilePaths:[], //临时路径
     lock: false,//验证只能提交一次
   },
-  onUnload: function (options) {
-    wx.reLaunch({
-      url: '../changed/changed',
-    })
-  },
   // 展馆号
   bindProjectChange: function(e){
     var that = this;

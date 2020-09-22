@@ -18,6 +18,7 @@ Page({
     hiddenassign: true,  //指派弹窗
     assignArray:'',
     assignsel:'',//指派成员的id
+
   },
  // 指派
  assignBtn:function(e){
@@ -240,12 +241,12 @@ saveData: function(){
     var that=this;
     var imgs =that.data.imgres;
     var desc =that.data.desc;
-    var orderId  =that.data.orderId;
+    var id = that.data.proid
     var projectId  =sendMessageContent.projectId;
     var openId = wx.getStorageSync('openId')
     wx.request({
       url: url + 'worksite/default/order-finish',
-      data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:1,solve_beizhu:desc,solve_img:imgs},
+      data: {projectId:projectId,OpenId:openId,goods_id:id,ordertype:2,solve_beizhu:desc,solve_img:imgs},
       header: {
           'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -257,9 +258,9 @@ saveData: function(){
               icon: 'none',
               duration: 2000//持续的时间
           })
-          // wx.navigateTo({
-          //   url: '../ad_order',
-          // })
+          wx.navigateTo({
+            url: '../ad_order/ad_order',
+          })
         } else {}
       },
       fail: function (err) {

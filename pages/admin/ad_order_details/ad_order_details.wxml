@@ -9,16 +9,12 @@
       <image src="{{host}}public/{{info.img}}" class="fl list_img"></image>
       <view class="list_licon fl">
         <view>
-          <text class="list_litit">{{info.goods_array.name}}</text>
+          <text class="list_litit">{{info.name}}</text>
         </view>
-        <view class="list_list clearfix">
-          <text class="list_listname fl">{{info.goods_array.goodsno}}</text>
-          <text class="list_listnum fr">×{{info.goods_nums}}</text>
+        <view class="list_list clearfix" wx:for="{{info.goods_array}}" wx:for-item="item">
+          <text class="list_listname fl">{{item.goodsno}}</text>
+          <text class="list_listnum fr">×{{item.num}}</text>
         </view>
-        <!-- <view class="list_list clearfix">
-          <text class="list_listname fl">桌花</text>
-          <text class="list_listnum fr">×1</text>
-        </view> -->
       </view>
     </view>
     <view  class="order_num">
@@ -49,9 +45,6 @@
       <view class="fl list_liconimg_img"  wx:for="{{info.finish_img}}" wx:for-item="img">
           <image src="{{host}}{{img}}"></image>
       </view>
-      <!-- <image src="../../../images/icon_search.svg"></image> -->
-      <!-- <image src="../../../images/icon_search.svg"></image>
-      <image src="../../../images/icon_search.svg"></image> -->
     </view>
     <view class="changed_details" wx:if="{{info.order_status==2}}">{{info.finish_beizhu}}</view>
     <view class="end_time" wx:if="{{info.order_status==2}}">完成时间：<text>{{info.finish_time}}</text></view>
@@ -61,11 +54,8 @@
 <view class="foot_btn">
   <view class="fr foot_btnli" wx:if="{{info.order_status==1}}" bindtap="addWanC">完成</view>
   <view wx:if="{{info.order_status==0}}">
-    <view class="fr foot_btnli agree" bindtap="assignBtn" data-key="{{info.id}}" data-type="2" data-zgh="{{info.z_guan}}">指派</view>
+    <view class="fr foot_btnli agree" bindtap="assignBtn" data-key="{{info.info_id}}" data-type="2" data-zgh="{{info.z_guan}}">指派</view>
   </view>
-  <!-- <navigator url='../transfer_order/transfer_order'>
-    <view class="fr foot_btnli agree">转单</view>
-  </navigator> -->
 </view>
 
 <!-- 指派弹窗 -->
