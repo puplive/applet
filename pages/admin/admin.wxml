@@ -11,7 +11,7 @@
               <view class="jt_down fl"><text class="iconfont icon-sanjiao_you"></text></view>
               <view class="fl">{{item.name}} </view>
             </view>
-            <view class="fr people_num"><text class="active_num">{{item.num}}/{{item.num}}</text></view>
+            <view class="fr people_num"><text class="active_num">0/{{item.num}}</text></view>
           </view> 
         </view>
         <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">

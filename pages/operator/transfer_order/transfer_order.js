@@ -63,7 +63,7 @@ descInput: function (e) {
             duration: 2000//持续的时间
           })
           wx.navigateTo({
-            url: '../operator/operator',
+            url: '../operator',
           })
         } else {
           wx.showToast({

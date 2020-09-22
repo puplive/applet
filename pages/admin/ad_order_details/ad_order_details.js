@@ -20,6 +20,7 @@ Page({
     hiddenassign: true,  //指派弹窗
     assignArray:'',
     assignsel:'',//指派成员的id
+    goods_id:'',//类型id
   },
 // 点击上传图片
 chooseWxImage: function (type) {
@@ -155,9 +156,11 @@ confirmS: function (e) {
   onLoad: function (options) {
     var id = options.id
     var or_type = options.or_type
+    var goods_id = options.goods_id
     this.setData({
       orderId: id,
       or_type: or_type,
+      goods_id:goods_id,
     })
   },
 
@@ -176,10 +179,12 @@ confirmS: function (e) {
     var that = this;
     var id = that.data.orderId
     var type = that.data.or_type
+   //var goods_id = that.data.goods_id
+    //call.request('worksite/default/order-details', {orderid:id,goods_id:goods_id,projectId:sendMessageContent.projectId,OpenId:openId,ordertype:1,type:type},
     call.request('worksite/default/order-details', {goods_id:id,projectId:sendMessageContent.projectId,OpenId:openId,ordertype:1,type:type},
       function (res) {
         if (res.Code == 200) {
-          console.log(res.data)
+          console.log(888,res.data)
           that.setData({
               info:res.data
           })
@@ -252,9 +257,9 @@ confirmS: function (e) {
               icon: 'none',
               duration: 2000//持续的时间
             })
-            // wx.navigateTo({
-            //   url: '../ad_order',
-            // })
+            wx.navigateTo({
+              url: '../ad_order',
+            })
           } else {
   
           }

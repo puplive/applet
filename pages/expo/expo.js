@@ -110,15 +110,15 @@ Page({
         if (res.data.Code == 200) {
           sendMessageContent.RoleId = res.data.data.applet_role_id;
           if(res.data.data.applet_role_id<3){
-            // if(res.data.data.applet_role_id==1){
+            if(res.data.data.applet_role_id==1){
               wx.redirectTo({
-                url: "../admin/changed/changed"
+                url: "../admin/admin"
               })
-            // }else{
-            //   wx.redirectTo({
-            //     url: "../cruise/acceptance/acceptance"
-            //   })
-            // }
+            }else{
+              wx.redirectTo({
+                url: "../cruise/acceptance/acceptance"
+              })
+            }
           }else{
             wx.redirectTo({
               url: "../operator/operator"
