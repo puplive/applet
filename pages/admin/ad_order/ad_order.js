@@ -84,7 +84,39 @@ Page({
       hiddenassign: false,
     })
   },
+  //接单操作
+  takeOrder: function (e) {
+    var openId = wx.getStorageSync('openId')
+    var that = this;
+    that.setData({
+      id: e.currentTarget.dataset.key,
+      ordertype: e.currentTarget.dataset.type,
+    })
+    wx.request({
+      url: url + 'worksite/default/order-take',
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,ordertype:that.data.ordertype},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          console.log(8,res.data.data);
+          wx.showToast({
+            title: '接单成功',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+          that.onShow();
+        } else {
 
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+  },
 
   // 订单筛选按展馆
   screenZhanguan: function (e) {
@@ -292,11 +324,12 @@ Page({
     var projectId  =sendMessageContent.projectId;
     var openId = wx.getStorageSync('openId')
     that.setData({
-      id:e.currentTarget.dataset.key
+      id:e.currentTarget.dataset.key,
+      order:e.currentTarget.dataset.order
     })
     wx.request({
       url: url + 'worksite/default/order-finish',
-      data: {projectId:projectId,OpenId:openId,goods_id:that.data.id,ordertype:ordertype},
+      data: {projectId:projectId,OpenId:openId,goods_id:that.data.id,order:that.data.order,ordertype:ordertype},
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },

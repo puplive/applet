@@ -55,6 +55,7 @@
   <!-- <view class="fr foot_btnli" wx:if="{{info.pro_status==1}}">接单</view> -->
   <view class="fr foot_btnli" wx:if="{{info.pro_status==2}}" bindtap="addWanC">完成</view>
   <view wx:if="{{info.pro_status==1}}">
+    <view class="fr foot_btnli" bindtap="takeOrder" data-key="{{info.id}}">接单</view>
     <view class="fr foot_btnli" bindtap="assignBtn" data-key="{{info.id}}" data-type="2" data-zgh="{{info.z_guan}}">指派</view>
   </view>
 </view>
