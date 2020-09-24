@@ -73,7 +73,9 @@ Page({
             })
             console.log('单选',that.data.assignArray)
           } else {
-  
+            that.setData({
+              assignArray:'',
+            })
           }
         },
         fail: function (err) {
