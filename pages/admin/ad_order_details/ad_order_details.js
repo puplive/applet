@@ -21,6 +21,15 @@ Page({
     assignArray:'',
     assignsel:'',//指派成员的id
     goods_id:'',//类型id
+    order_id:'',//订单id
+  },
+  // 人员选择单选
+  radioChange: function (e) {
+    var that = this;
+    let value = e.detail.value;
+    this.setData({
+      assignsel : value
+    })
   },
 // 点击上传图片
 chooseWxImage: function (type) {
@@ -112,6 +121,42 @@ imgDel: function(e){
     hiddenassign: false,
   })
 },
+
+   //接单操作
+   takeOrder: function (e) {
+    var openId = wx.getStorageSync('openId')
+    var that = this;
+    that.setData({
+      id: e.currentTarget.dataset.key,
+      //ordertype: e.currentTarget.dataset.type,
+    })
+    wx.request({
+      url: url + 'worksite/default/order-take',
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,ordertype:1},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          console.log(8,res.data.data);
+          wx.showToast({
+            title: '接单成功',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+          wx.navigateTo({
+            url: '../ad_order/ad_order',
+          })
+        } else {
+
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+  },
 // 指派确认按钮
 cancelS: function (e) {
   this.setData({
@@ -157,10 +202,12 @@ confirmS: function (e) {
     var id = options.id
     var or_type = options.or_type
     var goods_id = options.goods_id
+    var order_id = options.order
     this.setData({
       orderId: id,
       or_type: or_type,
       goods_id:goods_id,
+      order_id:order_id,
     })
   },
 
@@ -241,11 +288,12 @@ confirmS: function (e) {
       var imgs =that.data.imgres;
       var desc =that.data.desc;
       var orderId  =that.data.orderId;
+      var order_id=that.data.order_id;
       var projectId  =sendMessageContent.projectId;
       var openId = wx.getStorageSync('openId')
       wx.request({
         url: url + 'worksite/default/order-finish',
-        data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:1,solve_beizhu:desc,solve_img:imgs},
+        data: {projectId:projectId,OpenId:openId,goods_id:orderId,order:order_id,ordertype:1,solve_beizhu:desc,solve_img:imgs},
         header: {
           'content-type': 'application/x-www-form-urlencoded' // 默认值
         },
@@ -258,7 +306,7 @@ confirmS: function (e) {
               duration: 2000//持续的时间
             })
             wx.navigateTo({
-              url: '../ad_order',
+              url: '../ad_order/ad_order',
             })
           } else {
   

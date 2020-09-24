@@ -54,6 +54,7 @@
 <view class="foot_btn">
   <view class="fr foot_btnli" wx:if="{{info.order_status==1}}" bindtap="addWanC">完成</view>
   <view wx:if="{{info.order_status==0}}">
+    <view class="fr foot_btnli agree" bindtap="takeOrder" data-key="{{info.info_id}}">接单</view>
     <view class="fr foot_btnli agree" bindtap="assignBtn" data-key="{{info.info_id}}" data-type="2" data-zgh="{{info.z_guan}}">指派</view>
   </view>
 </view>

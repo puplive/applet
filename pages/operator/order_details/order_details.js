@@ -40,9 +40,10 @@ Page({
             icon: 'none',
             duration: 2000//持续的时间
           })
-          that.onShow();
+          wx.navigateTo({
+            url: '../operator/operator',
+          })
         } else {
-
         }
       },
       fail: function (err) {
@@ -206,9 +207,9 @@ saveData: function(){
             icon: 'none',
             duration: 2000//持续的时间
         })
-        // wx.navigateTo({
-        //   url: '../ad_order',
-        // })
+        wx.navigateTo({
+          url: '../operator/operator',
+        })
       } else {}
     },
     fail: function (err) {

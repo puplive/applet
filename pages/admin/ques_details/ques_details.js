@@ -20,6 +20,14 @@ Page({
     assignsel:'',//指派成员的id
 
   },
+  // 人员选择单选
+  radioChange: function (e) {
+    var that = this;
+    let value = e.detail.value;
+    this.setData({
+      assignsel : value
+    })
+  },
  // 指派
  assignBtn:function(e){
   var that = this;
@@ -54,6 +62,40 @@ Page({
     })
   this.setData({
     hiddenassign: false,
+  })
+},
+//接单操作
+takeOrder: function (e) {
+  var openId = wx.getStorageSync('openId')
+  var that = this;
+  that.setData({
+    id: e.currentTarget.dataset.key,
+    //ordertype: e.currentTarget.dataset.type,
+  })
+  wx.request({
+    url: url + 'worksite/default/order-take',
+    data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,ordertype:2},
+    header: {
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    method: 'POST',
+    success(res) {
+      if (res.data.Code == 200) {
+        console.log(8,res.data.data);
+        wx.showToast({
+          title: '接单成功',
+          icon: 'none',
+          duration: 2000//持续的时间
+        })
+        wx.navigateTo({
+          url: '../ad_order/ad_order',
+        })
+      } else {
+      }
+    },
+    fail: function (err) {
+      // 服务异常
+    }
   })
 },
 // 指派确认按钮

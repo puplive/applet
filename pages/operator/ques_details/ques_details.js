@@ -38,9 +38,10 @@ Page({
             icon: 'none',
             duration: 2000//持续的时间
           })
-          that.onShow();
+          wx.navigateTo({
+            url: '../operator/operator',
+          })
         } else {
-
         }
       },
       fail: function (err) {
@@ -187,8 +188,10 @@ Page({
             icon: 'none',
             duration: 2000//持续的时间
           })
+          wx.navigateTo({
+            url: '../operator/operator',
+          })
         } else {
-
         }
       },
       fail: function (err) {

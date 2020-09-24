@@ -79,19 +79,10 @@
   </view>
 </view>
 <view class="foot_btn">
-  <view class="fr foot_btnli" wx:if="{{info.pro_status==2}}" bindtap="addWanC">完成</view>
-  <view wx:if="{{info.pro_status==1}}">
-    <view class="fr foot_btnli" bindtap="assignBtn" data-key="{{info.id}}" data-type="2" data-zgh="{{info.z_guan}}">指派</view>
-  </view>
-</view>
 
-<!-- 指派弹窗 -->
-<modal hidden="{{hiddenassign}}" title="指派" confirm-text="确定" cancel-text="取消" bindcancel="cancelS" bindconfirm="confirmS">
-  <view class='assign_con'>
-    <radio-group class="radio-group" bindchange="radioChange">
-      <label class="radio" wx:for="{{assignArray}}">
-        <radio class="radio" value="{{item.applet_id}}" color="#ECBB49" />{{item.role_name}}-{{item.username}}
-      </label>
-    </radio-group>
-  </view>
-</modal>
+  <view class="fr foot_btnli" bindtap="takeOrder" data-key="{{info.id}}" wx:if="{{info.pro_status==1}}">接单</view>
+  <navigator url='../acceptance_reject/acceptance_reject' wx:if="{{info.pro_status==2}}">
+    <view class="fr foot_btnli ">转单</view>
+  </navigator>
+  <view class="fr foot_btnli" wx:if="{{info.pro_status==2}}" bindtap="addWanC">完成</view>
+</view>
