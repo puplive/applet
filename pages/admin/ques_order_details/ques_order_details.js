@@ -20,6 +20,7 @@ Page({
     hiddenassign: true,  //指派弹窗
     assignArray:'',
     assignsel:'',//指派成员的id
+    order_id:'',//订单id
   },
   // 人员选择单选
   radioChange: function (e) {
@@ -199,9 +200,11 @@ confirmS: function (e) {
   onLoad: function (options) {
     var id = options.id
     var or_type = options.or_type
+    var order_id=options.order
     this.setData({
       orderId: id,
       or_type: or_type,
+      order_id:order_id,
     })
   },
 
@@ -284,7 +287,7 @@ confirmS: function (e) {
       var openId = wx.getStorageSync('openId')
       wx.request({
         url: url + 'worksite/default/order-finish',
-        data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:2,solve_beizhu:desc,solve_img:imgs},
+        data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:2,solve_beizhu:desc,solve_img:imgs,order:that.data.order_id},
         header: {
           'content-type': 'application/x-www-form-urlencoded' // 默认值
         },

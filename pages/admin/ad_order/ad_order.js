@@ -33,6 +33,7 @@ Page({
     id:'',//订单id
     ordertype:'',//订单还是问题类型
     orderId:'',
+    order_id:'',//订单id
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -332,9 +333,14 @@ Page({
       id:e.currentTarget.dataset.key,
       order:e.currentTarget.dataset.order
     })
+    if(that.data.order){
+      var orders=that.data.order;
+    }else{
+      var orders=0;
+    }
     wx.request({
       url: url + 'worksite/default/order-finish',
-      data: {projectId:projectId,OpenId:openId,goods_id:that.data.id,order:that.data.order,ordertype:ordertype},
+      data: {projectId:projectId,OpenId:openId,goods_id:that.data.id,order:orders,ordertype:ordertype},
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
