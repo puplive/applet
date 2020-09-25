@@ -16,6 +16,7 @@ Page({
     imgres: [],
     tempFilePaths:[],
     desc:'',//添加备注
+    order_id:''//订单id
   },
    //接单操作
    takeOrder: function (e) {
@@ -27,7 +28,7 @@ Page({
     })
     wx.request({
       url: url + 'worksite/default/order-take',
-      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,ordertype:1},
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,ordertype:1,order_id:that.data.order_id},
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -110,9 +111,11 @@ imgDel: function(e){
   onLoad: function (options) {
     var id = options.id
     var or_type = options.or_type
+    var order_id = options.order_id
     this.setData({
       orderId: id,
       or_type: or_type,
+      order_id:order_id,
     })
   },
 

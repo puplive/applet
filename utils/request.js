@@ -4,7 +4,7 @@ var app = getApp();
 
 // var host = 'https://www.exposaas.com/'
 var host = 'http://test.exposaas.cn/'
-// var host = 'http://www.newmoble.com/'
+// host = 'http://www.newmoble.com/';
 
 /**
  * POST请求，
