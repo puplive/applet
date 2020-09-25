@@ -38,15 +38,15 @@
         </navigator>
         <view wx:if="{{value.order_status==0}}">
           <view class="list_btn clearfix" wx:if="{{value.goods_press==1}}">
-            <view class="assign_on fr" bindtap="takeOrder" data-key="{{value.info_id}}" data-type="1">接单</view>
-            <view class="assign_on fr" bindtap="assignBtn" data-key="{{value.info_id}}" data-type="1" data-zgh="{{value.project_info.library_number}}">指派</view>
+            <view class="assign_on fr" bindtap="takeOrder" data-key="{{value.info_id}}" data-order="{{value.order_id}}" data-type="1">接单</view>
+            <view class="assign_on fr" bindtap="assignBtn" data-key="{{value.info_id}}" data-order="{{value.order_id}}" data-type="1" data-zgh="{{value.project_info.library_number}}">指派</view>
             <view class="urging fr"  bindtap="urging">
               <view class="air_bg"><text class="iconfont icon-lingdang "></text></view>催办
             </view>
           </view>
           <view class="list_btn clearfix"  wx:if="{{value.goods_press==0}}">
-            <view class="assign fr" bindtap="takeOrder" data-key="{{value.info_id}}" data-type="1">接单</view>
-            <view class="assign fr" bindtap="assignBtn" data-key="{{value.info_id}}" data-type="1" data-zgh="{{value.project_info.library_number}}">指派</view>
+            <view class="assign fr" bindtap="takeOrder" data-key="{{value.info_id}}" data-order="{{value.order_id}}" data-type="1">接单</view>
+            <view class="assign fr" bindtap="assignBtn" data-key="{{value.info_id}}" data-order="{{value.order_id}}" data-type="1" data-zgh="{{value.project_info.library_number}}">指派</view>
           </view>
         </view>
          <view wx:if="{{value.order_status==1}}">
@@ -60,7 +60,7 @@
       </view>
 
       <view class="list_con"  wx:if="{{value.ordertype==2}}">
-        <navigator wx:if="{{value.order_id==null}}" url='../ques_details/ques_details?id={{value.id}}' class=''> 
+        <navigator wx:if="{{value.order_id==null || value.order_id==0}}" url='../ques_details/ques_details?id={{value.id}}' class=''> 
           <view class="list_zwh clearfix">
             <text class="fl list_zwh_left">{{value.z_guan}} {{value.zw_hao}}</text>
             <text class="fr list_zwh_right">{{value.time}}</text>
