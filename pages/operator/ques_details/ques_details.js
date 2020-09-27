@@ -15,6 +15,19 @@ Page({
     desc:'',//添加备注
     host:app.globalData.url,
   },
+   //预览图片
+   topic_preview: function(e){
+    var imgList = e.currentTarget.dataset.list;//获取data-list
+    var url = e.currentTarget.dataset.url;
+    var previewImgArr = [];
+    for (var i in imgList) {
+      previewImgArr[i]= this.data.host+imgList[i];
+    }
+    wx.previewImage({
+      current: url,     //当前图片地址
+      urls: previewImgArr,               //所有要预览的图片的地址集合 数组形式
+    })
+  },
   //接单操作
   takeOrder: function (e) {
     var openId = wx.getStorageSync('openId')
