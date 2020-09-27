@@ -9,11 +9,11 @@
       <image src="{{host}}public/{{info.img}}" class="fl list_img"></image>
       <view class="list_licon fl">
         <view>
-          <text class="list_litit">{{info.goods_name}}</text>
+          <text class="list_litit">{{info.goods_array.name}}</text>
         </view>
-        <view class="list_list clearfix" wx:for="{{info.goods_array}}" wx:for-item="item">
-          <text class="list_listname fl">{{item.goodsno}}</text>
-                <text class="list_listnum fr">×{{item.num}}</text>
+        <view class="list_list clearfix">
+          <text class="list_listname fl">{{info.goods_array.goodsno}}</text>
+                <text class="list_listnum fr">×{{item.goods_nums}}</text>
         </view>
       </view>
     </view>
@@ -22,9 +22,9 @@
       <view>下单时间: <text>{{info.create_time}}</text></view>
     </view>
      <view class="status">已完成</view>
-    <view class="list_liconimg clearfix">
+    <view class="list_liconimg clearfix topic_answerImg">
       <view class="fl list_liconimg_img"  wx:for="{{info.finish_img}}" wx:for-item="img">
-          <image src="{{host}}{{img}}"></image>
+        <image bindtap='topic_preview' data-list="{{info.finish_img}}" data-id='{{img.id}}' data-url='{{host}}{{img}}' class='topic_answer_itemImg' src="{{host}}{{img}}"></image>
       </view>
     </view>
     <view class="changed_details">{{info.finish_beizhu}}</view>
@@ -34,8 +34,10 @@
       <view class="fb_tit">问题反馈</view>
       <view class="fb_con">
         <view class="fb_time"><text class="tiao"></text>{{info.pro_time}}</view>
-        <view class="fb_img clearfix"  wx:for="{{info.pro_img}}" wx:for-item="img">
-          <image src="{{host}}{{img}}"></image>
+        <view class="topic_answerImg">
+          <view class="fb_img clearfix"  wx:for="{{info.pro_img}}" wx:for-item="img">
+            <image bindtap='topic_preview' data-list="{{info.pro_img}}" data-id='{{img.id}}' data-url='{{host}}{{img}}' class='topic_answer_itemImg' src="{{host}}{{img}}"></image>
+          </view>
         </view>
         <view class="fb_desc">{{info.pro_content}}</view>
       </view>
@@ -65,9 +67,9 @@
       <view>
         <view class="list_con status">已完成</view>
       </view>
-      <view class="acc_img col">
+      <view class="acc_img col topic_answerImg">
       <view class="col-3"  wx:for="{{info.slove.solve_img}}"  wx:key="key"  wx:for-item="value">
-          <image src="{{host}}{{value}}"></image>
+         <image bindtap='topic_preview' data-list="{{info.slove.solve_img}}" data-id='{{value.id}}' data-url='{{host}}{{value}}' class='topic_answer_itemImg' src="{{host}}{{value}}"></image>
         </view>
       </view>
       <view class="reject_be">{{info.slove.solve_beizhu}}</view>

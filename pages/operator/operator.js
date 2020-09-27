@@ -301,9 +301,10 @@ wancBtn:function(e){
   that.setData({
     id:e.currentTarget.dataset.key
   })
+  var order=e.currentTarget.dataset.order;
   wx.request({
     url: url + 'worksite/default/order-finish',
-    data: {projectId:projectId,OpenId:openId,goods_id:that.data.id,ordertype:ordertype},
+    data: {projectId:projectId,OpenId:openId,goods_id:that.data.id,ordertype:ordertype,order:order},
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },

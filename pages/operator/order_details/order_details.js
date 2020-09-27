@@ -18,6 +18,19 @@ Page({
     desc:'',//添加备注
     order_id:''//订单id
   },
+   //预览图片
+   topic_preview: function(e){
+    var imgList = e.currentTarget.dataset.list;//获取data-list
+    var url = e.currentTarget.dataset.url;
+    var previewImgArr = [];
+    for (var i in imgList) {
+      previewImgArr[i]= this.data.host+imgList[i];
+    }
+    wx.previewImage({
+      current: url,     //当前图片地址
+      urls: previewImgArr,               //所有要预览的图片的地址集合 数组形式
+    })
+  },
    //接单操作
    takeOrder: function (e) {
     var openId = wx.getStorageSync('openId')
@@ -198,7 +211,7 @@ saveData: function(){
   var openId = wx.getStorageSync('openId')
   wx.request({
     url: url + 'worksite/default/order-finish',
-    data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:1,solve_beizhu:desc,solve_img:imgs},
+    data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:1,solve_beizhu:desc,solve_img:imgs,order:that.data.order_id},
     header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
@@ -211,7 +224,7 @@ saveData: function(){
             duration: 2000//持续的时间
         })
         wx.navigateTo({
-          url: '../operator/operator',
+          url: '../operator',
         })
       } else {}
     },

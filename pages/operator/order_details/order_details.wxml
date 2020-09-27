@@ -37,17 +37,17 @@
     </view>
     <view class='desc' wx:if="{{info.order_status==1}}">
       <label class=''>添加备注</label>
-      <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300" /> <text class="textlimit">0/300</text></view>
+      <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300" bindinput ="reasonsText" /> <text class="textlimit">0/300</text></view>
     </view>
 
     <view class="status" wx:if="{{info.order_status==2}}">已完成</view>
-    <view class="list_liconimg" wx:if="{{info.order_status==2}}">
+    <view class="list_liconimg clearfix topic_answerImg" wx:if="{{info.order_status==2}}">
       <view class="fl list_liconimg_img"  wx:for="{{info.finish_img}}" wx:for-item="img">
-          <image src="{{host}}{{img}}"></image>
+        <image bindtap='topic_preview' data-list="{{info.finish_img}}" data-id='{{img.id}}' data-url='{{host}}{{img}}' class='topic_answer_itemImg' src="{{host}}{{img}}"></image>
       </view>
     </view>
     <view class="changed_details" wx:if="{{info.order_status==2}}">{{info.finish_beizhu}}</view>
-    <view class="end_time" wx:if="{{info.order_status==2}}">完成时间：<text>{{info.finish_beizhu}}</text></view>
+    <view class="end_time" wx:if="{{info.order_status==2}}">完成时间：<text>{{info.finish_time}}</text></view>
     <view class="status" wx:if="{{info.order_status==3}}">转单中</view>
   </view>
 </view>

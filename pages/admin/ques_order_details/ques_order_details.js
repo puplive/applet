@@ -22,6 +22,19 @@ Page({
     assignsel:'',//指派成员的id
     order_id:'',//订单id
   },
+  //预览图片
+topic_preview: function(e){
+  var imgList = e.currentTarget.dataset.list;//获取data-list
+  var url = e.currentTarget.dataset.url;
+  var previewImgArr = [];
+  for (var i in imgList) {
+    previewImgArr[i]= this.data.host+imgList[i];
+  }
+  wx.previewImage({
+    current: url,     //当前图片地址
+    urls: previewImgArr,               //所有要预览的图片的地址集合 数组形式
+  })
+},
   // 人员选择单选
   radioChange: function (e) {
     var that = this;

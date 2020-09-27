@@ -88,4 +88,20 @@ page{ background-color: #fff;}
 .foot_btn{ position: fixed; bottom: 0;width: 100%; height: 86rpx; border-top: 1px solid rgba(0, 0, 0, .1); background-color: #fff;z-index: 666;}
 .foot_btnli{width:160rpx;height:48rpx;border-radius:24rpx; border-width: 1px; border-style: solid; text-align: center;color: #606266;margin-top:18rpx;}
 .foot_btn .agree{border-color:rgba(0, 0, 0, .1); margin:18rpx 20rpx 0;}
+/*图片点击放大*/
+.topic_answerImg{
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+ }
+ .topic_answer_itemImg{
+  width: 210rpx;
+  height: 210rpx;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+ }
+ .topic_answer_itemImg:nth-of-type(3n){
+  margin-right: 0;
+ }
 

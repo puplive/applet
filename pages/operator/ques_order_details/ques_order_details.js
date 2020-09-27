@@ -19,6 +19,20 @@ Page({
     hiddenassign: true,  //指派弹窗
     assignArray:'',
     assignsel:'',//指派成员的id
+    order_id:'',//订单id
+  },
+   //预览图片
+   topic_preview: function(e){
+    var imgList = e.currentTarget.dataset.list;//获取data-list
+    var url = e.currentTarget.dataset.url;
+    var previewImgArr = [];
+    for (var i in imgList) {
+      previewImgArr[i]= this.data.host+imgList[i];
+    }
+    wx.previewImage({
+      current: url,     //当前图片地址
+      urls: previewImgArr,               //所有要预览的图片的地址集合 数组形式
+    })
   },
 // 点击上传图片
 chooseWxImage: function (type) {
@@ -153,9 +167,11 @@ confirmS: function (e) {
   onLoad: function (options) {
     var id = options.id
     var or_type = options.or_type
+    var order_id = options.order
     this.setData({
       orderId: id,
       or_type: or_type,
+      order_id:order_id,
     })
   },
 
@@ -172,9 +188,8 @@ confirmS: function (e) {
   onShow: function () {
     var openId = wx.getStorageSync('openId')
     var that = this;
-    var id = that.data.orderId
     var type = that.data.or_type
-    call.request('worksite/default/order-details', {goods_id:id,projectId:sendMessageContent.projectId,OpenId:openId,ordertype:2,type:type},
+    call.request('worksite/default/oquest-details', {goods_id:that.data.orderId,projectId:sendMessageContent.projectId,order_id:that.data.order_id},
       function (res) {
         if (res.Code == 200) {
           console.log(res.data)

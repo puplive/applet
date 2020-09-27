@@ -73,3 +73,19 @@ page{ background-color: #fff;}
 .reject_be{color:#303133; font-size:32rpx;}
 .foot_btn{ position: fixed; bottom: 0;width: 100%; height: 86rpx; border-top: 1px solid #F5F7FA; background-color: #fff;}
 .foot_btnli{width:160rpx;height:48rpx;border-radius:24rpx; border: 1px solid #DCDFE6; text-align: center;color: #606266;margin-top:18rpx; margin-right: 10rpx;}
+/*图片点击放大*/
+.topic_answerImg{
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+ }
+ .topic_answer_itemImg{
+  width: 210rpx;
+  height: 210rpx;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+ }
+ .topic_answer_itemImg:nth-of-type(3n){
+  margin-right: 0;
+ }
