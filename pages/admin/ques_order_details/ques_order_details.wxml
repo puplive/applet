@@ -25,7 +25,7 @@
      <view class="status">已完成</view>
     <view class="list_liconimg clearfix topic_answerImg">
       <view class="fl list_liconimg_img"  wx:for="{{info.finish_img}}" wx:for-item="img">
-          <image bindtap='topic_preview' data-list="{{info.finish_img}}" data-id='{{item.id}}' data-url='{{host}}{{img}}' class='topic_answer_itemImg' src="{{host}}{{img}}"></image>
+          <image bindtap='topic_preview' data-list="{{info.finish_img}}" data-id='{{info.id}}' data-url='{{host}}{{img}}' class='topic_answer_itemImg' src="{{host}}{{img}}"></image>
       </view>
     </view>
     <view class="changed_details">{{info.finish_beizhu}}</view>
@@ -37,7 +37,7 @@
         <view class="fb_time"><text class="tiao"></text>{{info.pro_time}}</view>
         <view class="acc_img col topic_answerImg">
           <view class="fb_img clearfix"  wx:for="{{info.pro_img}}" wx:for-item="img">
-              <image bindtap='topic_preview' data-list="{{info.pro_img}}" data-id='{{img.id}}' data-url='{{host}}{{img}}' class='topic_answer_itemImg' src="{{host}}{{img}}"></image>
+              <image bindtap='topic_preview' data-list="{{info.pro_img}}" data-id='{{info.id}}' data-url='{{host}}{{img}}' class='topic_answer_itemImg' src="{{host}}{{img}}"></image>
           </view>
         </view>
         <view class="fb_desc">{{info.pro_content}}</view>
@@ -68,7 +68,7 @@
     <view class="fb_time">{{info.slove.solve_time}}</view>
       <view class="acc_img col topic_answerImg">
       <view class="fb_img clearfix"  wx:for="{{info.slove.solve_img}}"  wx:key="key"  wx:for-item="value">
-          <image bindtap='topic_preview' data-list="{{info.slove.solve_img}}" data-id='{{value.id}}' data-url='{{host}}{{value}}' class='topic_answer_itemImg' src="{{host}}{{value}}"></image>
+          <image bindtap='topic_preview' data-list="{{info.slove.solve_img}}" data-id='{{info.id}}' data-url='{{host}}{{value}}' class='topic_answer_itemImg' src="{{host}}{{value}}"></image>
         </view>
       </view>
       <view class="reject_be">{{info.slove.solve_beizhu}}</view>

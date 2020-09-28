@@ -56,7 +56,7 @@
         <view class="not_accname">租赁</view>
       </view>
       <view class="flex-item demo-text-4">
-        <view class="not_accnum">{{order_not.water}}</view>
+        <view class="not_accnum">{{order_not.other}}</view>
         <view><text class="iconfont icon-gengduo1"></text></view>
         <view class="not_accname">其它</view>
       </view>

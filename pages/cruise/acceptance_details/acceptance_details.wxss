@@ -19,4 +19,20 @@ page{ background-color: #fff;}
 .foot_btnli{width:160rpx;height:48rpx;border-radius:24rpx; border-width: 1px; border-style: solid; text-align: center;color: #606266;margin-top:18rpx;}
 .foot_btn .agree{background:rgba(107,199,60,0.05);border-color: rgba(107,199,60,1); margin:18rpx 20rpx 0;}
 .foot_btn .reject{background:rgba(229,76,74,0.05);border-color: rgba(229,76,74,1);}
+/*图片放大*/
+.topic_answerImg{
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+ }
+ .topic_answer_itemImg{
+  width: 210rpx;
+  height: 210rpx;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+ }
+ .topic_answer_itemImg:nth-of-type(3n){
+  margin-right: 0;
+ }
 
