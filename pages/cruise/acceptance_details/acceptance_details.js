@@ -7,11 +7,23 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: { 
+  data: {
+    host:app.globalData.url,
     check_id:'', //整条验收id
     id:'' //单个id
   },
-
+  topic_preview: function(e){
+    var imgList = e.currentTarget.dataset.list;//获取data-list
+    var url = e.currentTarget.dataset.url;
+    var previewImgArr = [];
+    for (var i in imgList) {
+      previewImgArr[i]= this.data.host+imgList[i];
+    }
+    wx.previewImage({
+      current: url,     //当前图片地址
+      urls: previewImgArr,               //所有要预览的图片的地址集合 数组形式
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

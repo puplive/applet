@@ -1,34 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8898611a-ec28-4bea-8ef5-9de5f67f4c23" name="默认的" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/images/tubiao/1.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/images/tubiao/2.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/images/tubiao/3.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/images/tubiao/4.png" />
+    <list default="true" id="8898611a-ec28-4bea-8ef5-9de5f67f4c23" name="默认的" comment="订单id保存">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/ad_order/ad_order.js" afterPath="$PROJECT_DIR$/pages/admin/ad_order/ad_order.js" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/ad_order/ad_order.wxml" afterPath="$PROJECT_DIR$/pages/admin/ad_order/ad_order.wxml" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/ad_order_details/ad_order_details.js" afterPath="$PROJECT_DIR$/pages/admin/ad_order_details/ad_order_details.js" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/ad_order_details/ad_order_details.wxml" afterPath="$PROJECT_DIR$/pages/admin/ad_order_details/ad_order_details.wxml" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/ad_order_details/ad_order_details.wxss" afterPath="$PROJECT_DIR$/pages/admin/ad_order_details/ad_order_details.wxss" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/ques_details/ques_details.js" afterPath="$PROJECT_DIR$/pages/admin/ques_details/ques_details.js" />
+      <change beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change beforePath="$PROJECT_DIR$/pages/admin/ques_details/ques_details.wxml" afterPath="$PROJECT_DIR$/pages/admin/ques_details/ques_details.wxml" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/ques_details/ques_details.wxss" afterPath="$PROJECT_DIR$/pages/admin/ques_details/ques_details.wxss" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/ques_order_details/ques_order_details.js" afterPath="$PROJECT_DIR$/pages/admin/ques_order_details/ques_order_details.js" />
       <change beforePath="$PROJECT_DIR$/pages/admin/ques_order_details/ques_order_details.wxml" afterPath="$PROJECT_DIR$/pages/admin/ques_order_details/ques_order_details.wxml" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/ques_order_details/ques_order_details.wxss" afterPath="$PROJECT_DIR$/pages/admin/ques_order_details/ques_order_details.wxss" />
-      <change beforePath="$PROJECT_DIR$/pages/operator/operator.js" afterPath="$PROJECT_DIR$/pages/operator/operator.js" />
-      <change beforePath="$PROJECT_DIR$/pages/operator/operator.wxml" afterPath="$PROJECT_DIR$/pages/operator/operator.wxml" />
-      <change beforePath="$PROJECT_DIR$/pages/operator/order_details/order_details.js" afterPath="$PROJECT_DIR$/pages/operator/order_details/order_details.js" />
-      <change beforePath="$PROJECT_DIR$/pages/operator/order_details/order_details.wxml" afterPath="$PROJECT_DIR$/pages/operator/order_details/order_details.wxml" />
-      <change beforePath="$PROJECT_DIR$/pages/operator/order_details/order_details.wxss" afterPath="$PROJECT_DIR$/pages/operator/order_details/order_details.wxss" />
-      <change beforePath="$PROJECT_DIR$/pages/operator/ques_details/ques_details.js" afterPath="$PROJECT_DIR$/pages/operator/ques_details/ques_details.js" />
+      <change beforePath="$PROJECT_DIR$/pages/cruise/acceptance/acceptance.wxss" afterPath="$PROJECT_DIR$/pages/cruise/acceptance/acceptance.wxss" />
+      <change beforePath="$PROJECT_DIR$/pages/cruise/acceptance_details/acceptance_details.js" afterPath="$PROJECT_DIR$/pages/cruise/acceptance_details/acceptance_details.js" />
+      <change beforePath="$PROJECT_DIR$/pages/cruise/acceptance_details/acceptance_details.wxml" afterPath="$PROJECT_DIR$/pages/cruise/acceptance_details/acceptance_details.wxml" />
+      <change beforePath="$PROJECT_DIR$/pages/cruise/acceptance_details/acceptance_details.wxss" afterPath="$PROJECT_DIR$/pages/cruise/acceptance_details/acceptance_details.wxss" />
+      <change beforePath="$PROJECT_DIR$/pages/cruise/changed/changed_details/changed_details.js" afterPath="$PROJECT_DIR$/pages/cruise/changed/changed_details/changed_details.js" />
+      <change beforePath="$PROJECT_DIR$/pages/cruise/changed/changed_details/changed_details.wxml" afterPath="$PROJECT_DIR$/pages/cruise/changed/changed_details/changed_details.wxml" />
+      <change beforePath="$PROJECT_DIR$/pages/cruise/changed/changed_details/changed_details.wxss" afterPath="$PROJECT_DIR$/pages/cruise/changed/changed_details/changed_details.wxss" />
       <change beforePath="$PROJECT_DIR$/pages/operator/ques_details/ques_details.wxml" afterPath="$PROJECT_DIR$/pages/operator/ques_details/ques_details.wxml" />
-      <change beforePath="$PROJECT_DIR$/pages/operator/ques_details/ques_details.wxss" afterPath="$PROJECT_DIR$/pages/operator/ques_details/ques_details.wxss" />
-      <change beforePath="$PROJECT_DIR$/pages/operator/ques_order_details/ques_order_details.js" afterPath="$PROJECT_DIR$/pages/operator/ques_order_details/ques_order_details.js" />
-      <change beforePath="$PROJECT_DIR$/pages/operator/ques_order_details/ques_order_details.wxml" afterPath="$PROJECT_DIR$/pages/operator/ques_order_details/ques_order_details.wxml" />
-      <change beforePath="$PROJECT_DIR$/pages/operator/ques_order_details/ques_order_details.wxss" afterPath="$PROJECT_DIR$/pages/operator/ques_order_details/ques_order_details.wxss" />
+      <change beforePath="$PROJECT_DIR$/project.config.json" afterPath="$PROJECT_DIR$/project.config.json" />
       <change beforePath="$PROJECT_DIR$/utils/request.js" afterPath="$PROJECT_DIR$/utils/request.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,7 +29,7 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
+            <state relative-caret-position="680">
               <caret line="41" column="42" lean-forward="false" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
               <folding />
             </state>
@@ -53,60 +39,28 @@
       <file leaf-file-name="request.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/request.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="41" lean-forward="true" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+            <state relative-caret-position="119">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ques_details.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ques_details.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/admin/ques_details/ques_details.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
               <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-              <folding>
-                <marker date="1601197890525" expanded="true" signature="897:928" ph="{&quot;assignsel&quot;: value...}" />
-                <marker date="1601197890525" expanded="true" signature="1000:1087" ph="{&quot;id&quot;: e.currentTarget.dataset.key...}" />
-                <marker date="1601197890525" expanded="true" signature="1596:1705" ph="{&quot;assignArray&quot;: res.data.data...}" />
-                <marker date="1601197890525" expanded="true" signature="1869:1899" ph="{...}" />
-                <marker date="1601197890525" expanded="true" signature="2014:2103" ph="{&quot;id&quot;: e.currentTarget.dataset.key...}" />
-                <marker date="1601197890525" expanded="true" signature="2118:2732" ph="{&quot;method&quot;: 'POST'...}" />
-                <marker date="1601197890525" expanded="true" signature="2278:2350" ph="{&quot;content-type&quot;: 'application/x-www-form-urlencoded'...}" />
-                <marker date="1601197890525" expanded="true" signature="2484:2576" ph="{&quot;title&quot;: '接单成功'...}" />
-                <marker date="1601197890525" expanded="true" signature="2786:2815" ph="{...}" />
-                <marker date="1601197890525" expanded="true" signature="2870:2899" ph="{...}" />
-                <marker date="1601197890525" expanded="true" signature="2976:3563" ph="{&quot;method&quot;: 'POST'...}" />
-                <marker date="1601197890525" expanded="true" signature="3356:3448" ph="{&quot;title&quot;: '指派成功'...}" />
-                <marker date="1601197890525" expanded="true" signature="3570:3599" ph="/** 生命周期函数--监听页面加载 ...*/" />
-                <marker date="1601197890525" expanded="true" signature="3672:3715" ph="{&quot;proid&quot;: options.id...}" />
-                <marker date="1601197890525" expanded="true" signature="3850:4203" ph="{...}" />
-                <marker date="1601197890525" expanded="true" signature="4145:4192" ph="{&quot;tempFilePaths&quot;: tempFilePaths...}" />
-                <marker date="1601197890525" expanded="true" signature="4275:4567" ph="{&quot;itemColor&quot;: &quot;##a3a2a2&quot;...}" />
-                <marker date="1601197890525" expanded="true" signature="4755:4802" ph="{&quot;tempFilePaths&quot;: that.data.tempFilePaths...}" />
-                <marker date="1601197890525" expanded="true" signature="4849:4874" ph="/** 生命周期函数--监听页面加载 ...*/" />
-                <marker date="1601197890525" expanded="true" signature="4941:4980" ph="{&quot;proid&quot;: options.id...}" />
-                <marker date="1601197890525" expanded="true" signature="5046:5080" ph="{&quot;desc&quot;: e.detail.value...}" />
-                <marker date="1601197890525" expanded="true" signature="5091:5124" ph="/** 生命周期函数--监听页面初次渲染完成 ...*/" />
-                <marker date="1601197890525" expanded="true" signature="5159:5188" ph="/** 生命周期函数--监听页面显示 ...*/" />
-                <marker date="1601197890525" expanded="true" signature="5548:5589" ph="{&quot;info&quot;: res.data...}" />
-                <marker date="1601197890525" expanded="true" signature="5908:6880" ph="{&quot;name&quot;: 'img'...}" />
-                <marker date="1601197890525" expanded="true" signature="6055:6139" ph="{&quot;content-type&quot;: 'application/x-www-form-urlencoded'...}" />
-                <marker date="1601197890525" expanded="true" signature="7167:7794" ph="{&quot;method&quot;: 'POST'...}" />
-                <marker date="1601197890525" expanded="true" signature="7339:7417" ph="{&quot;content-type&quot;: 'application/x-www-form-urlencoded'...}" />
-                <marker date="1601197890525" expanded="true" signature="7521:7625" ph="{&quot;title&quot;: '成功'...}" />
-                <marker date="1601197890525" expanded="true" signature="7801:7830" ph="/** 生命周期函数--监听页面隐藏 ...*/" />
-                <marker date="1601197890525" expanded="true" signature="7864:7893" ph="/** 生命周期函数--监听页面卸载 ...*/" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_info.wxml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user_info.wxml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/admin/person/user_info/user_info.wxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="21" lean-forward="false" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+            <state relative-caret-position="272">
+              <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -228,9 +182,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-109" />
-    <option name="y" value="58" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-79" />
     <option name="width" value="1940" />
     <option name="height" value="1100" />
   </component>
@@ -249,7 +202,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -273,6 +225,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -375,7 +328,8 @@
       <workItem from="1600825726377" duration="4823000" />
       <workItem from="1600911566286" duration="2593000" />
       <workItem from="1600997488124" duration="3083000" />
-      <workItem from="1601170612989" duration="3364000" />
+      <workItem from="1601170612989" duration="4123000" />
+      <workItem from="1601258662618" duration="2420000" />
     </task>
     <task id="LOCAL-00001" summary="冲突">
       <created>1594794251559</created>
@@ -591,14 +545,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177060000" />
+    <option name="totallyTimeSpent" value="180239000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07249467" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16791044" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12260128" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -606,8 +560,8 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3163597" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29252437" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -978,10 +932,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/person/user_info/user_info.wxml">
+    <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="21" lean-forward="false" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+        <state relative-caret-position="680">
+          <caret line="41" column="42" lean-forward="false" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/request.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/admin/ques_details/ques_details.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -1038,58 +1008,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/ques_details/ques_details.js">
+    <entry file="file://$PROJECT_DIR$/pages/admin/person/user_info/user_info.wxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-          <folding>
-            <marker date="1601197890525" expanded="true" signature="897:928" ph="{&quot;assignsel&quot;: value...}" />
-            <marker date="1601197890525" expanded="true" signature="1000:1087" ph="{&quot;id&quot;: e.currentTarget.dataset.key...}" />
-            <marker date="1601197890525" expanded="true" signature="1596:1705" ph="{&quot;assignArray&quot;: res.data.data...}" />
-            <marker date="1601197890525" expanded="true" signature="1869:1899" ph="{...}" />
-            <marker date="1601197890525" expanded="true" signature="2014:2103" ph="{&quot;id&quot;: e.currentTarget.dataset.key...}" />
-            <marker date="1601197890525" expanded="true" signature="2118:2732" ph="{&quot;method&quot;: 'POST'...}" />
-            <marker date="1601197890525" expanded="true" signature="2278:2350" ph="{&quot;content-type&quot;: 'application/x-www-form-urlencoded'...}" />
-            <marker date="1601197890525" expanded="true" signature="2484:2576" ph="{&quot;title&quot;: '接单成功'...}" />
-            <marker date="1601197890525" expanded="true" signature="2786:2815" ph="{...}" />
-            <marker date="1601197890525" expanded="true" signature="2870:2899" ph="{...}" />
-            <marker date="1601197890525" expanded="true" signature="2976:3563" ph="{&quot;method&quot;: 'POST'...}" />
-            <marker date="1601197890525" expanded="true" signature="3356:3448" ph="{&quot;title&quot;: '指派成功'...}" />
-            <marker date="1601197890525" expanded="true" signature="3570:3599" ph="/** 生命周期函数--监听页面加载 ...*/" />
-            <marker date="1601197890525" expanded="true" signature="3672:3715" ph="{&quot;proid&quot;: options.id...}" />
-            <marker date="1601197890525" expanded="true" signature="3850:4203" ph="{...}" />
-            <marker date="1601197890525" expanded="true" signature="4145:4192" ph="{&quot;tempFilePaths&quot;: tempFilePaths...}" />
-            <marker date="1601197890525" expanded="true" signature="4275:4567" ph="{&quot;itemColor&quot;: &quot;##a3a2a2&quot;...}" />
-            <marker date="1601197890525" expanded="true" signature="4755:4802" ph="{&quot;tempFilePaths&quot;: that.data.tempFilePaths...}" />
-            <marker date="1601197890525" expanded="true" signature="4849:4874" ph="/** 生命周期函数--监听页面加载 ...*/" />
-            <marker date="1601197890525" expanded="true" signature="4941:4980" ph="{&quot;proid&quot;: options.id...}" />
-            <marker date="1601197890525" expanded="true" signature="5046:5080" ph="{&quot;desc&quot;: e.detail.value...}" />
-            <marker date="1601197890525" expanded="true" signature="5091:5124" ph="/** 生命周期函数--监听页面初次渲染完成 ...*/" />
-            <marker date="1601197890525" expanded="true" signature="5159:5188" ph="/** 生命周期函数--监听页面显示 ...*/" />
-            <marker date="1601197890525" expanded="true" signature="5548:5589" ph="{&quot;info&quot;: res.data...}" />
-            <marker date="1601197890525" expanded="true" signature="5908:6880" ph="{&quot;name&quot;: 'img'...}" />
-            <marker date="1601197890525" expanded="true" signature="6055:6139" ph="{&quot;content-type&quot;: 'application/x-www-form-urlencoded'...}" />
-            <marker date="1601197890525" expanded="true" signature="7167:7794" ph="{&quot;method&quot;: 'POST'...}" />
-            <marker date="1601197890525" expanded="true" signature="7339:7417" ph="{&quot;content-type&quot;: 'application/x-www-form-urlencoded'...}" />
-            <marker date="1601197890525" expanded="true" signature="7521:7625" ph="{&quot;title&quot;: '成功'...}" />
-            <marker date="1601197890525" expanded="true" signature="7801:7830" ph="/** 生命周期函数--监听页面隐藏 ...*/" />
-            <marker date="1601197890525" expanded="true" signature="7864:7893" ph="/** 生命周期函数--监听页面卸载 ...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="41" column="42" lean-forward="false" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/request.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="41" lean-forward="true" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+        <state relative-caret-position="272">
+          <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
           <folding />
         </state>
       </provider>

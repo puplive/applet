@@ -6,9 +6,9 @@
   </view> 
 <view class="list_con" wx:for-items="{{accepArray}}" wx:for-index="key">
     <view class="time">{{item.apply_time}}</view>
-     <view class="acc_img col">
+     <view class="acc_img col topic_answerImg">
       <view class="col-3" wx:for="{{item.check_img}}" wx:for-item="img_item">
-       <image src="{{host}}/{{img_item}}"></image>
+       <image bindtap='topic_preview' data-list="{{item.check_img}}" data-id='{{item.id}}' data-url='{{host}}{{img_item}}' class='topic_answer_itemImg' src="{{host}}{{img_item}}"></image>
       </view>
     </view>
     <view wx:if="{{item.check_status == '2'}}">
@@ -16,9 +16,9 @@
       <view class="al_reject">已驳回</view>
       <view class="reject_be">驳回理由：{{item.check_bohui}}</view>
     </view>
-    <view class="acc_img col" wx:if="{{item.check_status == '2'}}">
+    <view class="acc_img col topic_answerImg" wx:if="{{item.check_status == '2'}}">
       <view class="col-3" wx:for="{{item.check_bohui_img}}" wx:for-item="img_item">
-       <image src="{{host}}/{{img_item}}"></image>
+       <image bindtap='topic_preview' data-list="{{item.check_bohui_img}}" data-id='{{item.id}}' data-url='{{host}}{{img_item}}' class='topic_answer_itemImg' src="{{host}}{{img_item}}"></image>
       </view>
     </view>
   </view>
