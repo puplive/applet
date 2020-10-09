@@ -18,6 +18,28 @@ Page({
     hiddenassign: true,  //指派弹窗
     assignArray:'',
     assignsel:'',//指派成员的id
+
+  },
+//预览图片
+topic_preview: function(e){
+  var imgList = e.currentTarget.dataset.list;//获取data-list
+  var url = e.currentTarget.dataset.url;
+  var previewImgArr = [];
+  for (var i in imgList) {
+    previewImgArr[i]= this.data.host+imgList[i];
+  }
+  wx.previewImage({
+    current: url,     //当前图片地址
+    urls: previewImgArr,               //所有要预览的图片的地址集合 数组形式
+  })
+},
+  // 人员选择单选
+  radioChange: function (e) {
+    var that = this;
+    let value = e.detail.value;
+    this.setData({
+      assignsel : value
+    })
   },
  // 指派
  assignBtn:function(e){
@@ -53,6 +75,40 @@ Page({
     })
   this.setData({
     hiddenassign: false,
+  })
+},
+//接单操作
+takeOrder: function (e) {
+  var openId = wx.getStorageSync('openId')
+  var that = this;
+  that.setData({
+    id: e.currentTarget.dataset.key,
+    //ordertype: e.currentTarget.dataset.type,
+  })
+  wx.request({
+    url: url + 'worksite/default/order-take',
+    data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,ordertype:2},
+    header: {
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    method: 'POST',
+    success(res) {
+      if (res.data.Code == 200) {
+        console.log(8,res.data.data);
+        wx.showToast({
+          title: '接单成功',
+          icon: 'none',
+          duration: 2000//持续的时间
+        })
+        wx.navigateTo({
+          url: '../ad_order/ad_order',
+        })
+      } else {
+      }
+    },
+    fail: function (err) {
+      // 服务异常
+    }
   })
 },
 // 指派确认按钮
@@ -240,12 +296,12 @@ saveData: function(){
     var that=this;
     var imgs =that.data.imgres;
     var desc =that.data.desc;
-    var orderId  =that.data.orderId;
+    var id = that.data.proid
     var projectId  =sendMessageContent.projectId;
     var openId = wx.getStorageSync('openId')
     wx.request({
       url: url + 'worksite/default/order-finish',
-      data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:1,solve_beizhu:desc,solve_img:imgs},
+      data: {projectId:projectId,OpenId:openId,goods_id:id,ordertype:2,solve_beizhu:desc,solve_img:imgs},
       header: {
           'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -257,9 +313,9 @@ saveData: function(){
               icon: 'none',
               duration: 2000//持续的时间
           })
-          // wx.navigateTo({
-          //   url: '../ad_order',
-          // })
+          wx.navigateTo({
+            url: '../ad_order/ad_order',
+          })
         } else {}
       },
       fail: function (err) {

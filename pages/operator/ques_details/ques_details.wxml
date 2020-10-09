@@ -9,9 +9,9 @@
     <text>{{info.pro_content}}</text>
   </view>
   <view class="list_con">
-    <view class="acc_img col">
+    <view class="acc_img col topic_answerImg">
       <view class="col-3"  wx:for="{{info.pro_img}}"  wx:key="k"  wx:for-item="val">
-        <image src="{{host}}{{val}}"></image>
+        <image bindtap='topic_preview' data-list="{{info.pro_img}}" data-id='{{info.id}}' data-url='{{host}}{{val}}' class='topic_answer_itemImg' src="{{host}}{{val}}"></image>
       </view>
     </view>
     <view class="time">反馈时间：{{info.pro_time}}</view>
@@ -42,9 +42,9 @@
     <view>
       <view class="list_con status">已完成</view>
     </view>
-    <view class="acc_img col">
+    <view class="acc_img col topic_answerImg">
     <view class="col-3"  wx:for="{{info.slove.solve_img}}"  wx:key="key"  wx:for-item="value">
-        <image src="{{host}}{{value}}"></image>
+        <image bindtap='topic_preview' data-list="{{info.slove.solve_img}}" data-id='{{info.id}}' data-url='{{host}}{{value}}' class='topic_answer_itemImg' src="{{host}}{{value}}"></image>
       </view>
     </view>
     <view class="reject_be">{{info.slove.solve_beizhu}}</view>

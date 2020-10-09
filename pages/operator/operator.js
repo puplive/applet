@@ -108,13 +108,14 @@ Page({
   takeOrder: function (e) {
     var openId = wx.getStorageSync('openId')
     var that = this;
+    var order=e.currentTarget.dataset.order;
     that.setData({
       id: e.currentTarget.dataset.key,
       ordertype: e.currentTarget.dataset.type,
     })
     wx.request({
       url: url + 'worksite/default/order-take',
-      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,ordertype:that.data.ordertype},
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,ordertype:that.data.ordertype,order_id:order},
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -300,9 +301,10 @@ wancBtn:function(e){
   that.setData({
     id:e.currentTarget.dataset.key
   })
+  var order=e.currentTarget.dataset.order;
   wx.request({
     url: url + 'worksite/default/order-finish',
-    data: {projectId:projectId,OpenId:openId,goods_id:that.data.id,ordertype:ordertype},
+    data: {projectId:projectId,OpenId:openId,goods_id:that.data.id,ordertype:ordertype,order:order},
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },

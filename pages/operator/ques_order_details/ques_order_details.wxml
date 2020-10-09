@@ -13,61 +13,38 @@
         </view>
         <view class="list_list clearfix">
           <text class="list_listname fl">{{info.goods_array.goodsno}}</text>
-          <text class="list_listnum fr">×{{info.goods_nums}}</text>
+                <text class="list_listnum fr">×{{item.goods_nums}}</text>
         </view>
-        <!-- <view class="list_list clearfix">
-          <text class="list_listname fl">桌花</text>
-          <text class="list_listnum fr">×1</text>
-        </view> -->
       </view>
     </view>
     <view  class="order_num">
       <view>订单编号：<text>{{info.order_no}}</text></view>
       <view>下单时间: <text>{{info.create_time}}</text></view>
     </view>
-    <view class="status" wx:if="{{info.order_status==0}}">待接单</view>
-
-    <view class="status" wx:if="{{info.order_status==1}}">待配送</view>
-    <view class="upload_img clearfix" wx:if="{{info.order_status==1}}">
-      <view class=" img_con" wx:for="{{tempFilePaths}}"  wx:for-index="key">
-        <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
-        <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
-          <image src='../../../images/imgdel.svg'></image>
-        </view>
-      </view>
-      <view class="col-9 img_con" bindtap="chooseimage">
-        <image class='defaultimg' src='../../../images/camera.svg' catchTap="chooseImageTap" mode="aspectFit"></image>
+     <view class="status">已完成</view>
+    <view class="list_liconimg clearfix topic_answerImg">
+      <view class="fl list_liconimg_img"  wx:for="{{info.finish_img}}" wx:for-item="img">
+        <image bindtap='topic_preview' data-list="{{info.finish_img}}" data-id='{{img.id}}' data-url='{{host}}{{img}}' class='topic_answer_itemImg' src="{{host}}{{img}}"></image>
       </view>
     </view>
-    <view class='desc' wx:if="{{info.order_status==1}}">
-      <label class=''>添加备注</label>
-      <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300"  bindinput ="reasonsText" /> <text class="textlimit">0/300</text></view>
-    </view>
-
-    <view class="status" wx:if="{{info.order_status==0}}">已完成</view>
-    <view class="list_liconimg" wx:if="{{info.order_status==0}}">
-      <image src="../../../images/icon_search.svg"></image>
-      <image src="../../../images/icon_search.svg"></image>
-      <image src="../../../images/icon_search.svg"></image>
-    </view>
+    <view class="changed_details">{{info.finish_beizhu}}</view>
+    <view class="end_time">完成时间：<text>{{info.finish_time}}</text></view>
      <!-- 问题反馈 -->
     <view class="pro_feedback">
       <view class="fb_tit">问题反馈</view>
       <view class="fb_con">
-        <view class="fb_time"><text class="tiao"></text>2020/03/01 13:23</view>
-        <view class="fb_img clearfix">
-          <image src="../../../images/icon_search.svg"></image>
-          <image src="../../../images/icon_search.svg"></image>
-          <image src="../../../images/icon_search.svg"></image>
-          <image src="../../../images/icon_search.svg"></image>
-          <image src="../../../images/icon_search.svg"></image>
-          <image src="../../../images/icon_search.svg"></image>
+        <view class="fb_time"><text class="tiao"></text>{{info.pro_time}}</view>
+        <view class="topic_answerImg">
+          <view class="fb_img clearfix"  wx:for="{{info.pro_img}}" wx:for-item="img">
+            <image bindtap='topic_preview' data-list="{{info.pro_img}}" data-id='{{img.id}}' data-url='{{host}}{{img}}' class='topic_answer_itemImg' src="{{host}}{{img}}"></image>
+          </view>
         </view>
-        <view class="fb_desc">鲜花质量差，不新鲜</view>
+        <view class="fb_desc">{{info.pro_content}}</view>
       </view>
-
-      <view class="status" wx:if="{{info.order_status==0}}">已接单</view>
-      <view class="upload_img clearfix" wx:if="{{info.order_status==0}}">
+    <view class="list_con status" wx:if="{{info.pro_status==1}}">待接单</view>
+    <view class="list_con" wx:if="{{info.pro_status==2}}">
+      <view class="status">已接单</view>
+      <view class="upload_img clearfix">
         <view class=" img_con" wx:for="{{tempFilePaths}}"  wx:for-index="key">
           <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
           <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
@@ -78,38 +55,36 @@
           <image class='defaultimg' src='../../../images/camera.svg' catchTap="chooseImageTap" mode="aspectFit"></image>
         </view>
       </view>
-      <view class='desc' wx:if="{{info.order_status==0}}">
+    </view>
+    <view class="list_con" wx:if="{{info.pro_status==2}}">
+      <view class='desc'>
         <label class=''>添加备注</label>
         <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="300"  bindinput ="reasonsText" /> <text class="textlimit">0/300</text></view>
       </view>
-      <!-- <view class="fb_con">
-        <view class="fb_time"><text class="tiao"></text>  2020/03/01 13:23</view>
-        <view class="fb_img clearfix"><image src="../../../images/icon_close_cha.svg"></image></view>
-        <view class="fb_desc">鲜花质量差，不新鲜</view>
-      </view> -->
+    </view>
+    <view class="list_con status" wx:if="{{info.pro_status==3 && info.slove==null}}">已完成</view>
+    <view class="list_con" wx:if="{{info.slove!=null && info.pro_status==3}}">
+      <view>
+        <view class="list_con status">已完成</view>
+      </view>
+      <view class="acc_img col topic_answerImg">
+      <view class="col-3"  wx:for="{{info.slove.solve_img}}"  wx:key="key"  wx:for-item="value">
+         <image bindtap='topic_preview' data-list="{{info.slove.solve_img}}" data-id='{{value.id}}' data-url='{{host}}{{value}}' class='topic_answer_itemImg' src="{{host}}{{value}}"></image>
+        </view>
+      </view>
+      <view class="reject_be">{{info.slove.solve_beizhu}}</view>
+      <view class="time">完成时间：{{info.slove.solve_time}}</view>
+    </view>
     </view>
     <view class="changed_details" wx:if="{{info.order_status==2}}">{{info.finish_beizhu}}</view>
     <view class="end_time" wx:if="{{info.order_status==3}}">完成时间：<text>{{info.finish_beizhu}}</text></view>
-
   </view>
 </view>
 <view class="foot_btn">
-  <view class="fr foot_btnli" wx:if="{{info.order_status==1}}" bindtap="addWanC">完成</view>
-  <view wx:if="{{info.order_status==0}}">
-    <view class="fr foot_btnli agree" bindtap="assignBtn" data-key="{{info.id}}" data-type="2" data-zgh="{{info.z_guan}}">指派</view>
-  </view>
-  <!-- <navigator url='../transfer_order/transfer_order'>
-    <view class="fr foot_btnli agree">转单</view>
-  </navigator> -->
-</view>
 
-<!-- 指派弹窗 -->
-<modal hidden="{{hiddenassign}}" title="指派" confirm-text="确定" cancel-text="取消" bindcancel="cancelS" bindconfirm="confirmS">
-  <view class='assign_con'>
-    <radio-group class="radio-group" bindchange="radioChange">
-      <label class="radio" wx:for="{{assignArray}}">
-        <radio class="radio" value="{{item.applet_id}}" color="#ECBB49" />{{item.role_name}}-{{item.username}}
-      </label>
-    </radio-group>
-  </view>
-</modal>
+  <view class="fr foot_btnli" bindtap="takeOrder" data-key="{{info.id}}" wx:if="{{info.pro_status==1}}">接单</view>
+  <navigator url='../acceptance_reject/acceptance_reject' wx:if="{{info.pro_status==2}}">
+    <view class="fr foot_btnli ">转单</view>
+  </navigator>
+  <view class="fr foot_btnli" wx:if="{{info.pro_status==2}}" bindtap="addWanC">完成</view>
+</view>

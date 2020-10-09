@@ -29,6 +29,18 @@ topic_preview: function(e){
     urls: previewImgArr,               //所有要预览的图片的地址集合 数组形式
   })
 },
+ //整改通知
+ zheng_gai:function(e){
+  wx.redirectTo({
+    url: "../add_changed/add_changed"
+  });
+},
+//编辑
+topic_bainji:function(e){
+  wx.redirectTo({
+    url: "../edit_changed/edit_changed?changeid="+e.target.dataset.id
+  });
+},
   // 筛选处罚方式
   screenPunish:function(e){
     this.setData({
@@ -269,7 +281,9 @@ topic_preview: function(e){
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    wx.reLaunch({
+      url: '../changed/changed',
+    })
   },
 
   /**

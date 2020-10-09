@@ -4,13 +4,13 @@
     <view class='row fenlei'>
       <view class='col f14'>
         <view class="col-3 nav_text">
-          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待接单</text><text>()</text>
+          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待接单</text>
         </view> 
         <view class="col-3 nav_text" >
-          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">待解决</text><text>()</text>
+          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">待解决</text>
         </view>
         <view class="col-3 nav_text">
-          <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已完成</text><text>()</text>
+          <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已完成</text>
         </view>
         <text class="iconfont icon-mianxing_loudou screen col-3" catchtap="screenBtn"></text>
       </view>
@@ -18,62 +18,55 @@
     <!-- 内容列表 -->
     <view wx:if="{{data_len>0}}" class='list f12' wx:for="{{data}}"  wx:key="key"  wx:for-item="value">
       <view class="list_con" wx:if="{{value.ordertype==1}}">
-        <navigator url='../ad_order_details/ad_order_details?id={{value.id}}&or_type={{_num}}' class=''>
+        <navigator url='../ad_order_details/ad_order_details?id={{value.info_id}}&or_type={{_num}}&order={{value.order_id}}' class=''>
           <view class="list_zwh clearfix">
             <text class="fl list_zwh_left">{{value.project_info.library_number}} {{value.project_info.number}}</text>
             <text class="fr list_zwh_right">{{value.time}}</text>
           </view>
           <view class="list_li clearfix">
-            <image src="{{host}}public/{{value.goods_img}}" class="fl list_img"></image>
+            <image src="{{host}}public/{{value.img}}" class="fl list_img"></image>
             <view class="list_licon fl">
               <view>
-                <text class="list_litit">{{value.goods_array.name}}</text>
+                <text class="list_litit">{{value.name}}</text>
               </view>
-              <view class="list_list clearfix">
-                <text class="list_listname fl">{{value.goods_array.goodsno}}</text>
-                <text class="list_listnum fr">×{{value.goods_nums}}</text>
+              <view class="list_list clearfix" wx:for="{{value.goods_array}}" wx:for-item="item">
+                <text class="list_listname fl">{{item.goodsno}}</text>
+                <text class="list_listnum fr">×{{item.num}}</text>
               </view>
-              <!-- <view class="list_list clearfix">
-                <text class="list_listname fl">桌花</text>
-                <text class="list_listnum fr">×1</text>
-              </view> -->
             </view>
           </view>
         </navigator>
         <view wx:if="{{value.order_status==0}}">
           <view class="list_btn clearfix" wx:if="{{value.goods_press==1}}">
-            <view class="assign_on fr" bindtap="assignBtn" data-key="{{value.id}}" data-type="1" data-zgh="{{value.project_info.library_number}}">指派</view>
+            <view class="assign_on fr" bindtap="takeOrder" data-key="{{value.info_id}}" data-order="{{value.order_id}}" data-type="1">接单</view>
+            <view class="assign_on fr" bindtap="assignBtn" data-key="{{value.info_id}}" data-order="{{value.order_id}}" data-type="1" data-zgh="{{value.project_info.library_number}}">指派</view>
             <view class="urging fr"  bindtap="urging">
               <view class="air_bg"><text class="iconfont icon-lingdang "></text></view>催办
             </view>
           </view>
           <view class="list_btn clearfix"  wx:if="{{value.goods_press==0}}">
-            <view class="assign fr" bindtap="assignBtn" data-key="{{value.id}}" data-type="1" data-zgh="{{value.project_info.library_number}}">指派</view>
+            <view class="assign fr" bindtap="takeOrder" data-key="{{value.info_id}}" data-order="{{value.order_id}}" data-type="1">接单</view>
+            <view class="assign fr" bindtap="assignBtn" data-key="{{value.info_id}}" data-order="{{value.order_id}}" data-type="1" data-zgh="{{value.project_info.library_number}}">指派</view>
           </view>
         </view>
          <view wx:if="{{value.order_status==1}}">
             <view class="list_btn clearfix">
-              <view class="assign fr" bindtap="wancBtn" data-key="{{value.id}}" data-type="1">完成</view>
+              <view class="assign fr" bindtap="wancBtn" data-key="{{value.info_id}}" data-order="{{value.order_id}}" data-type="1">完成</view>
             </view>
          </view>
          <view wx:if="{{value.order_status==2}}">
 
          </view>
-         <!-- <picker class="list_btn clearfix" mode="selector" bindchange="assignBtn" wx:if="{{value.goods_press==0}}" range="{{operatorArray}}" value="{{operatorindex}}">
-          <view class="assign fr">
-            <text class=''>指派</text>
-          </view>
-        </picker> -->
       </view>
 
       <view class="list_con"  wx:if="{{value.ordertype==2}}">
-        <navigator wx:if="{{value.order_id==null}}" url='../ques_details/ques_details?id={{value.id}}' class=''> 
+        <navigator wx:if="{{value.order_id==null || value.order_id==0}}" url='../ques_details/ques_details?id={{value.id}}' class=''> 
           <view class="list_zwh clearfix">
             <text class="fl list_zwh_left">{{value.z_guan}} {{value.zw_hao}}</text>
             <text class="fr list_zwh_right">{{value.time}}</text>
           </view>
           <view class="list_li clearfix">
-            <image src="/images/header_img.png" class="fl list_img"></image>
+            <image src="/images/tubiao/{{value.pro_type}}.png" class="fl list_img"></image>
             <view class="list_licon fl">
               <view>
                 <text class="list_litit">{{value.pro_content}}</text>
@@ -81,13 +74,13 @@
             </view>
           </view>
         </navigator>
-        <navigator wx:else url='../ques_order_details/ques_order_details?id={{value.id}}' class=''> 
+        <navigator wx:else url='../ques_order_details/ques_order_details?id={{value.id}}&order={{value.order_id}}' class=''> 
           <view class="list_zwh clearfix">
             <text class="fl list_zwh_left">{{value.z_guan}} {{value.zw_hao}}</text>
             <text class="fr list_zwh_right">{{value.time}}</text>
           </view>
           <view class="list_li clearfix">
-            <image src="/images/header_img.png" class="fl list_img"></image>
+            <image src="/images/tubiao/{{value.pro_type}}.png" class="fl list_img"></image>
             <view class="list_licon fl">
               <view>
                 <text class="list_litit">{{value.pro_content}}</text>
@@ -97,30 +90,26 @@
         </navigator>
         <view wx:if="{{value.pro_status==1}}">
           <view class="list_btn clearfix" wx:if="{{value.pro_press==1}}">
+            <view class="assign_on fr" bindtap="takeOrder" data-key="{{value.id}}" data-type="2">接单</view>
             <view class="assign_on fr" bindtap="assignBtn" data-key="{{value.id}}" data-type="2" data-zgh="{{value.z_guan}}">指派</view>
             <view class="urging fr"  bindtap="urging">
               <view class="air_bg"><text class="iconfont icon-lingdang "></text></view>催办
             </view>
           </view>
           <view class="list_btn clearfix" wx:if="{{value.pro_press==0}}">
+            <view class="assign fr" bindtap="takeOrder" data-key="{{value.id}}" data-type="2">接单</view>
             <view class="assign fr" bindtap="assignBtn" data-key="{{value.id}}" data-type="2" data-zgh="{{value.z_guan}}">指派</view>
           </view>
         </view>
          <view wx:if="{{value.pro_status==2}}">
             <view class="list_btn clearfix">
-              <view class="assign fr" bindtap="wancBtn" data-key="{{value.id}}" data-type="2">完成</view>
+              <view wx:if="{{value.order_id==null || value.order_id==0}}" class="assign fr" bindtap="wancBtn" data-key="{{value.id}}" data-type="2">完成</view>
+              <view wx:else class="assign fr" bindtap="wancBtn" data-key="{{value.id}}" data-order="{{value.order_id}}" data-type="2">完成</view>
             </view>
          </view>
          <view wx:if="{{value.pro_status==3}}">
 
          </view>
-        
-        <!-- <picker class="list_btn clearfix" mode="selector" bindchange="assignBtn" wx:if="{{value.pro_press==0}}" range="{{operatorArray}}" value="{{operatorindex}}">
-          <view class="assign fr">
-            <text class=''>指派</text>
-          </view>
-        </picker> -->
-
       </view>
 
     </view>

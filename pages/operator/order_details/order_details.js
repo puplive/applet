@@ -16,6 +16,20 @@ Page({
     imgres: [],
     tempFilePaths:[],
     desc:'',//添加备注
+    order_id:''//订单id
+  },
+   //预览图片
+   topic_preview: function(e){
+    var imgList = e.currentTarget.dataset.list;//获取data-list
+    var url = e.currentTarget.dataset.url;
+    var previewImgArr = [];
+    for (var i in imgList) {
+      previewImgArr[i]= this.data.host+imgList[i];
+    }
+    wx.previewImage({
+      current: url,     //当前图片地址
+      urls: previewImgArr,               //所有要预览的图片的地址集合 数组形式
+    })
   },
    //接单操作
    takeOrder: function (e) {
@@ -27,7 +41,7 @@ Page({
     })
     wx.request({
       url: url + 'worksite/default/order-take',
-      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,ordertype:1},
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,ordertype:1,order_id:that.data.order_id},
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -40,9 +54,10 @@ Page({
             icon: 'none',
             duration: 2000//持续的时间
           })
-          that.onShow();
+          wx.navigateTo({
+            url: '../operator/operator',
+          })
         } else {
-
         }
       },
       fail: function (err) {
@@ -109,9 +124,11 @@ imgDel: function(e){
   onLoad: function (options) {
     var id = options.id
     var or_type = options.or_type
+    var order_id = options.order_id
     this.setData({
       orderId: id,
       or_type: or_type,
+      order_id:order_id,
     })
   },
 
@@ -194,7 +211,7 @@ saveData: function(){
   var openId = wx.getStorageSync('openId')
   wx.request({
     url: url + 'worksite/default/order-finish',
-    data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:1,solve_beizhu:desc,solve_img:imgs},
+    data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:1,solve_beizhu:desc,solve_img:imgs,order:that.data.order_id},
     header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
@@ -206,9 +223,9 @@ saveData: function(){
             icon: 'none',
             duration: 2000//持续的时间
         })
-        // wx.navigateTo({
-        //   url: '../ad_order',
-        // })
+        wx.navigateTo({
+          url: '../operator',
+        })
       } else {}
     },
     fail: function (err) {

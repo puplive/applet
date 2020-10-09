@@ -20,6 +20,29 @@ Page({
     hiddenassign: true,  //指派弹窗
     assignArray:'',
     assignsel:'',//指派成员的id
+    goods_id:'',//类型id
+    order_id:'',//订单id
+  },
+  //预览图片
+  topic_preview: function(e){
+    var imgList = e.currentTarget.dataset.list;//获取data-list
+    var url = e.currentTarget.dataset.url;
+    var previewImgArr = [];
+    for (var i in imgList) {
+      previewImgArr[i]= this.data.host+imgList[i];
+    }
+    wx.previewImage({
+      current: url,     //当前图片地址
+      urls: previewImgArr,               //所有要预览的图片的地址集合 数组形式
+    })
+  },
+  // 人员选择单选
+  radioChange: function (e) {
+    var that = this;
+    let value = e.detail.value;
+    this.setData({
+      assignsel : value
+    })
   },
 // 点击上传图片
 chooseWxImage: function (type) {
@@ -80,13 +103,13 @@ imgDel: function(e){
   var that = this;
   that.setData({
     id: e.currentTarget.dataset.key,
-    ordertype: e.currentTarget.dataset.type,
+    // ordertype: e.currentTarget.dataset.type,
   })
   var zgh = e.currentTarget.dataset.zgh
   var openId = wx.getStorageSync('openId')
     wx.request({
       url: url + 'worksite/default/appoint-info',
-      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,zgh:zgh,type:that.data.ordertype},
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,zgh:zgh,type:1},
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -111,6 +134,42 @@ imgDel: function(e){
     hiddenassign: false,
   })
 },
+
+   //接单操作
+   takeOrder: function (e) {
+    var openId = wx.getStorageSync('openId')
+    var that = this;
+    that.setData({
+      id: e.currentTarget.dataset.key,
+      //ordertype: e.currentTarget.dataset.type,
+    })
+    wx.request({
+      url: url + 'worksite/default/order-take',
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,ordertype:1,order_id:that.data.order_id},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        if (res.data.Code == 200) {
+          console.log(8,res.data.data);
+          wx.showToast({
+            title: '接单成功',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+          wx.navigateTo({
+            url: '../ad_order/ad_order',
+          })
+        } else {
+
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
+  },
 // 指派确认按钮
 cancelS: function (e) {
   this.setData({
@@ -126,7 +185,7 @@ confirmS: function (e) {
   var openId = wx.getStorageSync('openId')
   wx.request({
     url: url + 'worksite/default/order-appoint',
-    data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,appoint_id:that.data.assignsel,ordertype:that.data.ordertype},
+    data: {projectId:sendMessageContent.projectId,OpenId:openId,goods_id:that.data.id,appoint_id:that.data.assignsel,ordertype:1,order_id:that.data.order_id},
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
@@ -155,9 +214,13 @@ confirmS: function (e) {
   onLoad: function (options) {
     var id = options.id
     var or_type = options.or_type
+    var goods_id = options.goods_id
+    var order_id = options.order
     this.setData({
       orderId: id,
       or_type: or_type,
+      goods_id:goods_id,
+      order_id:order_id,
     })
   },
 
@@ -176,10 +239,12 @@ confirmS: function (e) {
     var that = this;
     var id = that.data.orderId
     var type = that.data.or_type
+   //var goods_id = that.data.goods_id
+    //call.request('worksite/default/order-details', {orderid:id,goods_id:goods_id,projectId:sendMessageContent.projectId,OpenId:openId,ordertype:1,type:type},
     call.request('worksite/default/order-details', {goods_id:id,projectId:sendMessageContent.projectId,OpenId:openId,ordertype:1,type:type},
       function (res) {
         if (res.Code == 200) {
-          console.log(res.data)
+          console.log(888,res.data)
           that.setData({
               info:res.data
           })
@@ -236,11 +301,12 @@ confirmS: function (e) {
       var imgs =that.data.imgres;
       var desc =that.data.desc;
       var orderId  =that.data.orderId;
+      var order_id=that.data.order_id;
       var projectId  =sendMessageContent.projectId;
       var openId = wx.getStorageSync('openId')
       wx.request({
         url: url + 'worksite/default/order-finish',
-        data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:1,solve_beizhu:desc,solve_img:imgs},
+        data: {projectId:projectId,OpenId:openId,goods_id:orderId,order:order_id,ordertype:1,solve_beizhu:desc,solve_img:imgs},
         header: {
           'content-type': 'application/x-www-form-urlencoded' // 默认值
         },
@@ -252,9 +318,9 @@ confirmS: function (e) {
               icon: 'none',
               duration: 2000//持续的时间
             })
-            // wx.navigateTo({
-            //   url: '../ad_order',
-            // })
+            wx.navigateTo({
+              url: '../ad_order/ad_order',
+            })
           } else {
   
           }

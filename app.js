@@ -1,8 +1,7 @@
 //app.js
-//const url = 'https://www.exposaas.com/'
-// const url ='http://www.newmoble.com/'
+// const url = 'https://www.exposaas.com/'
 const url = 'http://test.exposaas.cn/'
-
+// const url = 'http://www.newmoble.com/'
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -171,32 +170,32 @@ App({
       "backgroundColor": "#fff",
       "borderStyle": "#ccc",
       "list": [
-        // {
-        //   "pagePath": "/pages/admin/admin",
-        //   "text": "首页",
-        //   "iconPath": "/images/icon_fangzi.svg",
-        //   "selectedIconPath": "/images/icon_fangzi_on.svg",
-        //   "clas": "menu-item1",
-        //   "selectedColor": "#303133",
-        //   active: false
-        // },
-        // {
-        //   "pagePath": "/pages/admin/ad_order/ad_order",
-        //   "text": "订单中心",
-        //   "iconPath": "/images/icon_dingdan.svg",
-        //   "selectedIconPath": "/images/icon_dingdan_on.svg",
-        //   "selectedColor": "#303133",
-        //   "clas": "menu-item1",
-        //   active: true
-        // },
+        {
+          "pagePath": "/pages/admin/admin",
+          "text": "首页",
+          "iconPath": "/images/icon_fangzi.svg",
+          "selectedIconPath": "/images/icon_fangzi_on.svg",
+          "clas": "menu-item1",
+          "selectedColor": "#303133",
+          active: true
+        },
+        {
+          "pagePath": "/pages/admin/ad_order/ad_order",
+          "text": "订单中心",
+          "iconPath": "/images/icon_dingdan.svg",
+          "selectedIconPath": "/images/icon_dingdan_on.svg",
+          "selectedColor": "#303133",
+          "clas": "menu-item1",
+          active: false
+        },
         {
           "pagePath": "/pages/admin/changed/changed",
           "text": "巡馆整改",
           "iconPath": "/images/icon_laba.svg",
           "selectedIconPath": "/images/icon_laba_on.svg",
           "selectedColor": "#303133",
-          "clas": "menu-item",
-          active: true
+          "clas": "menu-item1",
+          active: false
         },
         {
           "pagePath": "/pages/admin/acceptance/acceptance",
@@ -204,7 +203,7 @@ App({
           "iconPath": "/images/icon_zhanwei.svg",
           "selectedIconPath": "/images/icon_zhanwei_on.svg",
           "selectedColor": "#303133",
-          "clas": "menu-item",
+          "clas": "menu-item1",
           active: false
         },
         {
@@ -213,7 +212,7 @@ App({
           "iconPath": "/images/icon_wode.svg",
           "selectedIconPath": "/images/icon_wode_on.svg",
           "selectedColor": "#303133",
-          "clas": "menu-item",
+          "clas": "menu-item1",
           active: false
         }
       ],
