@@ -17,7 +17,7 @@
         <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
           <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
             <block wx:for-items="{{item.user}}" wx:for-item="user" wx:key="*item">
-              <navigator url="" class="navigator">
+              <navigator url="" class="navigator offline">
                 <view class="navigator-text clearfix">
                   <view class="fl people_list">
                     <image src="{{host}}{{user.img}}"></image>

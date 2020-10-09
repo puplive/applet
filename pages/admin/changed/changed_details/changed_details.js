@@ -3,7 +3,6 @@ var url = app.globalData.url;
 var sendMessageContent = app.globalData.sendMessageContent;
 var call = require("../../../../utils/request.js")
 Page({
-
   /**
    * 页面的初始数据
    */
