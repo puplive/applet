@@ -1,7 +1,7 @@
 //app.js
 //const url = 'https://www.exposaas.com/'
-//const url ='http://new.newspaper.com/'
- const url = 'http://test.exposaas.cn/'
+const url ='http://new.newspaper.com/'
+// const url = 'http://test.exposaas.cn/'
 
 App({
   onLaunch: function () {
@@ -36,6 +36,7 @@ App({
                   success(res) {
                     wx.setStorageSync('openId', res.data.data.openId)
                     wx.setStorageSync('sessionKey', res.data.data.sessionKey)
+                    console.log('登陆了')
                   },
                   fail: function (res) {
                   }
@@ -56,7 +57,9 @@ App({
     }
   })
   },
-
+onHide:function(){
+  console.log('退出了')
+},
 
   //第一种底部  
   editTabBar: function () {
