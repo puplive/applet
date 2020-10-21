@@ -8,7 +8,7 @@
     <view class="userinfo">
         <image bindtap="bindViewTap" class="userinfo-avatar" src="../../images/dl_logo.png" mode="cover"></image>
         <view class="userinfo-nickname"><text>SAAS</text>申请</view>
-      <!-- </block> -->
+      <!-- </block> --> 
     </view>
     <view class="login">
       <view class="login_tit">获得以下权限</view>
