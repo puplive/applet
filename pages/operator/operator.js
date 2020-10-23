@@ -374,9 +374,12 @@ wancBtn:function(e){
         if (res.data.Code == 200) {
           console.log(8,res.data.data);
           that.setData({
-            data:res.data.data,
-            data_len: Object.keys(res.data.data).length,
+            data:res.data.data.all,
+            data_len: Object.keys(res.data.data.all).length,
             type: that.data._num,
+            AllTake:res.data.data.AllTake,
+            AllSolve:res.data.data.AllSolve,
+            AllFinish:res.data.data.AllFinish,
           })
         } else {
 
