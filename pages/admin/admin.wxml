@@ -17,7 +17,7 @@
         <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
           <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
             <block wx:for-items="{{item.user}}" wx:for-item="user" wx:key="*item">
-              <navigator url="" class="navigator offline">
+              <navigator url="" class="navigator {{user.login_status==0 ? 'offline' : ''}}">
                 <view class="navigator-text clearfix">
                   <view class="fl people_list">
                     <image src="{{host}}{{user.img}}"></image>
@@ -40,12 +40,14 @@
   </view>
   <view class="page-section-spacing">
     <view class="flex-wrp" style="flex-direction:row;">
-      <view class="flex-item demo-text-1">
-        <view class="not_accnum">{{order_not.water}}</view>
-        <view><text class="iconfont icon-shuidi"></text></view>
-        <view class="not_accname">水接驳</view>
+
+      <view class="flex-item {{item.style.color}}" wx:for-items="{{order_not.num}}" wx:for-index="key">
+        <view class="not_accnum">{{item.num}}</view>
+        <view><text class="iconfont {{item.style.icon}}"></text></view>
+        <view class="not_accname">{{item.name}}</view>
       </view>
-      <view class="flex-item demo-text-2">
+
+      <!-- <view class="flex-item demo-text-2">
         <view class="not_accnum">{{order_not.electric}}</view>
         <view><text class="iconfont icon-leidian"></text></view>
         <view class="not_accname">电接驳</view>
@@ -59,7 +61,7 @@
         <view class="not_accnum">{{order_not.other}}</view>
         <view><text class="iconfont icon-gengduo1"></text></view>
         <view class="not_accname">其它</view>
-      </view>
+      </view> -->
     </view>
   </view>
 </view>

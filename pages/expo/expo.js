@@ -41,7 +41,7 @@ Page({
     var that = this;
     wx.request({
       url: url + 'field/default/hui-all',
-      data: {},
+      data: {OpenId: wx.getStorageSync('openId')},
       method: 'GET',
       header: {
         'content-type': 'application/json' // 默认值
