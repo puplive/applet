@@ -51,7 +51,7 @@
         </view>
          <view wx:if="{{value.order_status==1}}">
             <view class="list_btn clearfix">
-              <view class="assign fr" bindtap="wancBtn" data-key="{{value.info_id}}" data-order="{{value.order_id}}" data-type="1">完成</view>
+              <view class="assign fr" bindtap="wancBtn" data-key="{{value.info_id}}" data-ortype="{{_num}}" data-order="{{value.order_id}}" data-type="1">完成</view>
             </view>
          </view>
          <view wx:if="{{value.order_status==2}}">
@@ -103,8 +103,8 @@
         </view>
          <view wx:if="{{value.pro_status==2}}">
             <view class="list_btn clearfix">
-              <view wx:if="{{value.order_id==null || value.order_id==0}}" class="assign fr" bindtap="wancBtn" data-key="{{value.id}}" data-type="2">完成</view>
-              <view wx:else class="assign fr" bindtap="wancBtn" data-key="{{value.id}}" data-order="{{value.order_id}}" data-type="2">完成</view>
+              <view wx:if="{{value.order_id==null || value.order_id==0}}" class="assign fr" bindtap="wancBtn" data-key="{{value.id}}" data-type="2" data-qqq="3">完成</view>
+              <view wx:else class="assign fr" bindtap="wancBtn" data-key="{{value.id}}" data-order="{{value.order_id}}" data-type="2" data-qqq="4">完成</view>
             </view>
          </view>
          <view wx:if="{{value.pro_status==3}}">

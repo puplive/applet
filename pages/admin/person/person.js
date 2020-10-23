@@ -15,7 +15,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.editTabBar1();
+    var that = this;
+    wx.request({
+      url: url + 'worksite/default/c-zhui',   //验证是否认证过
+      data: { OpenId: wx.getStorageSync('openId'),ProjectId: sendMessageContent.projectId},
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        if (res.data.Code == 200) {
+          app.editTabBar1();
+        }else if (res.data.Code == 400) {//提示您还没授权
+          wx.showToast({
+            title: '未授权,请前往授权',
+            icon: 'none',
+            duration: 5000//持续的时间
+          })
+          wx.navigateTo({
+             url: '/pages/login/login',
+          })
+        }else {
+          wx.navigateTo({
+            url: "../admin/person/identity/identity?hui=" + sendMessageContent.projectId
+          })
+        }
+      }
+    })
   },
 
   /**

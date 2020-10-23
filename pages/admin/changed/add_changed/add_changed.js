@@ -65,11 +65,18 @@ Page({
       zwh_index:e.detail.value
     })
   },
+  // 整改类型填写
+  bindChangetype:function(e){
+    this.setData({
+      changetype_name:e.detail.value
+    })
+  },
   // 点击整改类型
   bindChange: function (e) {
     this.setData({
       change_index:e.detail.value,
       change_id:this.data.change_type[e.detail.value].id,
+      changetype_name:this.data.change_type[e.detail.value].name
     })
   },
   // 点击处罚方式
@@ -131,7 +138,6 @@ Page({
     that.setData({
       tempFilePaths:that.data.tempFilePaths
     })
-    console.log(11,that.data.tempFilePaths)
   },
 // 详细描述
 descInput: function (e) {
@@ -185,7 +191,8 @@ descInput: function (e) {
     var that = this;
     var z_guan= that.data.z_guan; //展馆号
     var zw_hao= that.data.zw_hao;
-    var rectify_type = that.data.change_id; //整改类型
+    // var rectify_type = that.data.change_id; //整改类型
+    var rectify_type = that.data.changetype_name;//整改类型名称
     var punish_type = that.data.punish_id; //处罚方式
     var changetime_value = that.data.changetime_value;
     var changetimeArray=changetime_value.split("-"); //整改时限
@@ -326,7 +333,8 @@ descInput: function (e) {
           }
           that.setData({
             change_type:items,
-            change_id:items[0].id
+            change_id:items[0].id,
+            changetype_name:items[0].name
           })
         } else {
 
