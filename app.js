@@ -1,7 +1,8 @@
 //app.js
-// const url = 'https://www.exposaas.com/'
+//const url = 'https://www.exposaas.com/'
+//const url ='http://new.newspaper.com/'
 const url = 'http://test.exposaas.cn/'
-// const url = 'http://www.newmoble.com/'
+
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -22,6 +23,7 @@ App({
                 // 可以将 res 发送给后台解码出 unionId
                 this.globalData.userInfo = res.userInfo
                 // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+                var that = this
                 wx.request({
                   url: url + 'worksite/default/index', //仅为示例，并非真实的接口地址
                   data: {
@@ -55,7 +57,23 @@ App({
     }
   })
   },
-
+onHide:function(){
+  console.log('退出了')
+  wx.request({
+    url: url + 'worksite/default/login-out', //仅为示例，并非真实的接口地址
+    data: {
+      openId: wx.getStorageSync('openId'),
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success(res) {
+      console.log('登陆了')
+    },
+    fail: function (res) {
+    }
+  })
+},
 
   //第一种底部  
   editTabBar: function () {
