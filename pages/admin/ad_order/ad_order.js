@@ -35,7 +35,8 @@ Page({
     orderId:'',
     order_id:'',//订单id
     order_num:'',//订单传过来的数量
-    order_qqq:''//区分是什么问题
+    order_qqq:'',//区分是什么问题
+    role_ids:'',//角色id
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -253,9 +254,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    that.setData({
+      role_ids:options.roleid,
+    })
     app.editTabBar1();
     //展馆
-    var that = this;
     wx.request({
       url: url + 'worksite/check/number-g',
       data: {projectId:sendMessageContent.projectId},
@@ -300,9 +304,14 @@ Page({
   getList: function(that){
     var openId = wx.getStorageSync('openId')
     var that = this;
+    if(that.data.role_ids){
+      var role=that.data.role_ids;
+    }else{
+      var role=0;
+    }
     wx.request({
       url: url + 'worksite/default/order-info',
-      data: {projectId:sendMessageContent.projectId,OpenId:openId,type:that.data._num,role_id:sendMessageContent.RoleId,number:this.data.num,fenleinum:this.data.fenleinum},
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,type:that.data._num,role_id:sendMessageContent.RoleId,number:this.data.num,fenleinum:this.data.fenleinum,role_ids:role},
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
