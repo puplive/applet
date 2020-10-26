@@ -199,7 +199,7 @@ descInput: function (e) {
     var content = that.data.desc;
     var rectify_imgs =that.data.imgres;
     var lock = that.data.lock;
-    console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1],'图',rectify_imgs)
+    console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1],'图',rectify_imgs);
     if(!lock){
       that.setData({
         lock:true,
