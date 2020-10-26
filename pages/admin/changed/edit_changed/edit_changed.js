@@ -238,19 +238,28 @@ editChangedBtn:function(){
       },
       success(res) {
         if (res.data.Code == 200) {
+          // var items = [];
+          // var change_index2='';
+          // for (let i in res.data.data) {
+          //   items.push(res.data.data[i]);
+          //   if(res.data.data[i].id == that.data.change_id){
+          //     change_index2=i
+          //    }
+          // }
+          // that.setData({
+          //   change_type:items,
+          //   change_index:change_index2,
+          //   change_id:items[change_index2].id,
+          //   changetype_name:items[change_index2].name
+          // })
           var items = [];
-          var change_index2='';
           for (let i in res.data.data) {
             items.push(res.data.data[i]);
-            if(res.data.data[i].id == that.data.change_id){
-              change_index2=i
-             }
           }
           that.setData({
             change_type:items,
-            change_index:change_index2,
-            change_id:items[change_index2].id,
-            changetype_name:items[change_index2].name
+            change_id:items[0].id,
+            changetype_name:items[0].name
           })
         } else {
 
