@@ -25,6 +25,8 @@ Page({
     change_id:'',//转单信息id
     host:app.globalData.url,
     num:'',//展馆号
+    order_num:'',//订单传过来的数量
+    order_qqq:''//区分是什么问题
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -296,35 +298,53 @@ Page({
 wancBtn:function(e){
   var that=this;
   var ordertype=e.currentTarget.dataset.type;
-  var projectId  =sendMessageContent.projectId;
-  var openId = wx.getStorageSync('openId')
+  var orderqqq=e.currentTarget.dataset.qqq;
+  // var projectId  =sendMessageContent.projectId;
+  // var openId = wx.getStorageSync('openId')
   that.setData({
-    id:e.currentTarget.dataset.key
+    id:e.currentTarget.dataset.key,
+    order:e.currentTarget.dataset.order,
+    order_num:e.currentTarget.dataset.ortype
   })
-  var order=e.currentTarget.dataset.order;
-  wx.request({
-    url: url + 'worksite/default/order-finish',
-    data: {projectId:projectId,OpenId:openId,goods_id:that.data.id,ordertype:ordertype,order:order},
-    header: {
-      'content-type': 'application/x-www-form-urlencoded' // 默认值
-    },
-    method: 'POST',
-    success(res) {
-      if (res.data.Code == 200) {
-        wx.showToast({
-          title: '已完成',
-          icon: 'none',
-          duration: 2000//持续的时间
-        })
-        that.onShow();
-      } else {
+  if(ordertype==1){
+    wx.navigateTo({
+      url: "order_details/order_details?id="+that.data.id+"&or_type="+that.data.order_num+"&order="+that.data.order
+    });
+}else{
+    if(orderqqq==3){
+      wx.navigateTo({
+        url: "ques_details/ques_details?id="+that.data.id
+    });
+    }else{
+      wx.navigateTo({
+        url: "ques_order_details/ques_order_details?id="+that.data.id+"&order="+that.data.order
+    });
+    }   
+}
+  // var order=e.currentTarget.dataset.order;
+  // wx.request({
+  //   url: url + 'worksite/default/order-finish',
+  //   data: {projectId:projectId,OpenId:openId,goods_id:that.data.id,ordertype:ordertype,order:order},
+  //   header: {
+  //     'content-type': 'application/x-www-form-urlencoded' // 默认值
+  //   },
+  //   method: 'POST',
+  //   success(res) {
+  //     if (res.data.Code == 200) {
+  //       wx.showToast({
+  //         title: '已完成',
+  //         icon: 'none',
+  //         duration: 2000//持续的时间
+  //       })
+  //       that.onShow();
+  //     } else {
 
-      }
-    },
-    fail: function (err) {
-      // 服务异常
-    }
-  })
+  //     }
+  //   },
+  //   fail: function (err) {
+  //     // 服务异常
+  //   }
+  // })
 },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -354,9 +374,12 @@ wancBtn:function(e){
         if (res.data.Code == 200) {
           console.log(8,res.data.data);
           that.setData({
-            data:res.data.data,
-            data_len: Object.keys(res.data.data).length,
+            data:res.data.data.all,
+            data_len: Object.keys(res.data.data.all).length,
             type: that.data._num,
+            AllTake:res.data.data.AllTake,
+            AllSolve:res.data.data.AllSolve,
+            AllFinish:res.data.data.AllFinish,
           })
         } else {
 

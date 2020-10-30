@@ -4,13 +4,13 @@
     <view class='row fenlei'>
       <view class='col f14'>
         <view class="col-3 nav_text">
-          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待接单</text>
+          <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待接单({{AllTake}})</text>
         </view> 
         <view class="col-3 nav_text" >
-          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">待配送</text>
+          <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">待配送({{AllSolve}})</text>
         </view>
         <view class="col-3 nav_text">
-          <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已完成</text>
+          <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已完成({{AllFinish}})</text>
         </view>
         <text class="iconfont icon-mianxing_loudou screen col-3" catchtap="screenBtn"></text>
       </view>
@@ -53,7 +53,7 @@
                 <navigator url='transfer_order/transfer_order?orderid={{value.info_id}}&or_type=1'>转单</navigator>
               </view>
               <!-- <view  class="assign fr" bindtap="assignBtn" data-key="{{value.id}}" data-type="1" data-zgh="{{value.z_guan}}">转单</view> -->
-              <view class="assign fr" bindtap="wancBtn" data-key="{{value.info_id}}" data-order="{{value.order_id}}" data-type="1">完成</view>
+              <view class="assign fr" bindtap="wancBtn" data-key="{{value.info_id}}" data-ortype="{{_num}}" data-order="{{value.order_id}}" data-type="1">完成</view>
             </view>
         </view>
         <view wx:if="{{value.order_status==2}}">
@@ -110,8 +110,8 @@
                 <navigator url='transfer_order/transfer_order?orderid={{value.id}}&or_type=2'>转单</navigator>
               </view>
               <!-- <view class="assign fr" bindtap="assignBtn" data-key="{{value.id}}" data-type="2" data-zgh="{{value.z_guan}}">转单</view> -->
-               <view wx:if="{{value.order_id==null || value.order_id==0}}" class="assign fr" bindtap="wancBtn" data-key="{{value.id}}" data-type="2">完成</view>
-              <view wx:else class="assign fr" bindtap="wancBtn" data-key="{{value.id}}" data-order="{{value.order_id}}" data-type="2">完成</view>
+               <view wx:if="{{value.order_id==null || value.order_id==0}}" class="assign fr" bindtap="wancBtn" data-key="{{value.id}}" data-type="2" data-qqq="3">完成</view>
+              <view wx:else class="assign fr" bindtap="wancBtn" data-key="{{value.goods_id}}" data-order="{{value.order_id}}" data-type="2" data-qqq="4">完成</view>
             </view>
         </view>
         <view wx:if="{{value.pro_status==3}}">
