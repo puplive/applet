@@ -154,17 +154,23 @@ editChangedBtn:function(){
       if (res.data.Code == 200) {
         wx.showToast({
           title: '修改成功',
-          icon: 'none',
-          duration: 2000//持续的时间
-        })
-        wx.navigateTo({
-          url: '../changed',
+          icon: 'success',
+          duration: 2000,//持续的时间
+          mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+          success:function(){
+            setTimeout(function(){
+              wx.navigateTo({
+                url: '../changed',
+              })
+            },1000);
+          }
         })
       } else {
         wx.showToast({
           title: '修改失败',
           icon: 'none',
-          duration: 2000//持续的时间
+          duration: 2000,//持续的时间
+          mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
         })
       }
     },

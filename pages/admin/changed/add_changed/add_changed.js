@@ -214,15 +214,20 @@ descInput: function (e) {
         success(res) {
           if (res.data.Code == 200) {
             wx.showToast({
-              title: '添加成功',
-              icon: 'none',
-              duration: 2000//持续的时间
-            });
-            that.setData({
-              lock:true,
-            })
-            wx.navigateTo({
-              url: '../changed',
+              title: '提交成功',
+              icon:'success',
+              duration:1500,
+              mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+              success:function(){
+                that.setData({
+                  lock:true,
+                })
+                setTimeout(function(){
+                  wx.navigateTo({
+                    url: '../changed',
+                  })
+              },2000);
+              }
             })
           } else if(res.data.Code == 600){
             wx.showToast({
@@ -235,9 +240,7 @@ descInput: function (e) {
             })
           }else {
             wx.showToast({
-              title: '添加失败',
-              icon: 'none',
-              duration: 2000//持续的时间
+              title: '添加失败',icon: 'none',duration: 2000,//持续的时间
             });
             that.setData({
               lock:false,

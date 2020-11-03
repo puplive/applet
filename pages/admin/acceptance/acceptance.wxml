@@ -19,7 +19,7 @@
     <view wx:if="{{accepArray_len>0}}" class='list f12' wx:for-items="{{accepArray}}" wx:for-index="key">
       <navigator url='../acceptance_details/acceptance_details?check_id={{item.id}}' class='list_con'>
         <view class="list_zwh clearfix">
-          <text class="fl list_zwh_left">{{item.z_guan}} {{item.zw_hao}}</text>
+          <text class="fl list_zwh_left">{{item.z_guan}}号馆 {{item.zw_hao}}</text>
           <text class="fr list_zwh_right">{{item.apply_time}}</text>
         </view>
         <view class="list_li clearfix">

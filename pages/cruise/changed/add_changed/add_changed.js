@@ -23,6 +23,7 @@ Page({
     img: [],//临时路径
     imgres: [],//图片路径
     tempFilePaths:[], //临时路径
+    lock: false,//验证只能提交一次
   },
   // 展馆号
   bindProjectChange: function(e){
@@ -200,8 +201,13 @@ descInput: function (e) {
     var changetimeArray=changetime_value.split("-"); //整改时限
     var content = that.data.desc;
     var rectify_imgs =that.data.imgres;
+    var lock = that.data.lock;
     console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1],'图',rectify_imgs)
-    wx.request({
+    if(!lock){
+      that.setData({
+        lock:true,
+      })
+      wx.request({
       url: url + 'worksite/rectify/rectify-add',
       data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: changetimeArray[0],rectify_time2:changetimeArray[1],content:content,rectify_imgs:rectify_imgs},
       header: {
@@ -211,29 +217,44 @@ descInput: function (e) {
       success(res) {
         if (res.data.Code == 200) {
           wx.showToast({
-            title: '添加成功',
-            icon: 'none',
-            duration: 2000//持续的时间
+            title: '提交成功',
+            icon:'success',
+            duration:1500,
+            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+            success:function(){
+              that.setData({
+                lock:true,
+              })
+              setTimeout(function(){
+                wx.navigateTo({
+                  url: '../changed',
+                })
+              },2000);
+            }
           })
-          // wx.switchTab({
-          //   url: '../../../../admin/changed/changed',
-          // }) 
-          
-          wx.navigateTo({
-            url: '../changed',
-          })
-        } else {
+        } else if(res.data.Code == 600){
           wx.showToast({
-            title: '添加失败',
+            title: '请上传图片',
             icon: 'none',
             duration: 2000//持续的时间
+          });
+          that.setData({
+            lock:false,
+          })
+        }else {
+          wx.showToast({
+            title: '添加失败',icon: 'none',duration: 2000,//持续的时间
+          });
+          that.setData({
+            lock:false,
           })
         }
       },
       fail: function (err) {
         // 服务异常
       }
-    })
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载

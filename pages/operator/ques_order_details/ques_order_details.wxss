@@ -4,7 +4,7 @@ page{ background-color: #fff;}
 .person_name{width:96%; padding: 0 2%;font-size: 32rpx;}
 .person_name .tel{color: #5294F9; margin-left: 20rpx; }
 .list_li .list_img{width: 96rpx; height: 96rpx; margin-right: 16rpx;}
-.list_con{margin-top: 60rpx;}
+/*.list_con{margin-top: 60rpx;}*/
 .list_li .list_licon{width: calc(100% - 112rpx);font-size: 30rpx;color:rgba(0,0,0,0.9);}
 .list_litit{ font-weight: bold; }
 .list_list{ height: 60rpx; line-height: 60rpx;}

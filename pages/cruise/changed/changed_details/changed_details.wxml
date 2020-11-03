@@ -1,7 +1,7 @@
 <view class="contain">
   <view class='row zwh_tit'>
     <view class='col clearfix'>
-      <text class="col-9 zwh fl">{{z_guan}} {{zwh}}</text>
+      <text class="col-9 zwh fl">{{z_guan}}号馆 {{zwh}}</text>
       <text class="iconfont icon-mianxing_loudou col-3 screen fr" catchtap="screenBtn"></text>
     </view>
   </view>

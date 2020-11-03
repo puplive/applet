@@ -112,19 +112,23 @@ topic_preview: function(e){
         if (res.data.Code == 200) {
           wx.showToast({
             title: '删除成功',
-            icon: 'none',
-            duration: 2000//持续的时间
+            icon: 'success',
+            duration: 2000,//持续的时间
+            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+            success:function(){
+              setTimeout(function(){
+                wx.redirectTo({
+                  url: "../changed"
+                });
+              },1000);
+            }
           })
-          setTimeout(() => {
-            wx.redirectTo({
-              url: "../changed"
-            });
-          }, 1000);
         } else {
           wx.showToast({
             title: '删除失败',
             icon: 'none',
-            duration: 2000//持续的时间
+            duration: 2000,//持续的时间
+            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
           })
         }
       },
@@ -148,22 +152,26 @@ topic_preview: function(e){
         if (res.data.Code == 200) {
           wx.showToast({
             title: '整改完成',
-            icon: 'none',
-            duration: 2000//持续的时间
+            icon:'success',
+            duration:1500,
+            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+            success:function(){
+              setTimeout(() => {
+                wx.redirectTo({
+                  url: "../changed"
+                });
+                that.setData({
+                  zwh: zwh,
+                })
+              }, 1000);
+            }
           })
-          setTimeout(() => {
-            wx.redirectTo({
-              url: "../changed"
-            });
-            that.setData({
-              zwh: zwh,
-            })
-          }, 1000);
         } else {
           wx.showToast({
             title: '操作失败',
             icon: 'none',
-            duration: 2000//持续的时间
+            duration: 2000,//持续的时间
+            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
           })
         }
       },
