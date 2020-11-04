@@ -48,14 +48,18 @@ Page({
       method: 'POST',
       success(res) {
         if (res.data.Code == 200) {
-          console.log(8,res.data.data);
           wx.showToast({
             title: '接单成功',
-            icon: 'none',
-            duration: 2000//持续的时间
-          })
-          wx.navigateTo({
-            url: '../operator/operator',
+            icon: 'success',
+            duration:2000,//持续的时间
+            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+            success:function(){
+              setTimeout(() => {
+                wx.navigateTo({
+                  url: '../operator'
+                })
+              }, 1000);
+            }
           })
         } else {
         }
@@ -219,12 +223,17 @@ saveData: function(){
     success(res) {
       if (res.data.Code == 200) {
         wx.showToast({
-            title: '成功',
-            icon: 'none',
-            duration: 2000//持续的时间
-        })
-        wx.navigateTo({
-          url: '../operator',
+          title: '完成',
+          icon: 'success',
+          duration: 2000,//持续的时间
+          mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+          success:function(){
+            setTimeout(() => {
+              wx.navigateTo({
+                url: '../operator',
+              })
+            }, 1000);
+          }
         })
       } else {}
     },

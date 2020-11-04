@@ -13,7 +13,7 @@
         </view>
         <view class="list_list clearfix">
           <text class="list_listname fl">{{info.goods_array.goodsno}}</text>
-                <text class="list_listnum fr">×{{item.goods_nums}}</text>
+                <text class="list_listnum fr">×{{info.goods_nums}}</text>
         </view>
       </view>
     </view>
@@ -23,7 +23,7 @@
     </view>
      <view class="status">已完成</view>
     <view class="list_liconimg clearfix topic_answerImg">
-      <view class="fl list_liconimg_img"  wx:for="{{info.finish_img}}" wx:for-item="img">
+      <view class="fl list_liconimg_img"  wx:for="{{info.finish_img}}" wx:for-item="img" wx-if="{{info.finish_img!= ''}}">
         <image bindtap='topic_preview' data-list="{{info.finish_img}}" data-id='{{img.id}}' data-url='{{host}}{{img}}' class='topic_answer_itemImg' src="{{host}}{{img}}"></image>
       </view>
     </view>
@@ -36,7 +36,7 @@
         <view class="fb_time"><text class="tiao"></text>{{pdata.problem.pro_time}}</view>
         <view class="topic_answerImg">
           <view class="fb_img clearfix" wx-if="{{pdata.problem.pro_img != ''}}">
-              <image  wx:for="{{pdata.problem.pro_img}}"  wx:for-item="pimg"  src="{{url}}{{pimg}}" bindtap="clickImg" data-url="{{url}}{{pimg}}" data-val="{{pdata.problem.pro_img}}"></image>
+              <image  wx:for="{{pdata.problem.pro_img}}"  wx:for-item="pimg"  src="{{host}}{{pimg}}" bindtap="clickImg" data-url="{{host}}{{pimg}}" data-val="{{pdata.problem.pro_img}}"></image>
             </view>
         </view>
         <view class="fb_desc">{{pdata.problem.pro_content}}</view>
