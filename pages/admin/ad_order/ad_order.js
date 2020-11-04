@@ -113,7 +113,7 @@ Page({
           console.log(8,res.data.data);
           wx.showToast({
             title: '接单成功',
-            icon: 'none',
+            icon: 'success',
             duration: 2000//持续的时间
           })
           that.onShow();
@@ -235,10 +235,9 @@ Page({
         if (res.data.Code == 200) {
           wx.showToast({
             title: '指派成功',
-            icon: 'none',
+            icon: 'success',
             duration: 2000//持续的时间
           })
-          
           that.onShow();
         } else {
 

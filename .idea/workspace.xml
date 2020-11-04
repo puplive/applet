@@ -4,11 +4,13 @@
     <list default="true" id="8898611a-ec28-4bea-8ef5-9de5f67f4c23" name="默认的" comment="整改处罚加可以手写">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/ques_order_details/ques_order_details.js" afterPath="$PROJECT_DIR$/pages/admin/ques_order_details/ques_order_details.js" />
+      <change beforePath="$PROJECT_DIR$/pages/admin/ad_order/ad_order.js" afterPath="$PROJECT_DIR$/pages/admin/ad_order/ad_order.js" />
+      <change beforePath="$PROJECT_DIR$/pages/admin/ad_order_details/ad_order_details.js" afterPath="$PROJECT_DIR$/pages/admin/ad_order_details/ad_order_details.js" />
+      <change beforePath="$PROJECT_DIR$/pages/admin/ques_details/ques_details.js" afterPath="$PROJECT_DIR$/pages/admin/ques_details/ques_details.js" />
+      <change beforePath="$PROJECT_DIR$/pages/operator/operator.js" afterPath="$PROJECT_DIR$/pages/operator/operator.js" />
       <change beforePath="$PROJECT_DIR$/pages/operator/order_details/order_details.js" afterPath="$PROJECT_DIR$/pages/operator/order_details/order_details.js" />
-      <change beforePath="$PROJECT_DIR$/pages/operator/ques_order_details/ques_order_details.js" afterPath="$PROJECT_DIR$/pages/operator/ques_order_details/ques_order_details.js" />
-      <change beforePath="$PROJECT_DIR$/pages/operator/ques_order_details/ques_order_details.wxml" afterPath="$PROJECT_DIR$/pages/operator/ques_order_details/ques_order_details.wxml" />
-      <change beforePath="$PROJECT_DIR$/project.config.json" afterPath="$PROJECT_DIR$/project.config.json" />
+      <change beforePath="$PROJECT_DIR$/pages/operator/ques_details/ques_details.js" afterPath="$PROJECT_DIR$/pages/operator/ques_details/ques_details.js" />
+      <change beforePath="$PROJECT_DIR$/pages/operator/transfer_order/transfer_order.js" afterPath="$PROJECT_DIR$/pages/operator/transfer_order/transfer_order.js" />
       <change beforePath="$PROJECT_DIR$/utils/request.js" afterPath="$PROJECT_DIR$/utils/request.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+              <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -33,8 +35,8 @@
       <file leaf-file-name="request.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utils/request.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="40" lean-forward="false" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+            <state relative-caret-position="391">
+              <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -43,11 +45,14 @@
       <file leaf-file-name="ques_details.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/admin/ques_details/ques_details.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4845">
-              <caret line="351" column="4" lean-forward="false" selection-start-line="351" selection-start-column="4" selection-end-line="351" selection-end-column="4" />
+            <state relative-caret-position="319">
+              <caret line="383" column="4" lean-forward="false" selection-start-line="383" selection-start-column="4" selection-end-line="383" selection-end-column="4" />
               <folding>
-                <element signature="e#964#1902#0" expanded="false" />
-                <element signature="e#1935#2735#0" expanded="false" />
+                <marker date="1604480522749" expanded="true" signature="8695:8724" ph="/** 生命周期函数--监听页面隐藏 ...*/" />
+                <marker date="1604480522749" expanded="true" signature="8758:8787" ph="/** 生命周期函数--监听页面卸载 ...*/" />
+                <marker date="1604480522749" expanded="true" signature="8823:8858" ph="/** 页面相关事件处理函数--监听用户下拉动作 ...*/" />
+                <marker date="1604480522749" expanded="true" signature="8903:8931" ph="/** 页面上拉触底事件的处理函数 ...*/" />
+                <marker date="1604480522749" expanded="true" signature="8972:8996" ph="/** 用户点击右上角分享 ...*/" />
               </folding>
             </state>
           </provider>
@@ -349,7 +354,7 @@
       <workItem from="1604281023795" duration="1186000" />
       <workItem from="1604366961105" duration="592000" />
       <workItem from="1604393641772" duration="1294000" />
-      <workItem from="1604453968709" duration="1408000" />
+      <workItem from="1604453968709" duration="2178000" />
     </task>
     <task id="LOCAL-00001" summary="冲突">
       <created>1594794251559</created>
@@ -617,11 +622,18 @@
       <option name="project" value="LOCAL" />
       <updated>1604406021187</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="部分修改">
+      <created>1604474465860</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1604474465860</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224259000" />
+    <option name="totallyTimeSpent" value="225029000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="12" width="1936" height="1024" extended-state="0" />
@@ -705,7 +717,8 @@
     <MESSAGE value="整改处罚加可以手写" />
     <MESSAGE value="首页水电跳转" />
     <MESSAGE value="修改问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改问题" />
+    <MESSAGE value="部分修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="部分修改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1076,27 +1089,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/admin/ques_details/ques_details.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4845">
-          <caret line="351" column="4" lean-forward="false" selection-start-line="351" selection-start-column="4" selection-end-line="351" selection-end-column="4" />
+        <state relative-caret-position="319">
+          <caret line="383" column="4" lean-forward="false" selection-start-line="383" selection-start-column="4" selection-end-line="383" selection-end-column="4" />
           <folding>
-            <element signature="e#964#1902#0" expanded="false" />
-            <element signature="e#1935#2735#0" expanded="false" />
+            <marker date="1604480522749" expanded="true" signature="8695:8724" ph="/** 生命周期函数--监听页面隐藏 ...*/" />
+            <marker date="1604480522749" expanded="true" signature="8758:8787" ph="/** 生命周期函数--监听页面卸载 ...*/" />
+            <marker date="1604480522749" expanded="true" signature="8823:8858" ph="/** 页面相关事件处理函数--监听用户下拉动作 ...*/" />
+            <marker date="1604480522749" expanded="true" signature="8903:8931" ph="/** 页面上拉触底事件的处理函数 ...*/" />
+            <marker date="1604480522749" expanded="true" signature="8972:8996" ph="/** 用户点击右上角分享 ...*/" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/request.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="40" lean-forward="false" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/request.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
           <folding />
         </state>
       </provider>
