@@ -9,12 +9,21 @@ Page({
    */
   data: {
     changeArray:[],  //整改列表
+    containButtom:'',
+    footBottom:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */ 
   onLoad: function (options) {
+    let isPhone = app.globalData.isIphoneX;
+    if(isPhone){
+      this.setData({
+        containButtom:"188rpx",
+        footBottom:'168rpx',
+      })
+    }
     app.editTabBar1();
   },
   //整改详情跳转
