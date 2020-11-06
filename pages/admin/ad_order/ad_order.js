@@ -37,6 +37,7 @@ Page({
     order_num:'',//订单传过来的数量
     order_qqq:'',//区分是什么问题
     role_ids:'',//角色id
+    containButtom:'', //iphoneX底部
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -257,6 +258,12 @@ Page({
     that.setData({
       role_ids:options.roleid,
     })
+    let isPhone = app.globalData.isIphoneX;
+    if(isPhone){
+      this.setData({
+        containButtom:"188rpx",
+      })
+    }
     app.editTabBar1();
     //展馆
     wx.request({

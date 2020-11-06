@@ -58,6 +58,21 @@ App({
     }
   })
   },
+  onShow:function(){
+    let that = this;
+    wx.getSystemInfo({
+      success: res=>{
+      // console.log('手机信息res'+res.model)
+      let modelmes = res.model;
+        if (modelmes.search('iPhone X') != -1 || modelmes.search('iPhone 11') !=-1  || modelmes.search('iPhone 11 Pro') !=-1  || modelmes.search('iPhone 11 Pro Max') !=-1) {
+        that.globalData.isIphoneX = true
+        that.globalData.tabBar.btuBottom = "68rpx";
+        that.globalData.tabBar1.btuBottom = "68rpx";
+        that.globalData.tabBar2.btuBottom = "68rpx";
+        }
+      }
+    })
+  },
 onHide:function(){
   console.log('退出了')
   wx.request({
@@ -137,6 +152,7 @@ onHide:function(){
     });
   },
   globalData: {
+    isIphoneX: false,
     userInfo: null,
     hasUserInfo: null,
     url: url,
@@ -151,6 +167,7 @@ onHide:function(){
       "selectedColor": "#f00",
       "backgroundColor": "#fff",
       "borderStyle": "#ccc",
+      "btuBottom":"0",
       "list": [
         {
           "pagePath": "/pages/operator/operator",
@@ -188,6 +205,7 @@ onHide:function(){
       "selectedColor": "#909399",
       "backgroundColor": "#fff",
       "borderStyle": "#ccc",
+      "btuBottom":"0",
       "list": [
         {
           "pagePath": "/pages/admin/admin",
@@ -243,6 +261,7 @@ onHide:function(){
       "selectedColor": "#909399",
       "backgroundColor": "#fff",
       "borderStyle": "#ccc",
+      "btuBottom":"0",
       "list": [
         // {
         //   "pagePath": "/pages/cruise/cruise",

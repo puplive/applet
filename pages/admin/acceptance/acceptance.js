@@ -14,6 +14,7 @@ Page({
     zhanguannum:0, //展馆号默认索引
     number:[], //展馆号集合
     num:'',//展馆号
+    containButtom:'',
   },
   // 点击导航分类
   switchFenlei: function (e) {
@@ -87,6 +88,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let isPhone = app.globalData.isIphoneX;
+    if(isPhone){
+      this.setData({
+        containButtom:"188rpx",
+      })
+    }
     app.editTabBar1();
     var ProjectId =sendMessageContent.projectId
     var that = this;
