@@ -189,8 +189,10 @@ confirmS: function (e) {
   onShow: function () {
     var openId = wx.getStorageSync('openId')
     var that = this;
+    var id = that.data.orderId
     var type = that.data.or_type
-    call.request('worksite/default/oquest-details', {goods_id:that.data.orderId,projectId:sendMessageContent.projectId,order_id:that.data.order_id},
+    call.request('worksite/default/order-details', {goods_id:id,projectId:sendMessageContent.projectId,OpenId:openId,ordertype:2,type:type},
+    //call.request('worksite/default/oquest-details', {goods_id:that.data.orderId,projectId:sendMessageContent.projectId,order_id:that.data.order_id},
       function (res) {
         if (res.Code == 200) {
           console.log(res.data)
@@ -262,7 +264,8 @@ confirmS: function (e) {
         })
         wx.request({
           url: url + 'worksite/default/order-finish',
-          data: {projectId:projectId,OpenId:openId,goods_id:that.data.pro_id,ordertype:2,solve_beizhu:desc,solve_img:imgs,order:that.data.order_id},
+          data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:2,solve_beizhu:desc,solve_img:imgs,order:that.data.order_id},
+          // data: {projectId:projectId,OpenId:openId,goods_id:that.data.pro_id,ordertype:2,solve_beizhu:desc,solve_img:imgs,order:that.data.order_id},
           header: {
             'content-type': 'application/x-www-form-urlencoded' // 默认值
           },
