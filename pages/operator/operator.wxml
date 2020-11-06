@@ -1,6 +1,6 @@
 <import src="../tabbar/tabbar.wxml"/>  
 <template is="tabBar" data="{{tabBar}}"/>
-<view class='contain'>
+<view class='contain' style="padding-bottom:{{containButtom}}">
     <view class='row fenlei'>
       <view class='col f14'>
         <view class="col-3 nav_text">
@@ -71,7 +71,7 @@
             <text class="fr list_zwh_right">{{value.time}}</text>
           </view>
           <view class="list_li clearfix">
-            <image src="/images/tubiao/{{value.pro_type}}.png" class="fl list_img"></image>
+            <image src="/images/tubiao/{{value.pro_type}}.png" class="fl list_img_biao"></image>
             <view class="list_licon fl">
               <view>
                 <text class="list_litit">{{value.pro_content}}</text>
@@ -85,7 +85,7 @@
             <text class="fr list_zwh_right">{{value.time}}</text>
           </view>
           <view class="list_li clearfix">
-            <image src="/images/tubiao/{{value.pro_type}}.png" class="fl list_img"></image>
+            <image src="/images/tubiao/{{value.pro_type}}.png" class="fl list_img_biao"></image>
             <view class="list_licon fl">
               <view>
                 <text class="list_litit">{{value.pro_content}}</text>

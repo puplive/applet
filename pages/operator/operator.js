@@ -26,7 +26,8 @@ Page({
     host:app.globalData.url,
     num:'',//展馆号
     order_num:'',//订单传过来的数量
-    order_qqq:''//区分是什么问题
+    order_qqq:'',//区分是什么问题
+    containButtom:'', //iphoneX底部
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -264,6 +265,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let isPhone = app.globalData.isIphoneX;
+    if(isPhone){
+      this.setData({
+        containButtom:"188rpx",
+      })
+    }
     app.editTabBar();
      //展馆
      var that = this;

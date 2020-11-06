@@ -37,7 +37,7 @@ Page({
     order_num:'',//订单传过来的数量
     order_qqq:'',//区分是什么问题
     role_ids:'',//角色id
-    containButtom:'', //iphoneX底部
+    containButtom:'', //iphoneX底部 
   },
   // 订单分类
   switchFenlei: function (e) {
