@@ -199,7 +199,7 @@ descInput: function (e) {
     var content = that.data.desc;
     var rectify_imgs =that.data.imgres;
     var lock = that.data.lock;
-    console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1],'图',rectify_imgs)
+    console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1],'图',rectify_imgs);
     if(!lock){
       that.setData({
         lock:true,
@@ -214,15 +214,20 @@ descInput: function (e) {
         success(res) {
           if (res.data.Code == 200) {
             wx.showToast({
-              title: '添加成功',
-              icon: 'none',
-              duration: 2000//持续的时间
-            });
-            that.setData({
-              lock:true,
-            })
-            wx.navigateTo({
-              url: '../changed',
+              title: '提交成功',
+              icon:'success',
+              duration:1500,
+              mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+              success:function(){
+                that.setData({
+                  lock:true,
+                })
+                setTimeout(function(){
+                  wx.navigateTo({
+                    url: '../changed',
+                  })
+              },2000);
+              }
             })
           } else if(res.data.Code == 600){
             wx.showToast({
@@ -235,9 +240,7 @@ descInput: function (e) {
             })
           }else {
             wx.showToast({
-              title: '添加失败',
-              icon: 'none',
-              duration: 2000//持续的时间
+              title: '添加失败',icon: 'none',duration: 2000,//持续的时间
             });
             that.setData({
               lock:false,

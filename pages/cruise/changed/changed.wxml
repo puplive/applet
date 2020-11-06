@@ -19,7 +19,7 @@
             <view class="list_li clearfix">
               <view class="list_licon">
                 <view class="list_list clearfix"  wx:for="{{item.list}}">
-                  <text class="list_listname fl">{{item.rectify_name}}</text>
+                  <text class="list_listname fl">{{item.rectify_type}}</text>
                   <text class="list_listnum fr">{{item.apply_time}}</text>
                   <text class="list_list_method fr">{{item.punish_name}}</text>
                 </view>

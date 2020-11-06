@@ -7,11 +7,13 @@
     <label class='col-4'>展位号</label>
     <text class='col-8'>{{changeedit.zw_hao}}</text>
   </view>
-  <view class='section col'>
+ <view class='section col'>
     <label class='col-4'>整改类型</label>
-    <picker class="picker col-8  hangye_text" mode="selector" value="{{change_index}}" range-key="{{'name'}}" range="{{change_type}}" bindchange="bindChange" data-id="{{change_type[change_index].id}}">
+     <input wx:if="{{change_index>0}}" class='col-6' name='change_typename' value="{{change_type[change_index].name}}" bindblur ="bindChangetype" />
+    <input wx:else class='col-6' name='change_typename' value="{{changeedit.rectify_type}}" bindblur ="bindChangetype" />
+    <picker class="picker col-2  hangye_text" mode="selector" value="{{change_index}}" range-key="{{'name'}}" range="{{change_type}}" bindchange="bindChange" data-id="{{change_type[change_index].id}}">
       <view class="picker col">
-        <text class='col-10'>{{change_type[change_index].name}}</text>
+        <text class='col-10 change_typename'>{{change_type[change_index].name}}</text>
         <image class='sanjiao col-2' src='../../../../images/arrowright.png'></image>
       </view>
     </picker>

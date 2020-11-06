@@ -124,15 +124,13 @@ Page({
       method: 'POST',
       success(res) {
         if (res.data.Code == 200) {
-          console.log(8,res.data.data);
           wx.showToast({
             title: '接单成功',
-            icon: 'none',
-            duration: 2000//持续的时间
+            icon:'success',
+            duration:1500,
           })
           that.onShow();
         } else {
-
         }
       },
       fail: function (err) {
@@ -163,8 +161,8 @@ Page({
       success(res) {
         if (res.data.Code == 200) {
           wx.showToast({
-            title: '成功',
-            icon: 'none',
+            title: '接单成功',
+            icon: 'success',
             duration: 2000//持续的时间
           })
         } else {}
@@ -192,8 +190,8 @@ Page({
       success(res) {
         if (res.data.Code == 200) {
           wx.showToast({
-            title: '成功',
-            icon: 'none',
+            title: '操作成功',
+            icon: 'success',
             duration: 2000//持续的时间
           })
         } else {}
@@ -221,8 +219,8 @@ Page({
       success(res) {
         if (res.data.Code == 200) {
           wx.showToast({
-            title: '成功',
-            icon: 'none',
+            title: '操作成功',
+            icon: 'success',
             duration: 2000//持续的时间
           })
         } else {}
@@ -250,8 +248,8 @@ Page({
         success(res) {
           if (res.data.Code == 200) {
             wx.showToast({
-              title: '成功',
-              icon: 'none',
+              title: '接单成功',
+              icon: 'success',
               duration: 2000//持续的时间
             })
           } else {}

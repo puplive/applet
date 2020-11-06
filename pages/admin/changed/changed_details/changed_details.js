@@ -173,17 +173,20 @@ topic_bainji:function(e){
         if (res.data.Code == 200) {
           wx.showToast({
             title: '整改完成',
-            icon: 'none',
-            duration: 2000//持续的时间
+            icon:'success',
+            duration:1500,
+            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+            success:function(){
+              setTimeout(() => {
+                wx.redirectTo({
+                  url: "../changed"
+                });
+                that.setData({
+                  zwh:that.data.zwh,
+                })
+              }, 1000);
+            }
           })
-          setTimeout(() => {
-            wx.redirectTo({
-              url: "../changed"
-            });
-            that.setData({
-              zwh: zwh,
-            })
-          }, 1000);
         } else {
           wx.showToast({
             title: '操作失败',

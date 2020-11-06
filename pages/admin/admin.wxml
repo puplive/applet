@@ -70,13 +70,15 @@
   </view>
   <view class="page-section-spacing">
     <view class="flex-wrp" style="flex-direction:row;">
-
-      <view class="flex-item {{item.style.color}}" wx:for-items="{{order_not.num}}" wx:for-index="key">
-        <view class="not_accnum">{{item.num}}</view>
-        <view><text class="iconfont {{item.style.icon}}"></text></view>
-        <view class="not_accname">{{item.name}}</view>
-      </view>
-
+      
+        <view class="flex-item {{item.style.color}}" wx:for-items="{{order_not.num}}" wx:for-index="key">
+        <navigator url='../admin/ad_order/ad_order?roleid={{item.roleid}}' data-type="1"  open-type="redirect" class=''>
+          <view class="not_accnum">{{item.num}}</view>
+          <view><text class="iconfont {{item.style.icon}}"></text></view>
+          <view class="not_accname">{{item.name}}</view>
+        </navigator>
+       </view>
+       
       <!-- <view class="flex-item demo-text-2">
         <view class="not_accnum">{{order_not.electric}}</view>
         <view><text class="iconfont icon-leidian"></text></view>

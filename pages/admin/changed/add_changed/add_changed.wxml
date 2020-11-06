@@ -28,7 +28,7 @@
     </picker>
   </view>
   <view class='section col'>
-    <label class='col-4'>处罚方式</label>
+    <label class='col-4'>处理方式</label>
     <picker class="picker col-8  hangye_text" mode="selector" range-key="{{'name'}}" range="{{punish_method}}" value="{{punish_index}}" bindchange="bindPunish"  data-id="{{punish_method[punish_index].id}}">
       <view class="picker col">
         <text class='col-10'>{{punish_method[punish_index].name}}</text>

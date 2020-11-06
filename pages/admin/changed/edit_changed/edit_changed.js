@@ -155,17 +155,23 @@ editChangedBtn:function(){
       if (res.data.Code == 200) {
         wx.showToast({
           title: '修改成功',
-          icon: 'none',
-          duration: 2000//持续的时间
-        })
-        wx.navigateTo({
-          url: '../changed',
+          icon: 'success',
+          duration: 2000,//持续的时间
+          mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+          success:function(){
+            setTimeout(function(){
+              wx.navigateTo({
+                url: '../changed',
+              })
+            },1000);
+          }
         })
       } else {
         wx.showToast({
           title: '修改失败',
           icon: 'none',
-          duration: 2000//持续的时间
+          duration: 2000,//持续的时间
+          mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
         })
       }
     },
@@ -238,19 +244,28 @@ editChangedBtn:function(){
       },
       success(res) {
         if (res.data.Code == 200) {
+          // var items = [];
+          // var change_index2='';
+          // for (let i in res.data.data) {
+          //   items.push(res.data.data[i]);
+          //   if(res.data.data[i].id == that.data.change_id){
+          //     change_index2=i
+          //    }
+          // }
+          // that.setData({
+          //   change_type:items,
+          //   change_index:change_index2,
+          //   change_id:items[change_index2].id,
+          //   changetype_name:items[change_index2].name
+          // })
           var items = [];
-          var change_index2='';
           for (let i in res.data.data) {
             items.push(res.data.data[i]);
-            if(res.data.data[i].id == that.data.change_id){
-              change_index2=i
-             }
           }
           that.setData({
             change_type:items,
-            change_index:change_index2,
-            change_id:items[change_index2].id,
-            changetype_name:items[change_index2].name
+            change_id:items[0].id,
+            changetype_name:items[0].name
           })
         } else {
 

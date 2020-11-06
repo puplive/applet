@@ -111,19 +111,22 @@ Page({
         if (res.data.Code == 200) {
           wx.showToast({
             title: '驳回成功',
-            icon: 'none',
-            duration: 2000//持续的时间
+            icon: 'success',
+            duration: 2000,//持续的时间
+            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+            success:function(){
+              setTimeout(() => {
+                that.setData({
+                  check_id: check_id,
+                })
+                wx.redirectTo({
+                  //url: "../acceptance_details/acceptance_details"
+                  url: "../acceptance/acceptance"
+                });
+              }, 1000);
+            }
           })
-          setTimeout(() => {
-            wx.redirectTo({
-              url: "../acceptance_details/acceptance_details"
-            });
-            that.setData({
-              check_id: check_id,
-            })
-          }, 1000);
         } else {
-
         }
       },
       fail: function (err) {

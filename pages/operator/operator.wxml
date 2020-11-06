@@ -79,7 +79,7 @@
             </view>
           </view>
         </navigator>
-        <navigator wx:else url='ques_order_details/ques_order_details?id={{value.goods_id}}&order={{value.order_id}}' class=''> 
+        <navigator wx:else url='ques_order_details/ques_order_details?id={{value.id}}&order={{value.order_id}}' class=''> 
           <view class="list_zwh clearfix">
             <text class="fl list_zwh_left">{{value.z_guan}} {{value.zw_hao}}</text>
             <text class="fr list_zwh_right">{{value.time}}</text>

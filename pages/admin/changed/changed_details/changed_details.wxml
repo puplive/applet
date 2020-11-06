@@ -1,7 +1,7 @@
 <view class="contain">
   <view class='row zwh_tit'>
     <view class='col clearfix'>
-      <text class="col-9 zwh fl">{{z_guan}} {{zwh}}</text>
+      <text class="col-9 zwh fl">{{z_guan}}号馆 {{zwh}}</text>
       <text class="iconfont icon-mianxing_loudou col-3 screen fr" catchtap="screenBtn"></text>
     </view>
   </view>
@@ -11,7 +11,7 @@
       <view class="list_li clearfix">
         <view class="list_licon fl">
           <view class="time">{{item.apply_time}}</view>
-          <view class="changed_type">{{item.rectify_name}}</view>
+          <view class="changed_type">{{item.rectify_type}}</view>
           <view class="changed_style">
             <text>{{item.punish_name}}    </text><text>整改时限  {{item.rectify_time1}}-{{item.rectify_time2}}</text>
           </view>
