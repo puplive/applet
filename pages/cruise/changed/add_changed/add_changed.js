@@ -58,12 +58,20 @@ Page({
       }
     })
   },
+  
+  // 展位号填写
+  bindWritezwh:function(e){
+    this.setData({
+      zw_hao:e.detail.value
+    })
+  },
   // 展位号
   bindZwh:function(e){
     this.setData({
       zw_hao: this.data.zwhArray[e.detail.value],
-      zwh_index:e.detail.value
+      zwh_index:e.detail.value,
     })
+    console.log(11,this.data.zw_hao);
   },
   // 整改类型填写
   bindChangetype:function(e){
