@@ -128,7 +128,7 @@ topic_bainji:function(e){
               if (res.data.Code == 200) {
                 wx.showToast({
                   title: '删除成功',
-                  icon: 'none',
+                  icon: 'success',
                   duration: 2000//持续的时间
                 })
                 setTimeout(() => {
