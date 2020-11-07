@@ -1,7 +1,7 @@
 .zwh_tit{width: 96%; margin: 0 2%;}
 .zwh_tit text{display: inline-block;}
 .zwh{font-size:44rpx;height:72rpx;line-height:72rpx; color: #000; }
-.screen{text-align: right;line-height:72rpx; font-size:20rpx;}
+.screen{text-align: right;line-height:72rpx; font-size:24rpx;}
 .list{margin-bottom: 120rpx;}
 .list_con{width: 92%; margin: 0 auto 16rpx; background-color: #fff; border-radius: 4rpx; padding: 0 2% 2%;}
 .list_li .list_licon{width: 100%;font-size: 30rpx;color:rgba(0,0,0,0.9);}

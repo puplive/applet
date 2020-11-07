@@ -58,6 +58,12 @@ Page({
       }
     })
   },
+   // 展位号填写
+   bindWritezwh:function(e){
+    this.setData({
+      zw_hao:e.detail.value
+    })
+  },
   // 展位号
   bindZwh:function(e){
     this.setData({

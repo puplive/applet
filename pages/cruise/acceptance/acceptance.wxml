@@ -1,6 +1,6 @@
 <import src="../../tabbar/tabbar.wxml"/>
 <template is="tabBar" data="{{tabBar}}"/>
-<view class='contain'>
+<view class='contain' style="padding-bottom:{{containButtom}}">
     <view class='row fenlei'>
       <view class='col f14'>
         <view class="col-3 nav_text">
@@ -12,7 +12,7 @@
         <view class="col-3 nav_text">
           <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已通过</text><text>({{type.t}})</text>
         </view>
-        <text class="iconfont icon-mianxing_loudou screen col-3" catchtap="screenBtn"></text>
+        <text class="iconfont icon-mianxing_loudou screen col-3" catchtap="screenBtn">筛选</text>
       </view>
     </view>
     <!-- 内容列表 -->

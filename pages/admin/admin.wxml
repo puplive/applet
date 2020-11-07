@@ -32,36 +32,6 @@
       </view>
     </block>
   </view>
-  <view class="kind-list">
-    <block wx:for-items="{{list}}" wx:for-index="key">
-      <view class="kind-list-item">
-        <view id="{{key}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
-          <view class="kind-list-text">
-            <view class="fl">
-              <view class="jt_down fl"><text class="iconfont icon-sanjiao_you"></text></view>
-              <view class="fl">{{item.name}} </view>
-            </view>
-            <view class="fr people_num"><text class="active_num">{{item.on}}/{{item.num}}</text></view>
-          </view> 
-        </view>
-        <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
-          <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
-            <block wx:for-items="{{item.user}}" wx:for-item="user" wx:key="*item">
-              <navigator url="" class="navigator {{user.login_status==0 ? 'offline' : ''}}">
-                <view class="navigator-text clearfix">
-                  <view class="fl people_list">
-                    <image src="{{host}}{{user.img}}"></image>
-                    <text>{{user.username}}</text>
-                  </view>
-                  <text class="fr people_tel">{{user.tel}}</text>
-                </view>
-              </navigator>
-            </block>
-          </view>
-        </view>
-      </view>
-    </block>
-  </view>
 </view>
 <!-- 未接单部分 -->
 <view class="not_accepted" style="bottom:{{notBottom}}">
