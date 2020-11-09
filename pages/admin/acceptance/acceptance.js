@@ -71,7 +71,8 @@ Page({
     })
     that.setData({//把选中值，放入判断值中
       isHidden: 1,
-      num:that.data.number[that.data.zhanguannum].num,
+      num: this.data.num
+      //num:that.data.number[that.data.zhanguannum].num,
     })
   },
   /**隐藏筛选 */
