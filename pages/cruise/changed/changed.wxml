@@ -10,7 +10,8 @@
   <!-- 列表内容 -->
   <view class="list">
     <block wx:for-items="{{changeArray}}" wx:for-index="key">
-      <navigator url='changed_details/changed_details?zwh={{key}}' class='list_con'> 
+      <!-- <navigator url='changed_details/changed_details?zwh={{key}}' class='list_con'>  -->
+      <view bindtap="zheng_detail" data-key="{{key}}" class='list_con'> 
         <view class="list_zwh clearfix">
           <text class="list_zwh_left">{{key}}</text>
         </view>
@@ -33,7 +34,8 @@
             </view>
           </view>
         </view>
-      </navigator>
+      <!-- </navigator> -->
+      </view>
     </block>
     <!-- <navigator url='changed_details/changed_details' class='list_con'> 
       <view class="list_zwh clearfix">
@@ -56,8 +58,11 @@
   </view>
 </view>
 <!-- 底部按钮 -->
-<view class="foot_btn" style="bottom:{{footButtom}}">
+<!-- <view class="foot_btn" style="bottom:{{footButtom}}">
   <navigator url='add_changed/add_changed'>
     <view class="add_changed"><text class="iconfont icon-fuhao_jiahao"></text>整改通知</view>
   </navigator>
+</view> -->
+<view class="foot_btn" style="bottom:{{footBottom}};">
+  <view class="add_changed" bindtap="zheng_gai"><text class="iconfont icon-fuhao_jiahao"></text>整改通知</view>
 </view>

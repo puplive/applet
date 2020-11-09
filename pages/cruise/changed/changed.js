@@ -26,7 +26,33 @@ Page({
     }
     app.editTabBar2();
   },
-
+ //整改详情跳转
+ zheng_detail:function(e){
+  console.log(9999,e)
+  if(getCurrentPages().length>=5){
+    wx.redirectTo({
+      url: "changed_details/changed_details?zwh="+e.currentTarget.dataset.key
+    });
+  }else{
+    wx.navigateTo({
+      url: "changed_details/changed_details?zwh="+e.currentTarget.dataset.key
+    });
+  }
+},
+//整改通知
+zheng_gai:function(e){
+  console.log(888888,getCurrentPages().length);
+  if(getCurrentPages().length>=5){
+    wx.redirectTo({
+      url: "add_changed/add_changed"
+    });
+  }else{
+    wx.navigateTo({
+      url: "add_changed/add_changed"
+    });
+  }
+ 
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

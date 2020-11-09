@@ -26,7 +26,8 @@
       <view class="list_btn clearfix {{item.status==1? 'show':'hidden'}}">
         <view class="list_btnli fr" bindtap="endBtn" data-id="{{item.id}}">完成</view>
         <view class="list_btnli fr" bindtap="delBtn" data-id="{{item.id}}">删除</view>
-        <navigator url='../edit_changed/edit_changed?changeid={{item.id}}'><view class="list_btnli edit_changed fr">编辑</view></navigator>
+        <view class="list_btnli edit_changed fr" bindtap="topic_bainji" data-id="{{item.id}}">编辑</view>
+        <!-- <navigator url='../edit_changed/edit_changed?changeid={{item.id}}'><view class="list_btnli edit_changed fr">编辑</view></navigator> -->
       </view> 
       <view class="list_btn clearfix {{item.status==2? 'show':'hidden'}}">
           <view class="revoke_on fr">已完成</view>
@@ -38,10 +39,13 @@
     </view>
 </view>
 <!-- 底部按钮 -->
-<view class="foot_btn">
+<!-- <view class="foot_btn">
   <navigator url='../add_changed/add_changed'>
     <view class="add_changed"><text class="iconfont icon-fuhao_jiahao"></text>整改通知</view>
   </navigator>
+</view> -->
+<view class="foot_btn">
+    <view class="add_changed" bindtap="zheng_gai"><text class="iconfont icon-fuhao_jiahao"></text>整改通知</view>
 </view>
 
 <!-- 弹窗选择规格 start -->

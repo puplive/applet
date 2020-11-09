@@ -17,6 +17,18 @@ Page({
     num:'',//处罚方式索引
     punish_method:[]//处罚方式查询
   },
+   //整改通知
+ zheng_gai:function(e){
+  wx.redirectTo({
+    url: "../add_changed/add_changed"
+  });
+},
+//编辑
+topic_bainji:function(e){
+  wx.redirectTo({
+    url: "../edit_changed/edit_changed?changeid="+e.target.dataset.id
+  });
+},
   //预览图片
 topic_preview: function(e){
   var imgList = e.currentTarget.dataset.list;//获取data-list
