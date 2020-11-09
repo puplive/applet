@@ -38,6 +38,7 @@
       暂无数据
     </view>
 </view>
+<view class='placeholder-view'></view>
 <!-- 底部按钮 -->
 <!-- <view class="foot_btn">
   <navigator url='../add_changed/add_changed'>

@@ -80,6 +80,11 @@ Page({
             })
             console.log('单选',that.data.assignArray)
           } else {
+            wx.showToast({
+              title: '没有指派的人员',
+              icon: 'none',
+              duration: 2000//持续的时间
+            })
             that.setData({
               assignArray:'',
             })
