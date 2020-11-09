@@ -249,6 +249,15 @@ descInput: function (e) {
           that.setData({
             lock:false,
           })
+        }else if(res.data.Code == 700){
+          wx.showToast({
+            title: '展位号不匹配',
+            icon: 'none',
+            duration: 2000//持续的时间
+          });
+          that.setData({
+            lock:false,
+          })
         }else {
           wx.showToast({
             title: '添加失败',icon: 'none',duration: 2000,//持续的时间
