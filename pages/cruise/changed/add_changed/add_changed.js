@@ -257,6 +257,8 @@ descInput: function (e) {
           });
           that.setData({
             lock:false,
+            imgres:[],
+            img:[],
           })
         }else {
           wx.showToast({
@@ -264,6 +266,8 @@ descInput: function (e) {
           });
           that.setData({
             lock:false,
+            imgres:[],
+            img:[],
           })
         }
       },
