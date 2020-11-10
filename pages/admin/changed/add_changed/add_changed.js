@@ -24,8 +24,8 @@ Page({
     endtime:'19:00',
     img: [],//临时路径
     imgres: [],//图片路径
-    tempFilePaths:[], //临时路径
-    lock: false,//验证只能提交一次
+    tempFilePaths:[], //临时路径img
+    lock: false//验证只能提交一次
   },
   // 展馆号
   bindProjectChange: function(e){
@@ -169,45 +169,42 @@ descInput: function (e) {
   addChangedBtn:function(){
     var that = this;
     var tempFilePaths = that.data.tempFilePaths;
-    if(tempFilePaths.length>0){
-      for (let i in tempFilePaths) {
-        var imgres2 = that.data.imgres;
-        var img2 = [];
-        wx.uploadFile({
-          url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
-          filePath: tempFilePaths[i],
-          name: 'img',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded' // 默认值
-          },
-          method: 'POST',
-          formData: {},
-          success: function (res) {
-            // console.log('res',res);
-            var data = JSON.parse(res.data).info.path;
-            data = data.replace(app.globalData.mainServer, '');
-            imgres2.push(data);
-            console.log('data',data)
-            img2.push(url + data);
-            that.setData({
-              // tempFilePath可以作为img标签的src属性显示图片
-              img: img2,
-              imgres: imgres2,
-            })
-            console.log('图片上传',that.data.imgres)
-            if(i==(tempFilePaths.length-1)){//最后一张图片上传完并延时0.1秒在执行保存数据
-              setTimeout(function(){
-              that.saveData();},100)
-            }
-          },
-          fail: function (res) {
-            console.log('fail');
-          },
-        })
+      if(tempFilePaths.length>0){
+        for (let i in tempFilePaths) {
+          var imgres2 = that.data.imgres;
+          var img2 = [];
+          wx.uploadFile({
+            url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
+            filePath: tempFilePaths[i],
+            name: 'img',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            method: 'POST',
+            formData: {},
+            success: function (res) {
+              var data = JSON.parse(res.data).info.path;
+              data = data.replace(app.globalData.mainServer, '');
+              imgres2.push(data);
+              img2.push(url + data);
+              that.setData({
+                // tempFilePath可以作为img标签的src属性显示图片
+                img: img2,
+                imgres: imgres2,
+              })
+              if(i==(tempFilePaths.length-1)){//最后一张图片上传完并延时0.1秒在执行保存数据
+                setTimeout(function(){
+                that.saveData();},100)
+              }
+            },
+            fail: function (res) {
+              console.log('fail');
+            },
+          })
+        }
+      }else{
+        that.saveData();
       }
-    }else{
-      that.saveData();
-    }
   },
   saveData : function(){
     var that = this;
@@ -256,6 +253,15 @@ descInput: function (e) {
           } else if(res.data.Code == 600){
             wx.showToast({
               title: '请上传图片',
+              icon: 'none',
+              duration: 2000//持续的时间
+            });
+            that.setData({
+              lock:false,
+            })
+          }else if(res.data.Code == 700){
+            wx.showToast({
+              title: '展位号不匹配',
               icon: 'none',
               duration: 2000//持续的时间
             });
