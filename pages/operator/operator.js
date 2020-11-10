@@ -12,7 +12,7 @@ Page({
     projectcon: '',
     projectcon_len: 1,
     showModalStatus: false,//显示遮罩
-    zhanguannum: 1, //展馆号
+    zhanguannum:100, //展馆号
     sortnum: 1, //排序
     fenleinum: 0,  //筛选分类
     hiddentransfer: true,  //转单内容弹窗
@@ -95,7 +95,9 @@ Page({
       sortnum: 1, //排序
       fenleinum:0,  //筛选分类
       num:'',//展馆号
-      zhanguannum: 0, //展馆号索引
+      zhanguannum: 100, //展馆号索引
+      showModalStatus: false,//显示遮罩       
+      isHidden: 0,
     })
     this.onShow();
   },

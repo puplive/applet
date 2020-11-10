@@ -12,8 +12,8 @@ Page({
     zwh:'',
     changedetails:[],  //详情
     showModalStatus: false,//显示遮罩
-    punishnum:0, //处罚方式筛选
-    changenum:1,//整改状态筛选
+    punishnum:100, //处罚方式筛选
+    changenum:0,//整改状态筛选
     num:'',//处罚方式索引
     punish_method:[],//处罚方式查询
     containButtom:'', //iphoneX底部 
@@ -96,9 +96,12 @@ topic_preview: function(e){
   },
   //点击重置
   resetBtn: function (data) {
-    this.setData({
-      punishnum:0, //处罚方式筛选
-      changenum:1,//整改状态筛选
+    var that = this;
+    that.setData({
+      punishnum:100, //处罚方式筛选
+      changenum:0,//整改状态筛选
+      showModalStatus: false,//显示遮罩       
+      isHidden: 0,
     })
     that.onreadycon(that);
   },
