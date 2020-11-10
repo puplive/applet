@@ -40,6 +40,7 @@ Page({
   },
    //点击重置
    resetBtn:function(data){
+    var that = this;
     this.setData({
       zhanguannum:'', //展馆号
       num: '',
@@ -71,7 +72,8 @@ Page({
     })
     that.setData({//把选中值，放入判断值中
       isHidden: 1,
-      num:that.data.number[that.data.zhanguannum].num,
+      //num:that.data.number[that.data.zhanguannum].num,
+      num: this.data.num
     })
   },
   /**隐藏筛选 */
