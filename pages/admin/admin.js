@@ -35,7 +35,7 @@ Page({
     if(isPhone){
       this.setData({
         indexBottom:"418rpx",
-        notBottom:"168rpx",
+        notBottom:"166rpx",
       })
     }
     app.editTabBar1();

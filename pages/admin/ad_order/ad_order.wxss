@@ -33,7 +33,8 @@
 .list_btn .urging .air_bg{color: #fff; background-color: #E54C4A; border-radius: 30rpx;width:40rpx; height: 40rpx; line-height: 40rpx; text-align: center;display: inline-block; margin-right: 8rpx;}
 .list_btn .urging .air_bg text{ font-size: 24rpx;}
 .list_btn .assign_on{width: 160rpx;  background-color: #ECBB49;border-radius:24rpx; color: #fff; text-align: center; }
-.list_btn .assign{width: 160rpx;height: 44rpx; line-height: 44rpx;background:rgba(255,255,255,1);border-radius:24rpx;color:#606266;border:1px solid rgba(220,223,230,1);text-align: center; }
+.list_btn .assign{width: 160rpx;height: 44rpx; line-height: 44rpx;background:rgba(255,255,255,1);border-radius:24rpx;color:#606266;border:1px solid rgba(220,223,230,1);text-align: center;margin-right: 10rpx; }
+.list_btn .assign:frist-child{margin-right: 0;}
 /* 转单弹窗样式 */
 .order_con{height: 600rpx; overflow: auto;}
 .or_content{width: 100%; margin: 0 auto;}
@@ -55,6 +56,7 @@
 .radio {
     margin-top: 20px;
 }
+.noassign_data{ text-align: center;}
 /* 筛选样式 */
 .mask_screen{
   background-color:rgba(0,0,0,0.5);

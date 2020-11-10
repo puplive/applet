@@ -28,6 +28,7 @@ Page({
     order_num:'',//订单传过来的数量
     order_qqq:'',//区分是什么问题
     containButtom:'', //iphoneX底部
+    screenBottom:'',
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -269,6 +270,7 @@ Page({
     if(isPhone){
       this.setData({
         containButtom:"188rpx",
+        screenBottom:'20px',
       })
     }
     app.editTabBar();

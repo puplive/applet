@@ -15,6 +15,7 @@ Page({
     number:[], //展馆号集合
     num:'',//展馆号
     containButtom:'',
+    screenBottom:'',
   },
   // 点击导航分类
   switchFenlei: function (e) {
@@ -93,6 +94,7 @@ Page({
     if(isPhone){
       this.setData({
         containButtom:"188rpx",
+        screenBottom:'20rpx',
       })
     }
     app.editTabBar1();

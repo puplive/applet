@@ -62,6 +62,13 @@ bindEndTime: function (e) {
     this.setData({
         endtime:e.detail.value,
     })
+    if(this.data.endtime<=this.data.startime){
+      wx.showToast({
+        title: '请重新选择结束时间',
+        icon: 'none',
+        duration: 2000//持续的时间
+      });
+    }
 },
 // 点击上传图片
 chooseWxImage: function (type) {
@@ -155,6 +162,14 @@ editChangedBtn:function(){
     var endtime = that.data.endtime;
   var content = that.data.desc;
   var rectify_imgs =that.data.imgres;
+  if(endtime<=startime){
+    wx.showToast({
+      title: '请重新选择结束时间',
+      icon: 'none',
+      duration: 2000//持续的时间
+    });
+    return false;
+  }
   wx.request({
     url: url + 'worksite/rectify/rectify-edit',
     data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: startime,rectify_time2:endtime,content:content,rectify_imgs:rectify_imgs,rectify_id:that.data.changeid},

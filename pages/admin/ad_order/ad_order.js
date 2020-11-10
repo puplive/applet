@@ -11,14 +11,14 @@ Page({
     _num: 1,//默认分类选中全部
     projectcon: '',
     projectcon_len: 1,
+    assign_len:'',
     showModalStatus: false,//显示遮罩
-    zhanguannum:1, //展馆号
-    sortnum:1, //排序 
+    zhanguannum:100, //展馆号
+    sortnum:0, //排序
     fenleinum:0,  //筛选分类
     hiddenhangye: false,  //转单弹窗
     hiddenassign: true,  //指派弹窗
     host:app.globalData.url,
-    zhanguannum:0, //展馆号默认索引
     number:[], //展馆号集合
     num:'',//展馆号
     // operatorindex:0,
@@ -38,6 +38,7 @@ Page({
     order_qqq:'',//区分是什么问题
     role_ids:'',//角色id
     containButtom:'', //iphoneX底部 
+    screenBottom:'',//iphoneX底部 
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -77,14 +78,20 @@ Page({
             that.setData({
               assignArray:res.data.data,
               data_len: Object.keys(res.data.data).length,
+              assign_len: 1,
             })
             console.log('单选',that.data.assignArray)
           } else {
-            wx.showToast({
-              title: '没有指派的人员',
-              icon: 'none',
-              duration: 2000//持续的时间
+            that.setData({
+              assign_len: 0,
             })
+            
+            // wx.showToast({
+            //   title: '没有指派的人员',
+            //   icon: 'none',
+            //   duration: 2000//持续的时间
+            // })
+
             that.setData({
               assignArray:'',
             })
@@ -183,16 +190,18 @@ Page({
     that.setData({//把选中值，放入判断值中
       showModalStatus: false,//显示遮罩       
       isHidden: 0,
-      num:that.data.number[that.data.zhanguannum].num,
+      // num:that.data.number[that.data.zhanguannum].num,
     })
   },
   //点击重置
   resetBtn:function(data){
     this.setData({
-      sortnum: 1, //排序
+      sortnum: 0, //排序
       fenleinum:0,  //筛选分类
       num:'',//展馆号
-      zhanguannum: 0, //展馆号索引
+      zhanguannum: 100, //展馆号索引
+      showModalStatus: false,//显示遮罩       
+      isHidden: 0,
     })
     this.onShow();
   },
@@ -267,6 +276,7 @@ Page({
     if(isPhone){
       this.setData({
         containButtom:"188rpx",
+        screenBottom:'20rpx',
       })
     }
     app.editTabBar1();

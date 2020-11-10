@@ -12,9 +12,9 @@
     <input wx:if="{{change_index>0}}" class='col-6' name='change_typename' value="{{change_type[change_index].name}}" bindblur ="bindChangetype" />
     <input wx:else class='col-6' name='change_typename' value="{{changeedit.rectify_type}}" bindblur ="bindChangetype" />
     <picker class="picker col-2  hangye_text" mode="selector" value="{{change_index}}" range-key="{{'name'}}" range="{{change_type}}" bindchange="bindChange" data-id="{{change_type[change_index].id}}">
-      <view class="picker col">
-        <text class='col-10 change_typename'>{{change_type[change_index].name}}</text>
-        <image class='sanjiao col-2' src='../../../../images/arrowright.png'></image>
+      <view class="picker pickerclick">
+        <text class='change_typename'>{{change_type[change_index].name}}</text>
+        <image class='sanjiao' src='../../../../images/arrowright.png'></image>
       </view>
     </picker>
   </view>
@@ -35,14 +35,14 @@
         <image class='sanjiao' src='../../../../images/arrowright.png'></image>
       </view>
     </picker> -->
-    <picker class='col-4' mode="time" value="{{startime}}" start="01:00" end="24:00" bindchange="bindStarTime" bindcancel="cancel">
-        <view class="picker" style="text-align:center;">
+    <picker class='' mode="time" value="{{startime}}" start="01:00" end="24:00" bindchange="bindStarTime" bindcancel="cancel">
+        <view class="picker" style="padding-right:20rpx;">
         {{startime}}
         </view>
     </picker>
     -
-    <picker class='col-4' mode="time" value="{{endtime}}" start="01:00" end="24:00" bindchange="bindEndTime" bindcancel="cancel">
-        <view class="picker" style="text-align:center;">
+    <picker class='' mode="time" value="{{endtime}}" start="01:00" end="24:00" bindchange="bindEndTime" bindcancel="cancel">
+        <view class="picker" style="padding-left:20rpx;">
         {{endtime}}
         </view>
     </picker>

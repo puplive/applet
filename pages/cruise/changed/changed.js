@@ -9,8 +9,8 @@ Page({
    */
   data: {
     changeArray:[],  //整改列表
-    containButtom:'', //iphoneX底部 
-    footButtom:'',
+    containBottom:'', //iphoneX底部 
+    footBottom:'',
   },
 
   /**
@@ -20,8 +20,8 @@ Page({
     let isPhone = app.globalData.isIphoneX;
     if(isPhone){
       this.setData({
-        containButtom:"188rpx",
-        footButtom:"168rpx",
+        containBottom:"188rpx",
+        footBottom:"168rpx",
       })
     }
     app.editTabBar2();
