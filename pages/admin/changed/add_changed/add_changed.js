@@ -110,6 +110,13 @@ Page({
     this.setData({
       endtime:e.detail.value,
     })
+    if(this.data.endtime<=this.data.startime){
+      wx.showToast({
+        title: '请重新选择结束时间',
+        icon: 'none',
+        duration: 2000//持续的时间
+      });
+    }
   },
   // 点击上传图片
   chooseWxImage: function (type) {
@@ -221,6 +228,19 @@ descInput: function (e) {
     var rectify_imgs =that.data.imgres;
     var lock = that.data.lock;
     console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',startime,endtime,'图',rectify_imgs);
+    if(endtime<=startime){
+      wx.showToast({
+        title: '请重新选择结束时间',
+        icon: 'none',
+        duration: 2000//持续的时间
+      });
+      that.setData({
+        // lock:false,
+        imgres:[],
+        img:[],
+      })
+      return false;
+    }
     if(!lock){
       that.setData({
         lock:true,

@@ -1,6 +1,6 @@
 <import src="../../tabbar/tabbar.wxml"/>  
 <template is="tabBar" data="{{tabBar}}"/>
-<view class="contain" style="padding-bottom:{{containButtom}}">
+<view class="contain" style="padding-bottom:{{containBottom}}">
    <!-- 搜索 -->
   <view class='search'>
     <image class='icon_search' src='../../../images/icon_search.svg' mode='widthFix'></image>

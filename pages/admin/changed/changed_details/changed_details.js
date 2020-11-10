@@ -14,7 +14,8 @@ Page({
     punishnum:0, //处罚方式筛选
     changenum:1,//整改状态筛选
     num:'',//处罚方式索引
-    punish_method:[]//处罚方式查询
+    punish_method:[],//处罚方式查询
+    screenBottom:'20rpx',//iphoneX
   },
   //预览图片
 topic_preview: function(e){
@@ -97,8 +98,11 @@ topic_bainji:function(e){
       punishnum: '', //处罚方式筛选
       changenum: '',//整改状态筛选
       num:'',
+      showModalStatus: false,//显示遮罩       
+      isHidden: 0,
     })
     this.onShow();
+    // punish:this.data.num,change:this.data.changenum}
   },
   //点击完成
   confirm_btn:function(){
@@ -114,7 +118,7 @@ topic_bainji:function(e){
     var openId = wx.getStorageSync('openId')
     var that = this;
     wx.showModal({
-      content: '确认要删除商品吗？',
+      content: '确认要删除整改信息吗？',
       success: function (res) {
         if (res.confirm) {
           wx.request({
@@ -239,6 +243,13 @@ topic_bainji:function(e){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let isPhone = app.globalData.isIphoneX;
+    if(isPhone){
+      this.setData({
+        containButtom:"188rpx",
+        screenBottom:'20rpx',
+      })
+    }
     var that = this;
     var zwh = options.zwh
     this.setData({

@@ -25,6 +25,7 @@ page{background-color: #fff;}
   top:40rpx;
   right: 20rpx;
 }
+.pickerclick{width:100%;height: 56px;display:block;}
 .desc{
   font-size: 28rpx;
   height: 300rpx;

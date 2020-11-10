@@ -101,7 +101,7 @@ page{background-color: #EBEEF5;}
   line-height: 66rpx;
 }
 /* 底部未接单 */
-.not_accepted{position: fixed; bottom: 100rpx;background:rgba(245,247,250,1);box-shadow:0px 1px 5px 0px rgba(0,0,0,0.09);height: 240rpx; width: 96%;padding: 0 2%; border-top:1px solid #F5F7FA;z-index: 1000;}
+.not_accepted{position: fixed; bottom: 100rpx;background:rgba(245,247,250,1);box-shadow:0px 1px 5px 0px rgba(0,0,0,0.09);height: 240rpx; width: 96%;padding: 0 2%; border-top:1px solid #F5F7FA;z-index: 90;}
 .page-section-title{font-size: 24rpx; height: 48rpx; line-height: 48rpx;}
 .flex-wrp{display: flex;}
 .flex-item{width: 24%; height: 156rpx;padding: 10rpx 0; margin-right: 2%; text-align: center; color: #fff;border-radius:2px;line-height: 52rpx;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.09);}

@@ -15,7 +15,9 @@ Page({
     punishnum:0, //处罚方式筛选
     changenum:1,//整改状态筛选
     num:'',//处罚方式索引
-    punish_method:[]//处罚方式查询
+    punish_method:[],//处罚方式查询
+    containButtom:'', //iphoneX底部 
+    screenBottom:'',
   },
    //整改通知
  zheng_gai:function(e){
@@ -231,6 +233,13 @@ topic_preview: function(e){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let isPhone = app.globalData.isIphoneX;
+    if(isPhone){
+      this.setData({
+        containButtom:"188rpx",
+        screenBottom:'20px',
+      })
+    }
     var that = this;
     var zwh = options.zwh
     this.setData({

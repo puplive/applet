@@ -152,7 +152,7 @@
       <text data-screenfenleinum="2" bindtap='screenFenlei' class="{{fenleinum==2?'on':''}}">问题反馈</text>
     </view>
   </view>
-  <view class="screen_btn clearfix">
+  <view class="screen_btn clearfix" style="bottom:{{screenBottom}}">
     <text class="reset_btn fl" bindtap="resetBtn">重置</text>
     <text class="confirm_btn fr" bindtap="confirm_btn">确定</text>
   </view>
