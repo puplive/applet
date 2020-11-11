@@ -274,29 +274,11 @@ descInput: function (e) {
               },2000);
             }
           })
-        } else if(res.data.Code == 600){
+        } else {
           wx.showToast({
-            title: '请上传图片',
+            title: res.data.msg,
             icon: 'none',
-            duration: 2000//持续的时间
-          });
-          that.setData({
-            lock:false,
-          })
-        }else if(res.data.Code == 700){
-          wx.showToast({
-            title: '展位号不匹配',
-            icon: 'none',
-            duration: 2000//持续的时间
-          });
-          that.setData({
-            lock:false,
-            imgres:[],
-            img:[],
-          })
-        }else {
-          wx.showToast({
-            title: '添加失败',icon: 'none',duration: 2000,//持续的时间
+            duration: 2000,//持续的时间
           });
           that.setData({
             lock:false,

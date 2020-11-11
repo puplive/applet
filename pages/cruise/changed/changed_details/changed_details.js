@@ -118,41 +118,50 @@ topic_preview: function(e){
   delBtn: function(e){
     var openId = wx.getStorageSync('openId')
     var that = this;
-    wx.request({
-      url: url + 'worksite/rectify/rectify-del',
-      data: {rectify_id:e.target.dataset.id},
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success(res) {
-        if (res.data.Code == 200) {
-          wx.showToast({
-            title: '删除成功',
-            icon: 'success',
-            duration: 2000,//持续的时间
-            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
-            success:function(){
-              setTimeout(function(){
-                wx.redirectTo({
-                  url: "../changed"
-                });
-              },1000);
+    wx.showModal({
+      content: '确认要删除整改信息吗？',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+          url: url + 'worksite/rectify/rectify-del',
+          data: {rectify_id:e.target.dataset.id},
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          success(res) {
+            if (res.data.Code == 200) {
+              wx.showToast({
+                title: '删除成功',
+                icon: 'success',
+                duration: 2000,//持续的时间
+                mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+                success:function(){
+                  setTimeout(function(){
+                    wx.redirectTo({
+                      url: "../changed"
+                    });
+                  },1000);
+                }
+              })
+            } else {
+              wx.showToast({
+                title: '删除失败',
+                icon: 'none',
+                duration: 2000,//持续的时间
+                mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+              })
             }
-          })
-        } else {
-          wx.showToast({
-            title: '删除失败',
-            icon: 'none',
-            duration: 2000,//持续的时间
-            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
-          })
-        }
-      },
-      fail: function (err) {
-        // 服务异常
+          },
+          fail: function (err) {
+            // 服务异常
+          }
+        })
+      } else {
+        console.log('点击取消回调')
       }
-    })
+    }
+  })
   },
   // 完成按钮
   endBtn: function(e){
