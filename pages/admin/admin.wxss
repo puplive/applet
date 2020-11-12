@@ -99,6 +99,8 @@ page{background-color: #EBEEF5;}
 .people_tel{
   color: #5294F9;
   line-height: 66rpx;
+  width: 220rpx;
+  text-align: left;
 }
 /* 底部未接单 */
 .not_accepted{position: fixed; bottom: 100rpx;background:rgba(245,247,250,1);box-shadow:0px 1px 5px 0px rgba(0,0,0,0.09);height: 240rpx; width: 96%;padding: 0 2%; border-top:1px solid #F5F7FA;z-index: 90;}
