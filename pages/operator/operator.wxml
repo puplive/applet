@@ -138,13 +138,13 @@
      <text wx:for="{{number}}"  wx:for-index="key"  wx:for-item="value"  data-screennum="{{key}}" bindtap='screenZhanguan' class="{{zhanguannum==key?'on':''}}">{{value.num}}</text>
     </view>
   </view>
-  <view class="screen_con02">
+  <!-- <view class="screen_con02">
     <view class="screen_contit">排序</view>
     <view class="screen_conli">
       <text data-screensortnum="1" bindtap='screenSort' class="{{sortnum==1?'on':''}}">按展位号排序</text>
       <text data-screensortnum="2" bindtap='screenSort' class="{{sortnum==2?'on':''}}">按时间排序</text>
     </view>
-  </view>
+  </view> -->
   <view class="screen_con03">
     <view class="screen_contit">分类</view>
     <view class="screen_conli">

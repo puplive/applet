@@ -11,7 +11,7 @@ Page({
     _num: 1,//默认分类选中全部
     showModalStatus: false,//显示遮罩
     fenleinum:1,  //筛选分类
-    zhanguannum:0, //展馆号默认索引
+    zhanguannum:100, //展馆号默认索引
     number:[], //展馆号集合
     num:'',//展馆号
     containButtom:'', //iphoneX底部 
@@ -43,10 +43,13 @@ Page({
    resetBtn:function(data){
     var that = this;
     this.setData({
-      zhanguannum:'', //展馆号
+      zhanguannum:100, //展馆号
       num: '',
+      showModalStatus: false,//显示遮罩       
+      isHidden: 0,
     })
-    that.getList(that);
+    this.onShow();
+    //that.getList(that);
   },
   confirm_btn:function(){
     var that = this;
@@ -83,8 +86,8 @@ Page({
     that.setData({//把选中值，放入判断值中
       showModalStatus: false,//显示遮罩       
       isHidden: 0,
-      num:'',//展馆号
-      zhanguannum: 0, //展馆号索引
+      // num:'',//展馆号
+      // zhanguannum: 0, //展馆号索引
     })
   },
   /**
