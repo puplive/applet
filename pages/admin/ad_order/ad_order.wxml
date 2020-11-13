@@ -66,8 +66,8 @@
             <text class="fr list_zwh_right">{{value.time}}</text>
           </view>
           <view class="list_li clearfix">
-            <image src="/images/tubiao/{{value.pro_type}}.png" class="fl list_img_biao" ></image>
-            <view class="list_licon fl">
+            <image src="/images/tubiao/{{value.pro_type}}.svg" class="fl list_img_biao" ></image>
+            <view class="list_licon fl list_img_tit">
               <view>
                 <text class="list_litit">{{value.pro_content}}</text>
               </view>

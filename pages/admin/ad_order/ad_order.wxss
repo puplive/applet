@@ -23,7 +23,8 @@
 .list_zwh .list_zwh_left{ font-weight: bold; color: #303133; font-size: 32rpx;}
 .list_zwh .list_zwh_right{color:#606266;}
 .list_li .list_img{width: 96rpx; height: 96rpx; margin-right: 16rpx;}
-.list_li .list_img_biao{width: 42rpx; height: 42rpx; margin-right: 16rpx;}
+.list_li .list_img_biao{width: 64rpx; height: 64rpx; margin-right: 16rpx;}
+.list_li .list_img_tit{ line-height: 64rpx;}
 .list_li .list_licon{width: calc(100% - 112rpx);font-size: 30rpx;color:rgba(0,0,0,0.9);}
 .list_litit{ font-weight: bold; }
 .list_list{ height: 60rpx; line-height: 60rpx;}
