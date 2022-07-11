@@ -29,7 +29,7 @@ Page({
         var uploadsimg = [];
         for (let i in tempFilePaths) {
           var imgres2 = that.data.imgres;
-          var img2 = [];
+          var img2 = that.data.img;
           wx.uploadFile({
             url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
             filePath: tempFilePaths[i],
@@ -44,8 +44,6 @@ Page({
               data = data.replace(app.globalData.mainServer, '');
               imgres2.push(data);
               img2.push(url + data);
-              // console.log(11, imgres2);
-              // console.log(22, img2);
               that.setData({
                 // tempFilePath可以作为img标签的src属性显示图片
                 img: img2,
@@ -99,7 +97,15 @@ Page({
     var reasons = that.data.reasons;
     var check_info_id = that.data.check_info_id;
     var imgres = that.data.imgres;
-    console.log('check_id:',check_id,'reasons:',reasons,'check_info_id:',check_info_id,'imgres',imgres)
+    // console.log('check_id:',check_id,'reasons:',reasons,'check_info_id:',check_info_id,'imgres',imgres)
+    if(!reasons){
+      wx.showToast({
+        title: '请填写驳回理由',
+        icon: 'none',
+        duration: 2000//持续的时间
+      })
+      return
+    }
     wx.request({
       url: url + 'worksite/check/check-bohui',
       data: {check_id:check_id,bohui:reasons,check_info_id:check_info_id,bohui_img:imgres},
@@ -115,9 +121,10 @@ Page({
             duration: 2000//持续的时间
           })
           setTimeout(() => {
-            wx.redirectTo({
-              url: "../acceptance_details/acceptance_details"
-            });
+            wx.navigateBack()
+            // wx.redirectTo({
+            //   url: "../acceptance_details/acceptance_details"
+            // });
             that.setData({
               check_id: check_id,
             })

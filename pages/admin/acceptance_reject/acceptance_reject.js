@@ -10,6 +10,7 @@ Page({
   data: {
     img: [],
     imgres: [],
+    tempFilePaths: [],
     lock: false,//验证只能提交一次
   },
   //获取驳回理由
@@ -21,7 +22,7 @@ Page({
  // 点击上传图片
   chooseWxImage: function (type) {
     var that = this;  
-    console.log(11,that.data.tempFilePaths )
+    // console.log(11,that.data.tempFilePaths )
     wx.chooseImage({
       count: 9,
       sizeType: ['original', 'compressed'],
@@ -29,10 +30,10 @@ Page({
       success: function (res) {
         var a = res.tempFilePaths
         var b = that.data.tempFilePaths
-        a.push.apply(a,b);
-        var tempFilePaths = res.tempFilePaths == undefined ? '' :  a ;
+        // a.push.apply(a,b);
+        // var tempFilePaths = res.tempFilePaths == undefined ? '' :  a ;
         that.setData({
-          tempFilePaths: tempFilePaths,
+          tempFilePaths: [...b,...a],
         })
       }
     })
@@ -57,13 +58,13 @@ Page({
   },
   // 删除图片
   imgDel: function(e){
-    console.log(11,e,e.currentTarget.dataset.value)
+    // console.log(11,e,e.currentTarget.dataset.value)
     var that = this;
     (that.data.tempFilePaths).splice(e.currentTarget.dataset.value,1);
     that.setData({
       tempFilePaths:that.data.tempFilePaths
     })
-    console.log(11,that.data.tempFilePaths)
+    // console.log(11,that.data.tempFilePaths)
   },
 
   // 确定按钮
@@ -118,6 +119,14 @@ Page({
     var imgres = that.data.imgres;
     var lock = that.data.lock;
     console.log('check_id:',check_id,'reasons:',reasons,'check_info_id:',check_info_id,'imgres',imgres)
+    if(!reasons){
+      wx.showToast({
+        title: '请填写驳回理由',
+        icon: 'none',
+        duration: 2000//持续的时间
+      })
+      return
+    }
     if(!lock){
       that.setData({
         lock:true,
@@ -137,9 +146,10 @@ Page({
               duration: 2000//持续的时间
             })
             setTimeout(() => {
-              wx.redirectTo({
-                url: "../acceptance/acceptance"
-              });
+              // wx.redirectTo({
+              //   url: "../acceptance/acceptance"
+              // });
+              wx.navigateBack()
               that.setData({
                 check_id: check_id,
                 lock:true,

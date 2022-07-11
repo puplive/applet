@@ -24,7 +24,7 @@
 </view>
 <view class="foot_btn">
   <view class="fr foot_btnli agree" bindtap="agreeBtn" >确定</view>
-  <navigator url='../acceptance_details/acceptance_details'>
+  <!-- <navigator url='../acceptance_details/acceptance_details'>
     <view class="fr foot_btnli reject">取消</view>
-  </navigator>
+  </navigator> -->
 </view>
