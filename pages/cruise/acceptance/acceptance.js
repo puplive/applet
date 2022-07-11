@@ -11,9 +11,11 @@ Page({
     _num: 1,//默认分类选中全部
     showModalStatus: false,//显示遮罩
     fenleinum:1,  //筛选分类
-    zhanguannum:0, //展馆号默认索引
+    zhanguannum:100, //展馆号默认索引
     number:[], //展馆号集合
     num:'',//展馆号
+    containButtom:'', //iphoneX底部 
+    screenBottom:'',
   },
   // 点击导航分类
   switchFenlei: function (e) {
@@ -39,11 +41,15 @@ Page({
   },
    //点击重置
    resetBtn:function(data){
+    var that = this;
     this.setData({
-      zhanguannum:'', //展馆号
+      zhanguannum:100, //展馆号
       num: '',
+      showModalStatus: false,//显示遮罩       
+      isHidden: 0,
     })
-    that.getList(that);
+    this.onShow();
+    //that.getList(that);
   },
   confirm_btn:function(){
     var that = this;
@@ -70,7 +76,8 @@ Page({
     })
     that.setData({//把选中值，放入判断值中
       isHidden: 1,
-      num:that.data.number[that.data.zhanguannum].num,
+      //num:that.data.number[that.data.zhanguannum].num,
+      num: this.data.num
     })
   },
   /**隐藏筛选 */
@@ -79,14 +86,21 @@ Page({
     that.setData({//把选中值，放入判断值中
       showModalStatus: false,//显示遮罩       
       isHidden: 0,
-      num:'',//展馆号
-      zhanguannum: 0, //展馆号索引
+      // num:'',//展馆号
+      // zhanguannum: 0, //展馆号索引
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let isPhone = app.globalData.isIphoneX;
+    if(isPhone){
+      this.setData({
+        containButtom:"188rpx",
+        screenBottom:'20px',
+      })
+    }
     app.editTabBar2();
     var ProjectId =sendMessageContent.projectId
     var that = this;

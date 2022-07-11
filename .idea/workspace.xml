@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8898611a-ec28-4bea-8ef5-9de5f67f4c23" name="默认的" comment="整改处罚加可以手写">
+    <list default="true" id="47de9dae-ded4-4d09-b7d7-73f5e1d65797" name="默认的" comment="问题修改">
+      <change beforePath="" afterPath="$PROJECT_DIR$/images/tubiao/4.svg" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/ad_order/ad_order.js" afterPath="$PROJECT_DIR$/pages/admin/ad_order/ad_order.js" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/admin.wxml" afterPath="$PROJECT_DIR$/pages/admin/admin.wxml" />
-      <change beforePath="$PROJECT_DIR$/utils/request.js" afterPath="$PROJECT_DIR$/utils/request.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,37 +14,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
+      <file leaf-file-name="ques_details.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/admin/ques_details/ques_details.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="16" column="46" lean-forward="false" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="request.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/request.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+            <state relative-caret-position="272">
+              <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ques_details.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pages/admin/ques_details/ques_details.js">
+      <file leaf-file-name="ad_order.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/admin/ad_order/ad_order.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="335" column="25" lean-forward="false" selection-start-line="335" selection-start-column="25" selection-end-line="335" selection-end-column="25" />
+            <state relative-caret-position="952">
+              <caret line="56" column="4" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
               <folding>
-                <element signature="e#964#1902#0" expanded="false" />
-                <element signature="e#1935#2735#0" expanded="false" />
+                <marker date="1604999818519" expanded="true" signature="6804:6813" ph="{&quot;containButtom&quot;: &quot;188rpx&quot;...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add_changed.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/admin/changed/add_changed/add_changed.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4505">
+              <caret line="265" column="38" lean-forward="false" selection-start-line="265" selection-start-column="38" selection-end-line="265" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -55,8 +49,8 @@
       <file leaf-file-name="user_info.wxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/admin/person/user_info/user_info.wxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+            <state relative-caret-position="306">
+              <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -65,23 +59,29 @@
       <file leaf-file-name="changed_details.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/admin/changed/changed_details/changed_details.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4709">
-              <caret line="277" column="4" lean-forward="false" selection-start-line="277" selection-start-column="4" selection-end-line="277" selection-end-column="4" />
+            <state relative-caret-position="2023">
+              <caret line="119" column="20" lean-forward="false" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/login/login.js">
+      <file leaf-file-name="request.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/utils/request.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
-              <caret line="126" column="25" lean-forward="false" selection-start-line="126" selection-start-column="25" selection-end-line="126" selection-end-column="25" />
-              <folding>
-                <element signature="e#757#1716#0" expanded="false" />
-                <element signature="e#2088#2513#0" expanded="false" />
-                <element signature="e#2570#2576#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="289">
+              <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -91,16 +91,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
               <caret line="2" column="25" lean-forward="false" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/login/login.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -140,18 +130,21 @@
       <find>我的</find>
       <find>wx:else</find>
       <find>reLaunch</find>
+      <find>role_ids</find>
+      <find>icon-mianxing_loudou</find>
+      <find>.screen</find>
+      <find>.screen{</find>
+      <find>changetime</find>
+      <find>changetime_value</find>
+      <find>.foot_btn</find>
     </findStrings>
     <dirStrings>
       <dir>D:\wamp\applet</dir>
+      <dir>D:\lixianmei\小程序\buildservices\pages</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -162,12 +155,17 @@
         <option value="$PROJECT_DIR$/pages/login/login.wxss" />
         <option value="$PROJECT_DIR$/pages/login/login.js" />
         <option value="$PROJECT_DIR$/pages/cruise/cruise.js" />
-        <option value="$PROJECT_DIR$/pages/admin/ques_details/ques_details.js" />
         <option value="$PROJECT_DIR$/app.json" />
         <option value="$PROJECT_DIR$/pages/admin/ad_order_details/ad_order_details.wxml" />
         <option value="$PROJECT_DIR$/pages/admin/changed/changed_details/changed_details.js" />
         <option value="$PROJECT_DIR$/utils/request.js" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/pages/admin/ques_details/ques_details.js" />
+        <option value="$PROJECT_DIR$/pages/admin/ad_order/ad_order.js" />
+        <option value="$PROJECT_DIR$/pages/cruise/changed/changed_details/changed_details.wxml" />
+        <option value="$PROJECT_DIR$/pages/cruise/changed/add_changed/add_changed.js" />
+        <option value="$PROJECT_DIR$/pages/cruise/changed/edit_changed/edit_changed.js" />
+        <option value="$PROJECT_DIR$/pages/operator/changed/changed.wxss" />
       </list>
     </option>
   </component>
@@ -199,6 +197,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -217,18 +217,21 @@
               <item name="images" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="tubiao" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="applet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="applet" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="utils" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../edit_exposaas.com" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
@@ -255,7 +258,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8898611a-ec28-4bea-8ef5-9de5f67f4c23" name="默认的" comment="" />
+      <changelist id="47de9dae-ded4-4d09-b7d7-73f5e1d65797" name="默认的" comment="问题修改" />
       <created>1592798215690</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -341,272 +344,47 @@
       <workItem from="1603244213719" duration="5631000" />
       <workItem from="1603330583640" duration="1806000" />
       <workItem from="1603417393076" duration="4281000" />
-      <workItem from="1603676008422" duration="2974000" />
+      <workItem from="1603676008422" duration="3621000" />
+      <workItem from="1603762747120" duration="1200000" />
+      <workItem from="1603848238002" duration="1192000" />
+      <workItem from="1603935491946" duration="2235000" />
+      <workItem from="1604281023795" duration="1186000" />
+      <workItem from="1604366961105" duration="592000" />
+      <workItem from="1604393641772" duration="1294000" />
+      <workItem from="1604453968709" duration="2822000" />
+      <workItem from="1604540121372" duration="2396000" />
+      <workItem from="1604626575583" duration="3956000" />
+      <workItem from="1604664683664" duration="194000" />
+      <workItem from="1604717836919" duration="845000" />
+      <workItem from="1604915726488" duration="1298000" />
+      <workItem from="1604980095410" duration="1281000" />
+      <workItem from="1605231612001" duration="3243000" />
     </task>
     <task id="LOCAL-00001" summary="冲突">
-      <created>1594794251559</created>
+      <created>1604918206127</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1594794251559</updated>
+      <updated>1604918206127</updated>
     </task>
-    <task id="LOCAL-00002" summary="配置">
-      <created>1595814121639</created>
+    <task id="LOCAL-00002" summary="问题修改">
+      <created>1604924340663</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1595814121639</updated>
+      <updated>1604924340663</updated>
     </task>
-    <task id="LOCAL-00003" summary="冲突">
-      <created>1595822168241</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1595822168242</updated>
-    </task>
-    <task id="LOCAL-00004" summary="app.json">
-      <created>1596073357450</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1596073357450</updated>
-    </task>
-    <task id="LOCAL-00005" summary="查看">
-      <created>1596419294393</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1596419294393</updated>
-    </task>
-    <task id="LOCAL-00006" summary="新增">
-      <created>1596621983982</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1596621983984</updated>
-    </task>
-    <task id="LOCAL-00007" summary="冲突">
-      <created>1596700863481</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1596700863481</updated>
-    </task>
-    <task id="LOCAL-00008" summary="配置">
-      <created>1596700884971</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1596700884971</updated>
-    </task>
-    <task id="LOCAL-00009" summary="冲突">
-      <created>1596773277190</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1596773277190</updated>
-    </task>
-    <task id="LOCAL-00010" summary="冲突">
-      <created>1598005367529</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1598005367530</updated>
-    </task>
-    <task id="LOCAL-00011" summary="小程序">
-      <created>1598496201724</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1598496201724</updated>
-    </task>
-    <task id="LOCAL-00012" summary="小程序">
-      <created>1598529120218</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1598529120218</updated>
-    </task>
-    <task id="LOCAL-00013" summary="小程序">
-      <created>1598533642820</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1598533642820</updated>
-    </task>
-    <task id="LOCAL-00014" summary="小程序">
-      <created>1598534927975</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1598534927975</updated>
-    </task>
-    <task id="LOCAL-00015" summary="小程序">
-      <created>1598535067907</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1598535067907</updated>
-    </task>
-    <task id="LOCAL-00016" summary="小程序">
-      <created>1598867990589</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1598867990589</updated>
-    </task>
-    <task id="LOCAL-00017" summary="小程序">
-      <created>1598951928408</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1598951928408</updated>
-    </task>
-    <task id="LOCAL-00018" summary="小程序">
-      <created>1598952831557</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1598952831557</updated>
-    </task>
-    <task id="LOCAL-00019" summary="小程序">
-      <created>1598953300590</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1598953300590</updated>
-    </task>
-    <task id="LOCAL-00020" summary="小程序">
-      <created>1598958228651</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1598958228651</updated>
-    </task>
-    <task id="LOCAL-00021" summary="小程序提交">
-      <created>1599104239282</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1599104239282</updated>
-    </task>
-    <task id="LOCAL-00022" summary="小程序授权">
-      <created>1599116620566</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1599116620566</updated>
-    </task>
-    <task id="LOCAL-00023" summary="小程序授权">
-      <created>1599116687614</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1599116687614</updated>
-    </task>
-    <task id="LOCAL-00024" summary="小程序问题">
-      <created>1599200773501</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1599200773501</updated>
-    </task>
-    <task id="LOCAL-00025" summary="小程序问题">
-      <created>1599217740732</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1599217740732</updated>
-    </task>
-    <task id="LOCAL-00026" summary="详情页显示不全问题">
-      <created>1599446682357</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1599446682357</updated>
-    </task>
-    <task id="LOCAL-00027" summary="新增部分">
-      <created>1600757720884</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1600757720884</updated>
-    </task>
-    <task id="LOCAL-00028" summary="首页">
-      <created>1600929209328</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1600929209328</updated>
-    </task>
-    <task id="LOCAL-00029" summary="订单指派弹框">
-      <created>1600945891514</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1600945891514</updated>
-    </task>
-    <task id="LOCAL-00030" summary="订单id保存">
-      <created>1601030761275</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1601030761275</updated>
-    </task>
-    <task id="LOCAL-00031" summary="授权更改">
-      <created>1603265493191</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1603265493191</updated>
-    </task>
-    <task id="LOCAL-00032" summary="完成跳转详情">
-      <created>1603441533353</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1603441533353</updated>
-    </task>
-    <task id="LOCAL-00033" summary="数量添加">
-      <created>1603448156266</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1603448156266</updated>
-    </task>
-    <task id="LOCAL-00034" summary="整改处罚加可以手写">
-      <created>1603693310280</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1603693310280</updated>
-    </task>
-    <task id="LOCAL-00035" summary="整改处罚加可以手写">
-      <created>1603693330637</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1603693330637</updated>
-    </task>
-    <task id="LOCAL-00036" summary="整改处罚加可以手写">
-      <created>1603693803416</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1603693803416</updated>
-    </task>
-    <option name="localTasksCounter" value="37" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214505000" />
+    <option name="totallyTimeSpent" value="239758000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="12" width="1936" height="1024" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07249467" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15031983" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11353944" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -614,8 +392,8 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6386083" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5667789" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -640,10 +418,10 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="消息" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43661973" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.56446373" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07249467" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14872068" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.108208954" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -651,8 +429,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -662,44 +440,19 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="app.json" />
-    <MESSAGE value="查看" />
-    <MESSAGE value="新增" />
-    <MESSAGE value="配置" />
-    <MESSAGE value="chongtu" />
     <MESSAGE value="冲突" />
-    <MESSAGE value="小程序" />
-    <MESSAGE value="小程序提交" />
-    <MESSAGE value="小程序授权" />
-    <MESSAGE value="小程序问题" />
-    <MESSAGE value="详情页显示不全问题" />
-    <MESSAGE value="新增部分" />
-    <MESSAGE value="首页" />
-    <MESSAGE value="订单指派弹框" />
-    <MESSAGE value="订单id保存" />
-    <MESSAGE value="授权更改" />
-    <MESSAGE value="完成跳转详情" />
-    <MESSAGE value="数量添加" />
-    <MESSAGE value="整改处罚加可以手写" />
-    <option name="LAST_COMMIT_MESSAGE" value="整改处罚加可以手写" />
+    <MESSAGE value="问题修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="问题修改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pages/login/login.wxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="43" lean-forward="false" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/login/login.wxss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3536">
           <caret line="208" column="26" lean-forward="false" selection-start-line="208" selection-start-column="26" selection-end-line="208" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -707,74 +460,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/index/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="31" column="7" lean-forward="false" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/request.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="37" lean-forward="false" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/login/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="73" lean-forward="false" selection-start-line="34" selection-start-column="73" selection-end-line="34" selection-end-column="73" />
-          <folding>
-            <element signature="e#757#1716#0" expanded="false" />
-            <element signature="e#2088#2513#0" expanded="false" />
-            <element signature="e#2570#2576#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/login/login.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/login/login.wxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="43" lean-forward="false" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/login/login.wxss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3536">
-          <caret line="208" column="26" lean-forward="false" selection-start-line="208" selection-start-column="26" selection-end-line="208" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -796,9 +481,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -820,7 +502,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -835,9 +516,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -852,7 +530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -874,9 +551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -898,9 +572,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -908,7 +579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -930,9 +600,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="61" lean-forward="false" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -947,9 +614,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="31" column="61" lean-forward="false" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -964,16 +628,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="21" column="55" lean-forward="false" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/request.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -992,13 +646,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/cruise/cruise.js" />
-    <entry file="file://$PROJECT_DIR$/project.config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="29" lean-forward="false" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/admin/ad_order_details/ad_order_details.wxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1006,31 +653,130 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/person/user_info/user_info.wxml">
+    <entry file="file://$PROJECT_DIR$/pages/login/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="126" column="25" lean-forward="false" selection-start-line="126" selection-start-column="25" selection-end-line="126" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/login/login.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/login/login.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="5" column="40" lean-forward="false" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/login/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="126" column="25" lean-forward="false" selection-start-line="126" selection-start-column="25" selection-end-line="126" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/cruise/changed/add_changed/add_changed.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="225" column="49" lean-forward="false" selection-start-line="225" selection-start-column="49" selection-end-line="225" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/cruise/changed/add_changed/add_changed.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="57" column="13" lean-forward="false" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/cruise/changed/edit_changed/edit_changed.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/admin/acceptance_reject/acceptance_reject.wxss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="51" column="12" lean-forward="true" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/operator/changed/changed.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/operator/changed/changed.wxss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="43" column="78" lean-forward="true" selection-start-line="43" selection-start-column="78" selection-end-line="43" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/admin/ques_details/ques_details.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/admin/ad_order/ad_order.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="56" column="4" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+          <folding>
+            <marker date="1604999818519" expanded="true" signature="6804:6813" ph="{&quot;containButtom&quot;: &quot;188rpx&quot;...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/admin/changed/add_changed/add_changed.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4505">
+          <caret line="265" column="38" lean-forward="false" selection-start-line="265" selection-start-column="38" selection-end-line="265" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/admin/person/user_info/user_info.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/admin/changed/changed_details/changed_details.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4709">
-          <caret line="277" column="4" lean-forward="false" selection-start-line="277" selection-start-column="4" selection-end-line="277" selection-end-column="4" />
+        <state relative-caret-position="2023">
+          <caret line="119" column="20" lean-forward="false" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/login/login.js">
+    <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="126" column="25" lean-forward="false" selection-start-line="126" selection-start-column="25" selection-end-line="126" selection-end-column="25" />
-          <folding>
-            <element signature="e#757#1716#0" expanded="false" />
-            <element signature="e#2088#2513#0" expanded="false" />
-            <element signature="e#2570#2576#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1038,14 +784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="25" lean-forward="false" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/login/login.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -1068,30 +806,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utils/request.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        <state relative-caret-position="289">
+          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="16" column="46" lean-forward="false" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/ques_details/ques_details.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="335" column="25" lean-forward="false" selection-start-line="335" selection-start-column="25" selection-end-line="335" selection-end-column="25" />
-          <folding>
-            <element signature="e#964#1902#0" expanded="false" />
-            <element signature="e#1935#2735#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

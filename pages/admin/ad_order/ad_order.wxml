@@ -1,18 +1,18 @@
 <import src="../../tabbar/tabbar.wxml"/>  
 <template is="tabBar" data="{{tabBar}}"/>
-<view class='contain'>
+<view class='contain' style="padding-bottom:{{containButtom}}">
     <view class='row fenlei'>
       <view class='col f14'>
         <view class="col-3 nav_text">
           <text data-num="1" bindtap='switchFenlei' class="{{_num==1?'on':''}}">待接单<text>({{AllTake}})</text></text>
         </view> 
-        <view class="col-3 nav_text" >
+        <view class="col-3 nav_text">
           <text data-num="2" bindtap='switchFenlei' class="{{_num==2?'on':''}}">待解决<text>({{AllSolve}})</text></text>
         </view>
         <view class="col-3 nav_text">
           <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已完成<text>({{AllFinish}})</text></text>
         </view>
-        <text class="iconfont icon-mianxing_loudou screen col-3" catchtap="screenBtn"></text>
+        <text class="iconfont icon-mianxing_loudou screen col-3" catchtap="screenBtn">筛选</text>
       </view>
     </view>
     <!-- 内容列表 -->
@@ -66,8 +66,8 @@
             <text class="fr list_zwh_right">{{value.time}}</text>
           </view>
           <view class="list_li clearfix">
-            <image src="/images/tubiao/{{value.pro_type}}.png" class="fl list_img"></image>
-            <view class="list_licon fl">
+            <image src="/images/tubiao/{{value.pro_type}}.svg" class="fl list_img_biao" ></image>
+            <view class="list_licon fl list_img_tit">
               <view>
                 <text class="list_litit">{{value.pro_content}}</text>
               </view>
@@ -80,7 +80,7 @@
             <text class="fr list_zwh_right">{{value.time}}</text>
           </view>
           <view class="list_li clearfix">
-            <image src="/images/tubiao/{{value.pro_type}}.png" class="fl list_img"></image>
+            <image src="/images/tubiao/{{value.pro_type}}.png" class="fl list_img_biao"></image>
             <view class="list_licon fl">
               <view>
                 <text class="list_litit">{{value.pro_content}}</text>
@@ -128,13 +128,13 @@
      <text wx:for="{{number}}"  wx:for-index="key"  wx:for-item="value"  data-screennum="{{key}}" bindtap='screenZhanguan' class="{{zhanguannum==key?'on':''}}">{{value.num}}</text>
     </view>
   </view>
-  <view class="screen_con02">
+  <!-- <view class="screen_con02">
     <view class="screen_contit">排序</view>
     <view class="screen_conli">
       <text data-screensortnum="1" bindtap='screenSort' class="{{sortnum==1?'on':''}}">按展位号排序</text>
       <text data-screensortnum="2" bindtap='screenSort' class="{{sortnum==2?'on':''}}">按时间排序</text>
     </view>
-  </view>
+  </view> -->
   <view class="screen_con03">
     <view class="screen_contit">分类</view>
     <view class="screen_conli">
@@ -142,7 +142,7 @@
       <text data-screenfenleinum="2" bindtap='screenFenlei' class="{{fenleinum==2?'on':''}}">问题反馈</text>
     </view>
   </view>
-  <view class="screen_btn clearfix">
+  <view class="screen_btn clearfix" style="bottom:{{screenBottom}}" >
     <text class="reset_btn fl" bindtap="resetBtn">重置</text>
     <text class="confirm_btn fr" bindtap="confirm_btn">确定</text>
   </view>
@@ -242,4 +242,7 @@
       </label>
     </radio-group>
   </view>
+  <view wx:if="{{assign_len==0}}" class='noassign_data'>
+      暂无可指派的人员
+    </view>
 </modal>

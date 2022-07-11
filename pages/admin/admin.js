@@ -9,7 +9,9 @@ Page({
   data: {
     host:url,
     list: [],
-    order_not:[]
+    order_not:[],
+    indexBottom:'',
+    notBottom:'',
   },
   // 人员显示隐藏
   kindToggle: function (e) {
@@ -29,9 +31,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let isPhone = app.globalData.isIphoneX;
+    if(isPhone){
+      this.setData({
+        indexBottom:"418rpx",
+        notBottom:"166rpx",
+      })
+    }
     app.editTabBar1();
+    // console.log(2,this.data.isIphoneX)
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

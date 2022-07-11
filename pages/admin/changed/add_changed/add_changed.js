@@ -20,10 +20,12 @@ Page({
     changetime_index:0,
     changetime_value:'',
     change_time: ['9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '18:00 - 19:00', '19:00 - 20:00','20:00 - 21:00', '21:00 - 22:00', '22:00 - 23:00','23:00 - 24:00'], //整改时限
+    startime: '18:00',
+    endtime:'19:00',
     img: [],//临时路径
     imgres: [],//图片路径
-    tempFilePaths:[], //临时路径
-    lock: false,//验证只能提交一次
+    tempFilePaths:[], //临时路径img
+    lock: false//验证只能提交一次
   },
   // 展馆号
   bindProjectChange: function(e){
@@ -58,6 +60,12 @@ Page({
       }
     })
   },
+   // 展位号填写
+   bindWritezwh:function(e){
+    this.setData({
+      zw_hao:e.detail.value
+    })
+  },
   // 展位号
   bindZwh:function(e){
     this.setData({
@@ -87,16 +95,33 @@ Page({
     })
   },
   // 点击整改时限
-  bindChangeTime: function (e) {
+  // bindChangeTime: function (e) {
+  //   this.setData({
+  //     changetime_index: e.detail.value,
+  //     changetime_value:this.data.change_time[e.detail.value],
+  //   })
+  // },
+  bindStarTime: function (e) {
     this.setData({
-      changetime_index: e.detail.value,
-      changetime_value:this.data.change_time[e.detail.value],
+      startime:e.detail.value,
     })
+  },
+  bindEndTime: function (e) {
+    this.setData({
+      endtime:e.detail.value,
+    })
+    if(this.data.endtime<=this.data.startime){
+      wx.showToast({
+        title: '请重新选择结束时间',
+        icon: 'none',
+        duration: 2000//持续的时间
+      });
+    }
   },
   // 点击上传图片
   chooseWxImage: function (type) {
-    var that = this;  
-    console.log(11,that.data.tempFilePaths )
+    var that = this;
+    // console.log(11,that.data.tempFilePaths )
     wx.chooseImage({
       count: 9,
       sizeType: ['original', 'compressed'],
@@ -109,6 +134,7 @@ Page({
         that.setData({
           tempFilePaths: tempFilePaths,
         })
+        console.log('上传成功',that.data.tempFilePaths);
       }
     })
   },
@@ -150,42 +176,42 @@ descInput: function (e) {
   addChangedBtn:function(){
     var that = this;
     var tempFilePaths = that.data.tempFilePaths;
-    if(tempFilePaths.length>0){
-      for (let i in tempFilePaths) {
-        var imgres2 = that.data.imgres;
-        var img2 = [];
-        wx.uploadFile({
-          url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
-          filePath: tempFilePaths[i],
-          name: 'img',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded' // 默认值
-          },
-          method: 'POST',
-          formData: {},
-          success: function (res) {
-            var data = JSON.parse(res.data).info.path;
-            data = data.replace(app.globalData.mainServer, '');
-            imgres2.push(data);
-            img2.push(url + data);
-            that.setData({
-              // tempFilePath可以作为img标签的src属性显示图片
-              img: img2,
-              imgres: imgres2,
-            })
-            if(i==(tempFilePaths.length-1)){//最后一张图片上传完并延时0.1秒在执行保存数据
-              setTimeout(function(){
-              that.saveData();},100)
-            }
-          },
-          fail: function (res) {
-            console.log('fail');
-          },
-        })
+      if(tempFilePaths.length>0){
+        for (let i in tempFilePaths) {
+          var imgres2 = that.data.imgres;
+          var img2 = [];
+          wx.uploadFile({
+            url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
+            filePath: tempFilePaths[i],
+            name: 'img',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            method: 'POST',
+            formData: {},
+            success: function (res) {
+              var data = JSON.parse(res.data).info.path;
+              data = data.replace(app.globalData.mainServer, '');
+              imgres2.push(data);
+              img2.push(url + data);
+              that.setData({
+                // tempFilePath可以作为img标签的src属性显示图片
+                img: img2,
+                imgres: imgres2,
+              })
+              if(i==(tempFilePaths.length-1)){//最后一张图片上传完并延时0.1秒在执行保存数据
+                setTimeout(function(){
+                that.saveData();},100)
+              }
+            },
+            fail: function (res) {
+              console.log('fail');
+            },
+          })
+        }
+      }else{
+        that.saveData();
       }
-    }else{
-      that.saveData();
-    }
   },
   saveData : function(){
     var that = this;
@@ -194,19 +220,34 @@ descInput: function (e) {
     // var rectify_type = that.data.change_id; //整改类型
     var rectify_type = that.data.changetype_name;//整改类型名称
     var punish_type = that.data.punish_id; //处罚方式
-    var changetime_value = that.data.changetime_value;
-    var changetimeArray=changetime_value.split("-"); //整改时限
+    // var changetime_value = that.data.changetime_value;
+    // var changetimeArray=changetime_value.split("-"); //整改时限
+    var startime = that.data.startime;
+    var endtime = that.data.endtime;
     var content = that.data.desc;
     var rectify_imgs =that.data.imgres;
     var lock = that.data.lock;
-    console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1],'图',rectify_imgs);
+    console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',startime,endtime,'图',rectify_imgs);
+    if(endtime<=startime){
+      wx.showToast({
+        title: '请重新选择结束时间',
+        icon: 'none',
+        duration: 2000//持续的时间
+      });
+      that.setData({
+        // lock:false,
+        imgres:[],
+        img:[],
+      })
+      return false;
+    }
     if(!lock){
       that.setData({
         lock:true,
       })
       wx.request({
         url: url + 'worksite/rectify/rectify-add',
-        data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: changetimeArray[0],rectify_time2:changetimeArray[1],content:content,rectify_imgs:rectify_imgs},
+        data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: startime,rectify_time2:endtime,content:content,rectify_imgs:rectify_imgs},
         header: {
           'content-type': 'application/x-www-form-urlencoded' // 默认值
         },
@@ -214,33 +255,31 @@ descInput: function (e) {
         success(res) {
           if (res.data.Code == 200) {
             wx.showToast({
-              title: '添加成功',
-              icon: 'none',
-              duration: 2000//持续的时间
-            });
-            that.setData({
-              lock:true,
-            })
-            wx.navigateTo({
-              url: '../changed',
-            })
-          } else if(res.data.Code == 600){
-            wx.showToast({
-              title: '请上传图片',
-              icon: 'none',
-              duration: 2000//持续的时间
-            });
-            that.setData({
-              lock:false,
+              title: '提交成功',
+              icon:'success',
+              duration:1500,
+              mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+              success:function(){
+                that.setData({
+                  lock:true,
+                })
+                setTimeout(function(){
+                  wx.navigateTo({
+                    url: '../changed',
+                  })
+              },2000);
+              }
             })
           }else {
             wx.showToast({
-              title: '添加失败',
+              title: res.data.msg,
               icon: 'none',
-              duration: 2000//持续的时间
+              duration: 2000,//持续的时间
             });
             that.setData({
               lock:false,
+              imgres:[],
+              img:[],
             })
           }
         },
@@ -254,7 +293,7 @@ descInput: function (e) {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -390,9 +429,9 @@ descInput: function (e) {
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    wx.reLaunch({
-      url: '../changed/changed',
-    })
+    // wx.reLaunch({
+    //   url: '../changed/changed',
+    // })
   },
 
   /**

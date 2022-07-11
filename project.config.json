@@ -1,7 +1,8 @@
 {
   "description": "项目配置文件",
   "packOptions": {
-    "ignore": []
+    "ignore": [],
+    "include": []
   },
   "setting": {
     "urlCheck": false,
@@ -23,44 +24,32 @@
     "compileHotReLoad": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "useIsolateContext": true,
-    "useCompilerModule": true,
-    "userConfirmedUseCompilerModuleSwitch": false,
+    "useIsolateContext": false,
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "bundle": false,
-    "useApiHostProcess": true
+    "disableUseStrict": false,
+    "minifyWXML": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false,
+    "ignoreUploadUnusedFiles": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.11.1",
   "appid": "wxfc7feb8dd661d7a8",
   "projectname": "buildservices",
-  "debugOptions": {
-    "hidedInDevtools": []
-  },
-  "isGameTourist": false,
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
-  "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
-    "game": {
-      "currentL": -1,
-      "list": []
-    },
-    "miniprogram": {
-      "list": []
-    }
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
   }
 }

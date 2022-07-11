@@ -1,7 +1,7 @@
 <import src="../tabbar/tabbar.wxml"/>
 <template is="tabBar" data="{{tabBar}}"/>
 <!-- 主内容 -->
-<view class="index-bd">
+<view class="index-bd" style="padding-bottom:{{indexBottom}}">
   <view class="kind-list">
     <block wx:for-items="{{list}}" wx:for-index="key">
       <view class="kind-list-item">
@@ -34,7 +34,7 @@
   </view>
 </view>
 <!-- 未接单部分 -->
-<view class="not_accepted">
+<view class="not_accepted" style="bottom:{{notBottom}}">
   <view class="page-section-title">
     <text>未接单</text>
   </view>

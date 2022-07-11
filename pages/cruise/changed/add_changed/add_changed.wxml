@@ -10,9 +10,10 @@
   </view>
   <view class='section col'>
     <label class='col-4'>展位号</label>
-    <picker class="picker col-8  hangye_text" mode="selector" range="{{zwhArray}}" value="{{zwh_index}}" bindchange="bindZwh" data-zwh="{{zwhArray[zwh_index]}}">
-      <view class="picker">
-        <text class=''>{{zwhArray[zwh_index]}}</text>
+    <input class='col-6' name='Write_zwh' value="{{zwhArray[zwh_index]}}" bindblur ="bindWritezwh" />
+    <picker class="picker col-2  hangye_text" mode="selector" range="{{zwhArray}}" value="{{zwh_index}}" bindchange="bindZwh" data-zwh="{{zwhArray[zwh_index]}}">
+      <view class="picker pickerclick">
+        <text class='changezwh'>{{zwhArray[zwh_index]}}</text>
         <image class='sanjiao' src='../../../../images/arrowright.png'></image>
       </view>
     </picker>
@@ -21,9 +22,9 @@
     <label class='col-4'>整改类型</label>
     <input class='col-6' name='change_typename' value="{{change_type[change_index].name}}" bindblur ="bindChangetype" />
     <picker class="picker col-2  hangye_text" mode="selector" value="{{change_index}}" range-key="{{'name'}}" range="{{change_type}}" bindchange="bindChange" data-id="{{change_type[change_index].id}}">
-      <view class="picker col">
-        <text class='col-10 change_typename'>{{change_type[change_index].name}}</text>
-        <image class='sanjiao col-2' src='../../../../images/arrowright.png'></image>
+      <view class="picker pickerclick">
+        <text class='change_typename'>{{change_type[change_index].name}}</text>
+        <image class='sanjiao' src='../../../../images/arrowright.png'></image>
       </view>
     </picker>
   </view>
@@ -38,11 +39,22 @@
   </view>
   <view class='section col'>
     <label class='col-4'>整改时限</label>
-    <picker class="picker col-8  hangye_text" mode="selector" range="{{change_time}}" value="{{changetime_index}}" bindchange="bindChangeTime" data-time="{{change_time[changetime_index]}}">
+    <!-- <picker class="picker col-8  hangye_text" mode="selector" range="{{change_time}}" value="{{changetime_index}}" bindchange="bindChangeTime" data-time="{{change_time[changetime_index]}}">
       <view class="picker">
         <text class=''>{{change_time[changetime_index]}}</text>
         <image class='sanjiao' src='../../../../images/arrowright.png'></image>
       </view>
+    </picker> -->
+    <picker class='' mode="time" value="{{startime}}" start="01:00" end="24:00" bindchange="bindStarTime" bindcancel="cancel">
+        <view class="picker" style="padding-right:20rpx;">
+        {{startime}}
+        </view>
+    </picker>
+    -
+    <picker class='' mode="time" value="{{endtime}}" start="01:00" end="24:00" bindchange="bindEndTime" bindcancel="cancel">
+        <view class="picker" style="padding-left:20rpx;">
+        {{endtime}}
+        </view>
     </picker>
   </view>
   <view class='desc'>

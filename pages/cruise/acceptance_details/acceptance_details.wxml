@@ -1,5 +1,5 @@
 <view class="contain">
-  <view class="zwh">{{z_guan}} {{zw_hao}}</view>
+  <view class="zwh">{{z_guan}}号馆 {{zw_hao}}</view>
   <view class="person_name">
     <text>{{contact}}</text>
     <text class="tel">{{phone}}</text>

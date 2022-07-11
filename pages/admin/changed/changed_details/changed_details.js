@@ -11,10 +11,11 @@ Page({
     zwh:'',
     changedetails:[],  //详情
     showModalStatus: false,//显示遮罩
-    punishnum:0, //处罚方式筛选
+    punishnum:100, //处罚方式筛选
     changenum:1,//整改状态筛选
     num:'',//处罚方式索引
-    punish_method:[]//处罚方式查询
+    punish_method:[],//处罚方式查询
+    screenBottom:'20rpx',//iphoneX
   },
   //预览图片
 topic_preview: function(e){
@@ -93,12 +94,16 @@ topic_bainji:function(e){
   },
   //点击重置
   resetBtn: function (data) {
-    this.setData({
-      punishnum: '', //处罚方式筛选
-      changenum: '',//整改状态筛选
+    var that = this;
+    that.setData({
+      punishnum:100, //处罚方式筛选
+      changenum:1,//整改状态筛选
       num:'',
+      showModalStatus: false,//显示遮罩       
+      isHidden: 0,
     })
-    this.onShow();
+    that.onreadycon(that);
+    // punish:this.data.num,change:this.data.changenum}
   },
   //点击完成
   confirm_btn:function(){
@@ -113,37 +118,50 @@ topic_bainji:function(e){
   delBtn: function(e){
     var openId = wx.getStorageSync('openId')
     var that = this;
-    wx.request({
-      url: url + 'worksite/rectify/rectify-del',
-      data: {rectify_id:e.target.dataset.id},
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success(res) {
-        if (res.data.Code == 200) {
-          wx.showToast({
-            title: '删除成功',
-            icon: 'none',
-            duration: 2000//持续的时间
+    wx.showModal({
+      content: '确认要删除整改信息吗？',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: url + 'worksite/rectify/rectify-del',
+            data: {rectify_id:e.target.dataset.id},
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success(res) {
+              if (res.data.Code == 200) {
+                wx.showToast({
+                  title: '删除成功',
+                  icon: 'success',
+                  duration: 2000//持续的时间
+                })
+                setTimeout(() => {
+                  wx.redirectTo({
+                    url: "../changed"
+                  });
+                }, 1000);
+              } else {
+                wx.showToast({
+                  title: '删除失败',
+                  icon: 'none',
+                  duration: 2000//持续的时间
+                })
+              }
+            },
+            fail: function (err) {
+              // 服务异常
+            }
           })
-          setTimeout(() => {
-            wx.redirectTo({
-              url: "../changed"
-            });
-          }, 1000);
         } else {
-          wx.showToast({
-            title: '删除失败',
-            icon: 'none',
-            duration: 2000//持续的时间
-          })
+          console.log('点击取消回调')
         }
-      },
-      fail: function (err) {
-        // 服务异常
       }
     })
+
+
+
+    
   },
   // 完成按钮
   endBtn: function(e){
@@ -160,17 +178,20 @@ topic_bainji:function(e){
         if (res.data.Code == 200) {
           wx.showToast({
             title: '整改完成',
-            icon: 'none',
-            duration: 2000//持续的时间
+            icon:'success',
+            duration:1500,
+            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+            success:function(){
+              setTimeout(() => {
+                wx.redirectTo({
+                  url: "../changed"
+                });
+                that.setData({
+                  zwh:that.data.zwh,
+                })
+              }, 1000);
+            }
           })
-          setTimeout(() => {
-            wx.redirectTo({
-              url: "../changed"
-            });
-            that.setData({
-              zwh: zwh,
-            })
-          }, 1000);
         } else {
           wx.showToast({
             title: '操作失败',
@@ -223,6 +244,13 @@ topic_bainji:function(e){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let isPhone = app.globalData.isIphoneX;
+    if(isPhone){
+      this.setData({
+        containButtom:"188rpx",
+        screenBottom:'20rpx',
+      })
+    }
     var that = this;
     var zwh = options.zwh
     this.setData({
@@ -281,9 +309,9 @@ topic_bainji:function(e){
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    wx.reLaunch({
-      url: '../changed/changed',
-    })
+    // wx.reLaunch({
+    //   url: '../changed/changed',
+    // })
   },
 
   /**

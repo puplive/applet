@@ -16,7 +16,7 @@
 .screen{
   text-align: right;
   padding-right: 10px;
-  font-size: 20rpx;
+  font-size: 24rpx;
 }
 .list_con{width: 92%; margin: 16rpx auto 0; background-color: #fff; border-radius: 4rpx; padding: 0 2% 2%;}
 .list_zwh{ height: 82rpx; line-height: 82rpx;}

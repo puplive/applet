@@ -9,15 +9,50 @@ Page({
    */
   data: {
     changeArray:[],  //整改列表
+    containBottom:'', //iphoneX底部 
+    footBottom:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let isPhone = app.globalData.isIphoneX;
+    if(isPhone){
+      this.setData({
+        containBottom:"188rpx",
+        footBottom:"168rpx",
+      })
+    }
     app.editTabBar2();
   },
-
+ //整改详情跳转
+ zheng_detail:function(e){
+  console.log(9999,e)
+  if(getCurrentPages().length>=5){
+    wx.redirectTo({
+      url: "changed_details/changed_details?zwh="+e.currentTarget.dataset.key
+    });
+  }else{
+    wx.navigateTo({
+      url: "changed_details/changed_details?zwh="+e.currentTarget.dataset.key
+    });
+  }
+},
+//整改通知
+zheng_gai:function(e){
+  console.log(888888,getCurrentPages().length);
+  if(getCurrentPages().length>=5){
+    wx.redirectTo({
+      url: "add_changed/add_changed"
+    });
+  }else{
+    wx.navigateTo({
+      url: "add_changed/add_changed"
+    });
+  }
+ 
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
