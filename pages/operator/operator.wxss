@@ -16,13 +16,14 @@
 .screen{
   text-align: right;
   padding-right: 10px;
-  font-size: 20rpx;
+  font-size: 24rpx;
 }
 .list_con{width: 92%; margin: 16rpx auto 0; background-color: #fff; border-radius: 4rpx; padding: 0 2% 2%;}
 .list_zwh{ height: 82rpx; line-height: 82rpx;}
 .list_zwh .list_zwh_left{ font-weight: bold; color: #303133; font-size: 32rpx;}
 .list_zwh .list_zwh_right{color:#606266;}
 .list_li .list_img{width: 96rpx; height: 96rpx; margin-right: 16rpx;}
+.list_li .list_img_biao{width: 42rpx; height: 42rpx; margin-right: 16rpx;}
 .list_li .list_licon{width: calc(100% - 112rpx);font-size: 30rpx;color:rgba(0,0,0,0.9);}
 .list_litit{ font-weight: bold; }
 .list_list{ height: 60rpx; line-height: 60rpx;}

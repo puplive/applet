@@ -1,6 +1,6 @@
 <import src="../../tabbar/tabbar.wxml"/>
 <template is="tabBar" data="{{tabBar}}"/>
-<view class='contain'>
+<view class='contain' style="padding-bottom:{{containButtom}};">
     <view class='row fenlei'>
       <view class='col f14'>
         <view class="col-3 nav_text">
@@ -12,14 +12,14 @@
         <view class="col-3 nav_text">
           <text data-num="3" bindtap='switchFenlei' class="{{_num==3?'on':''}}">已通过</text><text>({{type.t}})</text>
         </view>
-        <text class="iconfont icon-mianxing_loudou screen col-3" catchtap="screenBtn"></text>
+        <text class="iconfont icon-mianxing_loudou screen col-3" catchtap="screenBtn">筛选</text>
       </view>
     </view>
     <!-- 内容列表 -->
     <view wx:if="{{accepArray_len>0}}" class='list f12' wx:for-items="{{accepArray}}" wx:for-index="key">
       <navigator url='../acceptance_details/acceptance_details?check_id={{item.id}}' class='list_con'>
         <view class="list_zwh clearfix">
-          <text class="fl list_zwh_left">{{item.z_guan}} {{item.zw_hao}}</text>
+          <text class="fl list_zwh_left">{{item.z_guan}}号馆 {{item.zw_hao}}</text>
           <text class="fr list_zwh_right">{{item.apply_time}}</text>
         </view>
         <view class="list_li clearfix">
@@ -51,7 +51,7 @@
       <text>S2</text> -->
     </view>
   </view>
-  <view class="screen_btn clearfix">
+  <view class="screen_btn clearfix" style="bottom:{{screenBottom}}">
     <text class="reset_btn fl" bindtap="resetBtn">重置</text>
     <text class="confirm_btn fr"  bindtap="confirm_btn">确定</text>
   </view>

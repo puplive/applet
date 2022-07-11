@@ -16,6 +16,8 @@ page{background-color: #fff;}
   color:#666;
 }
 .picker text{ text-overflow:ellipsis; white-space:nowrap; overflow:hidden; font-size: 28rpx;}
+.changezwh{display: none;}
+.change_typename{display: none;}
 .sanjiao{
   width: 32rpx;
   height: 32rpx;
@@ -23,6 +25,7 @@ page{background-color: #fff;}
   top:40rpx;
   right: 20rpx;
 }
+.pickerclick{width:100%;height: 56px;display:block;}
 .desc{
   font-size: 28rpx;
   height: 300rpx;

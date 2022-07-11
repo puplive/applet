@@ -19,6 +19,7 @@ Page({
     beizhu:'',//备注
     orderId:'',//订单id
     or_type:'',//订单类型
+    lock: false,//验证只能提交一次
   },
   //转单对象
   bindProjectChange:function(e){
@@ -47,36 +48,52 @@ descInput: function (e) {
     var take_beizhu = that.data.beizhu; //转单备注
     var cpay_user = that.data.carbon_id; //抄送对象
     var ordertype = that.data.or_type;//订单类型
+    var lock = that.data.lock;
     console.log('goods_id',goods_id,'take_user',take_user,'take_beizhu',take_beizhu,'cpay_user',cpay_user,'ordertype',ordertype)
-    wx.request({
-      url: url + 'worksite/default/order-change',
-      data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,goods_id:goods_id,take_user:take_user,take_beizhu:take_beizhu,cpay_user:cpay_user,ordertype:ordertype},
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      method: 'POST',
-      success(res) {
-        if (res.data.Code == 200) {
-          wx.showToast({
-            title: '已转单',
-            icon: 'none',
-            duration: 2000//持续的时间
-          })
-          wx.navigateTo({
-            url: '../operator',
-          })
-        } else {
-          wx.showToast({
-            title: '添加失败',
-            icon: 'none',
-            duration: 2000//持续的时间
-          })
+    if(!lock){
+      that.setData({
+        lock:true,
+      })
+      wx.request({
+        url: url + 'worksite/default/order-change',
+        data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,goods_id:goods_id,take_user:take_user,take_beizhu:take_beizhu,cpay_user:cpay_user,ordertype:ordertype},
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        method: 'POST',
+        success(res) {
+          if (res.data.Code == 200) {
+            wx.showToast({
+              title: '已转单',
+              icon: 'success',
+              duration: 2000,//持续的时间
+              success:function(){
+                setTimeout(function(){
+                  that.setData({
+                    lock:true,
+                  })
+                  wx.navigateTo({
+                    url: '../operator',
+                  })
+              },2000);
+              }
+            })
+          } else {
+            wx.showToast({
+              title: '添加失败',
+              icon: 'none',
+              duration: 2000//持续的时间
+            })
+            that.setData({
+              lock:false,
+            })
+          }
+        },
+        fail: function (err) {
+          // 服务异常
         }
-      },
-      fail: function (err) {
-        // 服务异常
-      }
-    })
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载

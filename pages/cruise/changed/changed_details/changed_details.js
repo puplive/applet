@@ -12,11 +12,25 @@ Page({
     zwh:'',
     changedetails:[],  //详情
     showModalStatus: false,//显示遮罩
-    punishnum:0, //处罚方式筛选
-    changenum:1,//整改状态筛选
+    punishnum:100, //处罚方式筛选
+    changenum:0,//整改状态筛选
     num:'',//处罚方式索引
-    punish_method:[]//处罚方式查询
+    punish_method:[],//处罚方式查询
+    containButtom:'', //iphoneX底部 
+    screenBottom:'',
   },
+   //整改通知
+ zheng_gai:function(e){
+  wx.redirectTo({
+    url: "../add_changed/add_changed"
+  });
+},
+//编辑
+topic_bainji:function(e){
+  wx.redirectTo({
+    url: "../edit_changed/edit_changed?changeid="+e.target.dataset.id
+  });
+},
   //预览图片
 topic_preview: function(e){
   var imgList = e.currentTarget.dataset.list;//获取data-list
@@ -82,9 +96,12 @@ topic_preview: function(e){
   },
   //点击重置
   resetBtn: function (data) {
-    this.setData({
-      punishnum:0, //处罚方式筛选
-      changenum:1,//整改状态筛选
+    var that = this;
+    that.setData({
+      punishnum:100, //处罚方式筛选
+      changenum:0,//整改状态筛选
+      showModalStatus: false,//显示遮罩       
+      isHidden: 0,
     })
     that.onreadycon(that);
   },
@@ -101,37 +118,50 @@ topic_preview: function(e){
   delBtn: function(e){
     var openId = wx.getStorageSync('openId')
     var that = this;
-    wx.request({
-      url: url + 'worksite/rectify/rectify-del',
-      data: {rectify_id:e.target.dataset.id},
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success(res) {
-        if (res.data.Code == 200) {
-          wx.showToast({
-            title: '删除成功',
-            icon: 'none',
-            duration: 2000//持续的时间
-          })
-          setTimeout(() => {
-            wx.redirectTo({
-              url: "../changed"
-            });
-          }, 1000);
-        } else {
-          wx.showToast({
-            title: '删除失败',
-            icon: 'none',
-            duration: 2000//持续的时间
-          })
-        }
-      },
-      fail: function (err) {
-        // 服务异常
+    wx.showModal({
+      content: '确认要删除整改信息吗？',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+          url: url + 'worksite/rectify/rectify-del',
+          data: {rectify_id:e.target.dataset.id},
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          success(res) {
+            if (res.data.Code == 200) {
+              wx.showToast({
+                title: '删除成功',
+                icon: 'success',
+                duration: 2000,//持续的时间
+                mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+                success:function(){
+                  setTimeout(function(){
+                    wx.redirectTo({
+                      url: "../changed"
+                    });
+                  },1000);
+                }
+              })
+            } else {
+              wx.showToast({
+                title: '删除失败',
+                icon: 'none',
+                duration: 2000,//持续的时间
+                mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+              })
+            }
+          },
+          fail: function (err) {
+            // 服务异常
+          }
+        })
+      } else {
+        console.log('点击取消回调')
       }
-    })
+    }
+  })
   },
   // 完成按钮
   endBtn: function(e){
@@ -148,22 +178,26 @@ topic_preview: function(e){
         if (res.data.Code == 200) {
           wx.showToast({
             title: '整改完成',
-            icon: 'none',
-            duration: 2000//持续的时间
+            icon:'success',
+            duration:1500,
+            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+            success:function(){
+              setTimeout(() => {
+                wx.redirectTo({
+                  url: "../changed"
+                });
+                that.setData({
+                  zwh: zwh,
+                })
+              }, 1000);
+            }
           })
-          setTimeout(() => {
-            wx.redirectTo({
-              url: "../changed"
-            });
-            that.setData({
-              zwh: zwh,
-            })
-          }, 1000);
         } else {
           wx.showToast({
             title: '操作失败',
             icon: 'none',
-            duration: 2000//持续的时间
+            duration: 2000,//持续的时间
+            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
           })
         }
       },
@@ -211,6 +245,13 @@ topic_preview: function(e){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let isPhone = app.globalData.isIphoneX;
+    if(isPhone){
+      this.setData({
+        containButtom:"188rpx",
+        screenBottom:'20px',
+      })
+    }
     var that = this;
     var zwh = options.zwh
     this.setData({
@@ -265,7 +306,9 @@ topic_preview: function(e){
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    wx.reLaunch({
+      url: '../changed/changed',
+    })
   },
 
   /**

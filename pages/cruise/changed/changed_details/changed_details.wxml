@@ -1,8 +1,8 @@
 <view class="contain">
   <view class='row zwh_tit'>
     <view class='col clearfix'>
-      <text class="col-9 zwh fl">{{z_guan}} {{zwh}}</text>
-      <text class="iconfont icon-mianxing_loudou col-3 screen fr" catchtap="screenBtn"></text>
+      <text class="col-9 zwh fl">{{z_guan}}号馆 {{zwh}}</text>
+      <text class="iconfont icon-mianxing_loudou col-3 screen fr" catchtap="screenBtn">筛选</text>
     </view>
   </view>
   <!-- 列表内容 -->
@@ -11,7 +11,7 @@
       <view class="list_li clearfix">
         <view class="list_licon fl">
           <view class="time">{{item.apply_time}}</view>
-          <view class="changed_type">{{item.rectify_name}}</view>
+          <view class="changed_type">{{item.rectify_type}}</view>
           <view class="changed_style">
             <text>{{item.punish_name}}    </text><text>整改时限  {{item.rectify_time1}}-{{item.rectify_time2}}</text>
           </view>
@@ -26,7 +26,8 @@
       <view class="list_btn clearfix {{item.status==1? 'show':'hidden'}}">
         <view class="list_btnli fr" bindtap="endBtn" data-id="{{item.id}}">完成</view>
         <view class="list_btnli fr" bindtap="delBtn" data-id="{{item.id}}">删除</view>
-        <navigator url='../edit_changed/edit_changed?changeid={{item.id}}'><view class="list_btnli edit_changed fr">编辑</view></navigator>
+        <view class="list_btnli edit_changed fr" bindtap="topic_bainji" data-id="{{item.id}}">编辑</view>
+        <!-- <navigator url='../edit_changed/edit_changed?changeid={{item.id}}'><view class="list_btnli edit_changed fr">编辑</view></navigator> -->
       </view> 
       <view class="list_btn clearfix {{item.status==2? 'show':'hidden'}}">
           <view class="revoke_on fr">已完成</view>
@@ -37,11 +38,15 @@
       暂无数据
     </view>
 </view>
+<view class='placeholder-view'></view>
 <!-- 底部按钮 -->
-<view class="foot_btn">
+<!-- <view class="foot_btn">
   <navigator url='../add_changed/add_changed'>
     <view class="add_changed"><text class="iconfont icon-fuhao_jiahao"></text>整改通知</view>
   </navigator>
+</view> -->
+<view class="foot_btn">
+    <view class="add_changed" bindtap="zheng_gai"><text class="iconfont icon-fuhao_jiahao"></text>整改通知</view>
 </view>
 
 <!-- 弹窗选择规格 start -->
@@ -64,7 +69,7 @@
       </view>
     </view>
   </view>
-  <view class="screen_btn clearfix">
+  <view class="screen_btn clearfix" style="bottom:{{screenBottom}}">
     <text class="reset_btn fl" bindtap='resetBtn'>重置</text>
     <text class="confirm_btn fr"  bindtap="confirm_btn">确定</text>
   </view>

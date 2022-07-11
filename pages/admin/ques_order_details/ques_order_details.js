@@ -21,6 +21,7 @@ Page({
     assignArray:'',
     assignsel:'',//指派成员的id
     order_id:'',//订单id
+    lock: false,//验证只能提交一次
   },
   //预览图片
 topic_preview: function(e){
@@ -298,31 +299,61 @@ confirmS: function (e) {
       var orderId  =that.data.orderId;
       var projectId  =sendMessageContent.projectId;
       var openId = wx.getStorageSync('openId')
-      wx.request({
-        url: url + 'worksite/default/order-finish',
-        data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:2,solve_beizhu:desc,solve_img:imgs,order:that.data.order_id},
-        header: {
-          'content-type': 'application/x-www-form-urlencoded' // 默认值
-        },
-        method: 'POST',
-        success(res) {
-          if (res.data.Code == 200) {
-            wx.showToast({
-              title: '成功',
-              icon: 'none',
-              duration: 2000//持续的时间
-            })
-            wx.navigateTo({
-              url: '../ad_order/ad_order',
-            })
-          } else {
-  
+      var lock = that.data.lock;
+      if(!lock){
+        that.setData({
+          lock:true,
+        })
+        wx.request({
+          url: url + 'worksite/default/order-finish',
+          data: {projectId:projectId,OpenId:openId,goods_id:orderId,ordertype:2,solve_beizhu:desc,solve_img:imgs,order:that.data.order_id},
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          method: 'POST',
+          success(res) {
+            if (res.data.Code == 200) {
+              wx.showToast({
+                title: '提交成功',
+                icon:'success',
+                duration:1500,
+                mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+                success:function(){
+                  setTimeout(function(){
+                    that.setData({
+                      lock:true,
+                    })
+                    wx.navigateTo({
+                      url: '../ad_order/ad_order',
+                    })
+                },2000);
+                }
+              })
+            } else if(res.data.Code == 600){
+              wx.showToast({
+                title: '请上传图片',
+                icon: 'none',
+                duration: 2000//持续的时间
+              });
+              that.setData({
+                lock:false,
+              })
+            }else {
+              wx.showToast({
+                title: '添加失败',
+                icon: 'none',
+                duration: 2000,//持续的时间
+              });
+              that.setData({
+                lock:false,
+              })
+            }
+          },
+          fail: function (err) {
+            // 服务异常
           }
-        },
-        fail: function (err) {
-          // 服务异常
-        }
-      })
+        })
+      }
     },
   /**
    * 生命周期函数--监听页面隐藏
