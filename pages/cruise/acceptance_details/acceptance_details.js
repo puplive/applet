@@ -50,9 +50,17 @@ Page({
       success(res) {
         if (res.data.Code == 200) {
           wx.showToast({
-            title: '成功通过',
-            icon: 'none',
-            duration: 2000   //持续的时间
+            title: '成功',
+            icon: 'success',
+            duration: 60000,//持续的时间
+            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+            success:function(){
+              setTimeout(() => {
+                wx.redirectTo({
+                  url: "../acceptance/acceptance"
+                });
+              }, 1000);
+            }
           })
         } else {
           wx.showToast({

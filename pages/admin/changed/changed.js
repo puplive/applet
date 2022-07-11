@@ -9,12 +9,22 @@ Page({
    */
   data: {
     changeArray:[],  //整改列表
+    containButtom:'',
+    footBottom:'',
+    zwh:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */ 
   onLoad: function (options) {
+    let isPhone = app.globalData.isIphoneX;
+    if(isPhone){
+      this.setData({
+        containButtom:"188rpx",
+        footBottom:'168rpx',
+      })
+    }
     app.editTabBar1();
   },
   //整改详情跳转
@@ -51,6 +61,17 @@ Page({
 
   },
 
+    // 点击键盘上的搜索
+    bindconfirm: function (e) {
+      var that = this;
+      var discountName = e.detail.value['search - input'] ? e.detail.value['search - input'] : e.detail.value
+      getApp().globalData.discountName = discountName;
+      console.log('e.detail.value', discountName);
+      that.setData({
+        zwh: discountName
+      })
+      this.onShow();
+    },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -59,7 +80,7 @@ Page({
     var that = this;
     wx.request({
       url: url + 'worksite/rectify/rectifylist',
-      data: {projectId:sendMessageContent.projectId,OpenId:openId},
+      data: {projectId:sendMessageContent.projectId,OpenId:openId,zwh:that.data.zwh},
       method: 'GET',
       header: {
         'content-type': 'application/json' // 默认值

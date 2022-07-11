@@ -17,12 +17,15 @@ Page({
     change_type:[],//整改方式
     punish_index:0,
     punish_method: [], //处罚方式
-    changetime_index:0,
-    changetime_value:'',
-    change_time: ['9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '18:00 - 19:00', '19:00 - 20:00','20:00 - 21:00', '21:00 - 22:00', '22:00 - 23:00','23:00 - 24:00'], //整改时限
+    // changetime_index:0,
+    // changetime_value:'',
+    // change_time: ['9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '18:00 - 19:00', '19:00 - 20:00','20:00 - 21:00', '21:00 - 22:00', '22:00 - 23:00','23:00 - 24:00'], //整改时限
+    startime: '18:00',
+    endtime:'19:00',
     img: [],//临时路径
     imgres: [],//图片路径
     tempFilePaths:[], //临时路径
+    lock: false,//验证只能提交一次
   },
   // 展馆号
   bindProjectChange: function(e){
@@ -57,11 +60,25 @@ Page({
       }
     })
   },
+  
+  // 展位号填写
+  bindWritezwh:function(e){
+    this.setData({
+      zw_hao:e.detail.value
+    })
+  },
   // 展位号
   bindZwh:function(e){
     this.setData({
       zw_hao: this.data.zwhArray[e.detail.value],
-      zwh_index:e.detail.value
+      zwh_index:e.detail.value,
+    })
+    console.log(11,this.data.zw_hao);
+  },
+  // 整改类型填写
+  bindChangetype:function(e){
+    this.setData({
+      changetype_name:e.detail.value
     })
   },
   // 点击整改类型
@@ -69,6 +86,7 @@ Page({
     this.setData({
       change_index:e.detail.value,
       change_id:this.data.change_type[e.detail.value].id,
+      changetype_name:this.data.change_type[e.detail.value].name
     })
   },
   // 点击处罚方式
@@ -79,11 +97,28 @@ Page({
     })
   },
   // 点击整改时限
-  bindChangeTime: function (e) {
-    this.setData({
-      changetime_index: e.detail.value,
-      changetime_value:this.data.change_time[e.detail.value],
-    })
+  // bindChangeTime: function (e) {
+  //   this.setData({
+  //     changetime_index: e.detail.value,
+  //     changetime_value:this.data.change_time[e.detail.value],
+  //   })
+  // },
+  bindStarTime: function (e) {
+      this.setData({
+          startime:e.detail.value,
+      })
+  },
+  bindEndTime: function (e) {
+      this.setData({
+          endtime:e.detail.value,
+      })
+      if(this.data.endtime<=this.data.startime){
+        wx.showToast({
+          title: '请重新选择结束时间',
+          icon: 'none',
+          duration: 2000//持续的时间
+        });
+      }
   },
   // 点击上传图片
   chooseWxImage: function (type) {
@@ -186,16 +221,37 @@ descInput: function (e) {
     var that = this;
     var z_guan= that.data.z_guan; //展馆号
     var zw_hao= that.data.zw_hao;
-    var rectify_type = that.data.change_id; //整改类型
+    //var rectify_type = that.data.change_id; //整改类型
+    var rectify_type = that.data.changetype_name;//整改类型名称
     var punish_type = that.data.punish_id; //处罚方式
-    var changetime_value = that.data.changetime_value;
-    var changetimeArray=changetime_value.split("-"); //整改时限
+    // var changetime_value = that.data.changetime_value;
+    // var changetimeArray=changetime_value.split("-"); //整改时限
+    var startime = that.data.startime;
+    var endtime = that.data.endtime;
     var content = that.data.desc;
     var rectify_imgs =that.data.imgres;
-    console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',changetimeArray[0],changetimeArray[1],'图',rectify_imgs)
-    wx.request({
+    var lock = that.data.lock;
+    console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',startime,endtime,'图',rectify_imgs)
+    if(endtime<=startime){
+      wx.showToast({
+        title: '请重新选择结束时间',
+        icon: 'none',
+        duration: 2000//持续的时间
+      });
+      that.setData({
+        // lock:false,
+        imgres:[],
+        img:[],
+      })
+      return false;
+    }
+    if(!lock){
+      that.setData({
+        lock:true,
+      })
+      wx.request({
       url: url + 'worksite/rectify/rectify-add',
-      data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: changetimeArray[0],rectify_time2:changetimeArray[1],content:content,rectify_imgs:rectify_imgs},
+      data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: startime,rectify_time2:endtime,content:content,rectify_imgs:rectify_imgs},
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -203,29 +259,39 @@ descInput: function (e) {
       success(res) {
         if (res.data.Code == 200) {
           wx.showToast({
-            title: '添加成功',
-            icon: 'none',
-            duration: 2000//持续的时间
-          })
-          // wx.switchTab({
-          //   url: '../../../../admin/changed/changed',
-          // }) 
-          
-          wx.navigateTo({
-            url: '../changed',
+            title: '提交成功',
+            icon:'success',
+            duration:1500,
+            mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
+            success:function(){
+              that.setData({
+                lock:true,
+              })
+              setTimeout(function(){
+                wx.navigateTo({
+                  url: '../changed',
+                })
+              },2000);
+            }
           })
         } else {
           wx.showToast({
-            title: '添加失败',
+            title: res.data.msg,
             icon: 'none',
-            duration: 2000//持续的时间
+            duration: 2000,//持续的时间
+          });
+          that.setData({
+            lock:false,
+            imgres:[],
+            img:[],
           })
         }
       },
       fail: function (err) {
         // 服务异常
       }
-    })
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -283,7 +349,7 @@ descInput: function (e) {
           that.setData({
             zgArray:items,
             z_guan:items[0],  //展馆号默认值
-            changetime_value:that.data.change_time[0], //整改时限默认值
+            // changetime_value:that.data.change_time[0], //整改时限默认值
             desc:''
           })
         } else {
@@ -310,7 +376,8 @@ descInput: function (e) {
           }
           that.setData({
             change_type:items,
-            change_id:items[0].id
+            change_id:items[0].id,
+            changetype_name:items[0].name
           })
         } else {
 
@@ -366,7 +433,9 @@ descInput: function (e) {
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    wx.reLaunch({
+      url: '../changed/changed',
+    })
   },
 
   /**

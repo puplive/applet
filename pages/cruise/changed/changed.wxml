@@ -1,6 +1,6 @@
 <import src="../../tabbar/tabbar.wxml"/>  
 <template is="tabBar" data="{{tabBar}}"/>
-<view class="contain">
+<view class="contain" style="padding-bottom:{{containBottom}}">
    <!-- 搜索 -->
   <view class='search'>
     <image class='icon_search' src='../../../images/icon_search.svg' mode='widthFix'></image>
@@ -10,7 +10,8 @@
   <!-- 列表内容 -->
   <view class="list">
     <block wx:for-items="{{changeArray}}" wx:for-index="key">
-      <navigator url='changed_details/changed_details?zwh={{key}}' class='list_con'> 
+      <!-- <navigator url='changed_details/changed_details?zwh={{key}}' class='list_con'>  -->
+      <view bindtap="zheng_detail" data-key="{{key}}" class='list_con'> 
         <view class="list_zwh clearfix">
           <text class="list_zwh_left">{{key}}</text>
         </view>
@@ -19,7 +20,7 @@
             <view class="list_li clearfix">
               <view class="list_licon">
                 <view class="list_list clearfix"  wx:for="{{item.list}}">
-                  <text class="list_listname fl">{{item.rectify_name}}</text>
+                  <text class="list_listname fl">{{item.rectify_type}}</text>
                   <text class="list_listnum fr">{{item.apply_time}}</text>
                   <text class="list_list_method fr">{{item.punish_name}}</text>
                 </view>
@@ -33,7 +34,8 @@
             </view>
           </view>
         </view>
-      </navigator>
+      <!-- </navigator> -->
+      </view>
     </block>
     <!-- <navigator url='changed_details/changed_details' class='list_con'> 
       <view class="list_zwh clearfix">
@@ -56,8 +58,11 @@
   </view>
 </view>
 <!-- 底部按钮 -->
-<view class="foot_btn">
+<!-- <view class="foot_btn" style="bottom:{{footButtom}}">
   <navigator url='add_changed/add_changed'>
     <view class="add_changed"><text class="iconfont icon-fuhao_jiahao"></text>整改通知</view>
   </navigator>
+</view> -->
+<view class="foot_btn" style="bottom:{{footBottom}};">
+  <view class="add_changed" bindtap="zheng_gai"><text class="iconfont icon-fuhao_jiahao"></text>整改通知</view>
 </view>

@@ -12,7 +12,7 @@ Page({
     projectcon: '',
     projectcon_len: 1,
     showModalStatus: false,//显示遮罩
-    zhanguannum: 1, //展馆号
+    zhanguannum:100, //展馆号
     sortnum: 1, //排序
     fenleinum: 0,  //筛选分类
     hiddentransfer: true,  //转单内容弹窗
@@ -26,7 +26,9 @@ Page({
     host:app.globalData.url,
     num:'',//展馆号
     order_num:'',//订单传过来的数量
-    order_qqq:''//区分是什么问题
+    order_qqq:'',//区分是什么问题
+    containButtom:'', //iphoneX底部
+    screenBottom:'',
   },
   // 订单分类
   switchFenlei: function (e) {
@@ -93,7 +95,9 @@ Page({
       sortnum: 1, //排序
       fenleinum:0,  //筛选分类
       num:'',//展馆号
-      zhanguannum: 0, //展馆号索引
+      zhanguannum: 100, //展馆号索引
+      showModalStatus: false,//显示遮罩       
+      isHidden: 0,
     })
     this.onShow();
   },
@@ -124,15 +128,13 @@ Page({
       method: 'POST',
       success(res) {
         if (res.data.Code == 200) {
-          console.log(8,res.data.data);
           wx.showToast({
             title: '接单成功',
-            icon: 'none',
-            duration: 2000//持续的时间
+            icon:'success',
+            duration:1500,
           })
           that.onShow();
         } else {
-
         }
       },
       fail: function (err) {
@@ -163,8 +165,8 @@ Page({
       success(res) {
         if (res.data.Code == 200) {
           wx.showToast({
-            title: '成功',
-            icon: 'none',
+            title: '接单成功',
+            icon: 'success',
             duration: 2000//持续的时间
           })
         } else {}
@@ -192,8 +194,8 @@ Page({
       success(res) {
         if (res.data.Code == 200) {
           wx.showToast({
-            title: '成功',
-            icon: 'none',
+            title: '操作成功',
+            icon: 'success',
             duration: 2000//持续的时间
           })
         } else {}
@@ -221,8 +223,8 @@ Page({
       success(res) {
         if (res.data.Code == 200) {
           wx.showToast({
-            title: '成功',
-            icon: 'none',
+            title: '操作成功',
+            icon: 'success',
             duration: 2000//持续的时间
           })
         } else {}
@@ -250,8 +252,8 @@ Page({
         success(res) {
           if (res.data.Code == 200) {
             wx.showToast({
-              title: '成功',
-              icon: 'none',
+              title: '接单成功',
+              icon: 'success',
               duration: 2000//持续的时间
             })
           } else {}
@@ -266,6 +268,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let isPhone = app.globalData.isIphoneX;
+    if(isPhone){
+      this.setData({
+        containButtom:"188rpx",
+        screenBottom:'20px',
+      })
+    }
     app.editTabBar();
      //展馆
      var that = this;
