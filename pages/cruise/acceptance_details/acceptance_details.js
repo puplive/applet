@@ -107,7 +107,7 @@ Page({
             contact:res.data.data.info.contact,  //联系人
             check_info_id:res.data.data.data[res.data.data.data.length-1].id, //获取最后一条id
           })
-          console.log('id',that.data.accepArray,"check_info_id:",that.data.check_info_id)
+          // console.log('id',that.data.accepArray,"check_info_id:",that.data.check_info_id)
         } else {
 
         }

@@ -143,18 +143,18 @@ Page({
             wx.showToast({
               title: '驳回成功',
               icon: 'none',
-              duration: 2000//持续的时间
+              duration: 2000,//持续的时间
+              mask: true,
+              success: function(){
+                setTimeout(() => {
+                  wx.navigateBack()
+                  that.setData({
+                    check_id: check_id,
+                    lock:true,
+                  })
+                }, 1000);
+              }
             })
-            setTimeout(() => {
-              // wx.redirectTo({
-              //   url: "../acceptance/acceptance"
-              // });
-              wx.navigateBack()
-              that.setData({
-                check_id: check_id,
-                lock:true,
-              })
-            }, 1000);
           } else {
             that.setData({
               lock:false,
