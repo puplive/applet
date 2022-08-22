@@ -303,3 +303,40 @@ onHide:function(){
     }
   }
 })
+
+! function () {
+  //获取页面配置并进行页面分享配置
+  var PageTmp = Page
+  Page = function (pageConfig) {
+    //1. 获取当前页面路由
+    let routerUrl = ""
+    wx.onAppRoute(function (res) {
+      //app.js中需要在隐式路由中才能用getCurrentPages（）获取到页面路由
+      let pages = getCurrentPages(),        
+        view = pages[pages.length - 1];
+      routerUrl = view.route
+    })
+
+    //2. 全局开启分享配置
+    pageConfig = Object.assign({
+      onShareAppMessage: function () {
+        //根据不同路由设置不同分享内容（微信小程序分享自带参数，如非特例，不需配置分享路径）
+        let shareInfo={
+           title: '',
+           path: '/pages/expo/expo'
+         }
+       //  let noGlobalSharePages=["index/index"]
+       //  //全局分享配置，如部分页面需要页面默认分享或自定义分享可以单独判断处理
+       //  if (!routerUrl.includes(noGlobalSharePages)){
+       //    shareInfo = {
+       //      title: "自定义全局分享",
+       //      imageUrl: wx.getStorageSync("shareUrl")
+       //    }
+       //  }
+        return shareInfo
+      }
+    }, pageConfig);
+    // 配置页面模板
+    PageTmp(pageConfig);
+  }
+}();

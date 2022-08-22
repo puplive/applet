@@ -1,4 +1,9 @@
-.contain{padding-bottom: 220rpx;}
+.contain{
+  /* padding-bottom: 220rpx; */
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 100rpx);
+}
 /* 搜索 */
 .search {
   position: relative;
@@ -32,6 +37,10 @@
   transform: translateY(-50%);
   width: 20rpx;
 }
+.list{
+  flex: 1;
+  /* overflow: auto; */
+}
 .list_con{width: 92%; margin: 16rpx auto 0; background-color: #fff; border-radius: 4rpx; padding: 0 2% 2%;}
 .list_zwh{ height: 82rpx; line-height: 82rpx;font-weight: bold; color: #303133; font-size: 32rpx;}
 .list_li .list_licon{width: 100%;font-size: 30rpx;color:rgba(0,0,0,0.9);}
@@ -41,7 +50,7 @@
 .list_list_method{width:128rpx;height:36rpx;line-height: 36rpx; border-radius:2px;border:1px solid rgba(222,225,231,1); font-size: 24rpx; text-align: center;margin-top: 12rpx; margin-right: 10rpx;}
 .revoke{color: #6BC73C;}
 .list_listnum{color: #606266; }
-.foot_btn{width:100%;height:80rpx; background-color: #EBEEF5; padding: 20rpx 0;position: fixed; bottom: 100rpx;}
+.foot_btn{width:100%;height:80rpx; background-color: #EBEEF5; padding: 20rpx 0;}
 .add_changed{width:96%;height:80rpx;line-height: 80rpx; background:rgba(236,187,73,1);border-radius:2px; color: #fff; text-align: center; margin-left: 2%;}
 .add_changed .icon-fuhao_jiahao{font-size: 40rpx;margin-right: 8rpx;}
 
