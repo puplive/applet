@@ -12,6 +12,7 @@ Page({
     containButtom:'',
     footBottom:'',
     zwh:'',
+    isPhoneX: false
   },
 
   /**
@@ -21,6 +22,7 @@ Page({
     let isPhone = app.globalData.isIphoneX;
     if(isPhone){
       this.setData({
+        isPhoneX: true,
         containButtom:"188rpx",
         footBottom:'168rpx',
       })
@@ -43,9 +45,12 @@ Page({
   //整改通知
   zheng_gai:function(e){
     let pages = getCurrentPages(); // 页面对象
-    let prevpage = pages[pages.length - 2]
-    // console.log(prevpage.route)// 上一个页面路由地址
-    if(prevpage.route == 'pages/admin/changed/add_changed/add_changed'){
+    let route = ''
+    if(pages.length && pages.length >= 2){
+      route = pages[pages.length - 2].route //上一个页面路由地址
+    }
+    if(route == 'pages/admin/changed/add_changed/add_changed'){
+      // console.log(1)
       wx.navigateBack({
         delta: 1
       });
@@ -88,7 +93,6 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        //console.log(8,res);
         var list = res.data.data; 
         for (var i in list) { 
           list[i] = {

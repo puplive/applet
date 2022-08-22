@@ -1,8 +1,9 @@
 .contain{
-  /* padding-bottom: 220rpx; */
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100rpx);
+  height: calc(100vh - 98rpx);
+  padding-bottom: constants(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 /* 搜索 */
 .search {
@@ -39,6 +40,7 @@
 }
 .list{
   flex: 1;
+  height: 0;
   /* overflow: auto; */
 }
 .list_con{width: 92%; margin: 16rpx auto 0; background-color: #fff; border-radius: 4rpx; padding: 0 2% 2%;}
