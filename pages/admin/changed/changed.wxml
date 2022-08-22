@@ -8,20 +8,21 @@
     <view class='icon_voice' mode='widthFix'></view>
   </view>
   <!-- 列表内容 -->
+
   <scroll-view scroll-y="true" class="list">
-    <block wx:for-items="{{changeArray}}" wx:for-index="key">
+    <block wx:for-items="{{changeArray}}" wx:for-index="key" wx:for-item="number">
       <view bindtap="zheng_detail" data-key="{{key}}" class='list_con'> 
         <view class="list_zwh clearfix">
-          <text class="list_zwh_left">{{key}}</text>
+          <text class="list_zwh_left">{{number.list.zw_hao}}</text>
         </view>
         <view class="list_li clearfix">
           <view class="list_licon fl">
             <view class="list_li clearfix">
               <view class="list_licon">
-                <view class="list_list clearfix"  wx:for="{{item.list}}">
-                  <text class="list_listname fl">{{item.rectify_type}}</text>
-                  <text class="list_listnum fr">{{item.apply_time}}</text>
-                  <text class="list_list_method fr">{{item.punish_name}}</text>
+                <view class="list_list clearfix"  wx:for-items="{{number.list.all}}" wx:for-index="key" wx:for-item="itemArr">
+                  <text class="list_listname fl">{{itemArr.rectify_type}}</text>
+                  <text class="list_listnum fr">{{itemArr.apply_time}}</text>
+                  <text class="list_list_method fr">{{itemArr.punish_name}}</text>
                 </view>
               </view>
             </view>

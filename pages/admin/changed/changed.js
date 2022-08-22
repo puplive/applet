@@ -86,7 +86,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(8,res);
+        //console.log(8,res);
         var list = res.data.data; 
         for (var i in list) { 
           list[i] = {
@@ -97,8 +97,7 @@ Page({
           that.setData({
             changeArray: res.data.data
           })
-        } else {
-
+          console.log(res.data.data)
         }
       },
       fail: function (err) {
