@@ -1,8 +1,18 @@
 .contain{
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 120rpx - 1px - constants(safe-area-inset-bottom));
-  height: calc(100vh - 120rpx - 1px - env(safe-area-inset-bottom));
+  height: calc(100vh - 98rpx - 1px);
+  height: calc(100vh - 98rpx - 1px);
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+  /* padding-bottom: calc(0rpx + constants(safe-area-inset-bottom));
+  padding-bottom: calc(0rpx + env(safe-area-inset-bottom)); */
+}
+.contain.isPhoneX{
+  padding-bottom: 166rpx;
 }
 /* 搜索 */
 .search {
@@ -52,14 +62,13 @@
 .revoke{color: #6BC73C;}
 .list_listnum{color: #606266; }
 .foot_btn{
-  position: fixed;
-  left: 0;
+  /* position: fixed;
+  left: 0; */
   width:100%; 
   background-color: #EBEEF5; 
   padding: 20rpx 0;
-  /* bottom: 98rpx; */
-  bottom: calc(20rpx + 1px + constants(safe-area-inset-bottom));
-  bottom: calc(20rpx + 1px + env(safe-area-inset-bottom));
+  /* bottom: calc(20rpx + 1px + constants(safe-area-inset-bottom));
+  bottom: calc(20rpx + 1px + env(safe-area-inset-bottom)); */
 }
 .add_changed{width:96%;height:80rpx;line-height: 80rpx; background:rgba(236,187,73,1);border-radius:2px; color: #fff; text-align: center; margin-left: 2%;}
 .add_changed .icon-fuhao_jiahao{font-size: 40rpx;margin-right: 8rpx;}
