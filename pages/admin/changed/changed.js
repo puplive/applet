@@ -42,10 +42,12 @@ Page({
   },
   //整改通知
   zheng_gai:function(e){
-    console.log(888888,getCurrentPages().length);
-    if(getCurrentPages().length>=5){
-      wx.redirectTo({
-        url: "add_changed/add_changed"
+    let pages = getCurrentPages(); // 页面对象
+    let prevpage = pages[pages.length - 2]
+    // console.log(prevpage.route)// 上一个页面路由地址
+    if(prevpage.route == 'pages/admin/changed/add_changed/add_changed'){
+      wx.navigateBack({
+        delta: 1
       });
     }else{
       wx.navigateTo({
