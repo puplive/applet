@@ -11,6 +11,7 @@ Page({
     changeArray:[],  //整改列表
     containBottom:'', //iphoneX底部 
     footBottom:'',
+    isPhoneX: false
   },
 
   /**
@@ -20,6 +21,7 @@ Page({
     let isPhone = app.globalData.isIphoneX;
     if(isPhone){
       this.setData({
+        isPhoneX: true,
         containBottom:"188rpx",
         footBottom:"168rpx",
       })
