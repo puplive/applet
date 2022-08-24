@@ -50,7 +50,6 @@ Page({
       route = pages[pages.length - 2].route //上一个页面路由地址
     }
     if(route == 'pages/admin/changed/add_changed/add_changed'){
-      // console.log(1)
       wx.navigateBack({
         delta: 1
       });

@@ -43,10 +43,14 @@ Page({
 },
 //整改通知
 zheng_gai:function(e){
-  console.log(888888,getCurrentPages().length);
-  if(getCurrentPages().length>=5){
-    wx.redirectTo({
-      url: "add_changed/add_changed"
+  let pages = getCurrentPages(); // 页面对象
+  let route = ''
+  if(pages.length && pages.length >= 2){
+    route = pages[pages.length - 2].route //上一个页面路由地址
+  }
+  if(route == 'pages/cruise/changed/add_changed/add_changed'){
+    wx.navigateBack({
+      delta: 1
     });
   }else{
     wx.navigateTo({
