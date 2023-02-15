@@ -2,6 +2,7 @@
 //const url = 'https://www.exposaas.com/'
 //const url ='http://new.newspaper.com/'
 const url = 'https://test.exposaas.com/'
+//const url = 'http://role.newspaper.com/'
 
 App({
     globalData: {
