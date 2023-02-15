@@ -1,0 +1,97 @@
+/* @import "../../common/lib/weui.wxss"; */
+@import "./assets/iconfont.wxss";
+.page-notice-add{
+    /* padding: 20px 25px; */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #FFFFFF;
+
+    overflow: auto;
+    /* position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0; */
+
+}
+.page-notice-add .label{
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+    padding:  10px 8px 8px;
+}
+.page-notice-add .input{
+    height: 30px;
+    margin: 0 8px;
+    padding: 0 8px;
+
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+
+    background: #FFFFFF;
+    border-radius: 2px;
+    border: 1px solid #DCDFE6;
+}
+.page-notice-add .content{
+    flex: 1;
+    height: 0;
+    overflow: auto;
+
+    margin: 0 8px;
+    padding: 8px;
+
+    background: #FFFFFF;
+    border-radius: 2px;
+    border: 1px solid #DCDFE6;
+
+}
+
+.ql-container {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: auto;
+    /* padding: 10px 10px 20px 10px; */
+    /* border: 1px solid #ECECEC; */
+  }
+  
+  .ql-active {
+    color: #22C704;
+  }
+
+.iconfont {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .toolbar {
+    box-sizing: border-box;
+    padding: 0 10px;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ECECEC;
+    border-left: none;
+    border-right: none;
+    background-color: #FFFFFF;
+
+    transition: bottom 0.02s;
+  }
+  

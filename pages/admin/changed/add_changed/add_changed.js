@@ -121,12 +121,13 @@ Page({
   // 点击上传图片
   chooseWxImage: function (type) {
     var that = this;
-    // console.log(11,that.data.tempFilePaths )
+    console.log(type,that.data.tempFilePaths )
     wx.chooseImage({
       count: 9,
       sizeType: ['original', 'compressed'],
       sourceType: [type],
       success: function (res) {
+        console.log(res)
         var a = res.tempFilePaths
         var b = that.data.tempFilePaths
         a.push.apply(a,b);

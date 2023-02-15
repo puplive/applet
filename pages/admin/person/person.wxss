@@ -1,5 +1,15 @@
 page{background-color: #fff;}
-.top{background-color: #ECBB49; height: 260rpx; padding-top: 60rpx; }
+.page-user{
+  background: linear-gradient(to bottom,#ECBB49 15%,#fff,#fff);
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+}
+.top{ 
+  display: flex;
+  align-items: center;
+  padding: 24px 16px 16px;
+}
 .top .top_left{padding: 0 32rpx;}
 .top .top_left image{width: 160rpx; height: 160rpx; border-radius: 50%; }
 .top_right{width: 510rpx; line-height: 60rpx;}
@@ -7,7 +17,11 @@ page{background-color: #fff;}
 .topr_01 .role{ float: right; margin-top: 8rpx; padding:0 8px;height:46rpx; line-height: 46rpx; background:rgba(255,217,127,1);box-shadow:0px 0px 22rpx 0px rgba(170,119,1,0.26);border-radius:28rpx;  text-align: center;}
 .topr_tel{ font-size: 28rpx;}
 .topr_con{font-size: 28rpx; color: #fff;}
-
+.list{
+  margin: 0 8px;
+  background-color: #fff;
+  flex: 1;
+}
 .tit_list{
   position: relative;
 }

@@ -1,69 +1,78 @@
-<import src="../tabbar/tabbar.wxml"/>
-<template is="tabBar" data="{{tabBar}}"/>
-<!-- 主内容 -->
-<view class="index-bd" style="padding-bottom:{{indexBottom}}">
-  <view class="kind-list">
-    <block wx:for-items="{{list}}" wx:for-index="key">
-      <view class="kind-list-item">
-        <view id="{{key}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
-          <view class="kind-list-text">
-            <view class="fl">
-              <view class="jt_down fl"><text class="iconfont icon-sanjiao_you"></text></view>
-              <view class="fl">{{item.name}} </view>
-            </view>
-            <view class="fr people_num"><text class="active_num">{{item.on}}/{{item.num}}</text></view>
-          </view> 
-        </view>
-        <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
-          <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
-            <block wx:for-items="{{item.user}}" wx:for-item="user" wx:key="*item">
-              <navigator url="" class="navigator {{user.login_status==0 ? 'offline' : ''}}">
-                <view class="navigator-text clearfix">
-                  <view class="fl people_list">
-                    <image src="{{host}}{{user.img}}"></image>
-                    <text>{{user.username}}</text>
-                  </view>
-                  <text class="fr people_tel">{{user.tel}}</text>
-                </view>
-              </navigator>
-            </block>
-          </view>
-        </view>
-      </view>
-    </block>
-  </view>
-</view>
-<!-- 未接单部分 -->
-<view class="not_accepted" style="bottom:{{notBottom}}">
-  <view class="page-section-title">
-    <text>未接单</text>
-  </view>
-  <view class="page-section-spacing">
-    <view class="flex-wrp" style="flex-direction:row;">
-      
-        <view class="flex-item {{item.style.color}}" wx:for-items="{{order_not.num}}" wx:for-index="key">
-        <navigator url='../admin/ad_order/ad_order?roleid={{item.roleid}}' data-type="1"  open-type="redirect" class=''>
-          <view class="not_accnum">{{item.num}}</view>
-          <view><text class="iconfont {{item.style.icon}}"></text></view>
-          <view class="not_accname">{{item.name}}</view>
+<import src="../tabbar/tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
+<view class="page-tabBar flex-column">
+    <view class="select-box" style="background: #ECBB49">
+        <navigator class="select" url="/pages/expo/expo">
+            <text class="text">{{expo.hui_nickname}}</text>
+            <text class="text2">切换</text>
+            <image class="icon" src="/images/icon_sanjiao.png" mode="aspectFit"></image>
         </navigator>
-       </view>
-       
-      <!-- <view class="flex-item demo-text-2">
-        <view class="not_accnum">{{order_not.electric}}</view>
-        <view><text class="iconfont icon-leidian"></text></view>
-        <view class="not_accname">电接驳</view>
-      </view>
-      <view class="flex-item demo-text-3">
-        <view class="not_accnum">{{order_not.lease}}</view>
-        <view><text class="iconfont icon-zhuozi"></text></view>
-        <view class="not_accname">租赁</view>
-      </view>
-      <view class="flex-item demo-text-4">
-        <view class="not_accnum">{{order_not.other}}</view>
-        <view><text class="iconfont icon-gengduo1"></text></view>
-        <view class="not_accname">其它</view>
-      </view> -->
     </view>
-  </view>
+    <!-- style="padding-bottom:{{indexBottom}}" -->
+    <view class="kind-list">
+        <block wx:for-items="{{list}}" wx:for-index="key" wx:key="index">
+            <view class="kind-list-item">
+                <view id="{{key}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}"
+                    bindtap="kindToggle">
+                    <view class="kind-list-text">
+                        <view class="fl">
+                            <view class="jt_down fl"><text class="iconfont icon-sanjiao_you"></text></view>
+                            <view class="fl">{{item.name}} </view>
+                        </view>
+                        <view class="fr people_num"><text class="active_num">{{item.on}}/{{item.num}}</text></view>
+                    </view>
+                </view>
+                <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
+                    <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
+                        <block wx:for-items="{{item.user}}" wx:for-item="user" wx:key="*item">
+                            <navigator url="" class="navigator {{user.login_status==0 ? 'offline' : ''}}">
+                                <view class="navigator-text clearfix">
+                                    <view class="fl people_list">
+                                        <image src="{{host}}{{user.img}}"></image>
+                                        <text>{{user.username}}</text>
+                                    </view>
+                                    <text class="fr people_tel" bindtap="telPhone" data-tel="{{user.tel}}">{{user.tel}}</text>
+                                </view>
+                            </navigator>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <!-- 未接单部分 -->
+    <view class="not_accepted" style="bottom:{{notBottom}}">
+        <view class="page-section-title">
+            <text>未接单</text>
+        </view>
+        <view class="page-section-spacing">
+            <view class="flex-wrp" style="flex-direction:row;">
+
+                <view class="flex-item {{item.style.color}}" wx:for-items="{{order_not.num}}" wx:for-index="key">
+                    <navigator url='../admin/ad_order/ad_order?roleid={{item.roleid}}' data-type="1"
+                        open-type="redirect" class=''>
+                        <view class="not_accnum">{{item.num}}</view>
+                        <view><text class="iconfont {{item.style.icon}}"></text></view>
+                        <view class="not_accname">{{item.name}}</view>
+                    </navigator>
+                </view>
+
+                <!-- <view class="flex-item demo-text-2">
+                <view class="not_accnum">{{order_not.electric}}</view>
+                <view><text class="iconfont icon-leidian"></text></view>
+                <view class="not_accname">电接驳</view>
+                </view>
+                <view class="flex-item demo-text-3">
+                <view class="not_accnum">{{order_not.lease}}</view>
+                <view><text class="iconfont icon-zhuozi"></text></view>
+                <view class="not_accname">租赁</view>
+                </view>
+                <view class="flex-item demo-text-4">
+                <view class="not_accnum">{{order_not.other}}</view>
+                <view><text class="iconfont icon-gengduo1"></text></view>
+                <view class="not_accname">其它</view>
+                </view> -->
+            </view>
+        </view>
+    </view>
 </view>

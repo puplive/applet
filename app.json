@@ -47,7 +47,10 @@
     "pages/cruise/person/person",
     "pages/cruise/person/user_info/user_info",
     "pages/cruise/person/identity/identity",
-    "pages/cruise/person/edit_tel/edit_tel"
+    "pages/cruise/person/edit_tel/edit_tel",
+    "pages/notice/detail/index",
+    "pages/notice/list/index",
+    "pages/notice/add/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

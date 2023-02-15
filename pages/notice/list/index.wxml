@@ -1,0 +1,32 @@
+<view class="page-notice-list">
+    <view class="select-box" style="background: #ECBB49">
+        <navigator class="select" url="/pages/expo/expo">
+            <text class="text">{{expo.hui_nickname}}</text>
+            <text class="text2">切换</text>
+            <image class="icon" src="/images/icon_sanjiao.png" mode="aspectFit"></image>
+        </navigator>
+    </view>
+    <scroll-view scroll-y="true" style="height: 100%;" class="list">
+        <view wx:for="{{list}}" class="item" wx:key="index">
+            <view class="p1">{{index}}</view>
+            <view class="ul">
+                <navigator 
+                    wx:for="{{item}}" 
+                    wx:for-item="value" 
+                    wx:key="id" 
+                    class="li" 
+                    url="/pages/notice/detail/index?id={{value.id}}">
+                    <text class="t1">{{value.time}}</text>
+                    <text class="t2">{{value.bname}}</text>
+                    <image class="icon" src="/images/arrowright.png" mode="aspectFit"></image>
+                </navigator>
+            </view>
+        </view>
+        <view wx:if="{{list.length==0}}" class="no_data">
+            暂无公告
+        </view>
+    </scroll-view>
+    <view style="padding: 8px;">
+        <navigator class="btn1" url="/pages/notice/add/index?type=add">新增公告</navigator>
+    </view>
+</view>

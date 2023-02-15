@@ -8,13 +8,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    expo: app.globalData.expo
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      expo: app.globalData.expo
+    })
     var that = this;
     wx.request({
       url: url + 'worksite/default/c-zhui',   //验证是否认证过

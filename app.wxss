@@ -1,5 +1,15 @@
 /**app.wxss**/
 page{background-color: #EBEEF5;}
+.page-tabBar{
+  height: calc(100vh - 50px);
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.flex-fill{
+  flex: 1;
+}
 .container {
   height: 100%;
   display: flex;
@@ -9,6 +19,63 @@ page{background-color: #EBEEF5;}
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+.no-data{
+  color: #9B9B9B;
+  font-size: 16px;
+  text-align: center;
+  line-height: 100px;
+  padding: 8px;
+}
+.btn1{
+  height: 40px;
+  background: #ECBB49;
+  border-radius: 2px;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 38px;
+  text-align: center;
+
+  border: 1px solid #ECBB49;
+  box-sizing: border-box;
+}
+/* select */
+.select-box{
+  padding: 10px 8px;
+}
+.select{
+  /* width: 100%; */
+  height:60rpx;
+  padding: 0 26rpx 0 30rpx;
+  box-sizing: border-box;
+  border-radius: 30rpx;
+  border: 2rpx solid #ECBB49;
+  background: #fff;
+  /* margin: 20rpx 0; */
+  display: flex;
+  align-items: center;
+}
+.select .text{
+  flex: 1;
+  color: #4A4A4A;
+  font-size: 14px;
+  font-weight: 500;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.text2{
+  color: #606266;
+  font-size: 12px;
+  margin-left: 10px;
+}
+.select .icon{
+  width: 28rpx;
+  height: 28rpx;
+  margin-left: 2px;
+}
+
 .row {
   display: block;
   margin: 0px;  

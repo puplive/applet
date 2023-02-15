@@ -1,0 +1,18 @@
+<view class="page-notice-detail">
+    <view class="p1">
+        <text class="t1">{{detail.bname}}</text>
+        <text class="t2">{{detail.create_time}}</text>
+    </view>
+    <view class="content">
+        <editor 
+            id="editor" 
+            class="" 
+            placeholder="" 
+            read-only="true"
+            bindready="onEditorReady">
+        </editor>
+    </view>
+    <view style="padding: 8px;">
+        <navigator class="btn1" url="/pages/notice/add/index?type=edit&id={{detail.id}}">编辑</navigator>
+    </view>
+</view>

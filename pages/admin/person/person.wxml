@@ -1,31 +1,46 @@
-<import src="../../tabbar/tabbar.wxml"/>
-<template is="tabBar" data="{{tabBar}}"/>
-<view class="top">
-  <view class="top_left fl">
-    <image src="{{userInfo.avatarUrl}}"></image>
-  </view>
-  <view class="top_right fl">
-    <view class="topr_01"><text class="name">{{userInfo.nickName}}</text><text class="role">{{role_name}}</text></view>
-    <view class="topr_tel" wx:if="{{tel}}">{{tel}}</view>
-    <view class="topr_con col">
-      <view class="col-4">余额 <text>0.00</text></view>
-      <view class="col-4">积分 <text>0</text></view>
-      <view class="col-4">优惠券 <text>0</text></view>
+<import src="../../tabbar/tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
+<view class="page-user">
+    <view class="top">
+        <view class="top_left fl">
+            <image src="{{userInfo.avatarUrl}}"></image>
+        </view>
+        <view class="top_right fl">
+            <view class="topr_01"><text class="name">{{userInfo.nickName}}</text><text class="role">{{role_name}}</text>
+            </view>
+            <view class="topr_tel" wx:if="{{tel}}">{{tel}}</view>
+            <view class="topr_con col">
+                <view class="col-4">余额 <text>0.00</text></view>
+                <view class="col-4">积分 <text>0</text></view>
+                <view class="col-4">优惠券 <text>0</text></view>
+            </view>
+        </view>
     </view>
-  </view>
+    <view class="select-box" style="padding:0 8px 8px">
+        <navigator class="select" url="/pages/expo/expo">
+            <text class="text">{{expo.hui_nickname}}</text>
+            <text class="text2">切换</text>
+            <image class="icon" src="/images/icon_sanjiao.png" mode="aspectFit"></image>
+        </navigator>
+    </view>
+    <view class="list">
+        <navigator url="../person/user_info/user_info">
+            <view class="tit_list bor1">
+                <label class="tit"><text class="tittext">个人信息</text></label>
+                <image class="icon_right" src="/pages/images/arrowright.png"></image>
+            </view>
+        </navigator>
+        <navigator url="../person/identity/identity">
+            <view class="tit_list bor1">
+                <label class="tit"><text class="tittext">身份认证</text></label>
+                <image class="icon_right" src="/pages/images/arrowright.png"></image>
+            </view>
+        </navigator>
+        <navigator url="/pages/notice/list/index">
+            <view class="tit_list bor1">
+                <label class="tit"><text class="tittext">通知公告</text></label>
+                <image class="icon_right" src="/pages/images/arrowright.png"></image>
+            </view>
+        </navigator>
+    </view>
 </view>
-<view class="con">
-  <navigator url="../person/user_info/user_info">
-    <view class="tit_list bor1">
-      <label class='tit'><text class="tittext">个人信息</text></label>
-      <image class='icon_right' src='../../../images/arrowright.png'></image>
-    </view>
-  </navigator>
-  <navigator url="../person/identity/identity">
-    <view class="tit_list bor1">
-      <label class='tit'><text class="tittext">身份认证</text></label>
-      <image class='icon_right' src='../../../images/arrowright.png'></image>
-    </view>
-  </navigator>
-</view>
-

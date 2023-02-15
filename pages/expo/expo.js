@@ -3,10 +3,6 @@ var url = app.globalData.url;
 var sendMessageContent = app.globalData.sendMessageContent;
 var call = require("../../utils/request.js")
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     // hiddenName: true
     show_hui_id: 0,
@@ -20,15 +16,6 @@ Page({
     })
 
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     var name = getApp().globalData.name
     var discountName = getApp().globalData.discountName
@@ -61,43 +48,12 @@ Page({
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
 
   },
   choice_btn: function (e) {//进入项目
     sendMessageContent.projectId = e.target.dataset.key
+    app.globalData.expo = e.currentTarget.dataset.d
     var that = this;
     wx.request({
       url: url + 'worksite/default/c-zhui',   //验证是否认证过

@@ -9,7 +9,7 @@
       </view>
 
       <view class="expo_btn" wx:if="{{show_hui_id == value.hui_id || show_hui_id==index}}">
-        <view bindtap='choice_btn' class="into_btn" data-key="{{value.hui_id}}">进入项目</view>
+        <view bindtap='choice_btn' class="into_btn" data-d="{{value}}" data-key="{{value.hui_id}}">进入项目</view>
       </view>
 
     </view>
