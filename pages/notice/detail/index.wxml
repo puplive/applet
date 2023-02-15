@@ -6,7 +6,7 @@
     <view class="content">
         <editor 
             id="editor" 
-            class="" 
+            class="ql-container" 
             placeholder="" 
             read-only="true"
             bindready="onEditorReady">

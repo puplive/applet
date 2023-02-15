@@ -53,15 +53,10 @@
 }
 
 .ql-container {
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    font-size: 16px;
-    line-height: 1.5;
-    overflow: auto;
-    /* padding: 10px 10px 20px 10px; */
-    /* border: 1px solid #ECECEC; */
-  }
+  height: auto;
+  font-size: 16px;
+  line-height: 1.5;
+}
   
   .ql-active {
     color: #22C704;

@@ -25,33 +25,33 @@ Page({
         this.editor_init()
     },
     onShow: function () {
-        if(this.data.type == 'edit'){
+        if (this.data.type == 'edit') {
             this.getData()
         }
-        
+
     },
-    
+
     input_change: function (e) {
         let key = e.currentTarget.dataset.name
         this.setData({
             [key]: e.detail.value
         })
     },
-    onEditorReady: function(){
+    onEditorReady: function () {
         let that = this
         wx.createSelectorQuery().select('#editor').context(function (res) {
             that.editorCtx = res.context
 
-            
-        }).exec() 
+
+        }).exec()
     },
-    setContent: function(content){
+    setContent: function (content) {
         let that = this
-        if(this.editorCtx){
+        if (this.editorCtx) {
             this.editorCtx.setContents({
                 html: content
             })
-        }else{
+        } else {
             setTimeout(() => {
                 that.setContent(content)
             }, 200);
@@ -66,7 +66,7 @@ Page({
             },
             success(data) {
                 let res = data.data
-                if(res.Code == 200){
+                if (res.Code == 200) {
                     let list = res.data
                     for (const key in list) {
                         if (list[key].id == that.data.id) {
@@ -85,25 +85,25 @@ Page({
             }
         })
     },
-    btnAdd: function(){
+    btnAdd: function () {
         let that = this
         this.editorCtx.getContents({
-            success: function(res){
+            success: function (res) {
                 console.log(res)
                 that.add(res.html)
             }
         })
     },
-    btnEdit: function(){
+    btnEdit: function () {
         let that = this
         this.editorCtx.getContents({
-            success: function(res){
+            success: function (res) {
                 console.log(res)
                 that.edit(res.html)
             }
         })
     },
-    add: function(content){
+    add: function (content) {
         let that = this
         wx.request({
             url: url + 'field/notice/set-notice',
@@ -114,14 +114,14 @@ Page({
             },
             success(data) {
                 let res = data.data
-                console.log(2,data)
+                console.log(2, data)
                 wx.showToast({
                     title: res.msg,
                     icon: 'none',
                     duration: 2000//持续的时间
                 })
-                  
-                if(res.Code == 200){
+
+                if (res.Code == 200) {
                     setTimeout(() => {
                         wx.navigateBack()
                     }, 1500)
@@ -132,7 +132,7 @@ Page({
             }
         })
     },
-    edit: function(content){
+    edit: function (content) {
         let that = this
         wx.request({
             url: url + 'field/notice/edit-notice',
@@ -142,15 +142,15 @@ Page({
                 content: content
             },
             success(data) {
-                console.log(1,data)
+                console.log(1, data)
                 let res = data.data
                 wx.showToast({
                     title: res.msg,
                     icon: 'none',
                     duration: 2000//持续的时间
                 })
-                  
-                if(res.Code == 200){
+
+                if (res.Code == 200) {
                     setTimeout(() => {
                         wx.navigateBack()
                     }, 1500)
@@ -162,10 +162,10 @@ Page({
         })
     },
 
-    editor_init(){
+    editor_init() {
         const platform = wx.getSystemInfoSync().platform
         const isIOS = platform === 'ios'
-        this.setData({ isIOS})
+        this.setData({ isIOS })
         const that = this
         this.updatePosition(0)
         let keyboardHeight = 0
@@ -188,7 +188,7 @@ Page({
         })
     },
     onPageScroll(data) {
-        console.log(data.scrollTop )
+        console.log(data.scrollTop)
         let keyboardHeight = this.data.keyboardHeight2 - data.scrollTop
         this.setData({ keyboardHeight })
     },
@@ -197,70 +197,97 @@ Page({
         const { windowHeight, platform } = wx.getSystemInfoSync()
         let editorHeight = keyboardHeight > 0 ? (windowHeight - keyboardHeight - toolbarHeight) : windowHeight
         this.setData({ editorHeight, keyboardHeight })
-      },
+    },
     calNavigationBarAndStatusBar() {
-    const systemInfo = wx.getSystemInfoSync()
-    const { statusBarHeight, platform } = systemInfo
-    const isIOS = platform === 'ios'
-    const navigationBarHeight = isIOS ? 44 : 48
-    return statusBarHeight + navigationBarHeight
+        const systemInfo = wx.getSystemInfoSync()
+        const { statusBarHeight, platform } = systemInfo
+        const isIOS = platform === 'ios'
+        const navigationBarHeight = isIOS ? 44 : 48
+        return statusBarHeight + navigationBarHeight
     },
     blur() {
         this.editorCtx.blur()
-      },
+    },
 
     format(e) {
         let { name, value } = e.target.dataset
         if (!name) return
         // console.log('format', name, value)
         this.editorCtx.format(name, value)
-    
-      },
-      onStatusChange(e) {
+
+    },
+    onStatusChange(e) {
         const formats = e.detail
         this.setData({ formats })
-      },
-      insertDivider() {
+    },
+    insertDivider() {
         this.editorCtx.insertDivider({
-          success: function () {
-            console.log('insert divider success')
-          }
+            success: function () {
+                console.log('insert divider success')
+            }
         })
-      },
-      clear() {
+    },
+    clear() {
         this.editorCtx.clear({
-          success: function (res) {
-            console.log("clear success")
-          }
+            success: function (res) {
+                console.log("clear success")
+            }
         })
-      },
-      removeFormat() {
+    },
+    removeFormat() {
         this.editorCtx.removeFormat()
-      },
-      insertDate() {
+    },
+    insertDate() {
         const date = new Date()
         const formatDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
         this.editorCtx.insertText({
-          text: formatDate
+            text: formatDate
         })
-      },
-      insertImage() {
+    },
+    insertImage() {
         const that = this
-        wx.chooseImage({
-          count: 1,
-          success: function (res) {
-            that.editorCtx.insertImage({
-              src: res.tempFilePaths[0],
-              data: {
-                id: 'abcd',
-                role: 'god'
-              },
-              width: '80%',
-              success: function () {
-                console.log('insert image success')
-              }
-            })
-          }
+        wx.chooseMedia({
+              count: 1,
+            mediaType: ['image'],
+            success: function (res) {
+                console.log(res)
+                wx.showLoading({
+                    title: '加载中',
+                })
+                wx.uploadFile({
+                    url: url + 'field/notice/upload-img', //仅为示例，非真实的接口地址
+                    filePath: res.tempFiles[0].tempFilePath,
+                    name: 'file',
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    // formData: {
+                    //     'user': 'test'
+                    // },
+                    success(res) {
+                        let data = JSON.parse(res.data)
+                        console.log(data)
+                        if(data.Code==200){
+                            that.editorCtx.insertImage({
+                                src: url + data.data.scalar,
+                                data: {
+                                    id: 'abcd',
+                                    role: 'god'
+                                },
+                                width: '80%',
+                                success: function () {
+                                    console.log('insert image success')
+                                },
+                                complete: function () {
+                                    wx.hideLoading()
+                                }
+                            })
+                        }
+                        
+                    }
+                })
+
+            }
         })
-      }
+    }
 })

@@ -30,10 +30,10 @@ function request(url, postData, doSuccess, doFail) {
     },
     success: function (res) {
       //参数值为res.data,直接将返回的数据传入
-      doSuccess(res.data);
+      doSuccess&&doSuccess(res.data);
     },
     fail: function () {
-      doFail();
+      doFail&&doFail();
     },
   })
 }
@@ -47,10 +47,10 @@ function getData(url, doSuccess, doFail) {
     },
     method: 'GET',
     success: function (res) {
-      doSuccess(res.data);
+      doSuccess&&doSuccess(res.data);
     },
     fail: function () {
-      doFail();
+      doFail&&doFail();
     },
   })
 }
