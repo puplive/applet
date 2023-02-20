@@ -30,11 +30,12 @@ Page({
       success: function (res) {
         var a = res.tempFilePaths
         var b = that.data.tempFilePaths
-        // a.push.apply(a,b);
-        // var tempFilePaths = res.tempFilePaths == undefined ? '' :  a ;
-        that.setData({
-          tempFilePaths: [...b,...a],
-        })
+        if(a){
+          var newa = b.concat(a);
+          that.setData({
+            tempFilePaths: newa,
+          })
+        }
       }
     })
   },

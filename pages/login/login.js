@@ -23,25 +23,63 @@ Page({
             isHidden: 1
         })
     },
-    //获取用户信息
-    getUserInfo: function (cb) {
-        var that = this
-        if (this.globalData.personInfo) {
-            typeof cb == "function" && cb(this.globalData.personInfo)
-        } else {
-            //调用登录接口
-            wx.login({
-                success: function () {
-                    wx.getUserInfo({
-                        success: function (res) {
-                            that.globalData.personInfo = res.userInfo
-                            typeof cb == "function" && cb(that.globalData.personInfo)
-                        }
-                    })
-                }
+    getUserProfile(){
+        var that = this;
+        // return
+        wx.getUserProfile({
+          desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+          success: (res) => {
+            console.log('getUserProfile',res)
+            that.setData({
+                userInfo: res.userInfo,
+                hasUserInfo: true
             })
-        }
-    },
+            wx.login({
+              success: (open) => {
+                var code = open.code
+                wx.request({
+                    url: url + 'worksite/default/index',//跳转首页
+                    data: {
+                        code: code,
+                        encryptedData: res.encryptedData,
+                        iv: res.iv
+                    },
+                    header: {
+                        'content-type': 'application/json' // 默认值
+                    },
+                    success(res) {
+                        console.log('login',res)
+                        wx.setStorageSync('openId', res.data.data.openId)
+                        wx.setStorageSync('sessionKey', res.data.data.sessionKey)
+                        wx.navigateBack()
+                    }
+                })
+        
+
+              }
+            })
+          }
+        })
+      },
+    //获取用户信息
+    // getUserInfo: function (cb) {
+    //     var that = this
+    //     if (this.globalData.personInfo) {
+    //         typeof cb == "function" && cb(this.globalData.personInfo)
+    //     } else {
+    //         //调用登录接口
+    //         wx.login({
+    //             success: function () {
+    //                 wx.getUserInfo({
+    //                     success: function (res) {
+    //                         that.globalData.personInfo = res.userInfo
+    //                         typeof cb == "function" && cb(that.globalData.personInfo)
+    //                     }
+    //                 })
+    //             }
+    //         })
+    //     }
+    // },
     onGotUserInfo: function (e) {
         var that = this;
         wx.login({
@@ -82,6 +120,7 @@ Page({
             showModalStatus: false,//显示遮罩       
             isHidden: 0,
         })
+        wx.navigateBack()
 
     },
 

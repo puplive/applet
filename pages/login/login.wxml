@@ -16,7 +16,8 @@
     </view>
     <view class="btn clearfix">
       <!-- <view class='f14 close_btn fl' bindtap="close">拒绝</view> -->
-      <button class='f14 agreen_btn' open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">允许</button>
+      <button class='f14 agreen_btn' bindtap="getUserProfile">允许</button>
+      <!-- <button class='f14 agreen_btn' open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">允许</button> -->
     </view>
   </view>
 </view>
