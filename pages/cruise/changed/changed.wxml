@@ -10,7 +10,7 @@
   <!-- 列表内容 -->
   <scroll-view scroll-y="true" class="list">
     <block wx:for-items="{{changeArray}}" wx:for-index="key" wx:for-item="number">
-      <view bindtap="zheng_detail" data-key="{{number.list.zw_hao}}" class='list_con'> 
+      <view bindtap="zheng_detail" data-item="{{number}}" class='list_con'> 
         <view class="list_zwh clearfix">
           <text class="list_zwh_left">{{number.list.zw_hao}}</text>
         </view>

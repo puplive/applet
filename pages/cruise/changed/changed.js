@@ -30,14 +30,14 @@ Page({
   },
  //整改详情跳转
  zheng_detail:function(e){
-  console.log(9999,e)
+  let data = e.currentTarget.dataset.item
   if(getCurrentPages().length>=5){
     wx.redirectTo({
-      url: "changed_details/changed_details?zwh="+e.currentTarget.dataset.key
+      url: "changed_details/changed_details?zwh="+data.list.zw_hao
     });
   }else{
     wx.navigateTo({
-      url: "changed_details/changed_details?zwh="+e.currentTarget.dataset.key
+      url: "changed_details/changed_details?zwh="+data.list.zw_hao
     });
   }
 },
