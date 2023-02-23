@@ -423,7 +423,7 @@ descInput: function (e) {
       lock:false,
       imgres:[],
       img:[],
-      tempFilePaths: []
+      // tempFilePaths: []
     })
   },
 

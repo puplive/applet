@@ -21,8 +21,7 @@ Page({
   },
  // 点击上传图片
   chooseWxImage: function (type) {
-    var that = this;  
-    // console.log(11,that.data.tempFilePaths )
+    var that = this;
     wx.chooseImage({
       count: 9,
       sizeType: ['original', 'compressed'],

@@ -211,7 +211,13 @@ topic_bainji:function(e){
     var that = this;
     wx.request({
       url: url + 'worksite/rectify/rlist-details',
-      data: {zw_hao:that.data.zwh,OpenId:openId,punish:this.data.num,change:this.data.changenum},
+      data: {
+        projectId: sendMessageContent.projectId,
+        zw_hao:that.data.zwh,
+        OpenId:openId,
+        punish:this.data.num,
+        change:this.data.changenum
+      },
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值

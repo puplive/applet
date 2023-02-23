@@ -63,13 +63,13 @@
   </view>
   <view class="upload_img clearfix">
     <view class=" img_con" wx:for="{{tempFilePaths}}"  wx:for-index="key">
-      <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+      <image class='imgwh' src='{{item}}' mode="aspectFit"></image>
       <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
         <image src='../../../../images/imgdel.svg'></image>
       </view>
     </view>
     <view class="col-9 img_con" bindtap="chooseimage">
-      <image class='defaultimg' src='../../../../images/camera.svg' catchTap="chooseImageTap" mode="aspectFit"></image>
+      <image class='defaultimg' src='../../../../images/camera.svg' mode="aspectFit"></image>
     </view>
   </view>
 </view>

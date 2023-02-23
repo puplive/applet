@@ -121,21 +121,26 @@ Page({
   // 点击上传图片
   chooseWxImage: function (type) {
     var that = this;
-    console.log(type,that.data.tempFilePaths )
-    wx.chooseImage({
+    wx.chooseMedia({
       count: 9,
-      sizeType: ['original', 'compressed'],
+      mediaType: ['image'],
       sourceType: [type],
       success: function (res) {
-        console.log(res)
-        var a = res.tempFilePaths
-        var b = that.data.tempFilePaths
-        a.push.apply(a,b);
-        var tempFilePaths = res.tempFilePaths == undefined ? '' :  a ;
-        that.setData({
-          tempFilePaths: tempFilePaths,
-        })
-        console.log('上传成功',that.data.tempFilePaths);
+        console.log('chooseimage',res)
+        if(res.errMsg == 'chooseMedia:ok'){
+          var a = res.tempFiles;
+          var b = that.data.tempFilePaths
+          a.forEach(element => {
+            b.push(element.tempFilePath)
+          });
+          that.setData({
+            tempFilePaths: b,
+          })
+
+          setTimeout(() => {
+            console.log('2000',that.data.tempFilePaths)
+          }, 2000);
+        }
       }
     })
   },
@@ -186,9 +191,9 @@ descInput: function (e) {
             filePath: tempFilePaths[i],
             name: 'img',
             header: {
-              'content-type': 'application/x-www-form-urlencoded' // 默认值
+              'content-type': 'application/json' // 默认值
             },
-            method: 'POST',
+            // method: 'POST',
             formData: {},
             success: function (res) {
               var data = JSON.parse(res.data).info.path;
@@ -420,7 +425,7 @@ descInput: function (e) {
       lock:false,
       imgres:[],
       img:[],
-      tempFilePaths: []
+      // tempFilePaths: []
     })
   },
 
