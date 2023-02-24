@@ -4,11 +4,11 @@ var app = getApp();
 
 //var host = 'https://www.exposaas.com/'
 // var host ='http://new.newspaper.com/'
-//  var host = 'https://test.exposaas.com/'
+ var host = 'https://test.exposaas.com/'
 // var host = 'http://role.newspaper.com/'
 
 // var host = 'http://www.newmoble.com/'
-const host = 'https://scm.exposaas.com/'
+// const host = 'https://scm.exposaas.com/'
 
 /**test.exposaas.cn
  * POST请求，

@@ -1,9 +1,9 @@
 //app.js
 //const url = 'https://www.exposaas.com/'
 //const url ='http://new.newspaper.com/'
-// const url = 'https://test.exposaas.com/'
+const url = 'https://test.exposaas.com/'
 //const url = 'http://role.newspaper.com/'
-const url = 'https://scm.exposaas.com/'
+// const url = 'https://scm.exposaas.com/'
 
 
 App({
