@@ -12,7 +12,7 @@
             bindready="onEditorReady">
         </editor>
     </view>
-    <view style="padding: 8px;">
+    <view style="padding: 8px;" wx:if="{{userRole == '1'}}">
         <navigator class="btn1" url="/pages/notice/add/index?type=edit&id={{detail.id}}">编辑</navigator>
     </view>
 </view>

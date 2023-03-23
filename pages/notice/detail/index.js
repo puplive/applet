@@ -4,6 +4,7 @@ var url = app.globalData.url;
 // var call = require("../../utils/request.js") 
 Page({
     data: {
+        userRole: app.globalData.userRole,
         expo: app.globalData.expo,
         detail: {},
         id: '',
@@ -12,6 +13,7 @@ Page({
     // onShareAppMessage: function(){},
     onLoad: function (options) {
         this.setData({
+            userRole: app.globalData.userRole,
             expo: app.globalData.expo,
             id: options.id
         })

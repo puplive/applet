@@ -1,0 +1,55 @@
+<view class="page-booth-detail">
+    <view class="select-box" style="background: #ECBB49">
+        <navigator class="select" url="/pages/expo/expo">
+            <text class="text">{{expo.hui_nickname}}</text>
+            <text class="text2">切换</text>
+            <image class="icon" src="/images/icon_sanjiao.png" mode="aspectFit"></image>
+        </navigator>
+    </view>
+    <view class="content">
+        <view class="form-item">
+            <text class="s-text">{{detail.czs_zguan}} {{detail.czs_number}}   {{detail.czs_type=='1'?'光地':'标摊'}} {{detail.proportion}}㎡</text>
+            <image bindtap="show_msg" class="icon" src="/images/icon_tip.png" mode="aspectFit" style="width:20px;height:20px"></image>
+        </view>
+        <view class="p1">{{detail._info.liao_name}}</view>
+        <view class="ul">
+            <view class="li"
+                wx:for="{{detail._info.file}}"
+                wx:key="index">
+                <image class="" 
+                    src="{{url+item.img}}" 
+                    data-file="{{item}}"
+                    bindtap="preview"
+                    mode="aspectFit" lazy-load="false" binderror="" bindload="">
+                    
+                </image>
+            </view>
+        </view>
+        <view wx:if="{{detail._info.file.length==0}}" class="no_data">
+            暂无数据
+        </view>
+    </view>
+</view>
+
+<page-container
+    show="{{msg_show}}">
+    <!-- 展馆 -->
+    <view class="msg-box">
+        <view class="p2">
+            <view class="p3">展位信息</view>
+            <view class="p4">{{detail.czs_zguan}} {{detail.czs_number}}   {{detail.czs_type=='1'?'光地':'标摊'}} {{detail.proportion}}㎡</view>
+        </view>
+        <view class="p2">
+            <view class="p3">参展商：{{detail.czs_nickname}}</view>
+            <view class="p3" wx:if="{{detail.czs_username || detail.czs_tel}}">联系人：{{detail.czs_username}} 
+                <text style="color: #5294F9;" bindtap="telPhone" data-tel="{{detail.czs_tel}}" >{{detail.czs_tel}}</text>
+            </view>
+        </view>
+        <view class="p2">
+            <view class="p3">搭建商：{{detail.djs_nickname}}</view>
+            <view class="p3" wx:if="{{detail.djs_username || detail.djs_tel}}">联系人：{{detail.djs_username}} 
+                <text style="color: #5294F9;" bindtap="telPhone" data-tel="{{detail.djs_tel}}">{{detail.djs_tel}}</text>
+            </view>
+        </view>
+    </view>
+</page-container>

@@ -1,0 +1,20 @@
+<view class="page-booth-info">
+    <view class="select-box" style="background: #ECBB49">
+        
+    </view>
+    <view class="content">
+        <view class="ul" wx:if="{{list.length}}">
+            <view class="li"
+                wx:for="{{list}}"
+                wx:key="index"
+                bindtap="go_detail"
+                data-item="{{item}}">
+                <view class="text">{{item.number_code}}</view>
+                <image class="icon" src="/images/arrowright.png"></image>
+            </view>
+        </view>
+        <view wx:else class="no_data">
+            暂无数据
+        </view>
+    </view>
+</view>

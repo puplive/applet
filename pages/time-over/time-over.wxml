@@ -1,0 +1,112 @@
+<view class="page-booth-info">
+    <view class="select-box" style="background: #ECBB49">
+        <navigator class="select" url="/pages/expo/expo">
+            <text class="text">{{expo.hui_nickname}}</text>
+            <text class="text2">切换</text>
+            <image class="icon" src="/images/icon_sanjiao.png" mode="aspectFit"></image>
+        </navigator>
+    </view>
+    <view class="content">
+        <view class="s-form">
+            <view class="form-item">
+                <view class="s-select" bindtap="show_picker_zg" style="width: 60px">
+                    <input class="text" value="{{value_zg}}" placeholder="展馆"  disabled="{{true}}"/>
+                    <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
+                </view>
+                <view class="s-select flex-fill" bindtap="show_picker_zw" style="margin-left: 8px;">
+                    <input class="text" value="{{value_zw}}" placeholder="展位"  disabled="{{true}}"/>
+                    <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
+                </view>
+                
+                <picker class="flex-fill"
+                    mode="date" 
+                    value="{{value_time}}"
+                    bindchange="change_time">
+                    <view class="s-select" style="margin-left: 8px;">
+                        <input class="text" value="{{value_time}}" placeholder="下单时间"  disabled="{{true}}"/>
+                        <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
+                    </view>
+                </picker>
+                
+            </view>
+        </view>
+        <view class="ul" wx:if="{{list.length}}">
+            <view class="li"
+                wx:for="{{list}}"
+                wx:key="index"
+                bindtap="go_detail"
+                data-item="{{item}}">
+                <view class="text">{{item.number_code}}</view>
+                <image class="icon" src="/images/arrowright.png"></image>
+            </view>
+        </view>
+        <view wx:else class="no_data">
+            暂无数据
+        </view>
+    </view>
+</view>
+
+<page-container
+    show="{{picker_show}}"
+    bind:leave="close_picker">
+    <!-- 展馆 -->
+    <view class="s-picker" wx:if="{{picker_show_zg}}">
+        <picker-view 
+            indicator-style="height: 50px;" 
+            style="width: 100%; height: 300px;"
+            value="{{index_zg}}"
+            bindchange="change_zg">
+            <picker-view-column>
+                <view wx:for="{{list_zg}}" wx:key="index" style="line-height: 50px; text-align: center; font-size: 16px;">{{item}}</view>
+            </picker-view-column>
+        </picker-view>
+        <view class="picker-btn-bar">
+            <button class="picker-btn btn2" bindtap="close_picker">取消</button>
+            <button class="picker-btn btn1" bindtap="select_zg">确定</button>
+        </view>
+    </view>
+
+    <!-- 展位 -->
+    <view class="s-picker" wx:if="{{picker_show_zw}}">
+        <view class="" style="padding: 8px;">
+            <input 
+                placeholder="搜索关键字" 
+                class="s-input"
+                style="font-size: 16px; height: 40px;"
+                value="{{key_zw}}"
+                confirm-type="search"
+                bindinput="input_zw" data-name="zwh_key"/>
+        </view>
+        <picker-view 
+            indicator-style="height: 50px;" 
+            style="width: 100%; height: 300px;"
+            value="{{index_zw}}"
+            bindchange="change_zw">
+            <picker-view-column>
+                <view wx:for="{{list_zw}}" wx:key="index" style="line-height: 50px; text-align: center; font-size: 16px;">{{item}}</view>
+            </picker-view-column>
+        </picker-view>
+        <view class="picker-btn-bar">
+            <button class="picker-btn btn2" bindtap="close_picker">取消</button>
+            <button class="picker-btn btn1" bindtap="select_zw">确定</button>
+        </view>
+    </view>
+
+    <!--  -->
+    <!-- <view class="s-picker" wx:if="{{picker_show_time}}">
+        <picker-view 
+            indicator-style="height: 50px;" 
+            style="width: 100%; height: 300px;"
+            value="{{index_zs}}"
+            bindchange="change_zs">
+            <picker-view-column>
+                <view wx:for="{{list_zs}}" wx:key="index" style="line-height: 50px; text-align: center; font-size: 16px;">{{item}}</view>
+            </picker-view-column>
+        </picker-view>
+        <view class="picker-btn-bar">
+            <button class="picker-btn btn2" bindtap="close_picker">取消</button>
+            <button class="picker-btn btn1" bindtap="select_zs">确定</button>
+        </view>
+    </view> -->
+
+</page-container>

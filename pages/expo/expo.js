@@ -64,6 +64,7 @@ Page({
       },
       success: function (res) {
         if (res.data.Code == 200) {
+          app.globalData.userRole = res.data.data.applet_role_id
           sendMessageContent.RoleId = res.data.data.applet_role_id;
           if(res.data.data.applet_role_id<3){
             if(res.data.data.applet_role_id==1){

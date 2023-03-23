@@ -4,6 +4,7 @@ var url = app.globalData.url;
 // var call = require("../../utils/request.js") 
 Page({
     data: {
+        userRole: app.globalData.userRole,
         expo: app.globalData.expo,
         list: []
     },
@@ -13,6 +14,7 @@ Page({
     },
     onShow: function () {
         this.setData({
+            userRole: app.globalData.userRole,
             expo: app.globalData.expo
         })
         this.getList()

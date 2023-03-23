@@ -18,13 +18,25 @@
   <navigator url="../person/user_info/user_info">
     <view class="tit_list bor1">
       <label class='tit'><text class="tittext">个人信息</text></label>
-      <image class='icon_right' src='../../../images/arrowright.png'></image>
+      <image class='icon_right' src='/images/arrowright.png'></image>
     </view>
   </navigator>
   <navigator url="../person/identity/identity">
     <view class="tit_list bor1">
       <label class='tit'><text class="tittext">身份认证</text></label>
-      <image class='icon_right' src='../../../images/arrowright.png'></image>
+      <image class='icon_right' src='/images/arrowright.png'></image>
+    </view>
+  </navigator>
+  <navigator url="/pages/notice/list/index">
+    <view class="tit_list bor1">
+        <label class="tit"><text class="tittext">通知公告</text></label>
+        <image class="icon_right" src="/images/arrowright.png"></image>
+    </view>
+  </navigator>
+  <navigator url="/pages/booth/booth-info/booth-info">
+    <view class="tit_list bor1">
+        <label class="tit"><text class="tittext">展位资料</text></label>
+        <image class="icon_right" src="/images/arrowright.png"></image>
     </view>
   </navigator>
 </view>

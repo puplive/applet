@@ -16,7 +16,11 @@
       </view>
     </view>
     <!-- 内容列表 -->
-    <view wx:if="{{accepArray_len>0}}" class='list f12' wx:for-items="{{accepArray}}" wx:for-index="key">
+    <view wx:if="{{accepArray_len>0}}" 
+      class='list f12' 
+      wx:for-items="{{accepArray}}" 
+      wx:for-index="key" 
+      wx:key="index">
       <navigator url='../acceptance_details/acceptance_details?check_id={{item.id}}' class='list_con'>
         <view class="list_zwh clearfix">
           <text class="fl list_zwh_left">{{item.z_guan}}号馆 {{item.zw_hao}}</text>
@@ -40,7 +44,13 @@
   <view class="screen_con"> 
     <view class="screen_contit">展馆</view>
     <view class="screen_conli">
-    <text wx:for="{{number}}"  wx:for-index="key"  wx:for-item="value"  data-screennum="{{key}}" bindtap='screenZhanguan' class="{{zhanguannum==key?'on':''}}">{{value.num}}</text>
+    <text wx:for="{{number}}" 
+      wx:key="index"
+      wx:for-index="key"  
+      wx:for-item="value"  
+      data-screennum="{{key}}" 
+      bindtap='screenZhanguan' 
+      class="{{zhanguannum==key?'on':''}}">{{value.num}}</text>
       <!-- <text class="on">N1</text>
       <text>N2</text>
       <text>N3</text>

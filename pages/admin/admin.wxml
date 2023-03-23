@@ -24,15 +24,15 @@
                 </view>
                 <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
                     <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
-                        <block wx:for-items="{{item.user}}" wx:for-item="user" wx:key="*item">
+                        <block wx:for-items="{{item.user}}" wx:for-item="user" wx:key="index">
                             <navigator url="" class="navigator {{user.login_status==0 ? 'offline' : ''}}">
                                 <view class="navigator-text clearfix">
                                     <view class="fl people_list">
                                         <image src="{{host}}{{user.img}}"></image>
                                         <text>{{user.username}}</text>
-                                    </view>
                                     <text class="fr people_tel" bindtap="telPhone" data-tel="{{user.tel}}">{{user.tel}}</text>
-                                </view>
+                                     </view>
+                               </view>
                             </navigator>
                         </block>
                     </view>
@@ -48,7 +48,7 @@
         <view class="page-section-spacing">
             <view class="flex-wrp" style="flex-direction:row;">
 
-                <view class="flex-item {{item.style.color}}" wx:for-items="{{order_not.num}}" wx:for-index="key">
+                <view class="flex-item {{item.style.color}}" wx:for-items="{{order_not.num}}" wx:for-index="key" wx:key="index">
                     <navigator url='../admin/ad_order/ad_order?roleid={{item.roleid}}' data-type="1"
                         open-type="redirect" class=''>
                         <view class="not_accnum">{{item.num}}</view>

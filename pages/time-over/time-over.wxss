@@ -1,0 +1,47 @@
+.page-booth-info{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+.content{
+    flex: 1;
+    height: 0;
+    overflow: auto;
+    padding: 8px;
+}
+.ul .li{
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    height: 50px;
+    border-bottom: 1px solid #DCDFE6;
+}
+
+.ul .li .text{
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #000000;
+    line-height: 20px;
+
+    flex: 1;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+.ul .li .icon{
+    margin-left: 8px;
+    width: 14px;
+    height: 14px;
+}
+
+.p1{
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #4A4A4A;
+    line-height: 22px;
+}
+
+

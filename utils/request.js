@@ -2,12 +2,7 @@ var app = getApp();
 //项目URL相同部分，减轻代码量，同时方便项目迁移
 //这里因为我是本地调试，所以host不规范，实际上应该是你备案的域名信息
 
-//var host = 'https://www.exposaas.com/'
-// var host ='http://new.newspaper.com/'
- var host = 'https://test.exposaas.com/'
-// var host = 'http://role.newspaper.com/'
-
-// var host = 'http://www.newmoble.com/'
+const host = 'https://test.exposaas.com/'
 // const host = 'https://scm.exposaas.com/'
 
 /**test.exposaas.cn

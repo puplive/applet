@@ -26,7 +26,7 @@
             暂无公告
         </view>
     </scroll-view>
-    <view style="padding: 8px;">
+    <view style="padding: 8px;" wx:if="{{userRole == '1'}}">
         <navigator class="btn1" url="/pages/notice/add/index?type=add">新增公告</navigator>
     </view>
 </view>

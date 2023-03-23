@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/expo/expo",
     "pages/login/login",
     "pages/admin/changed/add_changed/add_changed",
@@ -50,13 +50,17 @@
     "pages/cruise/person/edit_tel/edit_tel",
     "pages/notice/detail/index",
     "pages/notice/list/index",
-    "pages/notice/add/index"
+    "pages/notice/add/index",
+    "pages/booth/booth-info/booth-info",
+    "pages/booth/detail/detail",
+    "pages/time-over/time-over",
+    "pages/time-over/detail/detail"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F8F8F8",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
