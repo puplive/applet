@@ -19,10 +19,11 @@
                         </view>
                         <view class="p1">
                             <view class="t2 t0">{{j.goods_array.goodsno}}</view>
-                            <view class="t1">{{j.goods_array.type}}</view>
+                            <view class="t1">{{j.goods_nums}} {{j.goods_array.type}}</view>
                         </view>
                         <view class="p1">
                             <view class="t1 t0">付款方式：</view>
+                            <image class="" src="{{i.pay_type == '现金付款'?'/images/icon-xj.png': '/images/wx_pay.png'}}" mode="aspectFit" style="width: 20px; height:18px; margin-right: 5px"></image>
                             <view class="t1">{{i.pay_type}}</view>
                         </view>
                         <view class="p1 line">

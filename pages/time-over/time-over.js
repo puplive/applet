@@ -11,11 +11,11 @@ for (let i = 1990; i <= date.getFullYear(); i++) {
 }
 
 for (let i = 1; i <= 12; i++) {
-  months.push(i)
+  months.push(i<10?'0'+i:i)
 }
 
 for (let i = 1; i <= 31; i++) {
-  days.push(i)
+  days.push(i<10?'0'+i:i)
 }
 Page({
     data: {
@@ -36,11 +36,11 @@ Page({
         list_zw_all: [],
 
         years,
-        year: date.getFullYear(),
+        year: years[years.length-1],
         months,
-        month: date.getMonth()+1,
+        month: months[date.getMonth()],
         days,
-        day: date.getDate(),
+        day: days[date.getDate()-1],
         value: [years.length-1, date.getMonth(), date.getDate()-1],
 
         list: []
@@ -53,6 +53,7 @@ Page({
         this.setData({
             expo: app.globalData.expo
         })
+
         this.getList({})
         this.getTimeOver()
     },
@@ -82,7 +83,7 @@ Page({
                     value_zw: _this.data.value_zw,
                     value_zs: _this.data.value_zs
                 })
-                // _this.getTimeOver()
+                _this.getTimeOver()
             }
             _this.close_picker()
         }, 400);
@@ -203,7 +204,8 @@ Page({
             data: {
                 project_id: this.data.expo.hui_id,
                 number: this.data.value_zw,
-                date: this.data.value_time
+                date: this.data.value_time.replace(/\//g, '-'),
+                halo_nr: this.data.value_zg
             },
             success(data) {
                 let res = data.data,

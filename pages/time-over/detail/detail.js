@@ -17,7 +17,7 @@ Page({
             expo: app.globalData.expo,
             zw_info: app.globalData.time_over_zw
         })
-        console.log(expo)
+        // console.log(expo)
         this.getList()
     },
     getList: function () {
@@ -42,7 +42,7 @@ Page({
                     // }
                     
                 }
-                this.setData({
+                that.setData({
                     list: list
                 })
             },
