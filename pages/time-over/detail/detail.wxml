@@ -1,17 +1,46 @@
-<view class="page-booth-info">
-    <view class="select-box" style="background: #ECBB49">
-        
+<view class="page-detail">
+    <view class="zw">
+        <view class="p1">{{expo.hui_nickname}}</view>
+        <view class="p2">
+            <image class="icon" src="/images/icon-address.png" mode="aspectFit"></image>
+            <text class="t1">{{id}}</text>
+            <text class="t1">{{zw_info.proportion}}㎡</text>
+            <text class="t1">{{zw_info.czs_type}}</text>
+        </view>
     </view>
     <view class="content">
         <view class="ul" wx:if="{{list.length}}">
-            <view class="li"
-                wx:for="{{list}}"
-                wx:key="index"
-                bindtap="go_detail"
-                data-item="{{item}}">
-                <view class="text">{{item.number_code}}</view>
-                <image class="icon" src="/images/arrowright.png"></image>
-            </view>
+            <block wx:for="{{list}}" wx:for-item="i" wx:key="index">
+                <block wx:for="{{i.detail}}" wx:for-item="j" wx:key="index">
+                    <view class="li">
+                        <view class="p1">
+                            <view class="t2 t0">{{j.goods_array.name}}</view>
+                            <view class="t4">{{j.order_status}}</view>
+                        </view>
+                        <view class="p1">
+                            <view class="t2 t0">{{j.goods_array.goodsno}}</view>
+                            <view class="t1">{{j.goods_array.type}}</view>
+                        </view>
+                        <view class="p1">
+                            <view class="t1 t0">付款方式：</view>
+                            <view class="t1">{{i.pay_type}}</view>
+                        </view>
+                        <view class="p1 line">
+                            <view class="t1 t0">下单时间：</view>
+                            <view class="t1">{{i.create_time}}</view>
+                        </view>
+                        <view class="p1">
+                            <view class="t1 t0">联 系 人：</view>
+                            <view class="t3">{{i.project_info.username}} {{i.project_info.phone}}</view>
+                        </view>
+                        <view class="p1">
+                            <view class="t1 t0">订单编号：</view>
+                            <view class="t3">{{i.order_no}}</view>
+                        </view>
+                        
+                    </view>
+                </block>
+            </block>
         </view>
         <view wx:else class="no_data">
             暂无数据

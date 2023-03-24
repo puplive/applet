@@ -1,9 +1,25 @@
 const app = getApp()
 var url = app.globalData.url;
+
+const date = new Date()
+const years = []
+const months = []
+const days = []
+
+for (let i = 1990; i <= date.getFullYear(); i++) {
+  years.push(i)
+}
+
+for (let i = 1; i <= 12; i++) {
+  months.push(i)
+}
+
+for (let i = 1; i <= 31; i++) {
+  days.push(i)
+}
 Page({
     data: {
         expo: app.globalData.expo,
-        msg_show: false,
         picker_show: false,
         picker_show_zg: false,
         picker_show_zw: false,
@@ -18,6 +34,15 @@ Page({
         key_zw: '',
         list_zg_all: [],
         list_zw_all: [],
+
+        years,
+        year: date.getFullYear(),
+        months,
+        month: date.getMonth()+1,
+        days,
+        day: date.getDate(),
+        value: [years.length-1, date.getMonth(), date.getDate()-1],
+
         list: []
     },
     // onShareAppMessage: function(){},
@@ -29,10 +54,11 @@ Page({
             expo: app.globalData.expo
         })
         this.getList({})
-        this.getSearch()
+        this.getTimeOver()
     },
     go_detail: function(e){
         let item = e.currentTarget.dataset.item
+        app.globalData.time_over_zw = item
         wx.navigateTo({
             url: '/pages/time-over/detail/detail?id='+item.number_code
         })
@@ -43,20 +69,23 @@ Page({
         })
     },
     select_zg: function(){
-        let value_zg = this.data.list_zg[this.data.index_zg[0]]
-        value_zg = value_zg=='无'? '' :value_zg
-        if(value_zg != this.data.value_zg){
-            this.setData({
-                value_zg: value_zg
-            })
-            this.getList({
-                value_zg: value_zg,
-                value_zw: this.data.value_zw,
-                value_zs: this.data.value_zs
-            })
-            // this.getSearch()
-        }
-        this.close_picker()
+        let _this = this
+        setTimeout(() => {
+            let value_zg = _this.data.list_zg[_this.data.index_zg[0]]
+            value_zg = value_zg=='无'? '' :value_zg
+            if(value_zg != _this.data.value_zg){
+                _this.setData({
+                    value_zg: value_zg
+                })
+                _this.getList({
+                    value_zg: value_zg,
+                    value_zw: _this.data.value_zw,
+                    value_zs: _this.data.value_zs
+                })
+                // _this.getTimeOver()
+            }
+            _this.close_picker()
+        }, 400);
     },
     change_zw: function(e){
         this.setData({
@@ -64,16 +93,19 @@ Page({
         })
     },
     select_zw: function(){
-        let value_zw = this.data.list_zw[this.data.index_zw[0]]
-        value_zw = value_zw=='无'? '' :value_zw
-        if(value_zw != this.data.value_zw){
-            this.setData({
-                value_zw: value_zw
-            })
+        let _this = this
+        setTimeout(() => {
+            let value_zw = _this.data.list_zw[_this.data.index_zw[0]]
+            value_zw = value_zw=='无'? '' :value_zw
+            if(value_zw != _this.data.value_zw){
+                _this.setData({
+                    value_zw: value_zw
+                })
 
-            this.getSearch()
-        }
-        this.close_picker()
+                _this.getTimeOver()
+            }
+            _this.close_picker()
+        }, 400)
     },
     input_zw: function (e) {
         this.setData({
@@ -86,10 +118,46 @@ Page({
         })
     },
     change_time: function(e) {
+        const val = e.detail.value
+        let year = this.data.years[val[0]],
+            month = this.data.months[val[1]],
+            day = this.data.days[val[2]]
         this.setData({
-            value_time: e.detail.value
+            year: year,
+            month: month,
+            day: day,
+            value: [val[0],val[1],val[2]],
+            // value_time: year+'/'+month+'/'+day
         })
-        this.getSearch()
+        // this.getTimeOver()
+    },
+    select_time: function() {
+        let _this = this
+            setTimeout(() => {
+            let year = _this.data.year,
+                month = _this.data.month,
+                day = _this.data.day
+            this.setData({
+                value_time: year+'/'+month+'/'+day
+            })
+            _this.getTimeOver()
+            _this.close_picker()
+        }, 400)
+    },
+    set_date: function(){
+        let val = [years.length-1, date.getMonth(), date.getDate()-1],
+            year = this.data.years[val[0]],
+            month = this.data.months[val[1]],
+            day = this.data.days[val[2]]
+        this.setData({
+            year: year,
+            month: month,
+            day: day,
+            value: val,
+            value_time: year+'/'+month+'/'+day
+        })
+        this.getTimeOver()
+        this.close_picker()
     },
     getList: function (d) {
         let that = this
@@ -128,7 +196,7 @@ Page({
             }
         })
     },
-    getSearch: function () {
+    getTimeOver: function () {
         let that = this
         wx.request({
             url: url + '/worksite/check/mi-time-out',
@@ -179,13 +247,20 @@ Page({
         })
         
     },
-    // show_picker_time: function(){
-    //     this.setData({
-    //         picker_show: true,
-    //         picker_show_zg: false,
-    //         picker_show_zw: false,
-    //         picker_show_time: true
-    //     })
-    // },
+    show_picker_time: function(){
+        this.setData({
+            picker_show: true,
+            picker_show_zg: false,
+            picker_show_zw: false,
+            picker_show_time: true
+        })
+    },
+    close_picker_time: function(){
+        this.setData({
+            value_time: '',
+        })
+        this.getTimeOver()
+        this.close_picker()
+    }
     
 })

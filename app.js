@@ -7,7 +7,8 @@ App({
     globalData: {
         userRole: '',
         expo: {},
-        booth_info: {}
+        booth_info: {},
+        time_over_zw: {}
     },
     onLaunch: function () {
         let that = this

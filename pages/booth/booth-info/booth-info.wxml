@@ -23,7 +23,7 @@
             </view>
             <view class="form-item" wx:if="{{detail.czs_type}}" style="margin-bottom: 10px;">
                 <text class="s-text">{{detail.czs_type=='1'?'光地':'标摊'}} {{detail.proportion}}㎡</text>
-                <image bindtap="show_msg" class="icon" src="/images/icon_tip.png" mode="aspectFit" style="width:20px;height:20px"></image>
+                <image bindtap="show_msg" class="icon" src="/images/icon_tip.png" mode="aspectFit" style="width:20px;height:20px; padding: 10px 0 10px 20px;"></image>
             </view>
         </view>
         <view class="ul" wx:if="{{detail.data}}">
@@ -35,10 +35,15 @@
                 <view class="text">{{item.liao_name}}</view>
                 <image class="icon" src="/images/arrowright.png"></image>
             </view>
+            
         </view>
-        <view wx:else class="no_data">
+        <view wx:if="{{!value_zw}}" class="no_data">
             请选定展位
         </view>
+        <view wx:elif="{{detail.data && !detail.data.length}}" class="no_data">
+            暂无数据
+        </view>
+        
     </view>
 </view>
 

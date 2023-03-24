@@ -24,6 +24,10 @@ Page({
         list_zw_all: [],
         list_zs_all: [],
 
+        list_zg_log: [],
+        list_zw_log: [],
+        list_zs_log: [],
+
         detail:{
             // data:[]
         }
@@ -36,7 +40,7 @@ Page({
         this.setData({
             expo: app.globalData.expo
         })
-        this.getList({type: 1})
+        this.getList({}, 'all')
     },
     go_detail: function(e){
         let _info = e.currentTarget.dataset.info
@@ -54,23 +58,26 @@ Page({
         
     },
     select_zg: function(){
-        let value_zg = this.data.list_zg[this.data.index_zg[0]]
-        value_zg = value_zg=='无'? '' :value_zg
-        if(value_zg != this.data.value_zg){
-            this.setData({
-                value_zg: value_zg,
-                // value_zw: '',
-                // value_zs: '',
-                // index_zw: [0],
-                // index_zs: [0],
-            })
-            this.getList({
-                value_zg: value_zg,
-                value_zw: this.data.value_zw,
-                value_zs: this.data.value_zs
-            })
-        }
-        this.close_picker()
+        let _this = this
+        setTimeout(() => {
+            let value_zg = _this.data.list_zg[_this.data.index_zg[0]]
+            value_zg = value_zg=='无'? '' :value_zg
+            if(value_zg != _this.data.value_zg){
+                _this.setData({
+                    value_zg: value_zg,
+                    // value_zw: '',
+                    // value_zs: '',
+                    // index_zw: [0],
+                    // index_zs: [0],
+                })
+                _this.getList({
+                    value_zg: value_zg,
+                    // value_zw: _this.data.value_zw,
+                    // value_zs: _this.data.value_zs
+                }, 'zg')
+            }
+            _this.close_picker()
+        }, 400);
     },
     change_zw: function(e){
         this.setData({
@@ -78,23 +85,26 @@ Page({
         })
     },
     select_zw: function(){
-        let value_zw = this.data.list_zw[this.data.index_zw[0]]
-        value_zw = value_zw=='无'? '' :value_zw
-        if(value_zw != this.data.value_zw){
-            this.setData({
-                value_zw: value_zw,
-                value_zs: '',
-                index_zs: [0],
-            })
-            this.getList({
-                value_zg: this.data.value_zg,
-                value_zw: value_zw,
-                value_zs: this.data.value_zs
-            })
+        let _this = this
+        setTimeout(() => {
+            let value_zw = _this.data.list_zw[_this.data.index_zw[0]]
+            value_zw = value_zw=='无'? '' :value_zw
+            if(value_zw != _this.data.value_zw){
+                _this.setData({
+                    value_zw: value_zw,
+                    value_zs: '',
+                    index_zs: [0],
+                })
+                _this.getList({
+                    value_zg: _this.data.value_zg,
+                    value_zw: value_zw,
+                    value_zs: _this.data.value_zs
+                }, 'zw')
 
-            this.getDetail()
-        }
-        this.close_picker()
+                _this.getDetail()
+            }
+            _this.close_picker()
+        }, 400)
     },
     input_zw: function (e) {
         this.setData({
@@ -105,7 +115,7 @@ Page({
             value_zg: this.data.value_zg,
             value_zw: e.detail.value,
             value_zs: this.data.value_zs
-        })
+        }, 'zw2')
     },
     input_change: function (e) {
         // let key = e.currentTarget.dataset.name
@@ -119,22 +129,25 @@ Page({
         })
     },
     select_zs: function(){
-        let value_zs = this.data.list_zs[this.data.index_zs[0]]
-        // console.log(value_zs)
-        value_zs = value_zs=='无'? '' :value_zs
-        if(value_zs != this.data.value_zs){
-            this.setData({
+        let _this = this
+        setTimeout(() => {
+            let value_zs = _this.data.list_zs[_this.data.index_zs[0]]
+            // console.log(value_zs)
+            value_zs = value_zs=='无'? '' :value_zs
+            if(value_zs != _this.data.value_zs){
+                _this.setData({
+                    value_zs: value_zs
+                })
+            }
+            _this.getList({
+                value_zg: _this.data.value_zg,
+                // value_zw: _this.data.value_zw,
                 value_zs: value_zs
-            })
-        }
-        this.getList({
-            value_zg: this.data.value_zg,
-            value_zw: this.data.value_zw,
-            value_zs: value_zs
-        })
-        this.close_picker()
+            }, 'zs')
+            _this.close_picker()
+        }, 400)
     },
-    getList: function (d) {
+    getList: function (d,type) {
         let that = this
         wx.request({
             url: url + '/worksite/check/search-list',
@@ -156,39 +169,95 @@ Page({
                     list_zw.push(...res.data.czs_number)
                     list_zs.push(...res.data.czs_nickname)
                 }
-                // type 1初始  2模糊展位 3模糊展商
-                if(!d.value_zg && !d.value_zw && !d.value_zs){
+
+                if(type == 'all'){
                     that.setData({
                         list_zg: list_zg,
                         list_zw: list_zw,
                         list_zs: list_zs,
+
                         list_zg_all: list_zg,
                         list_zw_all: list_zw,
-                        list_zs_all: list_zs
+                        list_zs_all: list_zs,
+
+                        list_zg_log: list_zg,
+                        list_zw_log: list_zw,
+                        list_zs_log: list_zg,
                     })
-                }else if(!d.value_zg && !d.value_zw){
+                }else if(type == 'zw'){
+                    list_zw =  that.data.list_zw_log
+                    that.setData({
+                        value_zg: list_zg[1],
+                        value_zs: list_zs[1],
+
+                        list_zg: list_zg,
+                        list_zw: list_zw,
+                        list_zs: list_zs,
+
+                        list_zg_log: list_zg,
+                        list_zw_log: list_zw,
+                        list_zs_log: list_zs,
+
+                    })
+                    
+                }else if(type == 'zg'){
+                    list_zg =  that.data.list_zg_log
                     that.setData({
                         list_zg: list_zg,
                         list_zw: list_zw,
-                        list_zs: that.data.list_zs_all
+                        list_zs: list_zs,
+
+                        list_zg_log: list_zg,
+                        list_zw_log: list_zw,
+                        list_zs_log: list_zs,
                     })
-                }else if(!d.value_zg && !d.value_zs){
+                    if(list_zw.length == 2){
+                        that.setData({
+                            value_zw: list_zw[1]
+                        })
+                        if(list_zs.length == 2){
+                            that.setData({
+                                value_zs: list_zs[1]
+                            })
+                        }
+                        that.getDetail()
+                    }else{
+                        that.setData({
+                            value_zw: '',
+                            detail: {}
+                        })
+                    }
+                }else if(type == 'zs'){
+                    list_zs =  that.data.list_zs_log
                     that.setData({
                         list_zg: list_zg,
-                        list_zw: that.data.list_zw_all,
-                        list_zs: list_zs
-                    })
-                }else if(!d.value_zw && !d.value_zs){
-                    that.setData({
-                        list_zg: that.data.list_zg_all,
                         list_zw: list_zw,
-                        list_zs: list_zs
+                        list_zs: list_zs,
+
+                        list_zg_log: list_zg,
+                        list_zw_log: list_zw,
+                        list_zs_log: list_zs,
                     })
-                }else{
+                    if(list_zw.length == 2){
+                        that.setData({
+                            value_zw: list_zw[1]
+                        })
+                        that.getDetail()
+                    }else{
+                        that.setData({
+                            value_zw: '',
+                            detail: {}
+                        })
+                    }
+                }else if(type == 'zw2'){
                     that.setData({
-                        list_zg: list_zg,
                         list_zw: list_zw,
-                        list_zs: list_zs
+                        list_zw_log: list_zw,
+                    })
+                }else if(type == 'zs2'){
+                    that.setData({
+                        list_zs: list_zs,
+                        list_zs_log: list_zs,
                     })
                 }
             },
@@ -197,6 +266,7 @@ Page({
             }
         })
     },
+
     getDetail: function () {
         let that = this
         wx.request({
@@ -264,7 +334,7 @@ Page({
             value_zg: this.data.value_zg,
             value_zw: this.data.value_zw,
             value_zs: this.data.value_zs
-        })
+        }, 'zs2')
         this.setData({
             picker_show: true,
             msg_show: false,
