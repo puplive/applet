@@ -3,10 +3,6 @@ var url = app.globalData.url;
 var sendMessageContent = app.globalData.sendMessageContent;
 var call = require("../../../../utils/request.js")
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     host:app.globalData.url,
     changeedit:[], //获取编辑内容
@@ -24,6 +20,18 @@ Page({
     imgres: [],
     punish_id:'', //处罚id
     change_id:'',//整改id
+  },
+  onLoad: function (options) {
+    var changeid = options.changeid
+    this.setData({
+      changeid: changeid,
+    })
+  },
+  onReady: function () {
+    this.getDetail()
+  },
+  onShow: function () {
+
   },
   // 整改类型填写
   bindChangetype:function(e){
@@ -206,62 +214,58 @@ editChangedBtn:function(){
     }
   })
 },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var changeid = options.changeid
-    this.setData({
-      changeid: changeid,
-    })
-  },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+
+getDetail: function () {
+  var that = this;
+  var openId = wx.getStorageSync('openId');
+  // 编辑内容
+  wx.request({
+    url: url + 'worksite/rectify/rectify-edit',
+    data: {rectify_id:that.data.changeid,OpenId:openId},
+    method: 'GET',
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success(res) {
+      // console.log(111,res);
+      if (res.data.Code == 200) {
+        var rectify_type = res.data.data.rectify_type || ''; //整改方式
+        var punish_id = res.data.data.punish_type || ''; //处罚方式
+        var changetime1 = res.data.data.rectify_time1 + " - " + res.data.data.rectify_time2; 
+        console.log('time:',changetime1)
+        // var changetime_value = changetime1 == undefined ? '' : changetime1; 
+        // var change_index = that.data.change_time.indexOf(changetime1);
+        var desc = res.data.data.content || '';   //详情描述
+        var rectify_imgs = res.data.data.rectify_imgs || ''; //图片
+        that.setData({
+          changeedit:res.data.data, //编辑内容
+          z_guan:res.data.data.z_guan, //展馆号
+          zw_hao:res.data.data.zw_hao, //展位号
+          // change_id: rectify_type, //整改类型
+          changetype_name: rectify_type,
+          punish_id: punish_id, //处罚方式
+          desc: desc, //可以购买数量
+          // changetime_index:change_index,
+          // changetime_value:that.data.changetime_value, //整改时限
+          startime: res.data.data.rectify_time1,//整改时限
+          endtime:res.data.data.rectify_time2,
+          imgres: res.data.data.rectify_imgs.split(","),   //地址省市区
+        })
+      } else {
+
+      }
+      that.getRectifyType()
+      that.getPunish()
+    },
+    fail: function (err) {
+      // 服务异常
+    }
+  })
+},
+  getRectifyType: function () {
     var that = this;
     var openId = wx.getStorageSync('openId');
-    // 编辑内容
-    wx.request({
-      url: url + 'worksite/rectify/rectify-edit',
-      data: {rectify_id:that.data.changeid,OpenId:openId},
-      method: 'GET',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(111,res);
-        if (res.data.Code == 200) {
-          var change_id = res.data.data.rectify_type == undefined ? '' : res.data.data.rectify_type; //整改方式
-          var punish_id = res.data.data.punish_type == undefined ? '' : res.data.data.punish_type; //处罚方式
-          var changetime1 = res.data.data.rectify_time1 + " - " + res.data.data.rectify_time2; 
-          console.log('time:',changetime1)
-          // var changetime_value = changetime1 == undefined ? '' : changetime1; 
-          // var change_index = that.data.change_time.indexOf(changetime1);
-          var desc = res.data.data.content == undefined ? '' : res.data.data.content;   //详情描述
-          var rectify_imgs = res.data.data.rectify_imgs == undefined ? '' : res.data.data.rectify_imgs; //图片
-          that.setData({
-            changeedit:res.data.data, //编辑内容
-            z_guan:res.data.data.z_guan, //展馆号
-            zw_hao:res.data.data.zw_hao, //展位号
-            change_id: change_id, //整改类型
-            punish_id: punish_id, //处罚方式
-            desc: desc, //可以购买数量
-            // changetime_index:change_index,
-            // changetime_value:that.data.changetime_value, //整改时限
-            startime: res.data.data.rectify_time1,//整改时限
-            endtime:res.data.data.rectify_time2,
-            imgres: res.data.data.rectify_imgs.split(","),   //地址省市区
-          })
-        } else {
-
-        }
-      },
-      fail: function (err) {
-        // 服务异常
-      }
-    })
     //整改类型
     wx.request({
       url: url + 'worksite/rectify/rectify-type',
@@ -272,14 +276,23 @@ editChangedBtn:function(){
       },
       success(res) {
         if (res.data.Code == 200) {
-          var items = [];
+          var items = [],
+              name = that.data.changetype_name,
+              id = '',
+              change_index = 0;
           for (let i in res.data.data) {
-            items.push(res.data.data[i]);
+            let item = res.data.data[i]
+            items.push(item);
+            if(item.name == name){
+              id = item.id
+              change_index = i
+            }
           }
           that.setData({
             change_type:items,
-            change_id:items[0].id,
-            changetype_name:items[0].name
+            change_id:id || items[0].id,
+            change_index: change_index,
+            changetype_name:name || items[0].name
           })
         } else {
 
@@ -289,6 +302,10 @@ editChangedBtn:function(){
         // 服务异常
       }
     })
+  },
+  getPunish: function () {
+    var that = this;
+    var openId = wx.getStorageSync('openId');
     //处罚方式
     wx.request({
       url: url + 'worksite/rectify/punish',
@@ -321,48 +338,5 @@ editChangedBtn:function(){
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    wx.reLaunch({
-      url: '../changed/changed',
-    })
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  
 })

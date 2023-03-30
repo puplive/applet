@@ -25,7 +25,7 @@
       </view>
       <view class="list_btn clearfix {{item.status==1? 'show':'hidden'}}">
         <view class="list_btnli fr" bindtap="endBtn" data-id="{{item.id}}">完成</view>
-        <view class="list_btnli fr" bindtap="delBtn" data-id="{{item.id}}">删除</view>
+        <!-- <view class="list_btnli fr" bindtap="delBtn" data-id="{{item.id}}">删除</view> -->
         <view class="list_btnli edit_changed fr" bindtap="topic_bainji" data-id="{{item.id}}">编辑</view>
       </view> 
       <view class="list_btn clearfix {{item.status==2? 'show':'hidden'}}">

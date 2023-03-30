@@ -42,6 +42,14 @@ Page({
         })
         this.getList({}, 'all')
     },
+    telPhone: function(e){
+        wx.makePhoneCall({
+            phoneNumber: e.currentTarget.dataset.tel,
+            fail: function(err){
+                console.log(err)
+            }
+        })
+    },
     go_detail: function(e){
         let _info = e.currentTarget.dataset.info
         let d = this.data.detail
