@@ -25,10 +25,18 @@
 .msg .num{
     font-size: 17px;
     font-family: PingFangSC-Medium, PingFang SC;
-    color: #D0021B;
+    
     line-height: 24px;
 }
-
+.type_1{
+    color: #9B9B9B;
+}
+.type_2{
+    color: #62BB00;
+}
+.type_3{
+    color: #D0021B;
+}
 .content{
     flex: 1;
     height: 0;

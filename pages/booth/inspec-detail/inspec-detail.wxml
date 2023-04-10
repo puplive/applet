@@ -4,7 +4,7 @@
         <image wx:if="{{detail.type == '1'}}" class="icon" src="/images/icon_clock.png" mode="aspectFit" ></image>
         <image wx:if="{{detail.type == '3'}}" class="icon" src="/images/icon_error.png" mode="aspectFit" ></image>
         <image wx:if="{{detail.type == '2'}}" class="icon" src="/images/icon_success.png" mode="aspectFit" ></image>
-        <text class="num">{{detail.info.count}}</text>
+        <text class="num type_{{detail.type}}">{{detail.info.count}}</text>
     </view>
     <view class="s-form" style="padding:0 8px">
         <view class="form-item">
@@ -13,7 +13,7 @@
     </view>
     <view class="content">     
         <view class="ul" >
-            <navigator class="li" url="/pages/booth/booth-info/booth-info?zwh={{item}}"
+            <navigator class="li" open-type="redirect" url="/pages/booth/booth-info/booth-info?zwh={{item}}"
                 wx:for="{{detail.info.zwh}}"
                 wx:key="index">
                 <text class="text">{{item}}</text>
