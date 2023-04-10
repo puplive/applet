@@ -48,6 +48,12 @@
                 <image class="icon_right" src="/images/arrowright.png"></image>
             </view>
         </navigator>
+        <navigator url="/pages/booth/inspec/inspec">
+            <view class="tit_list bor1">
+                <label class="tit"><text class="tittext">巡检统计</text></label>
+                <image class="icon_right" src="/images/arrowright.png"></image>
+            </view>
+        </navigator>
         <navigator url="/pages/time-over/time-over">
             <view class="tit_list bor1">
                 <label class="tit"><text class="tittext">超时布撤展</text></label>

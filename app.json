@@ -53,6 +53,8 @@
     "pages/notice/add/index",
     "pages/booth/booth-info/booth-info",
     "pages/booth/detail/detail",
+    "pages/booth/inspec/inspec",
+    "pages/booth/inspec-detail/inspec-detail",
     "pages/time-over/time-over",
     "pages/time-over/detail/detail"
   ],

@@ -1,0 +1,30 @@
+<view class="page-booth-inspec">
+    <view class="s-tab">
+        <view class="s-tab-item {{type == '1' ?'active': ''}}" data-type="1" bindtap="check_tab">光地展位：{{count1}}个</view>
+        <view class="s-tab-item {{type == '2' ?'active': ''}}" data-type="2" bindtap="check_tab">标摊展位：{{count2}}个</view>
+    </view>
+    <view class="content">        
+        <view class="">
+            <view class="table" >
+                <view class="th">
+                    <view class="td flex">巡检项目</view>
+                    <view class="td"><image class="icon" src="/images/icon_clock.png"></image></view>
+                    <view class="td"><image class="icon" src="/images/icon_error.png"></image></view>
+                    <view class="td"><image class="icon" src="/images/icon_success.png"></image></view>
+                </view>
+                <view class="tr"
+                    wx:for="{{list}}"
+                    wx:key="index">
+                    <view class="td flex">{{index}}</view>
+                    <view class="td" data-title="{{index}}" data-type="1" data-info="{{item[1]}}" bindtap="go_list">{{item[1].count}}</view>
+                    <view class="td" data-title="{{index}}" data-type="2" data-info="{{item[2]}}" bindtap="go_list">{{item[2].count}}</view>
+                    <view class="td" data-title="{{index}}" data-type="3" data-info="{{item[3]}}" bindtap="go_list">{{item[3].count}}</view>
+                </view>
+                
+            </view>
+            <view wx:if="{{list_keys.length == 0}}" class="no_data">
+                暂无数据
+            </view>
+        </view>
+    </view>
+</view>

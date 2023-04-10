@@ -7,7 +7,7 @@
         </navigator>
     </view>
     <view class="content">
-        <view class="s-form">
+        <view class="s-form" style="padding:8px">
             <view class="form-item">
                 <view class="s-select flex-fill" bindtap="show_picker_zg">
                     <input class="text" value="{{value_zg}}" placeholder="展馆"  disabled="{{true}}"/>
@@ -21,28 +21,55 @@
             <view class="form-item">
                 <input class="s-input" value="{{value_zs}}" bindinput="input_change" bindconfirm="show_picker_zs" confirm-type="search" placeholder="展商"/>
             </view>
-            <view class="form-item" wx:if="{{detail.czs_type}}" style="margin-bottom: 10px;">
-                <text class="s-text">{{detail.czs_type=='1'?'光地':'标摊'}} {{detail.proportion}}㎡</text>
-                <image bindtap="show_msg" class="icon" src="/images/icon_tip.png" mode="aspectFit" style="width:20px;height:20px; padding: 10px 0 10px 20px;"></image>
+        </view>
+        <view class="booth-box" wx:if="{{detail.czs_type}}">
+            <text class="s-text">{{detail.czs_type=='1'?'光地':'标摊'}} <text class="font">{{detail.proportion}}㎡</text></text>
+            <image bindtap="show_msg" class="icon" src="/images/icon_tip.png" mode="aspectFit" style="width:20px;height:20px; padding: 10px 0 10px 20px;"></image>
+        </view>
+        
+        <view class="s-tab">
+            <view class="s-tab-item {{list_type == '1' ?'active': ''}}" data-type="1" bindtap="check_tab">图表资料</view>
+            <view class="s-tab-item {{list_type == '2' ?'active': ''}}" data-type="2" bindtap="check_tab">搭建巡检</view>
+        </view>
+        <view class="" wx:if="{{value_zw && list_type == '1'}}" >
+            <view class="ul" wx:if="{{detail.data && detail.data.length}}">
+                <view class="li"
+                    wx:for="{{detail.data}}"
+                    wx:key="index"
+                    bindtap="go_detail"
+                    data-info="{{item}}">
+                    <view class="text">{{item.liao_name}}</view>
+                    <image class="icon" src="/images/arrowright.png"></image>
+                </view>
+                
+            </view>
+            <view wx:else class="no_data">
+                暂无数据
             </view>
         </view>
-        <view class="ul" wx:if="{{detail.data}}">
-            <view class="li"
-                wx:for="{{detail.data}}"
-                wx:key="index"
-                bindtap="go_detail"
-                data-info="{{item}}">
-                <view class="text">{{item.liao_name}}</view>
-                <image class="icon" src="/images/arrowright.png"></image>
+        <view class="" wx:if="{{value_zw && list_type == '2'}}">
+            <view class="ul2" wx:if="{{list_inspec.length}}">
+                <view class="li"
+                    wx:for="{{list_inspec}}"
+                    wx:key="index">
+                    <view class="img-box" data-info="{{item}}" bindtap="set_status_3">
+                        <image class="img" src="/images/icon_error{{item.status == '3'?'':'_0'}}.png"></image>
+                    </view>
+                    <view class="img-box" data-info="{{item}}" bindtap="set_status_2">
+                        <image class="img" src="/images/icon_success{{item.status == '2'?'':'_0'}}.png"></image>
+                    </view>
+                    <view class="text">{{item.name}}</view>
+                </view>
+                
             </view>
-            
+            <view wx:else class="no_data">
+                暂无数据
+            </view>
         </view>
         <view wx:if="{{!value_zw}}" class="no_data">
             请选定展位
         </view>
-        <view wx:elif="{{detail.data && !detail.data.length}}" class="no_data">
-            暂无数据
-        </view>
+        
         
     </view>
 </view>
@@ -112,7 +139,7 @@
 
     <view class="msg-box" wx:if="{{msg_show}}">
         <view class="p2">
-            <view class="p3">展位信息</view>
+            <!-- <view class="p3">展位信息</view> -->
             <view class="p4">{{detail.czs_zguan}} {{detail.czs_number}}   {{detail.czs_type=='1'?'光地':'标摊'}} {{detail.proportion}}㎡</view>
         </view>
         <view class="p2">

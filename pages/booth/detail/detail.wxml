@@ -36,7 +36,7 @@
     <!-- 展馆 -->
     <view class="msg-box">
         <view class="p2">
-            <view class="p3">展位信息</view>
+            <!-- <view class="p3">展位信息</view> -->
             <view class="p4">{{detail.czs_zguan}} {{detail.czs_number}}   {{detail.czs_type=='1'?'光地':'标摊'}} {{detail.proportion}}㎡</view>
         </view>
         <view class="p2">

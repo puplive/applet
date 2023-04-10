@@ -30,17 +30,55 @@ Page({
 
         detail:{
             // data:[]
-        }
+        },
+
+        list_type: '1',
+        list_inspec: []
     },
     // onShareAppMessage: function(){},
-    onLoad: function () {
+    onLoad: function(options) {
+        if(options.zwh){
+            this.setData({
+                value_zw: options.zwh,
+                list_type: '2'
+            })
+            
+            this.setData({
+                value_zw: options.zwh,
+                value_zs: '',
+                index_zs: [0],
+            })
+            this.getList({
+                value_zg: this.data.value_zg,
+                value_zw: options.zwh,
+                value_zs: this.data.value_zs
+            }, 'zw')
 
+            this.getDetail()
+        }
     },
     onShow: function () {
         this.setData({
             expo: app.globalData.expo
         })
         this.getList({}, 'all')
+    },
+    check_tab: function(e){
+        this.setData({
+            list_type: e.currentTarget.dataset.type
+        })
+    },
+    set_status_2: function(e){
+        let info = e.currentTarget.dataset.info
+        let status = info.status != '2'? '2': '1'
+
+        this.set_inspec(info.id, status)
+    },
+    set_status_3: function(e){
+        let info = e.currentTarget.dataset.info
+        let status = info.status != '3'? '3': '1'
+
+        this.set_inspec(info.id, status)
     },
     telPhone: function(e){
         wx.makePhoneCall({
@@ -292,6 +330,57 @@ Page({
                 that.setData({
                     detail: detail
                 })
+                that.get_zwh_inspec()
+            },
+            fail: function (err) {
+                console.log(err)
+            }
+        })
+    },
+
+    get_zwh_inspec: function () {
+
+        let that = this
+        wx.request({
+            url: url + '/worksite/inspection/get-zwh-inspec',
+            data: {
+                hui_id: this.data.expo.hui_id,
+                zwh: this.data.value_zw,
+                type: this.data.detail.czs_type,
+            },
+            success(data) {
+                let res = data.data,
+                    list_inspec = []
+                if(res.Code == 200){
+                    list_inspec = Object.values(res.data)
+                }
+                that.setData({
+                    list_inspec: list_inspec
+                })
+                
+            },
+            fail: function (err) {
+                console.log(err)
+            }
+        })
+    },
+    set_inspec: function (id, status) {
+
+        let that = this
+        wx.request({
+            url: url + '/worksite/inspection/inspe-operate',
+            data: {
+                inp_id: id,
+                hui_id: this.data.expo.hui_id,
+                zw_hao: this.data.value_zw,
+                status: status
+            },
+            dataType: 'json',
+            success(data) {
+                let res = data.data
+                if(res.Code == 200){
+                    that.get_zwh_inspec()
+                }
                 
             },
             fail: function (err) {
@@ -351,5 +440,6 @@ Page({
             picker_show_zs: true
         })
     },
+
     
 })

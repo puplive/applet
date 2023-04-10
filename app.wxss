@@ -40,6 +40,30 @@ page{background-color: #EBEEF5;}
   border: 1px solid #ECBB49;
   box-sizing: border-box;
 }
+/* tab */
+.s-tab{
+  display: flex;
+
+}
+.s-tab .s-tab-item{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 38px;
+  background: #FFFFFF;
+  border: 1px solid #CACACA;
+
+  font-size: 16px;
+  color: #303133;
+  cursor: pointer;
+}
+.s-tab .s-tab-item.active{
+  background-color: #ECBB49;
+  border-color: #ECBB49;
+  color: #fff;
+}
 /* select */
 .select-box{
   padding: 10px 8px;

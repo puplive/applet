@@ -8,7 +8,8 @@ App({
         userRole: '',
         expo: {},
         booth_info: {},
-        time_over_zw: {}
+        time_over_zw: {},
+        inspec_detail: {}
     },
     onLaunch: function () {
         let that = this

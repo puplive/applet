@@ -54,6 +54,6 @@
     font-size: 24px;
     color: #303133;
     line-height: 22px;
-    margin-top: 24px;
+    /* margin-top: 24px; */
 }
 
