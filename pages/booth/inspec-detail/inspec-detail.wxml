@@ -2,8 +2,8 @@
     <view class="msg">
         <text class="title">{{detail.title}}</text>：
         <image wx:if="{{detail.type == '1'}}" class="icon" src="/images/icon_clock.png" mode="aspectFit" ></image>
-        <image wx:if="{{detail.type == '2'}}" class="icon" src="/images/icon_error.png" mode="aspectFit" ></image>
-        <image wx:if="{{detail.type == '3'}}" class="icon" src="/images/icon_success.png" mode="aspectFit" ></image>
+        <image wx:if="{{detail.type == '3'}}" class="icon" src="/images/icon_error.png" mode="aspectFit" ></image>
+        <image wx:if="{{detail.type == '2'}}" class="icon" src="/images/icon_success.png" mode="aspectFit" ></image>
         <text class="num">{{detail.info.count}}</text>
     </view>
     <view class="s-form" style="padding:0 8px">
