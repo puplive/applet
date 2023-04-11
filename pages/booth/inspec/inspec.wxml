@@ -17,8 +17,8 @@
                     wx:key="index">
                     <view class="td flex">{{index}}</view>
                     <view class="td" data-title="{{index}}" data-type="1" data-info="{{item[1]}}" bindtap="go_list">{{item[1].count}}</view>
-                    <view class="td" data-title="{{index}}" data-type="3" data-info="{{item[3]}}" bindtap="go_list">{{item[2].count}}</view>
-                    <view class="td" data-title="{{index}}" data-type="2" data-info="{{item[2]}}" bindtap="go_list">{{item[3].count}}</view>
+                    <view class="td" data-title="{{index}}" data-type="3" data-info="{{item[3]}}" bindtap="go_list">{{item[3].count}}</view>
+                    <view class="td" data-title="{{index}}" data-type="2" data-info="{{item[2]}}" bindtap="go_list">{{item[2].count}}</view>
                 </view>
                 
             </view>
