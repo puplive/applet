@@ -37,6 +37,7 @@
                 bindtap="go_detail"
                 data-item="{{item}}">
                 <view class="text">{{item.number_code}}</view>
+                <view class="time" wx:if="{{value_time}}">{{item.goods_nums}}小时</view>
                 <image class="icon" src="/images/arrowright.png"></image>
             </view>
         </view>

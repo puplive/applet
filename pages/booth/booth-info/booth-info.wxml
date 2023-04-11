@@ -22,9 +22,9 @@
                 <input class="s-input" value="{{value_zs}}" bindinput="input_change" bindconfirm="show_picker_zs" confirm-type="search" placeholder="展商"/>
             </view>
         </view>
-        <view class="booth-box" wx:if="{{detail.czs_type}}">
+        <view class="booth-box" wx:if="{{detail.czs_type}}" bindtap="show_msg">
             <text class="s-text">{{detail.czs_type=='1'?'光地':'标摊'}} <text class="font">{{detail.proportion}}㎡</text></text>
-            <image bindtap="show_msg" class="icon" src="/images/icon_tip.png" mode="aspectFit" style="width:20px;height:20px; padding: 10px 0 10px 20px;"></image>
+            <image class="icon" src="/images/icon_tip.png" mode="aspectFit" style="width:20px;height:20px; padding: 10px 0 10px 20px;"></image>
         </view>
         
         <view class="s-tab">

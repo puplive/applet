@@ -17,14 +17,13 @@ Page({
         this.setData({
             expo: app.globalData.expo
         })
-        this.getList('1')
-        this.getList('2')
+        this.getList()
     },
     check_tab: function(e){
         this.setData({
             type: e.currentTarget.dataset.type
         })
-        this.getList(this.data.type)
+        this.getList()
     },
     
     go_list: function(e){
@@ -40,39 +39,34 @@ Page({
         })
     },
     
-    getList: function (type) {
+    getList: function () {
         let that = this
         wx.request({
             url: url + '/worksite/inspection/get-inspe-total',
             data: {
                 hui_id: this.data.expo.hui_id,
-                type: type,
+                type: this.data.type,
             },
             success(data) {
                 let res = data.data,
                     list = {},
                     list_keys = [],
-                    count = 0
+                    count1 = 0,
+                    count2 = 0
                 if(res.Code == 200){
                     list = res.data.data
                     list_keys = Object.keys(list)
-                    count = res.data.count
+                    count1 = res.data.count.guang
+                    count2 = res.data.count.biao
                 }
-                if(that.data.type == type){
-                    that.setData({
-                        list: list,
-                        list_keys: list_keys
-                    })
-                }
-                if(type == '1'){
-                    that.setData({
-                        count1: count
-                    })
-                }else{
-                    that.setData({
-                        count2: count
-                    })
-                }
+
+                that.setData({
+                    list: list,
+                    list_keys: list_keys,
+                    count1: count1,
+                    count2: count2
+                })
+                
                 
             },
             fail: function (err) {

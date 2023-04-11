@@ -7,7 +7,7 @@
         </navigator>
     </view>
     <view class="content">
-        <view class="form-item">
+        <view class="form-item" bindtap="show_msg">
             <text class="s-text">{{detail.czs_zguan}} {{detail.czs_number}}   {{detail.czs_type=='1'?'光地':'标摊'}} {{detail.proportion}}㎡</text>
             <image bindtap="show_msg" class="icon" src="/images/icon_tip.png" mode="aspectFit" style="width:20px;height:20px;padding: 10px 0 10px 20px;"></image>
         </view>
