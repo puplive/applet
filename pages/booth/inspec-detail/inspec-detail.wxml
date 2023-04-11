@@ -8,15 +8,18 @@
     </view>
     <view class="s-form" style="padding:0 8px">
         <view class="form-item">
-            <input class="s-input" value="{{zwh}}" bindinput="input_change" placeholder="展位号"/>
+            <view class="s-select" bindtap="show_picker_zg">
+                <input class="text" value="{{value_zg}}" placeholder="展馆号"  disabled="{{true}}"/>
+                <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
+            </view>
         </view>
     </view>
     <view class="content">     
         <view class="ul" >
-            <navigator class="li" open-type="redirect" url="/pages/booth/booth-info/booth-info?zwh={{item}}"
+            <navigator class="li" open-type="redirect" url="/pages/booth/booth-info/booth-info?zwh={{item.zw_hao}}"
                 wx:for="{{detail.info.zwh}}"
                 wx:key="index">
-                <text class="text">{{item}}</text>
+                <text class="text">{{item.zw_hao}}</text>
                 <image class="icon" src="/images/icon_edit2.png" mode="aspectFit" ></image>
             </navigator>
             
@@ -26,3 +29,24 @@
         </view>
     </view>
 </view>
+
+<page-container
+    show="{{picker_show}}"
+    bind:leave="close_picker">
+    <!-- 展馆 -->
+    <view class="s-picker">
+        <picker-view 
+            indicator-style="height: 50px;" 
+            style="width: 100%; height: 300px;"
+            value="{{index_zg}}"
+            bindchange="change_zg">
+            <picker-view-column>
+                <view wx:for="{{list_zg}}" wx:key="index" style="line-height: 50px; text-align: center; font-size: 16px;">{{item}}</view>
+            </picker-view-column>
+        </picker-view>
+        <view class="picker-btn-bar">
+            <button class="picker-btn btn2" bindtap="close_picker">取消</button>
+            <button class="picker-btn btn1" bindtap="select_zg">确定</button>
+        </view>
+    </view>
+</page-container>
