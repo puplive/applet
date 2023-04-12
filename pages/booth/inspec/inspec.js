@@ -30,7 +30,7 @@ Page({
         let _e = e.currentTarget.dataset
 
         app.globalData.inspec_detail = {
-            info: _e.info,
+            status: _e.status,
             title: _e.title,
             type: _e.type
         }

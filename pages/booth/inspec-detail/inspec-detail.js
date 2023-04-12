@@ -4,9 +4,10 @@ Page({
     data: {
         expo: app.globalData.expo,
         detail: {},
+        info: {zwh:[], count:0},
         value_zg: '',
         picker_show: false,
-        list_zg: [],
+        list_zg: ['无'],
         index_zg: [0],
     },
     // onShareAppMessage: function(){},
@@ -18,31 +19,51 @@ Page({
             expo: app.globalData.expo,
             detail: app.globalData.inspec_detail
         })
-        let list_zg = []
-        this.data.detail.forEach(element => {
-            let zg = element.zg_hao
-            if(list_zg.indexOf(zg)<0){
-                list_zg.push(zg)
+        this.getList()
+        
+    },
+    getList: function () {
+        let that = this
+        wx.request({
+            url: url + '/worksite/inspection/get-inspe-total',
+            data: {
+                hui_id: this.data.expo.hui_id,
+                type: this.data.detail.type,
+            },
+            success(data) {
+                let res = data.data;
+                if(res.Code == 200){
+                    let list = res.data.data
+                    that.setData({
+                        info: list[that.data.detail.title][that.data.detail.status]
+                    })
+
+                    let list_zg = ['无']
+                    that.data.info.zwh.forEach(element => {
+                        let zg = element.zg_hao
+                        if(list_zg.indexOf(zg)<0){
+                            list_zg.push(zg)
+                        }
+                    });
+
+                    that.setData({
+                        list_zg: list_zg
+                    })
+                }
+                
+                
+            },
+            fail: function (err) {
+                console.log(err)
             }
-        });
+        })
+    },
+
+    show_picker_zg: function(){
         this.setData({
-            list_zg: list_zg
+            picker_show: true
         })
     },
-    
-    go_edit: function(e){
-        let _e = e.currentTarget.dataset
-
-        app.globalData.inspec_detail = {
-            info: _e.info,
-            title: _e.title,
-            type: _e.type
-        }
-        wx.navigateTo({
-            url: '/pages/booth/inspec_detail/inspec_detail'
-        })
-    },
-
     change_zg: function(e){
         this.setData({
             index_zg: e.detail.value
@@ -57,16 +78,7 @@ Page({
             if(value_zg != _this.data.value_zg){
                 _this.setData({
                     value_zg: value_zg,
-                    // value_zw: '',
-                    // value_zs: '',
-                    // index_zw: [0],
-                    // index_zs: [0],
                 })
-                _this.getList({
-                    value_zg: value_zg,
-                    // value_zw: _this.data.value_zw,
-                    // value_zs: _this.data.value_zs
-                }, 'zg')
             }
             _this.close_picker()
         }, 400);

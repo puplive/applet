@@ -1,14 +1,14 @@
 <view class="page-inspec-detail">
     <view class="msg">
         <text class="title">{{detail.title}}</text>：
-        <image wx:if="{{detail.type == '1'}}" class="icon" src="/images/icon_clock.png" mode="aspectFit" ></image>
-        <image wx:if="{{detail.type == '3'}}" class="icon" src="/images/icon_error.png" mode="aspectFit" ></image>
-        <image wx:if="{{detail.type == '2'}}" class="icon" src="/images/icon_success.png" mode="aspectFit" ></image>
-        <text class="num type_{{detail.type}}">{{detail.info.count}}</text>
+        <image wx:if="{{detail.status == '1'}}" class="icon" src="/images/icon_clock.png" mode="aspectFit" ></image>
+        <image wx:if="{{detail.status == '3'}}" class="icon" src="/images/icon_error.png" mode="aspectFit" ></image>
+        <image wx:if="{{detail.status == '2'}}" class="icon" src="/images/icon_success.png" mode="aspectFit" ></image>
+        <text class="num type_{{detail.status}}">{{info.count}}</text>
     </view>
     <view class="s-form" style="padding:0 8px">
         <view class="form-item">
-            <view class="s-select" bindtap="show_picker_zg">
+            <view class="s-select flex-fill" bindtap="show_picker_zg">
                 <input class="text" value="{{value_zg}}" placeholder="展馆号"  disabled="{{true}}"/>
                 <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
             </view>
@@ -16,15 +16,18 @@
     </view>
     <view class="content">     
         <view class="ul" >
-            <navigator class="li" open-type="redirect" url="/pages/booth/booth-info/booth-info?zwh={{item.zw_hao}}"
-                wx:for="{{detail.info.zwh}}"
-                wx:key="index">
+            <navigator 
+                class="li"
+                url="/pages/booth/booth-info/booth-info?zwh={{item.zw_hao}}"
+                wx:for="{{info.zwh}}"
+                wx:key="index"
+                wx:if="{{item.zg_hao == value_zg || value_zg == ''}}">
                 <text class="text">{{item.zw_hao}}</text>
                 <image class="icon" src="/images/icon_edit2.png" mode="aspectFit" ></image>
             </navigator>
             
         </view>
-        <view wx:if="{{detail.info.zwh.length == 0}}" class="no_data">
+        <view wx:if="{{info.zwh.length == 0}}" class="no_data">
             暂无数据
         </view>
     </view>

@@ -381,6 +381,11 @@ Page({
                 if(res.Code == 200){
                     that.get_zwh_inspec()
                 }
+                wx.showToast({
+                    title: res.msg,
+                    icon: 'none',
+                    duration: 2000
+                })
                 
             },
             fail: function (err) {
