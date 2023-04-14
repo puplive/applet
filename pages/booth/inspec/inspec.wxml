@@ -8,17 +8,17 @@
             <view class="table" >
                 <view class="th">
                     <view class="td flex">巡检项目</view>
-                    <view class="td"><image class="icon" src="/images/icon_clock.png"></image></view>
-                    <view class="td"><image class="icon" src="/images/icon_error.png"></image></view>
                     <view class="td"><image class="icon" src="/images/icon_success.png"></image></view>
+                    <view class="td"><image class="icon" src="/images/icon_error.png"></image></view>
+                    <view class="td"><image class="icon" src="/images/icon_clock.png"></image></view>
                 </view>
                 <view class="tr"
                     wx:for="{{list}}"
                     wx:key="index">
                     <view class="td flex">{{index}}</view>
-                    <view class="td" data-title="{{index}}" data-status="1" data-type="{{type}}" bindtap="go_list">{{item[1].count}}</view>
-                    <view class="td" data-title="{{index}}" data-status="3" data-type="{{type}}" bindtap="go_list">{{item[3].count}}</view>
                     <view class="td" data-title="{{index}}" data-status="2" data-type="{{type}}" bindtap="go_list">{{item[2].count}}</view>
+                    <view class="td" data-title="{{index}}" data-status="3" data-type="{{type}}" bindtap="go_list">{{item[3].count}}</view>
+                    <view class="td" data-title="{{index}}" data-status="1" data-type="{{type}}" bindtap="go_list">{{item[1].count}}</view>
                 </view>
                 
             </view>

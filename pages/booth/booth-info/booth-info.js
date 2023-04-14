@@ -40,13 +40,9 @@ Page({
         if(options.zwh){
             this.setData({
                 value_zw: options.zwh,
-                list_type: '2'
-            })
-            
-            this.setData({
-                value_zw: options.zwh,
                 value_zs: '',
                 index_zs: [0],
+                list_type: '2'
             })
             this.getList({
                 value_zg: this.data.value_zg,
@@ -55,6 +51,10 @@ Page({
             }, 'zw')
 
             this.getDetail()
+        }else if(options.type){
+            this.setData({
+                list_type: options.type
+            })
         }
     },
     onShow: function () {
@@ -345,7 +345,7 @@ Page({
             url: url + '/worksite/inspection/get-zwh-inspec',
             data: {
                 hui_id: this.data.expo.hui_id,
-                zwh: this.data.value_zw,
+                czs_id: this.data.detail.czs_id,
                 type: this.data.detail.czs_type,
             },
             success(data) {
@@ -372,7 +372,7 @@ Page({
             data: {
                 inp_id: id,
                 hui_id: this.data.expo.hui_id,
-                zw_hao: this.data.value_zw,
+                czs_id: this.data.detail.czs_id,
                 status: status
             },
             dataType: 'json',
