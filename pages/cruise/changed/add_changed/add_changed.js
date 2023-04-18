@@ -13,6 +13,7 @@ Page({
     zwh_index:0,  
     zwhArray:[],//展位号
     zw_hao:'',
+    zs_name: '',
     change_index:0,
     change_type:[],//整改方式
     punish_index:0,
@@ -50,8 +51,10 @@ Page({
           }
           that.setData({
             zwhArray:zwhitems,
+            zwh_index: 0,
             zw_hao:zwhitems[0],  //展馆号默认值
           })
+          that.get_zs()
         } else {
         }
       },
@@ -66,6 +69,7 @@ Page({
     this.setData({
       zw_hao:e.detail.value
     })
+    this.get_zs()
   },
   // 展位号
   bindZwh:function(e){
@@ -73,7 +77,37 @@ Page({
       zw_hao: this.data.zwhArray[e.detail.value],
       zwh_index:e.detail.value,
     })
+    this.get_zs()
     console.log(11,this.data.zw_hao);
+  },
+  // 展商名称
+  get_zs: function(){
+    let that = this
+    wx.request({
+      url: url + 'worksite/rectify/czs-nickname',
+      data: {
+        projectId:sendMessageContent.projectId,
+        zwh: that.data.zw_hao
+      },
+      method: 'GET',
+      success(res) {
+        let zs_name = ''
+        if (res.data.Code == 200) {
+          zs_name = res.data.data.czs_nickname
+          
+        } else {
+        }
+        that.setData({
+          zs_name: zs_name
+        })
+      },
+      fail: function (err) {
+        that.setData({
+          zs_name: ''
+        })
+        // 服务异常
+      }
+    })
   },
   // 整改类型填写
   bindChangetype:function(e){
@@ -338,6 +372,7 @@ descInput: function (e) {
                   zwhArray:zwhitems,
                   zw_hao:zwhitems[0],  //展馆号默认值
                 })
+                that.get_zs()
               } else {
 
               }

@@ -15,6 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.hideHomeButton()
     var that = this;
     wx.request({
       url: url + 'worksite/default/c-zhui',   //验证是否认证过

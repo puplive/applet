@@ -19,6 +19,10 @@
     </picker>
   </view>
   <view class='section col'>
+    <label class='col-4'>展商名称</label>
+    <input class='col-6' name='zs_name' value="{{zs_name}}" />
+  </view>
+  <view class='section col'>
     <label class='col-4'>整改类型</label>
     <input class='col-6' name='change_typename' value="{{change_type[change_index].name}}" bindblur ="bindChangetype" />
     <picker class="picker col-2  hangye_text" mode="selector" value="{{change_index}}" range-key="{{'name'}}" range="{{change_type}}" bindchange="bindChange" data-id="{{change_type[change_index].id}}">
@@ -62,7 +66,7 @@
     <view class="textarea-wrp"><textarea placeholder="请输入" maxlength="200" bindinput ="descInput" value='{{desc}}'/> <text class="textlimit">0/200</text></view>
   </view>
   <view class="upload_img clearfix">
-    <view class=" img_con" wx:for="{{tempFilePaths}}"  wx:for-index="key">
+    <view class=" img_con" wx:for="{{tempFilePaths}}"  wx:for-index="key" wx:key="index">
       <image class='imgwh' src='{{item}}' mode="aspectFit"></image>
       <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
         <image src='../../../../images/imgdel.svg'></image>

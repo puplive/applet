@@ -19,22 +19,32 @@
 }
 
 .ul .li .text{
-    font-size: 14px;
+    font-size: 16px;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
     color: #000000;
+    line-height: 20px;   
+}
+.ul .li .text2{
+    font-size: 15px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #666666;
     line-height: 20px;
+    margin-left: 8px;
+    text-align: right;
 
     flex: 1;
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
+    
 }
 .ul .li .time{
     font-size: 14px;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
-    color: #000000;
+    color: #666666;
     line-height: 20px;
     margin-left: 8px;
 }

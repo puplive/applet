@@ -11,7 +11,10 @@ Page({
         notBottom: '',
         expo: {},
     },
+    onReady: function () {
+      },
     onLoad: function (options) {
+        wx.hideHomeButton()
         let isPhone = app.globalData.isIphoneX;
         if (isPhone) {
             this.setData({
@@ -23,6 +26,7 @@ Page({
         // console.log(2,this.data.isIphoneX)
     },
     onShow: function () {
+        wx.hideHomeButton()
         this.setData({
             expo: app.globalData.expo
         })

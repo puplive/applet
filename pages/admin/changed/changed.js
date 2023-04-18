@@ -3,22 +3,18 @@ var url = app.globalData.url;
 var sendMessageContent = app.globalData.sendMessageContent;
 var call = require("../../../utils/request.js")
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     changeArray:[],  //整改列表
     containButtom:'',
     footBottom:'',
     zwh:'',
-    isPhoneX: false
+    isPhoneX: false,
+    openId: wx.getStorageSync('openId'),
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */ 
+  onReady: function () {
+  }, 
   onLoad: function (options) {
+    wx.hideHomeButton()
     let isPhone = app.globalData.isIphoneX;
     if(isPhone){
       this.setData({
@@ -28,6 +24,41 @@ Page({
       })
     }
     app.editTabBar1();
+  },
+  onShow: function () {
+    this.setData({
+      openId: wx.getStorageSync('openId'),
+    })
+    this.getList()
+  },
+  getList: function(){
+    var that = this;
+    wx.request({
+      url: url + 'worksite/rectify/rectifylist',
+      data: {
+        projectId:sendMessageContent.projectId,
+        OpenId:that.data.openId,
+        zwh:that.data.zwh
+      },
+      method: 'GET',
+      success(res) {
+        var list = res.data.data; 
+        for (var i in list) { 
+          list[i] = {
+            list: list[i]  //整改详细列表
+          }
+        }
+        if (res.data.Code == 200) {
+          that.setData({
+            changeArray: res.data.data
+          })
+          console.log(res.data.data)
+        }
+      },
+      fail: function (err) {
+        // 服务异常
+      }
+    })
   },
   //整改详情跳转
   zheng_detail:function(e){
@@ -60,13 +91,6 @@ Page({
     }
    
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
     // 点击键盘上的搜索
     bindconfirm: function (e) {
       var that = this;
@@ -76,72 +100,8 @@ Page({
       that.setData({
         zwh: discountName
       })
-      this.onShow();
+      this.getList();
     },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    var openId = wx.getStorageSync('openId')
-    var that = this;
-    wx.request({
-      url: url + 'worksite/rectify/rectifylist',
-      data: {projectId:sendMessageContent.projectId,OpenId:openId,zwh:that.data.zwh},
-      method: 'GET',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        var list = res.data.data; 
-        for (var i in list) { 
-          list[i] = {
-            list: list[i]  //整改详细列表
-          }
-        }
-        if (res.data.Code == 200) {
-          that.setData({
-            changeArray: res.data.data
-          })
-          console.log(res.data.data)
-        }
-      },
-      fail: function (err) {
-        // 服务异常
-      }
-    })
-  },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

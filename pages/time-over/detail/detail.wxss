@@ -50,6 +50,12 @@
     color: #E54C4A;
     margin-right: 16px;
 }
+.page-detail .zw .p3 {
+  padding-left: 28px;
+  font-size: 14px;
+  color: #000000;
+  margin-top: 3px;
+}
 
 .ul .li {
     padding: 8px;

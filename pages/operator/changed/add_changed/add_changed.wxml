@@ -18,6 +18,10 @@
     </picker>
   </view>
   <view class='section col'>
+    <label class='col-4'>展商名称</label>
+    <input class='col-6' name='zs_name' value="{{zs_name}}" />
+  </view>
+  <view class='section col'>
     <label class='col-4'>整改类型</label>
     <!-- <input class='col-8 hangye_text' placeholder="请输入您的项目名称" value='{{pro_name}}' bindinput ="proName"/> -->
     <picker class="picker col-8  hangye_text" mode="selector" range="{{change_type}}" value="{{change_index}}" bindchange="bindChange">
