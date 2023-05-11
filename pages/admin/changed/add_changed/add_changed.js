@@ -14,6 +14,9 @@ Page({
     zwhArray:[],//展位号
     zw_hao:'',
     zs_name: '',
+    djs_nickname: '',
+    djs_username: '',
+    djs_tel: '',
     change_index:0,
     change_type:[],//整改方式
     punish_index:0,
@@ -211,6 +214,12 @@ descInput: function (e) {
     desc: e.detail.value
   })
 },
+input_change: function (e) {
+  let key = e.currentTarget.dataset.name
+  this.setData({
+    [key]: e.detail.value
+  })
+},
 
   // 提交
   addChangedBtn:function(){
@@ -267,7 +276,7 @@ descInput: function (e) {
     var content = that.data.desc;
     var rectify_imgs =that.data.imgres;
     var lock = that.data.lock;
-    console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',startime,endtime,'图',rectify_imgs);
+    // console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',startime,endtime,'图',rectify_imgs);
     if(endtime<=startime){
       wx.showToast({
         title: '请重新选择结束时间',
@@ -287,7 +296,21 @@ descInput: function (e) {
       })
       wx.request({
         url: url + 'worksite/rectify/rectify-add',
-        data: { OpenId: wx.getStorageSync('openId'),projectId:sendMessageContent.projectId,z_guan:z_guan,zw_hao:zw_hao,rectify_type:rectify_type,punish_type:punish_type,rectify_time1: startime,rectify_time2:endtime,content:content,rectify_imgs:rectify_imgs},
+        data: { 
+          OpenId: wx.getStorageSync('openId'),
+          projectId:sendMessageContent.projectId,
+          z_guan:z_guan,
+          zw_hao:zw_hao,
+          rectify_type:rectify_type,
+          punish_type:punish_type,
+          rectify_time1: startime,
+          rectify_time2:endtime,
+          content:content,
+          rectify_imgs:rectify_imgs,
+          djs_nickname: that.data.djs_nickname,
+          djs_username: that.data.djs_username,
+          djs_tel: that.data.djs_tel
+        },
         header: {
           'content-type': 'application/x-www-form-urlencoded' // 默认值
         },

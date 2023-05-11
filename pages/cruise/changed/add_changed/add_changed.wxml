@@ -23,6 +23,18 @@
     <input class='col-6' name='zs_name' value="{{zs_name}}" />
   </view>
   <view class='section col'>
+    <label class='col-4'>搭建商名称</label>
+    <input class='col-6' name='djs_nickname' value="{{djs_nickname}}" bindinput ="input_change" data-name="djs_nickname"/>
+  </view>
+  <view class='section col'>
+    <label class='col-4'>搭建商联系人</label>
+    <input class='col-6' name='djs_username' value="{{djs_username}}"  bindinput ="input_change" data-name="djs_username"/>
+  </view>
+  <view class='section col'>
+    <label class='col-4'>搭建商联系电话</label>
+    <input class='col-6' name='djs_tel' value="{{djs_tel}}"  bindinput ="input_change" data-name="djs_tel"/>
+  </view>
+  <view class='section col'>
     <label class='col-4'>整改类型</label>
     <input class='col-6' name='change_typename' value="{{change_type[change_index].name}}" bindblur ="bindChangetype" />
     <picker class="picker col-2  hangye_text" mode="selector" value="{{change_index}}" range-key="{{'name'}}" range="{{change_type}}" bindchange="bindChange" data-id="{{change_type[change_index].id}}">
