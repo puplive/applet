@@ -3,9 +3,6 @@ var url = app.globalData.url;
 var sendMessageContent = app.globalData.sendMessageContent;
 var call = require("../../../../utils/request.js")
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     zg_index:0,
     zgArray:[],//展馆号
@@ -30,6 +27,14 @@ Page({
     imgres: [],//图片路径
     tempFilePaths:[], //临时路径
     lock: false,//验证只能提交一次
+  },
+  onShow: function (e) {
+    this.setData({
+      lock:false,
+      imgres:[],
+      img:[],
+      // tempFilePaths: []
+    })
   },
   // 展馆号
   bindProjectChange: function(e){
@@ -58,6 +63,7 @@ Page({
             zw_hao:zwhitems[0],  //展馆号默认值
           })
           that.get_zs()
+          that.get_djs()
         } else {
         }
       },
@@ -73,6 +79,7 @@ Page({
       zw_hao:e.detail.value
     })
     this.get_zs()
+    this.get_djs()
   },
   // 展位号
   bindZwh:function(e){
@@ -81,6 +88,7 @@ Page({
       zwh_index:e.detail.value,
     })
     this.get_zs()
+    this.get_djs()
     console.log(11,this.data.zw_hao);
   },
   // 展商名称
@@ -109,6 +117,27 @@ Page({
           zs_name: ''
         })
         // 服务异常
+      }
+    })
+  },
+  get_djs: function(){
+    let that = this
+    wx.request({
+      url: url + 'worksite/rectify/get-djs-info',
+      data: {
+        projectId:sendMessageContent.projectId,
+        zwh: that.data.zw_hao
+      },
+      method: 'GET',
+      success(res) {
+        let data = res.data.data
+        that.setData({
+          djs_nickname: data.djs_nickname || '',
+          djs_username: data.djs_username || '',
+          djs_tel: data.djs_tel || '',
+        })
+      },
+      fail: function (err) {
       }
     })
   },
@@ -349,16 +378,9 @@ descInput: function (e) {
       })
     }
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
     var that = this;
     var openId = wx.getStorageSync('openId');
@@ -395,6 +417,7 @@ descInput: function (e) {
                   zw_hao:zwhitems[0],  //展馆号默认值
                 })
                 that.get_zs()
+                that.get_djs()
               } else {
 
               }
@@ -471,52 +494,12 @@ descInput: function (e) {
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function (e) {
-    this.setData({
-      lock:false,
-      imgres:[],
-      img:[],
-      // tempFilePaths: []
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onUnload: function () {
     wx.reLaunch({
       url: '../changed/changed',
     })
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
 
   }

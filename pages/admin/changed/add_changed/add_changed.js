@@ -58,6 +58,7 @@ Page({
             zw_hao:zwhitems[0],  //展馆号默认值
           })
           that.get_zs()
+          that.get_djs()
         } else {
         }
       },
@@ -72,6 +73,7 @@ Page({
       zw_hao:e.detail.value
     })
     this.get_zs()
+    this.get_djs()
   },
   // 展位号
   bindZwh:function(e){
@@ -80,6 +82,7 @@ Page({
       zwh_index:e.detail.value
     })
     this.get_zs()
+    this.get_djs()
   },
   // 展商名称
   get_zs: function(){
@@ -107,6 +110,27 @@ Page({
           zs_name: ''
         })
         // 服务异常
+      }
+    })
+  },
+  get_djs: function(){
+    let that = this
+    wx.request({
+      url: url + 'worksite/rectify/get-djs-info',
+      data: {
+        projectId:sendMessageContent.projectId,
+        zwh: that.data.zw_hao
+      },
+      method: 'GET',
+      success(res) {
+        let data = res.data.data
+        that.setData({
+          djs_nickname: data.djs_nickname || '',
+          djs_username: data.djs_username || '',
+          djs_tel: data.djs_tel || '',
+        })
+      },
+      fail: function (err) {
       }
     })
   },
@@ -398,6 +422,7 @@ input_change: function (e) {
                   zw_hao:zwhitems[0],  //展馆号默认值
                 })
                 that.get_zs()
+                that.get_djs()
               } else {
 
               }
