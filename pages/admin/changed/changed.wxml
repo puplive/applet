@@ -19,9 +19,10 @@
               <view class="list_li clearfix">
                 <view class="list_licon">
                   <view class="list_list clearfix"  wx:for-items="{{number.list.all}}" wx:for-index="key" wx:for-item="itemArr" wx:key="index">
-                    <text class="list_listname fl">{{itemArr.rectify_type}}</text>
-                    <text class="list_listnum fr">{{itemArr.apply_time}}</text>
-                    <text class="list_list_method fr">{{itemArr.punish_name}}</text>
+                    <text class="list_listname">{{itemArr.rectify_type}}</text>
+                    <text class="list_list_method">{{itemArr.punish_name}}</text>
+                    <text class="list_listnum">{{itemArr.status == '1'? '未处理': '已处理'}}</text>
+                    <!-- <text class="list_listnum">{{itemArr.apply_time}}</text> -->
                   </view>
                 </view>
               </view>

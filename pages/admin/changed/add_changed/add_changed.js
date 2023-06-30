@@ -351,10 +351,8 @@ input_change: function (e) {
                   lock:true,
                 })
                 setTimeout(function(){
-                  wx.navigateTo({
-                    url: '../changed',
-                  })
-              },2000);
+                  wx.navigateBack()
+                },2000);
               }
             })
           }else {

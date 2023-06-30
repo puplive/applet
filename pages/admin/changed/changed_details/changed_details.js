@@ -32,14 +32,25 @@ topic_preview: function(e){
 },
  //整改通知
  zheng_gai:function(e){
-  wx.redirectTo({
+  wx.navigateTo({
     url: "../add_changed/add_changed"
   });
 },
 //编辑
 topic_bainji:function(e){
-  wx.redirectTo({
+  wx.navigateTo({
     url: "../edit_changed/edit_changed?changeid="+e.target.dataset.id
+  });
+},
+
+chuli:function(e){
+  wx.navigateTo({
+    url: "../chuli/chuli?changeid="+e.target.dataset.id+'&type=chuli'
+  });
+},
+detail:function(e){
+  wx.redirectTo({
+    url: "../chuli/chuli?changeid="+e.target.dataset.id+'&type=detail'
   });
 },
   // 筛选处罚方式
@@ -228,7 +239,7 @@ topic_bainji:function(e){
           if(Object.keys(res.data.data).length==0){
             that.setData({
               accepArray_len:0,
-              changedetails:' ',
+              changedetails:[],
               z_guan:'',  //展馆号
             })
           }else{

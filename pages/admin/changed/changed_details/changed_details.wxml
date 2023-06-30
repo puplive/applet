@@ -7,7 +7,7 @@
   </view>
   <!-- 列表内容 -->
   <view class="list" wx:if="{{accepArray_len>0}}" >
-    <view class='list_con' wx:for-items="{{changedetails}}">
+    <view class='list_con' wx:for="{{changedetails}}" wx:key="index">
       <view class="list_li clearfix">
         <view class="list_licon fl">
           <view class="time">{{item.apply_time}}</view>
@@ -16,7 +16,7 @@
             <text>{{item.punish_name}}    </text><text>整改时限  {{item.rectify_time1}}-{{item.rectify_time2}}</text>
           </view>
           <view class="list_liconimg clearfix topic_answerImg" >
-            <view class="fl list_liconimg_img" wx:for="{{item.rectify_imgs}}" wx:for-item="img_item">
+            <view class="fl list_liconimg_img" wx:for="{{item.rectify_imgs}}" wx:for-item="img_item" wx:key="index">
               <image bindtap='topic_preview' data-list="{{item.rectify_imgs}}" data-url='{{host}}{{img_item}}' class='topic_answer_itemImg' src="{{host}}/{{img_item}}"></image>
             </view>
           </view>
@@ -24,12 +24,13 @@
         </view>
       </view>
       <view class="list_btn clearfix {{item.status==1? 'show':'hidden'}}">
-        <view class="list_btnli fr" bindtap="endBtn" data-id="{{item.id}}">完成</view>
+        <view class="list_btnli fr" bindtap="chuli" data-id="{{item.id}}">处理</view>
         <!-- <view class="list_btnli fr" bindtap="delBtn" data-id="{{item.id}}">删除</view> -->
         <view class="list_btnli edit_changed fr" bindtap="topic_bainji" data-id="{{item.id}}">编辑</view>
       </view> 
       <view class="list_btn clearfix {{item.status==2? 'show':'hidden'}}">
-          <view class="revoke_on fr">已完成</view>
+          <!-- <view class="revoke_on fr">已完成</view> -->
+          <view class="list_btnli fr" bindtap="detail" data-id="{{item.id}}">详情</view>
       </view>
     </view>
   </view>
@@ -51,7 +52,7 @@
   <view class="screen_con">
     <view class="screen_contit">处罚方式</view>
     <view class="screen_conli">
-     <text wx:for="{{punish_method}}"  wx:for-index="key"  wx:for-item="value"  data-screenpunishnum="{{key}}" bindtap='screenPunish' class="{{punishnum==key?'on':''}}">{{value.name}}</text>
+     <text wx:for="{{punish_method}}"  wx:for-index="key"  wx:for-item="value"  data-screenpunishnum="{{key}}" bindtap='screenPunish' class="{{punishnum==key?'on':''}}" wx:key="index">{{value.name}}</text>
     </view>
   </view>
   <view class="screen_con">

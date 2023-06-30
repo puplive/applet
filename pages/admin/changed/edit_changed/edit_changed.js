@@ -208,9 +208,10 @@ editChangedBtn:function(){
           mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
           success:function(){
             setTimeout(function(){
-              wx.navigateTo({
-                url: '../changed',
-              })
+              wx.navigateBack()
+              // wx.navigateTo({
+              //   url: '../changed',
+              // })
             },1000);
           }
         })

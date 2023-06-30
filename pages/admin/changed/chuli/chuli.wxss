@@ -1,0 +1,67 @@
+page{background-color: #fff;}
+.page{
+  /* margin: 0 0 120rpx; */
+  height: calc(100vh - 60px);
+  overflow: auto;
+}
+.li{
+  min-height: 30px;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.li .label{
+  width: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+.li .text{
+  flex: 1;
+}
+.li .input-box{
+  flex: 1;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+}
+.li .input-box .picker,
+.li .input-box .input{
+  height: 30px;
+  line-height: 30px;
+  padding: 0 5px;
+}
+.li .input-box textarea{
+  width: 100%;
+  padding: 5px;
+}
+.upload_img{
+  overflow: hidden;
+}
+.img_con{
+  margin-left: 2%;
+  margin-top: 30rpx;
+  margin-right: 56rpx;
+  width: 160rpx;
+  height: 160rpx;
+  border: 1px dashed rgba(0, 0, 0, .1);
+  float: left;
+  position: relative;
+}
+.img_con .imgwh{
+  width: 100%;
+  height:100%;
+}
+.img_con .defaultimg{
+  width: 50%;
+  height: 50%;
+  display: block;
+  margin: 25% auto;
+}
+/* 图片删除按钮 */
+.imgdel{position: absolute; top: -25rpx; right: -25rpx;}
+.imgdel image{width: 50rpx; height: 50rpx;}
+.foot_btn{width:100%;height:80rpx; padding: 20rpx 0;position: fixed; bottom: 0rpx;background-color: #fff;}
+.add_changed{width:96%;height:80rpx;line-height: 80rpx; background:rgba(236,187,73,1);border-radius:2px; color: #fff; text-align: center; margin-left: 2%;}
+

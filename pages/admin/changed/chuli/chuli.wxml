@@ -1,0 +1,68 @@
+<view class='page'> 
+  <view class='li' wx:if="{{type == 'detail'}}">
+    <label class='label'>展馆号</label>
+    <text class='text'>{{detail.z_guan}}</text>
+  </view>
+  <view class='li'>
+    <label class='label'>展位号</label>
+    <text class='text'>{{detail.zw_hao}}</text>
+  </view>
+  <view class='li' wx:if="{{type == 'detail'}}">
+    <label class='label'>整改类型</label>
+    <text class='text'>{{detail.rectify_type}}</text>
+  </view>
+  <view class='li' wx:if="{{type == 'detail'}}">
+    <label class='label'>处罚方式</label>
+    <text class='text'>{{detail.punish_type}}</text>
+  </view>
+  <view class='li' wx:if="{{type == 'detail'}}">
+    <label class='label'>整改时限</label>
+    <view class="text">{{detail.rectify_time1}} - {{detail.rectify_time2}}</view>
+  </view>
+  <view class='li' wx:if="{{type == 'detail'}}">
+    <label class='label'>详情描述</label>
+    <view class="text">{{detail.content}}</view>
+  </view>
+  <view class="upload_img" wx:if="{{type == 'detail'}}">
+    <view class=" img_con" wx:for="{{img_list}}" wx:key="index">
+      <image class='imgwh' src='{{host}}/{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+    </view>
+  </view>
+  <view class='li'>
+    <label class='label'>整改状态</label>
+    <view class="text" wx:if="{{type == 'detail'}}">{{zglx_list[zglx_index].name}}</view>
+    <view class='input-box' wx:if="{{type == 'chuli'}}">
+      <picker bindchange="zglx_change" value="{{zglx_index}}" range="{{zglx_list}}" range-key="name">
+        <view class="picker">{{zglx_list[zglx_index].name}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class='li' wx:if="{{detail.punish_type == '6'}}">
+    <label class='label'>处理结果</label>
+    <view class="text" wx:if="{{type == 'detail'}}">{{cljg_list[cljg_index].name}}</view>
+    <view class='input-box' wx:if="{{type == 'chuli'}}">
+      <picker bindchange="cljg_change" value="{{cljg_index}}" range="{{cljg_list}}" range-key="name">
+        <view class="picker">{{cljg_list[cljg_index].name}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class='li' wx:if="{{detail.punish_type == '6'}}">
+    <label class='label'>金额</label>
+    <view class="text" wx:if="{{type == 'detail'}}">{{detail.publish_amount}}</view>
+    <view class='input-box' wx:if="{{type == 'chuli'}}">
+      <input value="{{detail.publish_amount}}" class="input" placeholder="" bindinput="priceInput"/>
+    </view>
+  </view>
+  <view class='li'>
+    <label class='label'>备注</label>
+    <view class="text" wx:if="{{type == 'detail'}}">{{detail.publish_notes}}</view>
+    <view class='input-box' style="min-height: 60px;" wx:if="{{type == 'chuli'}}">
+      <textarea class="textarea" value="{{detail.publish_notes}}" auto-height placeholder="" bindinput="notesInput"/>
+    </view>
+  </view>
+  
+</view>
+<!-- 底部按钮 -->
+<view class="foot_btn" wx:if="{{type == 'chuli'}}">
+    <view class="add_changed" bindtap="sub">提交</view>
+</view>

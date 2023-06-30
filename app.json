@@ -56,7 +56,8 @@
     "pages/booth/inspec/inspec",
     "pages/booth/inspec-detail/inspec-detail",
     "pages/time-over/time-over",
-    "pages/time-over/detail/detail"
+    "pages/time-over/detail/detail",
+    "pages/admin/changed/chuli/chuli"
   ],
   "window": {
     "backgroundTextStyle": "light",
