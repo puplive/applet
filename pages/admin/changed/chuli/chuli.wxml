@@ -7,13 +7,13 @@
     <label class='label'>展位号</label>
     <text class='text'>{{detail.zw_hao}}</text>
   </view>
-  <view class='li' wx:if="{{type == 'detail'}}">
+  <view class='li'>
     <label class='label'>整改类型</label>
     <text class='text'>{{detail.rectify_type}}</text>
   </view>
   <view class='li' wx:if="{{type == 'detail'}}">
     <label class='label'>处罚方式</label>
-    <text class='text'>{{detail.punish_type}}</text>
+    <text class='text'>{{detail.punish_type_name}}</text>
   </view>
   <view class='li' wx:if="{{type == 'detail'}}">
     <label class='label'>整改时限</label>
