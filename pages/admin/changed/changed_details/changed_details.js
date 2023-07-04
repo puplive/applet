@@ -170,10 +170,6 @@ detail:function(e){
         }
       }
     })
-
-
-
-    
   },
   // 完成按钮
   endBtn: function(e){
@@ -275,82 +271,37 @@ detail:function(e){
     this.setData({
       zwh: zwh,
     })
-   //处罚方式
-   var openId = wx.getStorageSync('openId')
-   wx.request({
-    url: url + 'worksite/rectify/punish',
-    data: {OpenId:openId},
-    method: 'GET',
-    header: {
-      'content-type': 'application/json' // 默认值
-    },
-    success(res) {
-      if (res.data.Code == 200) {
-        var items = [];
-        for (let i in res.data.data) {
-          items.push(res.data.data[i]);
+    //处罚方式
+    var openId = wx.getStorageSync('openId')
+    wx.request({
+      url: url + 'worksite/rectify/punish',
+      data: {OpenId:openId},
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        if (res.data.Code == 200) {
+          var items = [];
+          for (let i in res.data.data) {
+            items.push(res.data.data[i]);
+          }
+          that.setData({
+            punish_method:items,
+          })
+        } else {
+
         }
-        that.setData({
-          punish_method:items,
-        })
-      } else {
-
+      },
+      fail: function (err) {
+        // 服务异常
       }
-    },
-    fail: function (err) {
-      // 服务异常
-    }
-  })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
+  },
+  onShow: function () {
     this.onreadycon();
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    // wx.reLaunch({
-    //   url: '../changed/changed',
-    // })
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  onShareAppMessage: function () {}
 })
