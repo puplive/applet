@@ -187,7 +187,7 @@ Page({
       mediaType: ['image'],
       sourceType: [type],
       success: function (res) {
-        console.log('chooseimage',res)
+        // console.log('chooseimage',res)
         if(res.errMsg == 'chooseMedia:ok'){
           var a = res.tempFiles;
           var b = that.data.tempFilePaths
@@ -199,7 +199,7 @@ Page({
           })
 
           setTimeout(() => {
-            console.log('2000',that.data.tempFilePaths)
+            // console.log('2000',that.data.tempFilePaths)
           }, 2000);
         }
       }
@@ -225,7 +225,7 @@ Page({
   },
   // 删除图片
   imgDel: function(e){
-    console.log(11,e,e.currentTarget.dataset.value)
+    // console.log(11,e,e.currentTarget.dataset.value)
     var that = this;
     (that.data.tempFilePaths).splice(e.currentTarget.dataset.value,1);
     that.setData({

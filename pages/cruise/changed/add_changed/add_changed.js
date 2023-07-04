@@ -495,9 +495,9 @@ descInput: function (e) {
     })
   },
   onUnload: function () {
-    wx.reLaunch({
-      url: '../changed/changed',
-    })
+    // wx.reLaunch({
+    //   url: '../changed/changed',
+    // })
   },
 
   onShareAppMessage: function () {

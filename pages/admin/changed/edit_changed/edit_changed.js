@@ -10,8 +10,8 @@ Page({
     change_type:[],//整改方式
     punish_index:0,
     punish_method: [], //处罚方式
-    changetime_index:0,
-    changetime_value:'',
+    // changetime_index:0,
+    // changetime_value:'',
     // change_time: ['9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '18:00 - 19:00', '19:00 - 20:00','20:00 - 21:00', '21:00 - 22:00', '22:00 - 23:00','23:00 - 24:00'], //整改时限
     startime: '',//整改时限
     endtime:'',
@@ -180,7 +180,6 @@ editChangedBtn:function(){
     });
     return false;
   }
-  console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',startime,endtime,'图',rectify_imgs)
   wx.request({
     url: url + 'worksite/rectify/rectify-edit',
     data: { 
@@ -247,7 +246,7 @@ editChangedBtn:function(){
           var rectify_type = res.data.data.rectify_type || ''; //整改方式
           var punish_id = res.data.data.punish_type || ''; //处罚方式
           var changetime1 = res.data.data.rectify_time1 + " - " + res.data.data.rectify_time2; 
-          console.log('time:',changetime1)
+          // console.log('time:',changetime1)
           // var changetime_value = changetime1 == undefined ? '' : changetime1; 
           // var change_index = that.data.change_time.indexOf(changetime1);
           var desc = res.data.data.content || '';   //详情描述

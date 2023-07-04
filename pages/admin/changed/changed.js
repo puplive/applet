@@ -52,7 +52,6 @@ Page({
           that.setData({
             changeArray: res.data.data
           })
-          console.log(res.data.data)
         }
       },
       fail: function (err) {
@@ -75,20 +74,20 @@ Page({
   },
   //整改通知
   zheng_gai:function(e){
-    let pages = getCurrentPages(); // 页面对象
-    let route = ''
-    if(pages.length && pages.length >= 2){
-      route = pages[pages.length - 2].route //上一个页面路由地址
-    }
-    if(route == 'pages/admin/changed/add_changed/add_changed'){
-      wx.navigateBack({
-        delta: 1
-      });
-    }else{
+    // let pages = getCurrentPages(); // 页面对象
+    // let route = ''
+    // if(pages.length && pages.length >= 2){
+    //   route = pages[pages.length - 2].route //上一个页面路由地址
+    // }
+    // if(route == 'pages/admin/changed/add_changed/add_changed'){
+    //   wx.navigateBack({
+    //     delta: 1
+    //   });
+    // }else{
       wx.navigateTo({
         url: "add_changed/add_changed"
       });
-    }
+    // }
    
   },
     // 点击键盘上的搜索

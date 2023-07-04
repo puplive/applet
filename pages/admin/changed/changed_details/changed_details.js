@@ -49,7 +49,7 @@ chuli:function(e){
   });
 },
 detail:function(e){
-  wx.redirectTo({
+  wx.navigateTo({
     url: "../chuli/chuli?changeid="+e.target.dataset.id+'&type=detail'
   });
 },
@@ -148,9 +148,10 @@ detail:function(e){
                   duration: 2000//持续的时间
                 })
                 setTimeout(() => {
-                  wx.redirectTo({
-                    url: "../changed"
-                  });
+                  wx.navigateBack()
+                  // wx.redirectTo({
+                  //   url: "../changed"
+                  // });
                 }, 1000);
               } else {
                 wx.showToast({
@@ -194,9 +195,10 @@ detail:function(e){
             mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false
             success:function(){
               setTimeout(() => {
-                wx.redirectTo({
-                  url: "../changed"
-                });
+                wx.navigateBack()
+                // wx.redirectTo({
+                //   url: "../changed"
+                // });
                 that.setData({
                   zwh:that.data.zwh,
                 })

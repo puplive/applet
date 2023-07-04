@@ -116,6 +116,15 @@ App({
         }
 
         var tabBar = this.globalData.tabBar;
+        if(this.globalData.userRole<3){
+            if(this.globalData.userRole==1){
+                tabBar = this.globalData.tabBar1
+            }else{
+                tabBar = this.globalData.tabBar2
+            }
+          }else{
+            tabBar = this.globalData.tabBar
+        }
         for (var i = 0; i < tabBar.list.length; i++) {
             tabBar.list[i].active = false;
             if (tabBar.list[i].pagePath == pagePath) {
@@ -135,6 +144,15 @@ App({
             pagePath = '/' + pagePath;
         }
         var tabBar = this.globalData.tabBar1;
+        if(this.globalData.userRole<3){
+            if(this.globalData.userRole==1){
+                tabBar = this.globalData.tabBar1
+            }else{
+                tabBar = this.globalData.tabBar2
+            }
+          }else{
+            tabBar = this.globalData.tabBar
+        }
         for (var i = 0; i < tabBar.list.length; i++) {
             tabBar.list[i].active = false;
             if (tabBar.list[i].pagePath == pagePath) {
@@ -154,6 +172,15 @@ App({
             pagePath = '/' + pagePath;
         }
         var tabBar = this.globalData.tabBar2;
+        if(this.globalData.userRole<3){
+            if(this.globalData.userRole==1){
+                tabBar = this.globalData.tabBar1
+            }else{
+                tabBar = this.globalData.tabBar2
+            }
+          }else{
+            tabBar = this.globalData.tabBar
+        }
         for (var i = 0; i < tabBar.list.length; i++) {
             tabBar.list[i].active = false;
             if (tabBar.list[i].pagePath == pagePath) {
@@ -192,7 +219,7 @@ App({
                     active: true
                 },
                 {
-                    //"pagePath": "/pages/operator/changed/changed",
+                    //"pagePath": "/pages/admin/changed/changed",
                     //"text": "巡馆整改",
                     //"iconPath": "/images/icon_laba.svg",
                     "selectedIconPath": "/images/icon_laba_on.svg",
@@ -295,7 +322,7 @@ App({
                     active: false
                 },
                 {
-                    "pagePath": "/pages/cruise/changed/changed",
+                    "pagePath": "/pages/admin/changed/changed",
                     "text": "巡馆整改",
                     "iconPath": "/images/icon_laba.svg",
                     "selectedIconPath": "/images/icon_laba_on.svg",

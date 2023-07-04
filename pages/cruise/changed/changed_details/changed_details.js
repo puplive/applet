@@ -312,9 +312,9 @@ topic_preview: function(e){
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    wx.reLaunch({
-      url: '../changed/changed',
-    })
+    // wx.reLaunch({
+    //   url: '../changed/changed',
+    // })
   },
 
   /**
