@@ -1,5 +1,9 @@
 page{background-color: #fff;}
-.row{margin: 0 0 120rpx;}
+/* .row{margin: 0 0 120rpx;} */
+.page-mian{
+  height: calc(100vh - 120rpx);
+  overflow: auto;
+}
 .section{
   font-size: 28rpx;
   height: 112rpx; 

@@ -43,7 +43,10 @@
   flex: 1;
   height: 0;
 }
-.list_con{width: 92%; margin: 16rpx auto 0; background-color: #fff; border-radius: 4rpx; padding: 0 2% 2%;}
+.list_con{width: 92%; margin: 0 auto; background-color: #fff; border-radius: 4rpx; padding: 0 2% 2%;}
+.list_con+.list_con{
+  margin-top: 16px;
+}
 .list_zwh{ height: 82rpx; line-height: 82rpx;font-weight: bold; color: #303133; font-size: 32rpx;}
 .list_li .list_licon{width: 100%;font-size: 30rpx;color:rgba(0,0,0,0.9);}
 .list_litit{ font-weight: bold; }

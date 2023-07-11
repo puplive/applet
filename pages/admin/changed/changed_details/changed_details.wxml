@@ -1,4 +1,4 @@
-<view class="contain">
+<view class="page-mian">
   <view class='row zwh_tit'>
     <view class='col clearfix'>
       <text class="col-9 zwh fl">{{z_guan}}号馆 {{zwh}}</text>
