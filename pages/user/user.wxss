@@ -1,0 +1,102 @@
+page {
+    background-color: #fff;
+}
+.page-user {
+    background: linear-gradient(to bottom, #ECBB49 15%, #fff, #fff);
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    padding: 24px 16px 16px;
+}
+
+.top .top_left {
+    padding: 0 32rpx;
+}
+
+.top .top_left image {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+}
+
+.top_right {
+    width: 510rpx;
+    line-height: 60rpx;
+}
+
+.topr_01 .name {
+    font-size: 36rpx;
+}
+
+.topr_01 .role {
+    float: right;
+    margin-top: 8rpx;
+    padding: 0 8px;
+    height: 46rpx;
+    line-height: 46rpx;
+    background: rgba(255, 217, 127, 1);
+    box-shadow: 0px 0px 22rpx 0px rgba(170, 119, 1, 0.26);
+    border-radius: 28rpx;
+    text-align: center;
+}
+
+.topr_tel {
+    font-size: 28rpx;
+}
+
+.topr_con {
+    font-size: 28rpx;
+    color: #fff;
+}
+
+.list {
+    margin: 0 8px;
+    background-color: #fff;
+    flex: 1;
+}
+
+.tit_list {
+    position: relative;
+}
+
+.tit {
+    height: 96rpx;
+    line-height: 96rpx;
+    font-size: 28rpx;
+    padding-left: 32rpx;
+}
+
+.tittext {
+    display: inline-block;
+    height: 28rpx;
+    line-height: 28rpx;
+
+}
+
+.bor1 {
+    border-bottom: 2rpx solid rgba(0, 0, 0, 0.1);
+}
+
+.all_order {
+    height: 96rpx;
+    line-height: 96rpx;
+    font-size: 28rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 73rpx;
+
+}
+
+.icon_right {
+    width: 30rpx;
+    height: 30rpx;
+    position: absolute;
+    top: 33rpx;
+    right: 33rpx;
+}

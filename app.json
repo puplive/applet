@@ -57,7 +57,15 @@
     "pages/booth/inspec-detail/inspec-detail",
     "pages/time-over/time-over",
     "pages/time-over/detail/detail",
-    "pages/admin/changed/chuli/chuli"
+    "pages/admin/changed/chuli/chuli",
+    "pages/cargo/index/index",
+    "pages/cargo/detail/detail",
+    "pages/cargo/cars/cars",
+    "pages/cargo/count/count",
+    "pages/user/user",
+    "pages/user/info/info",
+    "pages/user/identity/identity",
+    "pages/user/edit_tel/edit_tel"
   ],
   "window": {
     "backgroundTextStyle": "light",

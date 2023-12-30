@@ -1,0 +1,28 @@
+<view class="tab-bar" 
+    style="color: {{tabBar.color}}; background: {{tarBar.backgroundColor}}; {{tabBar.position=='top'? 'top: 0' : 'bottom: 0'}}; {{tabBar.borderStyle? (tabBar.position=='top'? 'border-bottom: solid 1px '+tabBar.borderStyle + ';' : 'border-top: solid 1px '+tabBar.borderStyle + ';') : ''}}; padding-bottom:{{tabBar.btuBottom}};">
+    <block wx:for="{{tabBar.list}}" wx:key="pagePath">
+        <block wx:if="{{item.type == 'scanCode'}}">
+            <div class="{{item.clas}}" bindtap="scanCode" style="color:{{item.selectedColor? item.selectedColor : tabBar.selectedColor}}">
+                <image src="{{item.selectedIconPath}}" wx:if="{{item.active}}" class="tabbar_img"></image>
+                <image src="{{item.iconPath}}" wx:if="{{!item.active}}" class="tabbar_img"></image>
+                <text class="tabbar_text">{{item.text}}</text>
+            </div>
+        </block>
+        <block wx:else>
+            <block wx:if="{{item.active}}">
+                <div class="{{item.clas}}" style="color:{{item.selectedColor? item.selectedColor : tabBar.selectedColor}}">
+                    <image src="{{item.selectedIconPath}}" wx:if="{{item.active}}" class="tabbar_img"></image>
+                    <image src="{{item.iconPath}}" wx:if="{{!item.active}}" class="tabbar_img"></image>
+                    <text class="tabbar_text">{{item.text}}</text>
+                </div>
+            </block>
+            <block wx:else>
+                <navigator url="{{item.pagePath}}" open-type="redirect" class="{{item.clas}}">
+                    <image src="{{item.selectedIconPath}}" wx:if="{{item.active}}" class="tabbar_img"></image>
+                    <image src="{{item.iconPath}}" wx:if="{{!item.active}}" class="tabbar_img"></image>
+                    <text class="tabbar_text">{{item.text}}</text>
+                </navigator>
+            </block>
+        </block>
+    </block>
+</view>

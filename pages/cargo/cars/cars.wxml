@@ -1,0 +1,54 @@
+<view class="page-flex-column ipx-bottom">
+    <view class="select-box" style="background: #ECBB49">
+        <navigator class="select" url="/pages/expo/expo">
+            <text class="text">{{expo.hui_nickname}}</text>
+            <text class="text2">切换</text>
+            <image class="icon" src="/images/icon_sanjiao.png" mode="aspectFit"></image>
+        </navigator>
+    </view>
+    <view class="content">
+        <view class="s-form" style="padding:8px">
+            <view class="form-item">
+                <view class="s-select flex-fill" bindtap="show_picker_zg">
+                    <input class="text" value="{{value_zg}}" placeholder="展馆"  disabled="{{true}}"/>
+                    <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
+                </view>
+                <view class="s-select flex-fill" bindtap="show_picker_zw" style="margin-left: 8px;">
+                    <input class="text" value="{{value_zw}}" placeholder="展位"  disabled="{{true}}"/>
+                    <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
+                </view>
+            </view>
+        </view>      
+        <view class="">
+            <view class="table" >
+                <view class="th">
+                    <view class="td"></view>
+                    <view class="td flex">车牌号</view>
+                    <view class="td">司机姓名</view>
+                    <view class="td">车辆状态</view>
+                    <view class="td"></view>
+                </view>
+                <view class="tr"
+                    wx:for="{{list}}"
+                    wx:key="index">
+                    <view class="td">
+                        <checkbox value="{{item.value}}" checked="{{item.checked}}" disabled=""/>
+                    </view>
+                    <view class="td flex">{{index}}</view>
+                    <view class="td">{{item[2].count}}</view>
+                    <view class="td">{{item[3].count}}</view>
+                    <navigator class="td" url="/pages/cargo/detail/detail?id={{value.id}}">
+                        <image class="icon" src="/images/arrowright.png" mode="aspectFit"></image>
+                    </navigator>
+                </view>
+                
+            </view>
+            <view wx:if="{{list_keys.length == 0}}" class="no_data">
+                暂无数据
+            </view>
+        </view>
+    </view>
+    <view style="padding: 8px;">
+        <navigator class="btn1" url="">通知入场</navigator>
+    </view>
+</view>

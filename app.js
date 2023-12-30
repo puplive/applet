@@ -178,9 +178,27 @@ App({
             }else{
                 tabBar = this.globalData.tabBar2
             }
-          }else{
+        }else{
             tabBar = this.globalData.tabBar
         }
+        for (var i = 0; i < tabBar.list.length; i++) {
+            tabBar.list[i].active = false;
+            if (tabBar.list[i].pagePath == pagePath) {
+                tabBar.list[i].active = true;
+            }
+        }
+        curPage.setData({
+            tabBar: tabBar
+        });
+    },
+    editTabBar3: function () {
+        var curPageArr = getCurrentPages();
+        var curPage = curPageArr[curPageArr.length - 1];
+        var pagePath = curPage.route;
+        if (pagePath.indexOf('/') != 0) {
+            pagePath = '/' + pagePath;
+        }
+        var tabBar = this.globalData.tabBar3;
         for (var i = 0; i < tabBar.list.length; i++) {
             tabBar.list[i].active = false;
             if (tabBar.list[i].pagePath == pagePath) {
@@ -252,7 +270,7 @@ App({
                     "text": "首页",
                     "iconPath": "/images/icon_fangzi.svg",
                     "selectedIconPath": "/images/icon_fangzi_on.svg",
-                    "clas": "menu-item1",
+                    "clas": "menu-item",
                     "selectedColor": "#303133",
                     active: true
                 },
@@ -262,7 +280,7 @@ App({
                     "iconPath": "/images/icon_dingdan.svg",
                     "selectedIconPath": "/images/icon_dingdan_on.svg",
                     "selectedColor": "#303133",
-                    "clas": "menu-item1",
+                    "clas": "menu-item",
                     active: false
                 },
                 {
@@ -271,7 +289,7 @@ App({
                     "iconPath": "/images/icon_laba.svg",
                     "selectedIconPath": "/images/icon_laba_on.svg",
                     "selectedColor": "#303133",
-                    "clas": "menu-item1",
+                    "clas": "menu-item",
                     active: false
                 },
                 {
@@ -280,7 +298,7 @@ App({
                     "iconPath": "/images/icon_zhanwei.svg",
                     "selectedIconPath": "/images/icon_zhanwei_on.svg",
                     "selectedColor": "#303133",
-                    "clas": "menu-item1",
+                    "clas": "menu-item",
                     active: false
                 },
                 {
@@ -289,7 +307,7 @@ App({
                     "iconPath": "/images/icon_wode.svg",
                     "selectedIconPath": "/images/icon_wode_on.svg",
                     "selectedColor": "#303133",
-                    "clas": "menu-item1",
+                    "clas": "menu-item",
                     active: false
                 }
             ],
@@ -332,6 +350,45 @@ App({
                 },
                 {
                     "pagePath": "/pages/cruise/person/person",
+                    "text": "我的",
+                    "iconPath": "/images/icon_wode.svg",
+                    "selectedIconPath": "/images/icon_wode_on.svg",
+                    "selectedColor": "#303133",
+                    "clas": "menu-item",
+                    active: false
+                }
+            ],
+            "position": "bottom"
+        },
+        //第三种底部导航栏显示(车证)
+        tabBar3: {
+            "color": "#9E9E9E",
+            "selectedColor": "#909399",
+            "backgroundColor": "#fff",
+            "borderStyle": "#ccc",
+            // "btuBottom": "68rpx",
+            "list": [
+                {
+                    "pagePath": "/pages/cargo/index/index",
+                    "text": "首页",
+                    "iconPath": "/images/icon_fangzi.svg",
+                    "selectedIconPath": "/images/icon_fangzi_on.svg",
+                    "clas": "menu-item",
+                    "selectedColor": "#303133",
+                    active: true
+                },
+                {
+                    "pagePath": "",
+                    "text": "扫描",
+                    "iconPath": "/images/icon_laba.svg",
+                    "selectedIconPath": "/images/icon_laba_on.svg",
+                    "selectedColor": "#303133",
+                    "clas": "menu-item",
+                    active: false,
+                    type: 'scanCode'
+                },
+                {
+                    "pagePath": "/pages/user/user",
                     "text": "我的",
                     "iconPath": "/images/icon_wode.svg",
                     "selectedIconPath": "/images/icon_wode_on.svg",

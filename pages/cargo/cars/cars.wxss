@@ -1,0 +1,67 @@
+page{
+    background: #fff;
+}
+.content{
+    flex: 1;
+    height: 0;
+    overflow: auto;
+    /* padding: 8px 0; */
+}
+
+.table{
+    /* padding: 0 8px; */
+}
+
+.table .tr{
+    display: flex;
+    align-items: stretch;
+    margin: 0 8px;
+    height: 40px;
+    border-bottom: 1px solid #DCDFE6;
+}
+.table .th{
+    padding: 0 8px;
+    display: flex;
+    align-items: stretch;
+    height: 40px;
+    background: #F2F4F9;
+}
+.table .td{
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #000000;
+    line-height: 16px;
+    padding: 5px;
+
+    /* overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis; */
+    width: 60px;
+    display: flex;
+    align-items: center;
+}
+.table .th .td:nth-child(1),
+.table .tr .td:nth-child(1){
+    width: 30px;
+}
+.table .th .td:nth-child(5),
+.table .tr .td:nth-child(5){
+    /* color: #9B9B9B; */
+    width: 20px;
+    justify-content: center;
+}
+.table .tr .td:nth-child(3){
+    /* color: #D0021B; */
+}
+.table .tr .td:nth-child(2){
+    /* color: #62BB00; */
+}
+.table .td .icon{
+    width: 12px;
+    height: 12px;
+    /* margin-left: 10px; */
+}
+.flex{
+    flex: 1;
+}

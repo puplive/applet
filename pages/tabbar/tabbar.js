@@ -1,9 +1,10 @@
 // pages/tabbar/tabbar.js
 Component({
-  data: {},
-  ready: function() { },
-    lifetimes:{
-        attached: function() {
+    data: {
+    },
+    ready: function () { },
+    lifetimes: {
+        attached: function () {
             // this.init()
         },
     },
@@ -12,10 +13,10 @@ Component({
             // this.init()
         },
     },
-  methods: {
-    go_page: function(e){
-      let i = e.currentTarget.dataset.item
-      console.log(i)
-    },
-  }
+    methods: {
+        go_page: function (e) {
+            let i = e.currentTarget.dataset.item
+            console.log(i)
+        }
+    }
 })

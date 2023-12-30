@@ -2,6 +2,22 @@
 page{background-color: #EBEEF5;}
 .page-tabBar{
   height: calc(100vh - 50px);
+  height: calc(100vh - 50px);
+  box-sizing: border-box;
+}
+.page-flex-column{
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.page-flex-con{
+  flex: 1;
+  overflow: auto;
+}
+.ipx-bottom{
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 .flex-column{
   display: flex;
@@ -337,14 +353,14 @@ page{background-color: #EBEEF5;}
 }
 /* 底部导航样式 */
 .menu-item{  
-  width: 33%;  
-  float: left;  
+  width: 0;  
+  flex: 1;
   text-align: center;  
   padding-top: 18rpx;  
   font-size: 20rpx;
   height:80rpx;
 }  
-.menu-item1{  
+/* .menu-item1{  
   width: 20%;  
   float: left;  
   text-align: center;  
@@ -359,7 +375,7 @@ page{background-color: #EBEEF5;}
   padding-top: 18rpx;  
   font-size: 20rpx;
   height:80rpx;
-}  
+}   */
 .tabbar_img{ 
   width: 38rpx;  
   height: 38rpx;  
@@ -379,6 +395,8 @@ page{background-color: #EBEEF5;}
   padding: 0px;
   background-color:#F8F8F8;
   z-index: 99;
+  display: flex;
+  align-items: center;
 }  
 
 /* 引入字体库 */
