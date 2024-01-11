@@ -23,7 +23,7 @@ Page({
         footBottom:'168rpx',
       })
     }
-    app.editTabBar1();
+    // app.editTabBar1();
   },
   onShow: function () {
     this.setData({

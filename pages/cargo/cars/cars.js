@@ -3,11 +3,12 @@ var url = app.globalData.url;
 Page({
     data: {
         expo: app.globalData.expo,
-        type: '1',
-        count1: 0,
-        count2: 0,
-        list: {},
-        list_keys: []
+        status: '',
+        search: '',
+        page: 1,
+        list: [],
+        status_list: ['全部', '未领取', '未入场', '已入场', '已出场'],
+        checked_list: []
     },
     // onShareAppMessage: function(){},
     onLoad: function () {
@@ -15,64 +16,119 @@ Page({
     },
     onShow: function () {
         this.setData({
-            expo: app.globalData.expo
+            expo: app.globalData.expo,
+            list: [],
+            checked_list: []
         })
         this.getList()
     },
-    check_tab: function(e){
+    statusChange(e) {
+        let val = e.detail.value
         this.setData({
-            type: e.currentTarget.dataset.type
+            status: val,
+            list: [],
+            page: 1
         })
         this.getList()
     },
-    
-    go_list: function(e){
-        let _e = e.currentTarget.dataset
+    search_change(e) {
+        this.setData({
+            search: e.detail.value,
+            list: [],
+            page: 1
+        })
+        this.getList()
+    },
+    checkboxChange(e) {
+        // console.log(e.detail.value)
 
-        app.globalData.inspec_detail = {
-            status: _e.status,
-            title: _e.title,
-            type: _e.type
-        }
-        wx.navigateTo({
-            url: '/pages/booth/inspec-detail/inspec-detail'
+        this.setData({
+            checked_list: e.detail.value
         })
     },
-    
     getList: function () {
         let that = this
         wx.request({
-            url: url + '/worksite/inspection/get-inspe-total',
+            url: url + 'worksite/car-info/car',
             data: {
-                hui_id: this.data.expo.hui_id,
-                type: this.data.type,
+                projectId: this.data.expo.hui_id,
+                page: this.data.page,
+                limit: 12,
+                status: this.data.status == 0 ? '' : this.data.status,
+                search: this.data.search,
+
             },
             success(data) {
                 let res = data.data,
-                    list = {},
-                    list_keys = [],
-                    count1 = 0,
-                    count2 = 0
-                if(res.Code == 200){
-                    list = res.data.data
-                    list_keys = Object.keys(list)
-                    count1 = res.data.count.guang
-                    count2 = res.data.count.biao
+                    list = [];
+                if (res.Code == 200) {
+                    list = [...that.data.list, ...res.data.data]
+                }
+                // list = [{
+                //         "id": "1",
+                //         "car_number": "车牌号码", //车牌号
+                //         "name": "司机项目", //司机姓名
+                //         "status": 2, //1未领取2未入场3已入场4已出场
+                //         "send_status": "0" //0未通知1已通知
+                //     },
+                //     {
+                //         "id": "2",
+                //         "car_number": "车牌号码", //车牌号
+                //         "name": "司机项目", //司机姓名
+                //         "status": 2, //1未领取2未入场3已入场4已出场
+                //         "send_status": "0" //0未通知1已通知
+                //     }, {
+                //         "id": "3",
+                //         "car_number": "车牌号码", //车牌号
+                //         "name": "司机项目", //司机姓名
+                //         "status": 2, //1未领取2未入场3已入场4已出场
+                //         "send_status": "0" //0未通知1已通知
+                //     }
+                // ]
+                that.setData({
+                    list: list
+                })
+            },
+            fail: function (err) {
+                console.log(err)
+            }
+        })
+    },
+    notify: function () {
+        let ids = this.data.checked_list.join(',')
+        if (!ids) {
+            wx.showToast({
+                title: '请选择',
+                icon: 'none'
+            })
+            return
+        }
+        let that = this
+        wx.request({
+            url: url + 'car/car-info/notify-send',
+            data: {
+                id: ids
+            },
+            success(data) {
+                let res = data.data;
+                wx.showToast({
+                    title: res.msg,
+                    icon: 'none'
+                })
+                if (res.Code == 200) {
+                    that.setData({
+                        page: 1,
+                        list: [],
+                        checked_list: []
+                    })
+                    that.getList()
                 }
 
-                that.setData({
-                    list: list,
-                    list_keys: list_keys,
-                    count1: count1,
-                    count2: count2
-                })
-                
-                
             },
             fail: function (err) {
                 console.log(err)
             }
         })
     }
-    
+
 })

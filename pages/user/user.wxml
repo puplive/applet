@@ -4,7 +4,9 @@
             <image src="{{userInfo.avatarUrl}}"></image>
         </view>
         <view class="top_right fl">
-            <view class="topr_01"><text class="name">{{userInfo.nickName}}</text><text class="role">{{role_name}}</text>
+            <view class="topr_01">
+                <text class="name">{{userInfo.nickName}}</text>
+                <text class="role">{{role_name}}</text>
             </view>
             <view class="topr_tel" wx:if="{{tel}}">{{tel}}</view>
             <view class="topr_con col">

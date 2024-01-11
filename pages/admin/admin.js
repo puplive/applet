@@ -22,7 +22,7 @@ Page({
                 notBottom: "166rpx",
             })
         }
-        app.editTabBar1();
+        // app.editTabBar1();
         // console.log(2,this.data.isIphoneX)
     },
     onShow: function () {

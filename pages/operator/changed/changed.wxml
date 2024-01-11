@@ -1,6 +1,6 @@
-<import src="../../tabbar/tabbar.wxml"/>  
-<template is="tabBar" data="{{tabBar}}"/>
-<view class="contain">
+<!-- <import src="../../tabbar/tabbar.wxml"/>  
+<template is="tabBar" data="{{tabBar}}"/> -->
+<view class="contain page-tabBar">
    <!-- 搜索 -->
   <view class='search'>
     <image class='icon_search' src='../../../images/icon_search.svg' mode='widthFix'></image>
@@ -69,3 +69,4 @@
     <view class="add_changed"><text class="iconfont icon-fuhao_jiahao"></text>整改通知</view>
   </navigator>
 </view>
+<tab-bar></tab-bar>

@@ -20,7 +20,7 @@ Page({
             },
             success: function (res) {
                 if (res.data.Code == 200) {
-                    app.editTabBar3();
+
                 } else if (res.data.Code == 400) {
                     wx.showToast({
                         title: '未授权,请前往授权',

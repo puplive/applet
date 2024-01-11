@@ -4,6 +4,9 @@ page{background-color: #EBEEF5;}
   height: calc(100vh - 50px);
   height: calc(100vh - 50px);
   box-sizing: border-box;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  overflow: auto;
 }
 .page-flex-column{
   height: 100vh;
@@ -14,6 +17,7 @@ page{background-color: #EBEEF5;}
 .page-flex-con{
   flex: 1;
   overflow: auto;
+  
 }
 .ipx-bottom{
   padding-bottom: constant(safe-area-inset-bottom);
@@ -401,13 +405,10 @@ page{background-color: #EBEEF5;}
 
 /* 引入字体库 */
 @font-face {
-  font-family: 'iconfont';  /* project id 1859864 */
-  src: url('//at.alicdn.com/t/font_1859864_ek2hge6zbxw.eot');
-  src: url('//at.alicdn.com/t/font_1859864_ek2hge6zbxw.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1859864_ek2hge6zbxw.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1859864_ek2hge6zbxw.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1859864_ek2hge6zbxw.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1859864_ek2hge6zbxw.svg#iconfont') format('svg');
+  font-family: "iconfont"; /* Project id 1859864 */
+  src: url('//at.alicdn.com/t/c/font_1859864_rfxaptlw8b.woff2?t=1704705577538') format('woff2'),
+       url('//at.alicdn.com/t/c/font_1859864_rfxaptlw8b.woff?t=1704705577538') format('woff'),
+       url('//at.alicdn.com/t/c/font_1859864_rfxaptlw8b.ttf?t=1704705577538') format('truetype');
 }
 
 .iconfont {
@@ -416,6 +417,58 @@ page{background-color: #EBEEF5;}
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-lingqu:before {
+  content: "\e608";
+}
+
+.icon-yinhang:before {
+  content: "\e7fa";
+}
+
+.icon-approach:before {
+  content: "\e69d";
+}
+
+.icon-exit:before {
+  content: "\e69f";
+}
+
+.icon-wodejiashizheng:before {
+  content: "\e601";
+}
+
+.icon-down:before {
+  content: "\e839";
+}
+
+.icon-left:before {
+  content: "\e83d";
+}
+
+.icon-right:before {
+  content: "\e840";
+}
+
+.icon-up:before {
+  content: "\e845";
+}
+
+.icon-fuhao_chazi:before {
+  content: "\e6d5";
+}
+
+.icon-fuhao_duigou:before {
+  content: "\e6d7";
+}
+
+.icon-mianxing_weixinzhifu:before {
+  content: "\e6f2";
+}
+
+.icon-mianxing_xianjin:before {
+  content: "\e6f3";
 }
 
 .icon-mianxing_loudou:before {

@@ -45,6 +45,10 @@ page{
 .table .tr .td:nth-child(1){
     width: 30px;
 }
+.table .th .td:nth-child(4),
+.table .tr .td:nth-child(4){
+    width: 100px;
+}
 .table .th .td:nth-child(5),
 .table .tr .td:nth-child(5){
     /* color: #9B9B9B; */
@@ -56,6 +60,16 @@ page{
 }
 .table .tr .td:nth-child(2){
     /* color: #62BB00; */
+}
+.table .tr .td .tz{
+  height: 36rpx;
+  background: #E4E6E8;
+  border-radius: 18rpx;
+  font-size: 20rpx;
+  color: #9B9B9B;
+  line-height: 36rpx;
+  padding: 0 8px;
+  margin-left: 5px;
 }
 .table .td .icon{
     width: 12px;

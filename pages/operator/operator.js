@@ -276,7 +276,7 @@ Page({
         screenBottom:'20px',
       })
     }
-    app.editTabBar();
+    // app.editTabBar();
      //展馆
      var that = this;
      wx.request({

@@ -10,9 +10,9 @@ Page({
         indexBottom: '',
         notBottom: '',
         expo: {},
+        count: {}
     },
-    onReady: function () {
-    },
+    onReady: function () {},
     onLoad: function (options) {
         wx.hideHomeButton()
         let isPhone = app.globalData.isIphoneX;
@@ -22,7 +22,6 @@ Page({
                 notBottom: "166rpx",
             })
         }
-        // app.editTabBar3();
     },
     onShow: function () {
         wx.hideHomeButton()
@@ -33,7 +32,10 @@ Page({
         var that = this;
         wx.request({
             url: url + 'worksite/home/list',
-            data: { ProjectId: sendMessageContent.projectId, OpenId: openId },
+            data: {
+                ProjectId: sendMessageContent.projectId,
+                OpenId: openId
+            },
             method: 'GET',
             header: {
                 'content-type': 'application/json' // 默认值
@@ -53,9 +55,33 @@ Page({
                 // 服务异常
             }
         })
+
+        this.get_count()
     },
     onShareAppMessage: function () {
 
+    },
+    get_count: function () {
+        var that = this;
+        wx.request({
+            url: url + 'worksite/car-info/statistics',
+            data: {
+                ProjectId: sendMessageContent.projectId
+            },
+            success(res) {
+                // console.log(res)
+                if (res.data.Code == 200) {
+                    that.setData({
+                        count: res.data.data
+                    })
+                } else {
+
+                }
+            },
+            fail: function (err) {
+                // 服务异常
+            }
+        })
     },
     telPhone: function (e) {
         console.log(e)

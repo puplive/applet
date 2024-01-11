@@ -280,7 +280,7 @@ Page({
         screenBottom:'20rpx',
       })
     }
-    app.editTabBar1();
+    // app.editTabBar1();
     //展馆
     wx.request({
       url: url + 'worksite/check/number-g',

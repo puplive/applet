@@ -3,76 +3,92 @@ var url = app.globalData.url;
 Page({
     data: {
         expo: app.globalData.expo,
-        type: '1',
-        count1: 0,
-        count2: 0,
-        list: {},
-        list_keys: []
+        hall_number: '',
+        position_number: '',
+        page: 1,
+        list: [],
+        zg_list: []
     },
     // onShareAppMessage: function(){},
     onLoad: function () {
-
+        
     },
     onShow: function () {
         this.setData({
             expo: app.globalData.expo
         })
+        this.get_zg_list()
         this.getList()
     },
-    check_tab: function(e){
+    zwChange(e) {
+        let value = e.detail.value
         this.setData({
-            type: e.currentTarget.dataset.type
+            position_number: value,
+            list: [],
+            page: 1
         })
         this.getList()
     },
-    
-    go_list: function(e){
-        let _e = e.currentTarget.dataset
-
-        app.globalData.inspec_detail = {
-            status: _e.status,
-            title: _e.title,
-            type: _e.type
-        }
-        wx.navigateTo({
-            url: '/pages/booth/inspec-detail/inspec-detail'
+    zgChange(e) {
+        let val = e.detail.value
+        this.setData({
+            hall_number: val==0? '': this.data.zg_list[val],
+            list: [],
+            page: 1
         })
+        this.getList()
     },
-    
-    getList: function () {
+    get_zg_list: function () {
         let that = this
         wx.request({
-            url: url + '/worksite/inspection/get-inspe-total',
-            data: {
-                hui_id: this.data.expo.hui_id,
-                type: this.data.type,
-            },
-            success(data) {
-                let res = data.data,
-                    list = {},
-                    list_keys = [],
-                    count1 = 0,
-                    count2 = 0
-                if(res.Code == 200){
-                    list = res.data.data
-                    list_keys = Object.keys(list)
-                    count1 = res.data.count.guang
-                    count2 = res.data.count.biao
-                }
+            url: url + 'field/order/project/'+that.data.expo.hui_id,
+            // header: {
+            //     "content-type": "application/json;charset=UTF-8"
+            //   },
+            success(res) {
+                let data = res.data,
+                    zg_list = ['全部']
+                if (data.Code == 200) {
+                    that.setData({
+                        // zw_list: data.data.number,
+                        zg_list: [...zg_list,...data.data.z_guan]
+                    })
+ 
+                } else {
 
-                that.setData({
-                    list: list,
-                    list_keys: list_keys,
-                    count1: count1,
-                    count2: count2
-                })
-                
+                }
                 
             },
             fail: function (err) {
                 console.log(err)
             }
         })
+    },
+    getList: function () {
+        let that = this
+        wx.request({
+            url: url + 'worksite/car-info/group',
+            data: {
+                projectId: this.data.expo.hui_id,
+                hall_number: this.data.hall_number,
+                position_number: this.data.position_number,
+                page: this.data.page,
+                limit: 12
+            },
+            success(data) {
+                let res = data.data,
+                    list = [];
+                if(res.Code == 200){
+                    list = [...that.data.list,...res.data.data]
+                }
+                that.setData({
+                    list: list
+                })
+            },
+            fail: function (err) {
+                console.log(err)
+            }
+        })
     }
-    
+
 })

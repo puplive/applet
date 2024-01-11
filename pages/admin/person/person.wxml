@@ -1,6 +1,6 @@
-<import src="../../tabbar/tabbar.wxml" />
-<template is="tabBar" data="{{tabBar}}" />
-<view class="page-user">
+<!-- <import src="../../tabbar/tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" /> -->
+<view class="page-user page-tabBar">
     <view class="top">
         <view class="top_left fl">
             <image src="{{userInfo.avatarUrl}}"></image>
@@ -62,3 +62,4 @@
         </navigator>
     </view>
 </view>
+<tab-bar></tab-bar>

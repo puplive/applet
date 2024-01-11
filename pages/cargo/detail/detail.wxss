@@ -1,4 +1,6 @@
-
+.page-cargo-detail{
+  background: #fff;
+}
 .list{
     padding: 8px;
 }
@@ -15,6 +17,18 @@
 .form-item+.form-item{
     margin-top: 0;
 }
+.s-status{
+  padding: 4px 8px;
+  background-color: #E9AD23;
+  color: #fff;
+  border-radius: 20px;
+}
+.s-status.type2{
+  background-color: #DC5566;
+}
+.s-status.type3{
+  background-color: #4AAD54;
+}
 .card{
     display: flex;
     margin-bottom: 8px;
@@ -30,4 +44,26 @@
 }
 .card>view.zm{
     margin-right: 8px;
+}
+
+.btn-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 8px;
+  box-shadow: 0rpx -8rpx 8rpx 0rpx rgba(0,0,0,0.1);
+}
+.btn-bar button{
+  border-radius: 34px;
+  font-size: 14px;
+  padding: 0 1.5em;
+  margin: 0 8px;
+}
+.btn-bar .type1{
+  border-color: #ECBB49;
+}
+.btn-bar .type2{
+  border-color: #E4E6E8 !important;
+  background-color: #E4E6E8 !important;
+  color: #353535 !important;
 }

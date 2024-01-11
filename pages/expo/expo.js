@@ -57,35 +57,40 @@ Page({
         var that = this;
         wx.request({
             url: url + 'worksite/default/c-zhui',   //验证是否认证过
-            data: { OpenId: wx.getStorageSync('openId'), ProjectId: sendMessageContent.projectId },
-            method: 'GET',
-            header: {
-                'content-type': 'application/json' // 默认值
+            data: { 
+              OpenId: wx.getStorageSync('openId'), 
+              ProjectId: sendMessageContent.projectId 
             },
             success: function (res) {
                 if (res.data.Code == 200) {
-                    app.globalData.userRole = res.data.data.applet_role_id
-                    sendMessageContent.RoleId = res.data.data.applet_role_id;
+                    let applet_role_id = res.data.data.applet_role_id
+                    applet_role_id = 15
+                    app.globalData.userRole = applet_role_id
+                    sendMessageContent.RoleId = applet_role_id;
 
-                    wx.redirectTo({
-                        url: "../cargo/index/index"
-                    })
-                    return
-
-                    if (res.data.data.applet_role_id < 3) {
-                        if (res.data.data.applet_role_id == 1) {
+                    if (applet_role_id < 3) {
+                        if (applet_role_id == 1) {
+                            // app.globalData.tabBar = app.globalData.tabBar1
                             wx.redirectTo({
                                 url: "../admin/admin"
                             })
                         } else {
+                            // app.globalData.tabBar = app.globalData.tabBar2
                             wx.redirectTo({
                                 url: "../cruise/acceptance/acceptance"
                             })
                         }
                     } else {
-                        wx.redirectTo({
-                            url: "../operator/operator"
-                        })
+                        if(applet_role_id == 15){
+                            // app.globalData.tabBar = app.globalData.tabBarCargo
+                            wx.redirectTo({
+                                url: "../cargo/index/index"
+                            })
+                        }else{
+                            wx.redirectTo({
+                                url: "../operator/operator"
+                            })
+                        }
                     }
                 } else if (res.data.Code == 400) {//提示您还没授权
                     wx.showToast({

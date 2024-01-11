@@ -9,18 +9,20 @@
     <view class="content">
         <view class="s-form" style="padding:8px">
             <view class="form-item">
-                <view class="s-select flex-fill" bindtap="show_picker_zg">
-                    <input class="text" value="{{value_zg}}" placeholder="展馆"  disabled="{{true}}"/>
-                    <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
-                </view>
+                <picker style="width: 30%;" bindchange="zgChange" range="{{zg_list}}">
+                    <view class="s-select">
+                        <input class="text" value="{{hall_number}}" placeholder="展馆" disabled="{{true}}" />
+                        <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
+                    </view>
+                </picker>
                 <view class="s-select flex-fill" bindtap="show_picker_zw" style="margin-left: 8px;">
-                    <input class="text" value="{{value_zw}}" placeholder="展位"  disabled="{{true}}"/>
-                    <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
+                    <input class="text" value="{{position_number}}" bindinput="zwChange" placeholder="展位号" />
+                    <!-- <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image> -->
                 </view>
             </view>
-        </view>      
+        </view>
         <view class="">
-            <view class="table" >
+            <view class="table">
                 <view class="th">
                     <view class="td flex">展馆号</view>
                     <view class="td">展位号</view>
@@ -29,22 +31,20 @@
                     <view class="td">已入场</view>
                     <view class="td">未入场</view>
                 </view>
-                <view class="tr"
-                    wx:for="{{list}}"
-                    wx:key="index">
-                    <view class="td flex">{{index}}</view>
-                    <view class="td">{{item[2].count}}</view>
-                    <view class="td">{{item[3].count}}</view>
-                    <view class="td">{{item[1].count}}</view>
-                    <view class="td">{{item[1].count}}</view>
-                    <view class="td">{{item[1].count}}</view>
+                <view class="tr" wx:for="{{list}}" wx:key="index">
+                    <view class="td flex">{{item.hall_number}}</view>
+                    <view class="td">{{item.position_number}}</view>
+                    <view class="td">{{item.cargo}}</view>
+                    <view class="td">{{item.condition_count}}</view>
+                    <view class="td">{{item.action_count}}</view>
+                    <view class="td">{{item.now_count}}</view>
                 </view>
-                
+
             </view>
             <view wx:if="{{list_keys.length == 0}}" class="no_data">
                 暂无数据
             </view>
         </view>
     </view>
-    
+
 </view>

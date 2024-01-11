@@ -214,7 +214,7 @@ Page({
    */
   onLoad: function (options) {
     wx.hideHomeButton()
-    app.editTabBar2();
+    // app.editTabBar2();
     //展馆
     var that = this;
     wx.request({

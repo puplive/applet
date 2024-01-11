@@ -102,7 +102,7 @@ Page({
         screenBottom:'20px',
       })
     }
-    app.editTabBar2();
+    // app.editTabBar2();
     var ProjectId =sendMessageContent.projectId
     var that = this;
     console.log('项目id'+ProjectId)

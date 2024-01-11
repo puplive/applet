@@ -138,7 +138,7 @@ page {
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.09);
     height: 240rpx;
     width: 96%;
-    padding: 0 2%;
+    padding: 0 8px;
     border-top: 1px solid #F5F7FA;
     z-index: 90;
 }
@@ -154,15 +154,21 @@ page {
 }
 
 .flex-item {
+    flex: 1;
     width: 24%;
     height: 156rpx;
     padding: 10rpx 0;
-    margin-right: 2%;
-    text-align: center;
+    /* margin-right: 10px; */
     color: #fff;
     border-radius: 2px;
-    line-height: 52rpx;
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.09);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.flex-item+.flex-item{
+  margin-left: 8px;
 }
 
 .demo-text-1 {
@@ -179,15 +185,25 @@ page {
 
 .demo-text-4 {
     background-color: #7360C9;
-    margin-right: 0;
 }
-
+.demo-text-5 {
+  background-color: #CACE07;
+}
+.flex-item .iconfont{
+  font-size: 44rpx;
+}
 .not_accnum {
     font-size: 36rpx;
+    height: 42rpx;
+    line-height: 42rpx;
+    margin-bottom: 10rpx;
 }
 
 .not_accname {
     font-size: 24rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    margin-top: 10rpx;
 }
 
 .ul {

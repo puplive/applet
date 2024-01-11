@@ -13,7 +13,7 @@ Page({
    */
   onLoad: function (options) {
     wx.hideHomeButton()
-    app.editTabBar();
+    // app.editTabBar();
   },
 
   /**
