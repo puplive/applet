@@ -45,25 +45,29 @@ Component({
     },
     methods: {
         scanCode: function (e) {
-            wx.scanCode({
-                success(res) {
-                    let result = {}
-                    if(res.result.indexOf('cargo')>0){
-                        result = JSON.parse(res.result)
-                    }
-                    if(result.from == 'cargo'){
-                        wx.navigateTo({
-                            url: '/pages/cargo/detail/detail?id='+result.id
-                        })
-                    }else{
-                        wx.showModal({
-                            title: '无效信息',
-                            content: res.result,
-                            showCancel: false
-                        })
-                    } 
-                }
+            wx.navigateTo({
+                url: '/pages/cargo/scan/scan'
             })
+            // wx.scanCode({
+            //     success(res) {
+            //         console.log(res)
+            //         let result = {}
+            //         if(res.result.indexOf('cargo')>0){
+            //             result = JSON.parse(res.result)
+            //         }
+            //         if(result.from == 'cargo'){
+            //             wx.navigateTo({
+            //                 url: '/pages/cargo/detail/detail?id='+result.id
+            //             })
+            //         }else{
+            //             wx.showModal({
+            //                 title: '无效信息',
+            //                 content: res.result,
+            //                 showCancel: false
+            //             })
+            //         } 
+            //     }
+            // })
         }
     }
 })

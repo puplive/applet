@@ -1,0 +1,16 @@
+.page-scan{
+    position: relative;
+    /* width: 100vw; */
+}
+.op_bar{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* height: 200px; */
+    width: 100%;
+}
+.op_bar .btn{
+    color: #ffffff;
+    background: rgba(0, 0, 0, .5);
+    /* display: inline; */
+}

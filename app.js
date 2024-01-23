@@ -1,6 +1,5 @@
-//app.js
 const url = 'https://test.exposaas.com/'
-// const url = 'https://scm.exposaas.com/'
+// const url = 'https://scm.exposaas.com/' 
 App({
         globalData: {
             userRole: '',
@@ -195,6 +194,9 @@ App({
             }
         },
         onLaunch: function () {
+            // const worker = wx.createWorker('workers/index.js', {
+            //     useExperimentalWorker: true
+            // })
             let that = this
             // 展示本地存储能力
             var logs = wx.getStorageSync('logs') || []
@@ -265,6 +267,8 @@ App({
                         that.globalData.tabBar1.btuBottom = "68rpx";
                         that.globalData.tabBar2.btuBottom = "68rpx";
                     }
+
+                    that.globalData.system = res.system;
                 }
             })
         },
@@ -284,91 +288,6 @@ App({
                 fail: function (res) {}
             })
         },
-
-        // //第一种底部  
-        // editTabBar: function () {
-        //     var curPageArr = getCurrentPages(); //获取加载的页面
-        //     var curPage = curPageArr[curPageArr.length - 1]; //获取当前页面的对象
-        //     var pagePath = curPage.route; //当前页面url
-        //     if (pagePath.indexOf('/') != 0) {
-        //         pagePath = '/' + pagePath;
-        //     }
-        //     var tabBar = this.globalData.tabBar;
-        //     if (this.globalData.userRole < 3) {
-        //         if (this.globalData.userRole == 1) {
-        //             tabBar = this.globalData.tabBar1
-        //         } else {
-        //             tabBar = this.globalData.tabBar2
-        //         }
-        //     } else {
-        //         tabBar = this.globalData.tabBar
-        //     }
-        //     for (var i = 0; i < tabBar.list.length; i++) {
-        //         tabBar.list[i].active = false;
-        //         if (tabBar.list[i].pagePath == pagePath) {
-        //             tabBar.list[i].active = true; //根据页面地址设置当前页面状态    
-        //         }
-        //     }
-        //     curPage.setData({
-        //         tabBar: tabBar
-        //     });
-        // },
-        // //第二种底部，原理同上
-        // editTabBar1: function () {
-        //     var curPageArr = getCurrentPages();
-        //     var curPage = curPageArr[curPageArr.length - 1];
-        //     var pagePath = curPage.route;
-        //     if (pagePath.indexOf('/') != 0) {
-        //         pagePath = '/' + pagePath;
-        //     }
-        //     var tabBar = this.globalData.tabBar1;
-        //     if (this.globalData.userRole < 3) {
-        //         if (this.globalData.userRole == 1) {
-        //             tabBar = this.globalData.tabBar1
-        //         } else {
-        //             tabBar = this.globalData.tabBar2
-        //         }
-        //     } else {
-        //         tabBar = this.globalData.tabBar
-        //     }
-        //     for (var i = 0; i < tabBar.list.length; i++) {
-        //         tabBar.list[i].active = false;
-        //         if (tabBar.list[i].pagePath == pagePath) {
-        //             tabBar.list[i].active = true;
-        //         }
-        //     }
-        //     curPage.setData({
-        //         tabBar: tabBar
-        //     });
-        // },
-        // //第二种底部，原理同上
-        // editTabBar2: function () {
-        //     var curPageArr = getCurrentPages();
-        //     var curPage = curPageArr[curPageArr.length - 1];
-        //     var pagePath = curPage.route;
-        //     if (pagePath.indexOf('/') != 0) {
-        //         pagePath = '/' + pagePath;
-        //     }
-        //     var tabBar = this.globalData.tabBar2;
-        //     if (this.globalData.userRole < 3) {
-        //         if (this.globalData.userRole == 1) {
-        //             tabBar = this.globalData.tabBar1
-        //         } else {
-        //             tabBar = this.globalData.tabBar2
-        //         }
-        //     } else {
-        //         tabBar = this.globalData.tabBar
-        //     }
-        //     for (var i = 0; i < tabBar.list.length; i++) {
-        //         tabBar.list[i].active = false;
-        //         if (tabBar.list[i].pagePath == pagePath) {
-        //             tabBar.list[i].active = true;
-        //         }
-        //     }
-        //     curPage.setData({
-        //         tabBar: tabBar
-        //     });
-        // },
     })
 
     ! function () {

@@ -56,7 +56,6 @@ Page({
                 limit: 12,
                 status: this.data.status == 0 ? '' : this.data.status,
                 search: this.data.search,
-
             },
             success(data) {
                 let res = data.data,
@@ -64,27 +63,6 @@ Page({
                 if (res.Code == 200) {
                     list = [...that.data.list, ...res.data.data]
                 }
-                // list = [{
-                //         "id": "1",
-                //         "car_number": "车牌号码", //车牌号
-                //         "name": "司机项目", //司机姓名
-                //         "status": 2, //1未领取2未入场3已入场4已出场
-                //         "send_status": "0" //0未通知1已通知
-                //     },
-                //     {
-                //         "id": "2",
-                //         "car_number": "车牌号码", //车牌号
-                //         "name": "司机项目", //司机姓名
-                //         "status": 2, //1未领取2未入场3已入场4已出场
-                //         "send_status": "0" //0未通知1已通知
-                //     }, {
-                //         "id": "3",
-                //         "car_number": "车牌号码", //车牌号
-                //         "name": "司机项目", //司机姓名
-                //         "status": 2, //1未领取2未入场3已入场4已出场
-                //         "send_status": "0" //0未通知1已通知
-                //     }
-                // ]
                 that.setData({
                     list: list
                 })
@@ -106,6 +84,7 @@ Page({
         let that = this
         wx.request({
             url: url + 'car/car-info/notify-send',
+            method: 'PUT',
             data: {
                 id: ids
             },

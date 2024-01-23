@@ -35,7 +35,7 @@
                     wx:for="{{list}}"
                     wx:key="index">
                     <view class="td">
-                        <checkbox wx:if="{{item.send_status != '1'}}" value="{{item.id}}" checked="{{tool.indexOf(checked_list, item.id)}}" disabled=""/>
+                        <checkbox wx:if="{{item.status == '1' || item.status == '2'}}" value="{{item.id}}" checked="{{tool.indexOf(checked_list, item.id)}}" disabled=""/>
                     </view>
                     <view class="td flex">{{item.car_number}}</view>
                     <view class="td">{{item.name}}</view>

@@ -65,8 +65,10 @@
     "pages/user/user",
     "pages/user/info/info",
     "pages/user/identity/identity",
-    "pages/user/edit_tel/edit_tel"
+    "pages/user/edit_tel/edit_tel",
+    "pages/cargo/scan/scan"
   ],
+  "workers": "workers",
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F8F8F8",

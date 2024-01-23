@@ -1,0 +1,6 @@
+<view class="page-scan">
+  <camera mode="scanCode" frame-size="small" bindscancode="scanCode" device-position="back" flash="off" binderror="error" style="width: 100vw; height: 100vh;"></camera>
+  <view class="op_bar ipx-bottom">
+    <button class="btn" bindtap="back">返回</button>
+  </view>
+</view>
