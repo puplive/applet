@@ -3,4 +3,6 @@
   <view class="op_bar ipx-bottom">
     <button class="btn" bindtap="back">返回</button>
   </view>
+  <!-- <view class="scan-box"></view> -->
+  <view class="scan-line"></view>
 </view>

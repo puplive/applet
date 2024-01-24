@@ -1,6 +1,7 @@
 .page-scan{
     position: relative;
     /* width: 100vw; */
+    background: #000000;
 }
 .op_bar{
     position: absolute;
@@ -13,4 +14,48 @@
     color: #ffffff;
     background: rgba(0, 0, 0, .5);
     /* display: inline; */
+}
+/* .scan-line{
+  position: absolute;
+  top: 100px;
+  left: 10vw;
+  width: 80vw;
+  height: 0px;
+
+    background: repeating-linear-gradient(
+        0deg,
+        #7FFF00 100px,
+        transparent 230px
+      )
+  
+} */
+.scan-line{
+    position: absolute;
+    top: 10vh;
+    height: 20px;
+    width: 90vw;
+    left: 5vw;
+    overflow:hidden;
+    animation: move 3s linear infinite;
+    -webkit-animation: move 3s linear infinite; /* Safari 与 Chrome */
+}
+.scan-line:after {
+    content:'';
+    display:block;
+    margin-left: -50vw;
+    margin-top: 5px;
+    height: 200px;
+    width: 190vw;
+    background-image: radial-gradient(closest-side at 50% 50%, rgb(0, 250, 0), transparent); 
+}
+@keyframes move
+{
+    from {top: 10vh;}
+    to {top: 80vh;}
+}
+ 
+@-webkit-keyframes move /* Safari 与 Chrome */
+{
+    from {top: 10vh;}
+    to {top: 80vh;}
 }

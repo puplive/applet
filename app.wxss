@@ -17,7 +17,6 @@ page{background-color: #EBEEF5;}
 .page-flex-con{
   flex: 1;
   overflow: auto;
-  
 }
 .ipx-bottom{
   padding-bottom: constant(safe-area-inset-bottom);

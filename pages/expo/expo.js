@@ -64,33 +64,38 @@ Page({
             success: function (res) {
                 if (res.data.Code == 200) {
                     let applet_role_id = res.data.data.applet_role_id
-                    // applet_role_id = 15
+                    applet_role_id = 15
                     app.globalData.userRole = applet_role_id
                     sendMessageContent.RoleId = applet_role_id;
 
-                    if (applet_role_id < 3) {
-                        if (applet_role_id == 1) {
-                            // app.globalData.tabBar = app.globalData.tabBar1
-                            wx.redirectTo({
-                                url: "../admin/admin"
-                            })
-                        } else {
-                            // app.globalData.tabBar = app.globalData.tabBar2
-                            wx.redirectTo({
-                                url: "../cruise/acceptance/acceptance"
-                            })
-                        }
-                    } else {
-                        if(applet_role_id == 15){
-                            // app.globalData.tabBar = app.globalData.tabBarCargo
-                            wx.redirectTo({
-                                url: "../cargo/index/index"
-                            })
-                        }else{
-                            wx.redirectTo({
-                                url: "../operator/operator"
-                            })
-                        }
+                    var curPageArr = getCurrentPages()
+                    if(curPageArr[0].route != 'pages/expo/expo'){
+                        wx.navigateBack()
+                    }else{
+                      if (applet_role_id < 3) {
+                          if (applet_role_id == 1) {
+                              // app.globalData.tabBar = app.globalData.tabBar1
+                              wx.redirectTo({
+                                  url: "../admin/admin"
+                              })
+                          } else {
+                              // app.globalData.tabBar = app.globalData.tabBar2
+                              wx.redirectTo({
+                                  url: "../cruise/acceptance/acceptance"
+                              })
+                          }
+                      } else {
+                          if(applet_role_id == 15){
+                              // app.globalData.tabBar = app.globalData.tabBarCargo
+                              wx.redirectTo({
+                                  url: "../cargo/index/index"
+                              })
+                          }else{
+                              wx.redirectTo({
+                                  url: "../operator/operator"
+                              })
+                          }
+                      }
                     }
                 } else if (res.data.Code == 400) {//提示您还没授权
                     wx.showToast({

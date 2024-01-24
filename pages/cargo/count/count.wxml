@@ -25,19 +25,30 @@
             <view class="table">
                 <view class="th">
                     <view class="td flex">展馆号</view>
-                    <view class="td">展位号</view>
-                    <view class="td">已购买</view>
-                    <view class="td">已领证</view>
-                    <view class="td">已入场</view>
-                    <view class="td">未入场</view>
+                    <view class="td flex">展位号</view>
+                    <block wx:if="{{!type}}">
+                        <view class="td">已领证</view>
+                        <view class="td">已入场</view>
+                        <view class="td">未入场</view>
+                    </block>
+                    <block wx:else>
+                        <view class="td">{{title[type].t1}}</view>
+                        <view class="td" style="width: 100px;" wx:if="{{type != '5'}}">{{title[type].t2}}</view>
+                    </block>
+                    
                 </view>
                 <view class="tr" wx:for="{{list}}" wx:key="index">
                     <view class="td flex">{{item.hall_number}}</view>
-                    <view class="td">{{item.position_number}}</view>
-                    <view class="td">{{item.cargo}}</view>
-                    <view class="td">{{item.condition_count}}</view>
-                    <view class="td">{{item.action_count}}</view>
-                    <view class="td">{{item.now_count}}</view>
+                    <view class="td flex">{{item.position_number}}</view>
+                    <block wx:if="{{!type}}">
+                        <view class="td">{{item.condition_count}}</view>
+                        <view class="td">{{item.action_count}}</view>
+                        <view class="td">{{item.now_count}}</view>
+                    </block>
+                    <block wx:else>
+                        <navigator class="td" url="/pages/cargo/cars/cars">{{item.cargo}}</navigator>
+                        <view class="td" style="width: 100px;" wx:if="{{type != '5'}}">{{item.cargo}}</view>
+                    </block>
                 </view>
 
             </view>

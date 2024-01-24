@@ -194,11 +194,7 @@ App({
             }
         },
         onLaunch: function () {
-            // const worker = wx.createWorker('workers/index.js', {
-            //     useExperimentalWorker: true
-            // })
             let that = this
-            // 展示本地存储能力
             var logs = wx.getStorageSync('logs') || []
             logs.unshift(Date.now())
             wx.setStorageSync('logs', logs)
@@ -223,9 +219,6 @@ App({
                                                 code: code,
                                                 encryptedData: res.encryptedData,
                                                 iv: res.iv
-                                            },
-                                            header: {
-                                                'content-type': 'application/json' // 默认值
                                             },
                                             success(res) {
                                                 wx.setStorageSync('openId', res.data.data.openId)
