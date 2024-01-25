@@ -10,6 +10,15 @@ page{
 
 .table{
     /* padding: 0 8px; */
+    height: 0;
+    /* overflow: hidden; */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.table .tb{
+    flex: 1;
+    height: 0;
 }
 
 .table .tr{

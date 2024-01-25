@@ -8,13 +8,12 @@ Page({
         page: 1,
         list: [],
         zg_list: [],
-        type: '',
+        type: '1',
         title: [{},{t1: '已申报',t2: '申报时间'},{t1: '领证数量',t2: '领证时间'},{t1: '入场数量',t2: '入场时间'},{t1: '出场数量',t2: '出场时间'},{t1: '馆内数量',t2: ''}]
     },
     // onShareAppMessage: function(){},
     onLoad: function (op) {
-        // console.log(op.type)
-        this.setData({type: op.type})
+        // this.setData({type: op.type})
     },
     onShow: function () {
         this.setData({
@@ -67,6 +66,12 @@ Page({
             }
         })
     },
+    pageAdd: function(){
+        this.setData({
+            page: this.data.page+1
+        })
+        this.getList()
+    },
     getList: function () {
         let that = this
         wx.request({
@@ -76,7 +81,7 @@ Page({
                 hall_number: this.data.hall_number,
                 position_number: this.data.position_number,
                 page: this.data.page,
-                limit: 12
+                limit: 20
             },
             success(data) {
                 let res = data.data,

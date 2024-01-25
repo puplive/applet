@@ -1,8 +1,5 @@
-.page-booth-inspec{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: #fff;
+.page-flex-column{
+  background: #fff;
 }
 .content{
     flex: 1;
@@ -12,7 +9,16 @@
 }
 
 .table{
-    /* padding: 0 8px; */
+  /* padding: 0 8px; */
+  height: 0;
+  /* overflow: hidden; */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.table .tb{
+  flex: 1;
+  height: 0;
 }
 
 .table .tr{

@@ -1,4 +1,4 @@
-<view class="page-booth-inspec">
+<view class="page-flex-column ipx-bottom">
     <view class="select-box" style="background: #ECBB49">
         <navigator class="select" url="/pages/expo/expo">
             <text class="text">{{expo.hui_nickname}}</text>
@@ -6,37 +6,37 @@
             <image class="icon" src="/images/icon_sanjiao.png" mode="aspectFit"></image>
         </navigator>
     </view>
-    <view class="content">
-        <view class="s-form" style="padding:8px">
-            <view class="form-item">
-                <picker style="width: 30%;" bindchange="zgChange" range="{{zg_list}}">
-                    <view class="s-select">
-                        <input class="text" value="{{hall_number}}" placeholder="展馆" disabled="{{true}}" />
-                        <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
-                    </view>
-                </picker>
-                <view class="s-select flex-fill" bindtap="show_picker_zw" style="margin-left: 8px;">
-                    <input class="text" value="{{position_number}}" bindinput="zwChange" placeholder="展位号" />
-                    <!-- <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image> -->
+    <view class="s-form" style="padding:8px">
+        <view class="form-item">
+            <picker style="width: 30%;" bindchange="zgChange" range="{{zg_list}}">
+                <view class="s-select">
+                    <input class="text" value="{{hall_number}}" placeholder="展馆" disabled="{{true}}" />
+                    <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
                 </view>
+            </picker>
+            <view class="s-select flex-fill" bindtap="show_picker_zw" style="margin-left: 8px;">
+                <input class="text" value="{{position_number}}" bindinput="zwChange" placeholder="展位号" />
+                <!-- <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image> -->
             </view>
         </view>
-        <view class="">
-            <view class="table">
-                <view class="th">
-                    <view class="td flex">展馆号</view>
-                    <view class="td flex">展位号</view>
-                    <block wx:if="{{!type}}">
-                        <view class="td">已领证</view>
-                        <view class="td">已入场</view>
-                        <view class="td">未入场</view>
-                    </block>
-                    <block wx:else>
-                        <view class="td">{{title[type].t1}}</view>
-                        <view class="td" style="width: 100px;" wx:if="{{type != '5'}}">{{title[type].t2}}</view>
-                    </block>
-                    
-                </view>
+    </view>
+    <view class="table">
+        <view class="th">
+            <view class="td flex">展馆号</view>
+            <view class="td flex">展位号</view>
+            <block wx:if="{{!type}}">
+                <view class="td">已领证</view>
+                <view class="td">已入场</view>
+                <view class="td">未入场</view>
+            </block>
+            <block wx:else>
+                <view class="td">{{title[type].t1}}</view>
+                <view class="td" style="width: 100px;" wx:if="{{type != '5'}}">{{title[type].t2}}</view>
+            </block>
+
+        </view>
+        <view class="tb">
+            <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="pageAdd">
                 <view class="tr" wx:for="{{list}}" wx:key="index">
                     <view class="td flex">{{item.hall_number}}</view>
                     <view class="td flex">{{item.position_number}}</view>
@@ -46,16 +46,15 @@
                         <view class="td">{{item.now_count}}</view>
                     </block>
                     <block wx:else>
-                        <navigator class="td" url="/pages/cargo/cars/cars">{{item.cargo}}</navigator>
+                        <navigator class="td" url="/pages/cargo/cars/cars?zg={{item.hall_number}}&zw={{item.position_number}}">{{item.cargo}}</navigator>
                         <view class="td" style="width: 100px;" wx:if="{{type != '5'}}">{{item.cargo}}</view>
                     </block>
                 </view>
-
-            </view>
-            <view wx:if="{{list_keys.length == 0}}" class="no_data">
-                暂无数据
-            </view>
+            </scroll-view>
         </view>
-    </view>
+        <view wx:if="{{list_keys.length == 0}}" class="no_data">
+            暂无数据
+        </view>
 
+    </view>
 </view>

@@ -9,27 +9,27 @@
     <view class="page-flex-con flex-column">
         <view class="page-flex-con not_accepted">
             <view class="flex-wrp">
-                <navigator class="flex-item demo-text-2" url="/pages/cargo/count/count?type=1">
+                <navigator class="flex-item demo-text-2" url="/pages/cargo/cars/cars">
                     <view class="not_accnum">{{count.cargo||''}}</view>
                     <text class="iconfont icon-wodejiashizheng"></text>
                     <view class="not_accname">申报车证</view>
                 </navigator>
-                <navigator class="flex-item demo-text-3" url="/pages/cargo/count/count?type=2">
+                <navigator class="flex-item demo-text-3" url="/pages/cargo/cars/cars?status=2">
                     <view class="not_accnum">{{count.condition_count||''}}</view>
                     <text class="iconfont icon-lingqu"></text>
                     <view class="not_accname">领取车证</view>
                 </navigator>
-                <navigator class="flex-item demo-text-1" url="/pages/cargo/count/count?type=3">
+                <navigator class="flex-item demo-text-1" url="/pages/cargo/cars/cars?status=4">
                     <view class="not_accnum">{{count.action_count||''}}</view>
                     <text class="iconfont icon-approach"></text>
                     <view class="not_accname">入场数量</view>
                 </navigator>
-                <navigator class="flex-item demo-text-4" url="/pages/cargo/count/count?type=4">
+                <navigator class="flex-item demo-text-4" url="/pages/cargo/cars/cars?status=5">
                     <view class="not_accnum">{{count.now_count||''}}</view>
                     <text class="iconfont icon-exit"></text>
                     <view class="not_accname">出场数量</view>
                 </navigator>
-                <navigator class="flex-item demo-text-5" url="/pages/cargo/count/count?type=5">
+                <navigator class="flex-item demo-text-5" url="/pages/cargo/cars/cars?status=6">
                     <view class="not_accnum">{{count.lay_count||''}}</view>
                     <text class="iconfont icon-yinhang"></text>
                     <view class="not_accname">馆内数量</view>
