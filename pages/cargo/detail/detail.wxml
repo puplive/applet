@@ -7,7 +7,7 @@
                     <image bindtap='topic_preview' data-index="1" mode="aspectFit" src="{{host+detail.drive_reverse}}"></image>
                 </view>
                 <view class="form-item">
-                    <view class="s-btn">{{'新能源车牌'}} </view>
+                    <view class="s-btn {{detail.car_guige == '常规车牌'?'type1':'type2'}}">{{detail.car_guige}} </view>
                     <view class="s-text">{{detail.car_number}}</view>
                 </view>
                 <view class="form-item">

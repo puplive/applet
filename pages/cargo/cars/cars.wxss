@@ -22,18 +22,22 @@ page{
 }
 
 .table .tr{
+    /* width: 200vw; */
     display: flex;
     align-items: stretch;
     margin: 0 8px;
-    height: 40px;
+    height: 50px;
     border-bottom: 1px solid #DCDFE6;
 }
 .table .th{
     padding: 0 8px;
     display: flex;
     align-items: stretch;
-    height: 40px;
+    height: 30px;
     background: #F2F4F9;
+}
+.table .th .td{
+  font-weight: 600;
 }
 .table .td{
     font-size: 14px;
@@ -46,9 +50,15 @@ page{
     /* overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis; */
-    width: 60px;
+    width: 50px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+}
+.table .td .s1{
+  font-size: 11px;
+  color: #9B9B9B;
 }
 .table .th .td:nth-child(1),
 .table .tr .td:nth-child(1){
@@ -56,13 +66,15 @@ page{
 }
 .table .th .td:nth-child(4),
 .table .tr .td:nth-child(4){
-    width: 100px;
+    /* width: 100px; */
+    align-items: center;
 }
 .table .th .td:nth-child(5),
 .table .tr .td:nth-child(5){
     /* color: #9B9B9B; */
-    width: 20px;
-    justify-content: center;
+    width: 30px;
+    /* justify-content: center; */
+    align-items: flex-end;
 }
 .table .tr .td:nth-child(3){
     /* color: #D0021B; */
@@ -71,14 +83,17 @@ page{
     /* color: #62BB00; */
 }
 .table .tr .td .tz{
-  height: 36rpx;
+  height: 30rpx;
+  line-height: 30rpx;
   background: #E4E6E8;
-  border-radius: 18rpx;
+  border-radius: 15rpx;
   font-size: 20rpx;
   color: #9B9B9B;
-  line-height: 36rpx;
   padding: 0 8px;
-  margin-left: 5px;
+  width: 30px;
+  text-align: center;
+  margin-top: 5rpx;
+  /* margin-left: 5px; */
 }
 .table .td .icon{
     width: 12px;

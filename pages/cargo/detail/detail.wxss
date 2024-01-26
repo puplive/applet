@@ -1,5 +1,6 @@
 .page-cargo-detail{
   background: #fff;
+  font-size: 14px;
 }
 .list{
     padding: 8px;
@@ -19,6 +20,7 @@
 }
 .s-status{
   padding: 4px 8px;
+  line-height: 14px;
   background-color: #E9AD23;
   color: #fff;
   border-radius: 20px;
@@ -45,6 +47,14 @@
 .card>view.zm{
     margin-right: 8px;
 }
+.s-btn.type1{
+  background: #4A90E2;
+  border: 1px solid #4A90E2;
+}
+.s-btn.type2{
+  background: #53BA27;
+  border: 1px solid #53BA27;
+}
 
 .btn-bar{
   display: flex;
@@ -66,4 +76,19 @@
   border-color: #E4E6E8 !important;
   background-color: #E4E6E8 !important;
   color: #353535 !important;
+}
+
+.s-btn{
+  height: 30px;
+  line-height: 28px;
+  width: fit-content;
+  box-sizing: border-box;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ECBB49;
+  border: 1px solid #ECBB49;
+  color: #fff;
+  padding: 0 8px;
 }

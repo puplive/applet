@@ -7,56 +7,69 @@
             <image class="icon" src="/images/icon_sanjiao.png" mode="aspectFit"></image>
         </navigator>
     </view>
-    <!-- <view class="content"> -->
-        <view class="s-form" style="padding:8px">
-            <view class="form-item">
-                <picker style="width: 30%;" bindchange="statusChange" range="{{status_list}}">
-                    <view class="s-select">
-                        <input class="text" value="{{status_list[status] == '全部'? '':status_list[status]}}" placeholder="车辆状态" disabled="{{true}}" />
-                        <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
-                    </view>
-                </picker>
-                <view class="s-select flex-fill" style="margin-left: 8px;">
-                    <input class="text" value="{{search}}" bindinput="search_change" placeholder="车牌号/司机姓名" />
+    <view class="s-form" style="padding:8px">
+        <view class="form-item">
+            <picker style="width: 30%;" bindchange="statusChange" range="{{status_list}}">
+                <view class="s-select">
+                    <input class="text" value="{{status_list[status] == '全部'? '':status_list[status]}}" placeholder="车辆状态" disabled="{{true}}" />
+                    <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
                 </view>
+            </picker>
+            <picker style="width: 30%; margin-left: 8px;" bindchange="zgChange" range="{{zg_list}}">
+                <view class="s-select">
+                    <input class="text" value="{{zg}}" placeholder="展馆" disabled="{{true}}" />
+                    <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
+                </view>
+            </picker>
+            <view class="s-select flex-fill" bindtap="show_picker_zw" style="margin-left: 8px;">
+                <input class="text" value="{{zw}}" bindinput="zwChange" placeholder="展位号" />
+            </view>
+            
+        </view>
+        <view class="form-item">
+            <view class="s-select flex-fill">
+                <input class="text" value="{{search}}" bindinput="search_change" placeholder="车牌号/司机姓名" />
             </view>
         </view>
-        <!-- <view class=""> -->
-            <view class="table">
-                <view class="th">
-                    <view class="td"></view>
-                    <view class="td flex">车牌号</view>
-                    <view class="td">司机姓名</view>
-                    <view class="td">车辆状态</view>
-                    <view class="td"></view>
-                </view>
-                <view class="tb">
-                <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="pageAdd">
-                    <checkbox-group bindchange="checkboxChange">
-                        <view class="tr" wx:for="{{list}}" wx:key="index">
-                            <view class="td">
-                                <checkbox wx:if="{{item.status == '1' || item.status == '2'}}" value="{{item.id}}" checked="{{tool.indexOf(checked_list, item.id)}}" disabled="" />
-                            </view>
-                            <view class="td flex">{{item.car_number}}</view>
-                            <view class="td">{{item.name}}</view>
-                            <view class="td">
-                                {{ status_list[item.status]}}
-                                <text wx:if="{{item.send_status == '1'}}" class="tz">已通知</text>
-                            </view>
-                            <navigator class="td" url="/pages/cargo/detail/detail?id={{item.id}}">
-                                <text class="iconfont icon-right" style="color: #909399; font-size: 36rpx;"></text>
-                            </navigator>
+    </view>
+    <view class="table">
+        <view class="th">
+            <view class="td"></view>
+            <view class="td flex">车牌</view>
+            <view class="td flex">展位</view>
+            <view class="td">状态</view>
+            <view class="td"></view>
+        </view>
+        <view class="tb">
+            <scroll-view scroll-y="true" style="height: 100%" bindscrolltolower="pageAdd">
+                <checkbox-group bindchange="checkboxChange">
+                    <view class="tr" wx:for="{{list}}" wx:key="index">
+                        <view class="td">
+                            <checkbox wx:if="{{item.status == '1' || item.status == '2'}}" value="{{item.id}}" checked="{{tool.indexOf(checked_list, item.id)}}" disabled="" />
                         </view>
-                    </checkbox-group>
-                </scroll-view>
+                        <view class="td flex">
+                            {{item.car_number}}
+                            <text class="s1">{{item.name}}</text> 
+                        </view>
+                        <view class="td flex">
+                            {{item.position_number}}
+                            <text class="s1">馆：{{item.hall_number}}</text> 
+                        </view>
+                        <view class="td">
+                            {{ status_list[item.status]}}
+                            <text wx:if="{{item.send_status == '1'}}" class="tz">已通知</text>
+                        </view>
+                        <navigator class="td" url="/pages/cargo/detail/detail?id={{item.id}}">
+                            <text class="iconfont icon-right" style="color: #909399; font-size: 36rpx;"></text>
+                        </navigator>
+                    </view>
+                </checkbox-group>
+                <view wx:if="{{list.length == 0}}" class="no_data">
+                    暂无数据
                 </view>
-
-            </view>
-            <view wx:if="{{list.length == 0}}" class="no_data">
-                暂无数据
-            </view>
-        <!-- </view> -->
-    <!-- </view> -->
+            </scroll-view>
+        </view>
+    </view>
     <view style="padding: 8px;">
         <navigator class="btn1" bindtap="notify">通知入场</navigator>
     </view>

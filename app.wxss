@@ -1,5 +1,5 @@
 /**app.wxss**/
-page{background-color: #EBEEF5;}
+page{background-color: #EBEEF5; font-size: 14px;}
 .page-tabBar{
   height: calc(100vh - 50px);
   height: calc(100vh - 50px);
@@ -182,7 +182,6 @@ page{background-color: #EBEEF5;}
 .s-picker .picker-btn-bar .picker-btn+.picker-btn{
   margin-left: 8px;
 }
-
 .btn1{
   height: 40px;
   background: #ECBB49;

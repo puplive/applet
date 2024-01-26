@@ -9,12 +9,12 @@ Page({
         list: [],
         status_list: ['全部', '未领取', '已领取', '未入场', '已入场', '已出场', '未出场'],
         checked_list: [],
+        zg_list: [],
         zg: '',
         zw: ''
     },
     // onShareAppMessage: function(){},
     onLoad: function (op) {
-        console.log(op)
         this.setData({
             status: op.status || '',
             zg: op.zg || '',
@@ -27,12 +27,31 @@ Page({
             list: [],
             checked_list: []
         })
+        this.get_zg_list()
         this.getList()
     },
     statusChange(e) {
         let val = e.detail.value
         this.setData({
             status: val,
+            list: [],
+            page: 1
+        })
+        this.getList()
+    },
+    zgChange(e) {
+        let val = e.detail.value
+        this.setData({
+            zg: val==0? '': this.data.zg_list[val],
+            list: [],
+            page: 1
+        })
+        this.getList()
+    },
+    zwChange(e) {
+        let value = e.detail.value
+        this.setData({
+            zw: value,
             list: [],
             page: 1
         })
@@ -55,7 +74,7 @@ Page({
     },
     pageAdd: function(){
         this.setData({
-            page: this.data.page+1
+            page: this.data.page+20
         })
         this.getList()
     },
@@ -69,17 +88,17 @@ Page({
                 limit: 20,
                 status: this.data.status == 0 ? '' : this.data.status,
                 search: this.data.search,
-                hall_number: this.data.zg
+                hall_number: this.data.zg,
+                position_number: this.data.zw,
             },
             success(data) {
                 let res = data.data,
                     list = [];
                 if (res.Code == 200) {
                     list = [...that.data.list, ...res.data.data]
-                    console.log(list.length , res.data.count)
                     if(res.data.data.length == 0){
                         that.setData({
-                            page: that.data.page-1
+                            page: that.data.page-20
                         })
                     }
                 }
@@ -128,6 +147,29 @@ Page({
                 console.log(err)
             }
         })
-    }
+    },
+    get_zg_list: function () {
+        let that = this
+        wx.request({
+            url: url + 'field/order/project/'+that.data.expo.hui_id,
+            success(res) {
+                let data = res.data,
+                    zg_list = ['全部']
+                if (data.Code == 200) {
+                    that.setData({
+                        // zw_list: data.data.number,
+                        zg_list: [...zg_list,...data.data.z_guan]
+                    })
+ 
+                } else {
+
+                }
+                
+            },
+            fail: function (err) {
+                console.log(err)
+            }
+        })
+    },
 
 })

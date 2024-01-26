@@ -19,6 +19,10 @@ Page({
         this.setData({
             expo: app.globalData.expo
         })
+        this.setData({
+            list: [],
+            page: 1
+        })
         this.get_zg_list()
         this.getList()
     },
@@ -44,9 +48,6 @@ Page({
         let that = this
         wx.request({
             url: url + 'field/order/project/'+that.data.expo.hui_id,
-            // header: {
-            //     "content-type": "application/json;charset=UTF-8"
-            //   },
             success(res) {
                 let data = res.data,
                     zg_list = ['全部']
@@ -68,7 +69,7 @@ Page({
     },
     pageAdd: function(){
         this.setData({
-            page: this.data.page+1
+            page: this.data.page+20
         })
         this.getList()
     },
@@ -88,6 +89,11 @@ Page({
                     list = [];
                 if(res.Code == 200){
                     list = [...that.data.list,...res.data.data]
+                    if(res.data.data.length == 0){
+                        that.setData({
+                            page: that.data.page-20
+                        })
+                    }
                 }
                 that.setData({
                     list: list

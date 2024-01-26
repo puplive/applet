@@ -30,8 +30,8 @@
                 <view class="td">未入场</view>
             </block>
             <block wx:else>
-                <view class="td">{{title[type].t1}}</view>
-                <view class="td" style="width: 100px;" wx:if="{{type != '5'}}">{{title[type].t2}}</view>
+                <view class="td c">{{title[type].t1}}</view>
+                <!-- <view class="td" style="width: 100px;" wx:if="{{type != '5'}}">{{title[type].t2}}</view> -->
             </block>
 
         </view>
@@ -46,8 +46,8 @@
                         <view class="td">{{item.now_count}}</view>
                     </block>
                     <block wx:else>
-                        <navigator class="td" url="/pages/cargo/cars/cars?zg={{item.hall_number}}&zw={{item.position_number}}">{{item.cargo}}</navigator>
-                        <view class="td" style="width: 100px;" wx:if="{{type != '5'}}">{{item.cargo}}</view>
+                        <navigator class="td c" url="/pages/cargo/cars/cars?zg={{item.hall_number}}&zw={{item.position_number}}">{{item.cargo}}</navigator>
+                        <!-- <view class="td" style="width: 100px;" wx:if="{{type != '5'}}">{{item.create_time || ''}}</view> -->
                     </block>
                 </view>
             </scroll-view>

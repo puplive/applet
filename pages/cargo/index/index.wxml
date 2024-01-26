@@ -12,12 +12,12 @@
                 <navigator class="flex-item demo-text-2" url="/pages/cargo/cars/cars">
                     <view class="not_accnum">{{count.cargo||''}}</view>
                     <text class="iconfont icon-wodejiashizheng"></text>
-                    <view class="not_accname">申报车证</view>
+                    <view class="not_accname">登记数量</view>
                 </navigator>
                 <navigator class="flex-item demo-text-3" url="/pages/cargo/cars/cars?status=2">
                     <view class="not_accnum">{{count.condition_count||''}}</view>
                     <text class="iconfont icon-lingqu"></text>
-                    <view class="not_accname">领取车证</view>
+                    <view class="not_accname">领取数量</view>
                 </navigator>
                 <navigator class="flex-item demo-text-1" url="/pages/cargo/cars/cars?status=4">
                     <view class="not_accnum">{{count.action_count||''}}</view>
@@ -39,11 +39,11 @@
         <view class="ul">
             <navigator class="li" url="/pages/cargo/count/count">
                 <image class="" src="/images/icon_xj.png"></image>
-                <view class="">车证统计</view>
+                <view class="">申报车证</view>
             </navigator>
             <navigator class="li" url="/pages/cargo/cars/cars">
                 <image class="" src="/images/icon_dj.png"></image>
-                <view class="">车辆信息</view>
+                <view class="">领取车证</view>
             </navigator>
 
         </view>

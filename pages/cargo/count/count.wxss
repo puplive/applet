@@ -35,6 +35,9 @@
     height: 40px;
     background: #F2F4F9;
 }
+.table .th .td{
+  font-weight: 600;
+}
 .table .td{
     font-size: 14px;
     font-family: PingFangSC-Regular, PingFang SC;
@@ -50,6 +53,9 @@
     display: flex;
     align-items: center;
     /* flex: 1; */
+}
+.table .td.c{
+    justify-content: center;
 }
 .table .tr .td:nth-child(4){
     /* color: #9B9B9B; */
