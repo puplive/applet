@@ -19,7 +19,7 @@
 .tabbar_text {
     padding: 10rpx 0 0 0;
     display: block;
-    font-size: 28rpx;
+    font-size: 26rpx;
 }
 
 .clear {
