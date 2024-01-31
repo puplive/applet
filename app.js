@@ -1,5 +1,5 @@
-const url = 'https://test.exposaas.com/'
-// const url = 'https://scm.exposaas.com/' 
+// const url = 'https://test.exposaas.com/'
+const url = 'https://scm.exposaas.com/' 
 App({
         globalData: {
             userRole: '',

@@ -15,7 +15,7 @@
                     <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>
                 </view>
             </picker>
-            <picker style="width: 30%; margin-left: 8px;" bindchange="zgChange" range="{{zg_list}}">
+            <picker style="width: 30%; margin-left: 8px;" bindchange="zgChange" range="{{zg_list}}" range-key="hall_number">
                 <view class="s-select">
                     <input class="text" value="{{zg}}" placeholder="展馆" disabled="{{true}}" />
                     <image class="icon" src="/images/icon_select.png" mode="aspectFit"></image>

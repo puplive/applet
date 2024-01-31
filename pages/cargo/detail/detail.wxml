@@ -49,7 +49,7 @@
             </view>
         </view>
     </scroll-view>
-    <view>
+    <view wx:if="{{detail.refund_status != '1'}}">
         <view class="btn-bar">
             <button wx:if="{{detail.recibir_status == '1'}}" size="mini" class="type2" disabled="true">已领证</button>
             <button wx:else plain="true" size="mini" class="type1" catchtap="up_status" data-type="0">领证</button>

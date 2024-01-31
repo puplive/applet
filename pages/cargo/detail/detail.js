@@ -34,6 +34,13 @@ Page({
             success: function (res) {
                 let d = res.data
                 if (d.Code == 200) {
+                    if(d.data.refund_status == '1'){
+                        wx.showToast({
+                            title: '已退款',
+                            icon: 'error',
+                            duration: '2000'
+                        })
+                    }
                     that.setData({
                         detail: d.data
                     })

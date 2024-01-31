@@ -42,7 +42,7 @@ Page({
     zgChange(e) {
         let val = e.detail.value
         this.setData({
-            zg: val==0? '': this.data.zg_list[val],
+            zg: val==0? '': this.data.zg_list[val].hall_number,
             list: [],
             page: 1
         })
@@ -154,7 +154,7 @@ Page({
             url: url + 'field/order/project/'+that.data.expo.hui_id,
             success(res) {
                 let data = res.data,
-                    zg_list = ['全部']
+                    zg_list = [{hall_number:'全部',numbers:data.data.number}]
                 if (data.Code == 200) {
                     that.setData({
                         // zw_list: data.data.number,

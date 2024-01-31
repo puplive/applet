@@ -27,12 +27,8 @@ Page({
         }
         var that = this;
         wx.request({
-            url: url + 'field/default/hui-all',
+            url: url + '/worksite/default/projects',
             data: { OpenId: wx.getStorageSync('openId') },
-            method: 'GET',
-            header: {
-                'content-type': 'application/json' // 默认值
-            },
             success(res) {
                 if (res.data.Code == 200) {
                     that.setData({
@@ -64,7 +60,7 @@ Page({
             success: function (res) {
                 if (res.data.Code == 200) {
                     let applet_role_id = res.data.data.applet_role_id
-                    // applet_role_id = 15
+                    applet_role_id = 15
                     app.globalData.userRole = applet_role_id
                     sendMessageContent.RoleId = applet_role_id;
 
