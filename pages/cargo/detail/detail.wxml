@@ -51,26 +51,64 @@
     </scroll-view>
     <view wx:if="{{detail.refund_status != '1'}}">
         <view class="btn-bar">
-            <button wx:if="{{detail.recibir_status == '1'}}" size="mini" class="type2" disabled="true">已领证</button>
-            <button wx:else plain="true" size="mini" class="type1" catchtap="up_status" data-type="0">领证</button>
+            <button catchtap="change_lq" wx:if="{{lq == '1'}}" size="mini" class="type2" >已领证</button>
+            <button catchtap="change_lq" wx:else plain="true" size="mini" class="type1" data-type="0">领证</button>
 
-            <block wx:if="{{detail.status == '0'}}">
-                <button plain="true" size="mini" class="type1" catchtap="up_status" data-type="1">入场</button>
-                <!-- <button plain="true" size="mini" class="type1" catchtap="up_status" data-type="2">出场</button> -->
-                <button plain="true" size="mini" disabled="true">出场</button>
+            <block wx:if="{{rc == '0'}}">
+                <button catchtap="change_rc" plain="true" size="mini" class="type1" data-type="1">入场</button>
+                <button catchtap="change_cc" plain="true" size="mini" class="type1">出场</button>
             </block>
-            <block wx:elif="{{detail.status == '1'}}">
-                <button size="mini" class="type2" disabled="true">已入场</button>
-                <button plain="true" size="mini" class="type1" catchtap="up_status" data-type="2">出场</button>
+            <block wx:elif="{{rc == '1'}}">
+                <button catchtap="change_rc" size="mini" class="type2">已入场</button>
+                <button catchtap="change_cc" plain="true" size="mini" class="type1" data-type="2">出场</button>
             </block>
-            <block wx:elif="{{detail.status == '2'}}">
-                <button size="mini" class="type2" disabled="true">已入场</button>
-                <button size="mini" class="type2" disabled="true">已出场</button>
+            <block wx:elif="{{rc == '2'}}">
+                <button catchtap="change_rc" size="mini" class="type2">已入场</button>
+                <button catchtap="change_cc" size="mini" class="type2">已出场</button>
             </block>
             
         </view>
         <view style="padding: 8px;">
-            <navigator open-type="navigateBack" class="btn1">确认</navigator>
+            <view class="btn1" catchtap="up_status">确认</view>
         </view>
     </view>
 </view>
+<page-container
+    bind:leave="close_refund"
+    show="{{picker_show}}">
+    <view class="refund_before ipx-bottom">
+        <view class="ul">
+            <view class="li">
+                <text>车牌号:</text>
+                <text>{{refund.car_number}}</text>
+            </view>
+            <view class="li">
+                <text>进场时间:</text>
+                <text>{{refund.begin_time}}</text>
+            </view>
+            <view class="li">
+                <text>出场时间:</text>
+                <text>{{refund.end_time}}</text>
+            </view>
+            <view class="li">
+                <text>停留总时长:</text>
+                <text>{{refund.lay_time}}</text>
+            </view>
+            <view class="li">
+                <text>超时时长:</text>
+                <text>{{refund.lay_long_time}}</text>
+            </view>
+        </view>
+        <view class="ul">
+            <view class="li">
+                <text>应缴纳费用:</text>
+                <text>￥{{refund.price}}</text>
+            </view>
+            <!-- <view>
+                <text>实缴纳费用:</text>
+                <text>{{}}</text>
+            </view> -->
+        </view>
+        <view class="btn1" style="margin: 30px 15px; border-radius: 20px;" catchtap="sub_cc">出场</view>
+    </view>
+</page-container>

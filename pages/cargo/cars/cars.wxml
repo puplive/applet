@@ -34,32 +34,36 @@
     </view>
     <view class="table">
         <view class="th">
-            <view class="td"></view>
-            <view class="td flex">车牌</view>
-            <view class="td flex">展位</view>
-            <view class="td">状态</view>
-            <view class="td"></view>
+            <view class="td td1" wx:if="{{!(status == '4' || status == '5' || status == '6')}}"></view>
+            <view class="td td2 flex">车牌</view>
+            <view class="td td3">展位</view>
+            <view class="td td4">车辆长度</view>
+            <view class="td td5">状态</view>
+            <view class="td td6"></view>
         </view>
         <view class="tb">
             <scroll-view scroll-y="true" style="height: 100%" bindscrolltolower="pageAdd">
                 <checkbox-group bindchange="checkboxChange">
                     <view class="tr" wx:for="{{list}}" wx:key="index">
-                        <view class="td">
-                            <checkbox wx:if="{{item.status == '1' || item.status == '2'}}" value="{{item.id}}" checked="{{tool.indexOf(checked_list, item.id)}}" disabled="" />
+                        <view class="td td1" wx:if="{{!(status == '4' || status == '5' || status == '6')}}">
+                            <checkbox wx:if="{{item.status == '1' || item.status == '2' || item.status == '3'}}" value="{{item.id}}" checked="{{tool.indexOf(checked_list, item.id)}}" disabled="" />
                         </view>
-                        <view class="td flex">
+                        <view class="td td2 flex">
                             {{item.car_number}}
                             <text class="s1">{{item.name}}</text> 
                         </view>
-                        <view class="td flex">
+                        <view class="td td3">
                             {{item.position_number}}
-                            <text class="s1">馆：{{item.hall_number}}</text> 
+                            <text class="s1">{{item.hall_number}}</text> 
                         </view>
-                        <view class="td">
+                        <view class="td td4">
+                            {{item.vehicle_length}}
+                        </view>
+                        <view class="td td5">
                             {{ status_list[item.status]}}
                             <text wx:if="{{item.send_status == '1'}}" class="tz">已通知</text>
                         </view>
-                        <navigator class="td" url="/pages/cargo/detail/detail?id={{item.id}}">
+                        <navigator class="td td6" url="/pages/cargo/detail/detail?id={{item.id}}">
                             <text class="iconfont icon-right" style="color: #909399; font-size: 36rpx;"></text>
                         </navigator>
                     </view>
@@ -70,7 +74,7 @@
             </scroll-view>
         </view>
     </view>
-    <view style="padding: 8px;">
+    <view style="padding: 8px;" wx:if="{{!(status == '4' || status == '5' || status == '6')}}">
         <navigator class="btn1" bindtap="notify">通知入场</navigator>
     </view>
 </view>

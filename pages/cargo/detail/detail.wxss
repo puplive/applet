@@ -60,7 +60,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 0 8px;
+  padding: 16px 0 16px;
   box-shadow: 0rpx -8rpx 8rpx 0rpx rgba(0,0,0,0.1);
 }
 .btn-bar button{
@@ -68,14 +68,18 @@
   font-size: 14px;
   padding: 0 1.5em;
   margin: 0 8px;
+  width: 90px;
+  height: 30px;
+  line-height: 28px;
 }
 .btn-bar .type1{
   border-color: #ECBB49;
 }
 .btn-bar .type2{
-  border-color: #E4E6E8 !important;
+  /* border-color: #E9AD23 !important; */
   background-color: #E4E6E8 !important;
-  color: #353535 !important;
+  color: #666 !important;
+  line-height: 30px;
 }
 
 .s-btn{
@@ -91,4 +95,22 @@
   border: 1px solid #ECBB49;
   color: #fff;
   padding: 0 8px;
+}
+.refund_before{
+    background: #F2F4F9;
+}
+.refund_before .ul{
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.refund_before .ul .li{
+    display: flex;
+    height: 35px;
+    align-items: center;
+}
+.refund_before .ul .li text:first-child{
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
 }
