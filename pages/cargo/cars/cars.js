@@ -25,6 +25,7 @@ Page({
         this.setData({
             expo: app.globalData.expo,
             list: [],
+            page: 1,
             checked_list: []
         })
         this.get_zg_list()

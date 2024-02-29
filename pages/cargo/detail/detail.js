@@ -9,7 +9,8 @@ Page({
         lq: '0',
         rc: '0',
         picker_show: false,
-        refund: {}
+        refund: {},
+        refund_price: 0
     },
     onLoad(op) {
         if (op.id) {
@@ -113,8 +114,10 @@ Page({
             success: function (res) {
                 let d = res.data
                 if (d.Code == 200) {
+                    let refund_price = parseFloat((d.data.yajin_price - d.data.price).toFixed(10))
                     that.setData({
                         refund: d.data,
+                        refund_price: refund_price,
                         picker_show: true
                     })
                 } else {
@@ -122,6 +125,7 @@ Page({
                         title: d.msg,
                         icon: 'none',
                     })
+                    that.close_refund()
                 }
             },
             fail: function (res) {
@@ -161,6 +165,9 @@ Page({
                     
                 } else {
                     that.getData()
+                    that.setData({
+                        picker_show: false
+                    })
                 }
 
             },

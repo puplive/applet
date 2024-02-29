@@ -98,17 +98,22 @@
                 <text>超时时长:</text>
                 <text>{{refund.lay_long_time}}</text>
             </view>
+            <view class="li">
+                <text>已缴押金:</text>
+                <text>￥{{refund.yajin_price}}</text>
+            </view>
         </view>
         <view class="ul">
             <view class="li">
-                <text>应缴纳费用:</text>
+                <text>应缴费用:</text>
                 <text>￥{{refund.price}}</text>
             </view>
-            <!-- <view>
-                <text>实缴纳费用:</text>
-                <text>{{}}</text>
-            </view> -->
+            
+            <view class="li">
+                <text>应退押金:</text>
+                <text>￥{{refund_price}}</text>
+            </view>
         </view>
-        <view class="btn1" style="margin: 30px 15px; border-radius: 20px;" catchtap="sub_cc">出场</view>
+        <view class="btn1" style="margin: 30px 15px; border-radius: 20px;" catchtap="sub_cc">确认出场</view>
     </view>
 </page-container>
