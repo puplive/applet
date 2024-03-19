@@ -3,12 +3,14 @@ var url = app.globalData.url;
 var sendMessageContent = app.globalData.sendMessageContent;
 Page({
     data: {
-        expo: app.globalData.expo
+        expo: app.globalData.expo,
+        userRole: ''
     },
     onLoad: function (options) {
         wx.hideHomeButton()
         this.setData({
-            expo: app.globalData.expo
+            expo: app.globalData.expo,
+            userRole: app.globalData.userRole
         })
         var that = this;
         wx.request({

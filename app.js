@@ -42,7 +42,8 @@ App({
                         active: true
                     },
                     {
-                        "pagePath": "/pages/operator/person/person",
+                        // "pagePath": "/pages/operator/person/person",
+                        "pagePath": "/pages/user/user",
                         "text": "我的",
                         "iconPath": "/images/icon_wode.svg",
                         "selectedIconPath": "/images/icon_wode_on.svg",
@@ -97,7 +98,8 @@ App({
                         active: false
                     },
                     {
-                        "pagePath": "/pages/admin/person/person",
+                        // "pagePath": "/pages/admin/person/person",
+                        "pagePath": "/pages/user/user",
                         "text": "我的",
                         "iconPath": "/images/icon_wode.svg",
                         "selectedIconPath": "/images/icon_wode_on.svg",
@@ -144,7 +146,8 @@ App({
                         active: true
                     },
                     {
-                        "pagePath": "/pages/cruise/person/person",
+                        // "pagePath": "/pages/cruise/person/person",
+                        "pagePath": "/pages/user/user",
                         "text": "我的",
                         "iconPath": "/images/icon_wode.svg",
                         "selectedIconPath": "/images/icon_wode_on.svg",
