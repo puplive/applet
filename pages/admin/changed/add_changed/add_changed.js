@@ -249,10 +249,22 @@ input_change: function (e) {
   addChangedBtn:function(){
     var that = this;
     var tempFilePaths = that.data.tempFilePaths;
+    var imgres2 = that.data.imgres;
+    var img2 = that.data.img;
+    let n = 0;
+    var lock = that.data.lock;
+    if(lock){
+      return
+    }else{
+      that.setData({
+        lock:true,
+      })
+    }
       if(tempFilePaths.length>0){
+        wx.showLoading({
+          title: '图片上传中',
+        })
         for (let i in tempFilePaths) {
-          var imgres2 = that.data.imgres;
-          var img2 = [];
           wx.uploadFile({
             url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
             filePath: tempFilePaths[i],
@@ -263,21 +275,24 @@ input_change: function (e) {
             // method: 'POST',
             formData: {},
             success: function (res) {
-              var data = JSON.parse(res.data).info.path;
-              data = data.replace(app.globalData.mainServer, '');
-              imgres2.push(data);
-              img2.push(url + data);
-              that.setData({
-                // tempFilePath可以作为img标签的src属性显示图片
-                img: img2,
-                imgres: imgres2,
-              })
-              if(i==(tempFilePaths.length-1)){//最后一张图片上传完并延时0.1秒在执行保存数据
+              n+=1
+              let data = JSON.parse(res.data)
+              // var data = JSON.parse(res.data).info.path;
+              // data = data.replace(app.globalData.mainServer, '');
+              imgres2.push(data.info.origin_path);
+              img2.push(data.info.path);
+              if(n==(tempFilePaths.length)){
+                wx.hideLoading()
+                that.setData({
+                  img: img2,
+                  imgres: imgres2,
+                })
                 setTimeout(function(){
                 that.saveData();},100)
               }
             },
             fail: function (res) {
+              n+=1
               console.log('fail');
             },
           })
@@ -298,7 +313,7 @@ input_change: function (e) {
     var startime = that.data.startime;
     var endtime = that.data.endtime;
     var content = that.data.desc;
-    var rectify_imgs =that.data.imgres;
+    var rectify_imgs = that.data.img;
     var lock = that.data.lock;
     // console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',startime,endtime,'图',rectify_imgs);
     if(endtime<=startime){
@@ -314,10 +329,10 @@ input_change: function (e) {
       })
       return false;
     }
-    if(!lock){
-      that.setData({
-        lock:true,
-      })
+    // if(!lock){
+    //   that.setData({
+    //     lock:true,
+    //   })
       wx.request({
         url: url + 'worksite/rectify/rectify-add',
         data: { 
@@ -370,9 +385,14 @@ input_change: function (e) {
         },
         fail: function (err) {
           // 服务异常
+        },
+        complete: function(){
+          that.setData({
+            lock:false,
+          })
         }
       })
-    }
+    // }
   },
   /**
    * 生命周期函数--监听页面加载

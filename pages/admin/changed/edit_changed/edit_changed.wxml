@@ -53,7 +53,7 @@
   </view>
   <view class="upload_img clearfix">
     <view class=" img_con" wx:for="{{imgres}}"  wx:for-index="key">
-      <image class='imgwh' src='{{host}}/{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+      <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
       <view class="imgdel" bindtap="imgDel" data-value="{{key}}">
         <image src='../../../../images/imgdel.svg'></image>
       </view>

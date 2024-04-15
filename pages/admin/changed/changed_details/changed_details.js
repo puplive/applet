@@ -23,7 +23,7 @@ topic_preview: function(e){
   var url = e.currentTarget.dataset.url;
   var previewImgArr = [];
   for (var i in imgList) {
-    previewImgArr[i]= this.data.host+imgList[i];
+    previewImgArr[i]= imgList[i];
   }
   wx.previewImage({
     current: url,     //当前图片地址
@@ -233,7 +233,7 @@ detail:function(e){
       },
       success(res) {
         if (res.data.Code == 200) {
-          console.log(9999,Object.keys(res.data.data).length)
+          // console.log(9999,Object.keys(res.data.data).length)
           if(Object.keys(res.data.data).length==0){
             that.setData({
               accepArray_len:0,

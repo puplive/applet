@@ -17,7 +17,7 @@
           </view>
           <view class="list_liconimg clearfix topic_answerImg" >
             <view class="fl list_liconimg_img" wx:for="{{item.rectify_imgs}}" wx:for-item="img_item" wx:key="index">
-              <image bindtap='topic_preview' data-list="{{item.rectify_imgs}}" data-url='{{host}}{{img_item}}' class='topic_answer_itemImg' src="{{host}}/{{img_item}}"></image>
+              <image bindtap='topic_preview' data-list="{{item.rectify_imgs}}" data-url='{{img_item}}' class='topic_answer_itemImg' src="{{img_item}}"></image>
             </view>
           </view>
           <view class="changed_details">{{item.content}}</view>

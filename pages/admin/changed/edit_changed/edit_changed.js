@@ -10,9 +10,6 @@ Page({
     change_type:[],//整改方式
     punish_index:0,
     punish_method: [], //处罚方式
-    // changetime_index:0,
-    // changetime_value:'',
-    // change_time: ['9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '18:00 - 19:00', '19:00 - 20:00','20:00 - 21:00', '21:00 - 22:00', '22:00 - 23:00','23:00 - 24:00'], //整改时限
     startime: '',//整改时限
     endtime:'',
     desc:'',
@@ -56,13 +53,7 @@ bindPunish: function (e) {
     punish_id:this.data.punish_method[e.detail.value].id,
   })
 },
-// 点击整改时限
-// bindChangeTime: function (e) {
-//   this.setData({
-//     changetime_index: e.detail.value,
-//     changetime_value:this.data.change_time[e.detail.value],
-//   })
-// },
+
 bindStarTime: function (e) {
   this.setData({
     startime:e.detail.value,
@@ -92,21 +83,22 @@ chooseWxImage: function (type) {
       var uploadsimg = [];
       for (let i in tempFilePaths) {
         var imgres2 = that.data.imgres;
-        var img2 = [];
+        var img2 = that.data.img;
         wx.uploadFile({
-          url: url + 'worksite/rectify/imageupload', //此处换上你的接口地址
+          url: url + 'worksite/rectify/imageupload',
           filePath: tempFilePaths[i],
           name: 'img',
           header: {
-            'content-type': 'application/x-www-form-urlencoded' // 默认值
+            'content-type': 'application/x-www-form-urlencoded'
           },
           method: 'POST',
           formData: {},
           success: function (res) {
-            var data = JSON.parse(res.data).info.path;
-            data = data.replace(app.globalData.mainServer, '');
-            imgres2.push(data);
-            img2.push(url + data);
+            let data = JSON.parse(res.data)
+            // var data = JSON.parse(res.data).info.path;
+            // data = data.replace(app.globalData.mainServer, '');
+            imgres2.push(data.info.origin_path);
+            img2.push(data.info.path);
             that.setData({
               // tempFilePath可以作为img标签的src属性显示图片
               img: img2,
@@ -141,11 +133,12 @@ chooseimage: function () {
 },
 // 删除图片
 imgDel: function(e){
-  console.log(11,e,e.currentTarget.dataset.value)
+  let index = e.currentTarget.dataset.value
+  // console.log(11,e,e.currentTarget.dataset.value)
   var that = this;
-  (that.data.img).splice(e.currentTarget.dataset.value,1);
-  (that.data.imgres).splice(e.currentTarget.dataset.value,1);
-  console.log(that.data.img,that.data.imgres)
+  (that.data.img).splice(index,1);
+  (that.data.imgres).splice(index,1);
+  // console.log(that.data.img,that.data.imgres)
   that.setData({
     img:that.data.img,
     imgres:that.data.imgres
@@ -171,7 +164,7 @@ editChangedBtn:function(){
   var startime = that.data.startime;
   var endtime = that.data.endtime;
   var content = that.data.desc;
-  var rectify_imgs =that.data.imgres;
+  var rectify_imgs = that.data.img;
   if(endtime<=startime){
     wx.showToast({
       title: '请重新选择结束时间',
@@ -208,9 +201,6 @@ editChangedBtn:function(){
           success:function(){
             setTimeout(function(){
               wx.navigateBack()
-              // wx.navigateTo({
-              //   url: '../changed',
-              // })
             },1000);
           }
         })
@@ -241,14 +231,10 @@ editChangedBtn:function(){
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        // console.log(111,res);
         if (res.data.Code == 200) {
           var rectify_type = res.data.data.rectify_type || ''; //整改方式
           var punish_id = res.data.data.punish_type || ''; //处罚方式
           var changetime1 = res.data.data.rectify_time1 + " - " + res.data.data.rectify_time2; 
-          // console.log('time:',changetime1)
-          // var changetime_value = changetime1 == undefined ? '' : changetime1; 
-          // var change_index = that.data.change_time.indexOf(changetime1);
           var desc = res.data.data.content || '';   //详情描述
           var rectify_imgs = res.data.data.rectify_imgs || ''; //图片
           that.setData({
@@ -263,7 +249,8 @@ editChangedBtn:function(){
             // changetime_value:that.data.changetime_value, //整改时限
             startime: res.data.data.rectify_time1,//整改时限
             endtime:res.data.data.rectify_time2,
-            imgres: res.data.data.rectify_imgs.split(","),   //地址省市区
+            imgres: res.data.data.rectify_imgs.split(","),
+            img: res.data.data.rectify_start.split(","),
           })
         } else {
 
