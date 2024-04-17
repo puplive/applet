@@ -17,11 +17,10 @@
                 wx:for="{{detail._info.file}}"
                 wx:key="index">
                 <image class="" 
-                    src="{{item.img}}" 
+                    src="{{item.img_type == '0'?item.img:'/images/img_file.png'}}" 
                     data-file="{{item}}"
                     bindtap="preview"
                     mode="aspectFit" lazy-load="false" binderror="" bindload="">
-                    
                 </image>
             </view>
         </view>
