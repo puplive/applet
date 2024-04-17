@@ -23,7 +23,7 @@ Page({
                 file = this.data.detail._info.file
             file.forEach(element => {
                 if(element.img_type == '0'){
-                    list.push(this.data.url+element.img)
+                    list.push(element.img)
                 }
                 
             });
@@ -54,7 +54,7 @@ Page({
         console.log(file)
         if (file.img_type == '0') {
             wx.previewImage({
-                current: this.data.url+file.img,
+                current: file.img,
                 urls: this.data.file_list,
                 success: function (res) {
                     console.log('打开文档成功')
@@ -66,7 +66,7 @@ Page({
         } else {
             // pdf
             wx.downloadFile({
-                url: this.data.url+file.img,
+                url: file.img,
                 success: function (res) {
                     const filePath = res.tempFilePath
                     wx.openDocument({
