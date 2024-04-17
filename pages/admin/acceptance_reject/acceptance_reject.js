@@ -71,10 +71,31 @@ Page({
   agreeBtn:function(){
     var that = this;
     var tempFilePaths = that.data.tempFilePaths;
+    var imgres2 = that.data.imgres;
+    var img2 = that.data.img;
+    let n = 0;
+    var lock = that.data.lock;
+    if(!that.data.reasons){
+      wx.showToast({
+        title: '请填写驳回理由',
+        icon: 'none',
+        duration: 2000//持续的时间
+      })
+      return
+    }
+    if(lock){
+      return
+    }else{
+      that.setData({
+        lock:true,
+      })
+    }
+    
     if(tempFilePaths.length>0){
+      wx.showLoading({
+        title: '图片上传中',
+      })
       for (let i in tempFilePaths) {
-        var imgres2 = that.data.imgres;
-        var img2 = [];
         wx.uploadFile({
           url: url + 'worksite/check/imageupload', //此处换上你的接口地址
           filePath: tempFilePaths[i],
@@ -84,24 +105,25 @@ Page({
           },
           method: 'POST',
           formData: {},
+          dataType: 'json',
           success: function (res) {
-            var data = JSON.parse(res.data).info.path;
-            data = data.replace(app.globalData.mainServer, '');
-            imgres2.push(data);
-            img2.push(url + data);
-            // console.log(11, imgres2);
-            // console.log(22, img2);
-            that.setData({
-              // tempFilePath可以作为img标签的src属性显示图片
-              img: img2,
-              imgres: imgres2,
-            })
-            if(i==(tempFilePaths.length-1)){//最后一张图片上传完并延时0.1秒在执行保存数据
-              setTimeout(function(){
-              that.saveData();},100)
-            }
+            n+=1
+              let data = JSON.parse(res.data)
+              imgres2.push(data.info.path);
+              img2.push(data.info.origin_path);
+              if(n==(tempFilePaths.length)){
+                wx.hideLoading()
+                that.setData({
+                  img: img2,
+                  imgres: imgres2,
+                })
+                setTimeout(function(){
+                  that.saveData();
+                },100)
+              }
           },
           fail: function (res) {
+            n+=1
             console.log('fail');
           },
         })
@@ -117,20 +139,8 @@ Page({
     var reasons = that.data.reasons;
     var check_info_id = that.data.check_info_id;
     var imgres = that.data.imgres;
-    var lock = that.data.lock;
-    console.log('check_id:',check_id,'reasons:',reasons,'check_info_id:',check_info_id,'imgres',imgres)
-    if(!reasons){
-      wx.showToast({
-        title: '请填写驳回理由',
-        icon: 'none',
-        duration: 2000//持续的时间
-      })
-      return
-    }
-    if(!lock){
-      that.setData({
-        lock:true,
-      })
+    // var lock = that.data.lock;
+    
       wx.request({
         url: url + 'worksite/check/check-bohui',
         data: {check_id:check_id,bohui:reasons,check_info_id:check_info_id,bohui_img:imgres},
@@ -163,12 +173,13 @@ Page({
         },
         fail: function (err) {
           // 服务异常
+        },complete: function(){
           that.setData({
             lock:false,
           })
         }
       })
-    }
+    
   },
 
   /**

@@ -277,8 +277,6 @@ input_change: function (e) {
             success: function (res) {
               n+=1
               let data = JSON.parse(res.data)
-              // var data = JSON.parse(res.data).info.path;
-              // data = data.replace(app.globalData.mainServer, '');
               imgres2.push(data.info.origin_path);
               img2.push(data.info.path);
               if(n==(tempFilePaths.length)){
@@ -315,7 +313,6 @@ input_change: function (e) {
     var content = that.data.desc;
     var rectify_imgs = that.data.img;
     var lock = that.data.lock;
-    // console.log('zgh',z_guan,'zwh',zw_hao,'整改类型',rectify_type,'处罚方式',punish_type,'时间',startime,endtime,'图',rectify_imgs);
     if(endtime<=startime){
       wx.showToast({
         title: '请重新选择结束时间',
@@ -323,16 +320,12 @@ input_change: function (e) {
         duration: 2000//持续的时间
       });
       that.setData({
-        // lock:false,
+        lock:false,
         imgres:[],
         img:[],
       })
       return false;
     }
-    // if(!lock){
-    //   that.setData({
-    //     lock:true,
-    //   })
       wx.request({
         url: url + 'worksite/rectify/rectify-add',
         data: { 
@@ -392,7 +385,6 @@ input_change: function (e) {
           })
         }
       })
-    // }
   },
   /**
    * 生命周期函数--监听页面加载

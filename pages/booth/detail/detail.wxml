@@ -17,7 +17,7 @@
                 wx:for="{{detail._info.file}}"
                 wx:key="index">
                 <image class="" 
-                    src="{{url+item.img}}" 
+                    src="{{item.img}}" 
                     data-file="{{item}}"
                     bindtap="preview"
                     mode="aspectFit" lazy-load="false" binderror="" bindload="">

@@ -25,7 +25,7 @@
   </view>
   <view class="upload_img" wx:if="{{type == 'detail'}}">
     <view class=" img_con" wx:for="{{img_list}}" wx:key="index">
-      <image class='imgwh' src='{{host}}/{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
+      <image class='imgwh' src='{{item}}' catchTap="chooseImageTap" mode="aspectFit"></image>
     </view>
   </view>
   <view class='li'>
