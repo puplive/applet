@@ -3,8 +3,8 @@
         <view class="list">
             <view class="item">
                 <view class="card">
-                    <image bindtap='topic_preview' data-index="0" mode="aspectFit" src="{{host+detail.drive_front}}"></image>
-                    <image bindtap='topic_preview' data-index="1" mode="aspectFit" src="{{host+detail.drive_reverse}}"></image>
+                    <image bindtap='topic_preview' data-index="0" mode="aspectFit" src="{{detail.drive_front}}"></image>
+                    <image bindtap='topic_preview' data-index="1" mode="aspectFit" src="{{detail.drive_reverse}}"></image>
                 </view>
                 <view class="form-item">
                     <view class="s-btn {{detail.car_guige == '常规车牌'?'type1':'type2'}}">{{detail.car_guige}} </view>

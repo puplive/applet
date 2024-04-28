@@ -6,7 +6,7 @@
   </view>
   <view class="list_con">
     <view class="list_li clearfix">
-      <image src="{{host}}public/{{info.img}}" class="fl list_img"></image>
+      <image src="{{info.img}}" class="fl list_img"></image>
       <view class="list_licon fl">
         <view>
           <text class="list_litit">{{info.name}}</text>
@@ -43,7 +43,7 @@
     <view class="status" wx:if="{{info.order_status==2}}">已完成</view>
     <view class="list_liconimg clearfix topic_answerImg" wx:if="{{info.order_status==2}}">
       <view class="fl list_liconimg_img"  wx:for="{{info.finish_img}}" wx:for-item="img">
-        <image bindtap='topic_preview' data-list="{{info.finish_img}}" data-id='{{img.id}}' data-url='{{host}}{{img}}' class='topic_answer_itemImg' src="{{host}}{{img}}"></image>
+        <image bindtap='topic_preview' data-list="{{info.finish_img}}" data-id='{{img.id}}' data-url='{{img}}' class='topic_answer_itemImg' src="{{img}}"></image>
       </view>
     </view>
     <view class="changed_details" wx:if="{{info.order_status==2}}">{{info.finish_beizhu}}</view>

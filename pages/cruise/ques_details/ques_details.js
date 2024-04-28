@@ -214,7 +214,7 @@ addWanC:function(){
           var data = JSON.parse(res.data).info.path;
           data = data.replace(app.globalData.mainServer, '');
           imgres2.push(data);
-          img2.push(url + data);
+          img2.push(data);
           // console.log(11, imgres2);
           // console.log(22, img2);
           that.setData({

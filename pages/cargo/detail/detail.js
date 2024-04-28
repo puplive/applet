@@ -221,8 +221,8 @@ Page({
     topic_preview: function (e) {
         var index = e.currentTarget.dataset.index;
         var list = [
-            this.data.host + this.data.detail.drive_front,
-            this.data.host + this.data.detail.drive_reverse,
+            this.data.detail.drive_front,
+            this.data.detail.drive_reverse,
         ];
         wx.previewImage({
             current: list[index],

@@ -17,7 +17,7 @@ Page({
     var url = e.currentTarget.dataset.url;
     var previewImgArr = [];
     for (var i in imgList) {
-      previewImgArr[i]= this.data.host+imgList[i];
+      previewImgArr[i]= imgList[i];
     }
     wx.previewImage({
       current: url,     //当前图片地址

@@ -25,7 +25,7 @@ Page({
     var url = e.currentTarget.dataset.url;
     var previewImgArr = [];
     for (var i in imgList) {
-      previewImgArr[i]= this.data.host+imgList[i];
+      previewImgArr[i]= imgList[i];
     }
     wx.previewImage({
       current: url,     //当前图片地址
@@ -185,7 +185,7 @@ addWanC:function(){
         var data = JSON.parse(res.data).info.path;
         data = data.replace(app.globalData.mainServer, '');
         imgres2.push(data);
-        img2.push(url + data);
+        img2.push(data);
         // console.log(11, imgres2);
         // console.log(22, img2);
         that.setData({

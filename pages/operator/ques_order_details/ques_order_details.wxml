@@ -6,7 +6,7 @@
   </view>
   <view class="list_con">
     <view class="list_li clearfix">
-      <image src="{{host}}public/{{info.img}}" class="fl list_img"></image>
+      <image src="{{host}}{{info.img}}" class="fl list_img"></image>
       <view class="list_licon fl">
         <view>
           <text class="list_litit">{{info.goods_array.name}}</text>
@@ -24,7 +24,7 @@
      <view class="status">已完成</view>
     <view class="list_liconimg clearfix topic_answerImg">
       <view class="fl list_liconimg_img"  wx:for="{{info.finish_img}}" wx:for-item="img" wx-if="{{info.finish_img!= ''}}">
-        <image bindtap='topic_preview' data-list="{{info.finish_img}}" data-id='{{img.id}}' data-url='{{host}}{{img}}' class='topic_answer_itemImg' src="{{host}}{{img}}"></image>
+        <image bindtap='topic_preview' data-list="{{info.finish_img}}" data-id='{{img.id}}' data-url='{{img}}' class='topic_answer_itemImg' src="{{img}}"></image>
       </view>
     </view>
     <view class="changed_details">{{info.finish_beizhu}}</view>
@@ -36,11 +36,9 @@
     <view class="fb_con">
         <view class="fb_time"><text class="tiao"></text>{{info.pro_time}}</view>
         <view class="topic_answerImg">
-          <!-- <view class="fb_img clearfix" wx-if="{{pdata.problem.pro_img != ''}}">
-              <image  wx:for="{{pdata.problem.pro_img}}"  wx:for-item="pimg"  src="{{host}}{{pimg}}" bindtap="clickImg" data-url="{{host}}{{pimg}}" data-val="{{pdata.problem.pro_img}}"></image>
-            </view> -->
+
             <view class="fb_img clearfix"  wx:for="{{info.pro_img}}" wx:for-item="img">
-              <image bindtap='topic_preview' data-list="{{info.pro_img}}" data-id='{{info.id}}' data-url='{{host}}{{img}}' class='topic_answer_itemImg' src="{{host}}{{img}}"></image>
+              <image bindtap='topic_preview' data-list="{{info.pro_img}}" data-id='{{info.id}}' data-url='{{img}}' class='topic_answer_itemImg' src="{{img}}"></image>
           </view>
         </view>
         <view class="fb_desc">{{info.pro_content}}</view>
@@ -68,7 +66,7 @@
       <view class="fb_time">{{info.slove.solve_time}}</view>
       <view class="acc_img col topic_answerImg">
       <view class="fb_img clearfix"  wx:for="{{info.slove.solve_img}}"  wx:key="key"  wx:for-item="value">
-          <image bindtap='topic_preview' data-list="{{info.slove.solve_img}}" data-id='{{info.id}}' data-url='{{host}}{{value}}' class='topic_answer_itemImg' src="{{host}}{{value}}"></image>
+          <image bindtap='topic_preview' data-list="{{info.slove.solve_img}}" data-id='{{info.id}}' data-url='{{value}}' class='topic_answer_itemImg' src="{{value}}"></image>
         </view>
       </view>
       <view class="reject_be">{{info.slove.solve_beizhu}}</view>

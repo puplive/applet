@@ -24,7 +24,7 @@
             <text class="fr list_zwh_right">{{value.time}}</text>
           </view>
            <view class="list_li clearfix">
-            <image src="{{host}}public/{{value.img}}" class="fl list_img"></image>
+            <image src="{{host}}{{value.img}}" class="fl list_img"></image>
             <view class="list_licon fl">
               <view>
                 <text class="list_litit">{{value.name}}</text>
@@ -166,7 +166,7 @@
         <view class="or_zwh">{{orderinfo.project_info.library_number}} {{orderinfo.project_info.number}}</view>
         <view class="clearfix">
           <view class="fl">
-            <image class="or_img" src="{{host}}public/{{orderinfo.img}}"></image>
+            <image class="or_img" src="{{host}}{{orderinfo.img}}"></image>
           </view>
           <view class="fl zd_con">
             <view>

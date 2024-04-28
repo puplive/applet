@@ -44,7 +44,7 @@
                             <navigator url="" class="navigator {{user.login_status==0 ? 'offline' : ''}}">
                                 <view class="navigator-text clearfix">
                                     <view class="fl people_list">
-                                        <image src="{{host}}{{user.img}}"></image>
+                                        <image src="{{user.img}}"></image>
                                         <text>{{user.username}}</text>
                                     <text class="fr people_tel" bindtap="telPhone" data-tel="{{user.tel}}">{{user.tel}}</text>
                                      </view>

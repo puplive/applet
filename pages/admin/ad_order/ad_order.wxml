@@ -24,7 +24,7 @@
             <text class="fr list_zwh_right">{{value.time}}</text>
           </view>
           <view class="list_li clearfix">
-            <image src="{{host}}public/{{value.img}}" class="fl list_img"></image>
+            <image src="{{value.img}}" class="fl list_img"></image>
             <view class="list_licon fl">
               <view>
                 <text class="list_litit">{{value.name}}</text>
@@ -149,91 +149,6 @@
   </view>
 </view>
 <!-- 弹窗选择规格 end -->
-
-<!-- 转单弹窗 -->
-<!-- <modal hidden="{{hiddenhangye}}" title="转单内容" confirm-text="接单" cancel-text="拒绝" bindcancel="cancelM" bindconfirm="confirmM">
-  <view class='order_con'>
-    <view>
-      <view class="or_content">
-        <view class="or_zwh">N5 5009</view>
-        <view class="clearfix">
-          <view class="fl">
-            <image class="or_img" src="/images/header_img.png"></image>
-          </view>
-          <view class="fl zd_con">
-            <view>
-              <text class="zd_litit">鲜花租赁</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">桌布</text>
-              <text class="zd_listnum fr">×1</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">桌布桌布桌布桌布浪费就律师费矢量的副科级说了句发</text>
-              <text class="zd_listnum fr">×8</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">桌布</text>
-              <text class="zd_listnum fr">×1</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">桌布桌布桌布桌布浪费就律师费矢量的副科级说了句发</text>
-              <text class="zd_listnum fr">×8</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">桌布</text>
-              <text class="zd_listnum fr">×1</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">桌布桌布桌布桌布浪费就律师费矢量的副科级说了句发</text>
-              <text class="zd_listnum fr">×8</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">桌布</text>
-              <text class="zd_listnum fr">×1</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">桌布桌布桌布桌布浪费就律师费矢量的副科级说了句发</text>
-              <text class="zd_listnum fr">×8</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">桌布</text>
-              <text class="zd_listnum fr">×1</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">桌布桌布桌布桌布浪费就律师费矢量的副科级说了句发</text>
-              <text class="zd_listnum fr">×8</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">桌布</text>
-              <text class="zd_listnum fr">×1</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">桌布桌布桌布桌布浪费就律师费矢量的副科级说了句发</text>
-              <text class="zd_listnum fr">×8</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">是来的咖啡机</text>
-              <text class="zd_listnum fr">×1</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">水电费</text>
-              <text class="zd_listnum fr">×8</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">了速度快放假</text>
-              <text class="zd_listnum fr">×1</text>
-            </view>
-            <view class="zd_list clearfix">
-              <text class="zd_listname fl">；对客服</text>
-              <text class="zd_listnum fr">×8</text>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
-</modal> -->
 <!-- 指派弹窗 -->
 <modal hidden="{{hiddenassign}}" title="指派" confirm-text="确定" cancel-text="取消" bindcancel="cancelS" bindconfirm="confirmS">
   <view class='assign_con'>

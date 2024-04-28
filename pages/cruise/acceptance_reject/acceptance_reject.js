@@ -43,7 +43,7 @@ Page({
               var data = JSON.parse(res.data).info.path;
               data = data.replace(app.globalData.mainServer, '');
               imgres2.push(data);
-              img2.push(url + data);
+              img2.push(data);
               that.setData({
                 // tempFilePath可以作为img标签的src属性显示图片
                 img: img2,

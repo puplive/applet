@@ -56,7 +56,7 @@ Page({
             console.log(111, data);
             that.setData({
               // tempFilePath可以作为img标签的src属性显示图片
-              img: url + data,
+              img: data,
               imgres: data,
             })
           },

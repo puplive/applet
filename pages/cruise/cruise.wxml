@@ -24,7 +24,7 @@
             <text class="fr list_zwh_right">{{value.time}}</text>
           </view>
           <view class="list_li clearfix">
-            <image src="{{host}}public/{{value.goods_img}}" class="fl list_img"></image>
+            <image src="{{host}}{{value.goods_img}}" class="fl list_img"></image>
             <view class="list_licon fl">
               <view>
                 <text class="list_litit">{{value.goods_array.name}}</text>
